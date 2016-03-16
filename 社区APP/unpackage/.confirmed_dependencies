@@ -1,0 +1,435 @@
+{
+	"index.html": {
+		"resources": [
+			"js/mui.min.js",
+			"css/common.css",
+			"css/iconfont.css",
+			"js/jquery.min.js",
+			"html/home.html",
+			"fonts/iconfont.ttf",
+			"js/index.js",
+			"js/data.js"
+		],
+		"refer": [
+			"html/home.html",
+			"html/user.html",
+			"html/cart.html",
+			"html/register.html",
+			"html/log.html"
+		]
+	},
+	"html/home.html": {
+		"resources": [
+			"img/bianminggongneng.png",
+			"img/banner01.png",
+			"img/icon7.png",
+			"img/icon4.png",
+			"js/unslider.js",
+			"img/icon1.png",
+			"img/icon8.png",
+			"img/banner03.png",
+			"img/ad-3.png",
+			"img/sign-in.png",
+			"img/ad-1.png",
+			"img/icon10.png",
+			"img/icon9.png",
+			"img/weather.png",
+			"img/Weizhang-Check.png",
+			"img/icon2.png",
+			"js/banner.js",
+			"fonts/mui.ttf",
+			"img/banner02.png",
+			"css/app/home.css",
+			"img/icon6.png",
+			"img/icon12.png",
+			"js/app/home.js",
+			"img/ad-4.png",
+			"img/ad-2.png",
+			"css/mui.min.css",
+			"img/icon11.png",
+			"img/icon5.png",
+			"img/icon3.png",
+			"css/common.css",
+			"js/mui.min.js",
+			"js/jquery.min.js",
+			"js/data.js"
+		],
+		"refer": [
+			"html/shoper.html",
+			"html/forum.html",
+			"html/car.service.html",
+			"html/wash.clothes.html",
+			"html/tenement.html",
+			"html/homemaking.html",
+			"html/purse.html",
+			"html/station.html",
+			"html/shopping.html",
+			"html/second.hand.html",
+			"html/convenient.html"
+		]
+	},
+	"html/shoper.html": {
+		"resources": [
+			"js/sea.js",
+			"css/app/collect.css",
+			"img/shop.png",
+			"css/common.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/mui.js",
+			"js/template.js",
+			"js/jquery.min.js",
+			"js/unslider.js",
+			"js/mui.min.js",
+			"js/root.js",
+			"js/data.js",
+			"js/banner.js",
+			"html/shoper.html",
+			"html/shop_list.html"
+		],
+		"refer": [
+			"html/shop.detail.html",
+			"html/shop_list.html"
+		]
+	},
+	"html/forum.html": {
+		"resources": [
+			"css/app/forum.css",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"css/common.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/data.js",
+			"js/template.js"
+		]
+	},
+	"html/car.service.html": {
+		"resources": [
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"js/distance.js",
+			"css/common.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/app/collect.css",
+			"img/shop.png",
+			"js/data.js",
+			"js/template.js"
+		]
+	},
+	"html/shop.detail.html": {
+		"resources": [
+			"css/app/shop.css",
+			"js/mui.min.js",
+			"js/jquery.min.js",
+			"css/common.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/data.js",
+			"js/temp.js",
+			"js/template.js"
+		]
+	},
+	"html/user.html": {
+		"resources": [
+			"img/icon-2.png",
+			"img/icon-6.png",
+			"js/jquery.min.js",
+			"img/icon-7.png",
+			"img/icon-1.png",
+			"img/icon-3.png",
+			"js/mui.min.js",
+			"css/common.css",
+			"css/app/user.css",
+			"img/icon-4.png",
+			"img/icon-5.png",
+			"img/icon-8.png",
+			"img/touxiang.png",
+			"js/data.js"
+		],
+		"refer": [
+			"html/address.html",
+			"html/my.order.html",
+			"html/select.address.html"
+		]
+	},
+	"html/address.html": {
+		"resources": [
+			"css/app/purse.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"css/common.css"
+		]
+	},
+	"html/cart.html": {
+		"resources": [
+			"img/good.png",
+			"img/shops.png",
+			"css/app/cart.css",
+			"img/add.png",
+			"js/jquery.min.js",
+			"img/jian1.png",
+			"css/common.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css"
+		]
+	},
+	"html/tenement.html": {
+		"resources": [
+			"css/app/purse.css",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"css/common.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css"
+		]
+	},
+	"html/homemaking.html": {
+		"resources": [
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"js/distance.js",
+			"css/common.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/app/collect.css",
+			"img/shop.png",
+			"js/data.js",
+			"js/template.js"
+		]
+	},
+	"html/wash.clothes.html": {
+		"resources": [
+			"js/distance.js",
+			"css/app/collect.css",
+			"img/shop.png",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"css/common.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/data.js",
+			"js/template.js"
+		]
+	},
+	"html/purse.html": {
+		"resources": [
+			"css/app/purse.css",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"css/common.css",
+			"fonts/mui.ttf",
+			"js/app/purse.js",
+			"css/mui.min.css"
+		],
+		"refer": [
+			"html/rechange.html",
+			"html/regulation.html"
+		]
+	},
+	"html/rechange.html": {
+		"resources": [
+			"img/weixinzhifu.png",
+			"img/zhifubao.png",
+			"js/app/rechange.js",
+			"css/app/purse.css",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"css/common.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css"
+		]
+	},
+	"html/station.html": {
+		"resources": [
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"js/distance.js",
+			"css/common.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/app/collect.css",
+			"img/shop.png",
+			"js/data.js",
+			"js/template.js"
+		]
+	},
+	"html/shopping.html": {
+		"resources": [
+			"js/app/shopping.js",
+			"js/distance.js",
+			"css/app/collect.css",
+			"img/shop.png",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"css/common.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/data.js",
+			"js/template.js"
+		],
+		"refer": [
+			"html/shop.detail1.html",
+			"html/shop.detail.html"
+		]
+	},
+	"html/shop.detail1.html": {
+		"resources": [
+			"img/tel.png",
+			"img/goods.png",
+			"img/time.png",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"css/common.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/data.js",
+			"css/app/collect.css",
+			"js/temp.js",
+			"js/template.js"
+		],
+		"refer": [
+			"html/goods.detail.html"
+		]
+	},
+	"html/second.hand.html": {
+		"resources": [
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"img/gou-red.png",
+			"css/app/second.hand.css",
+			"css/common.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/data.js",
+			"js/template.js"
+		]
+	},
+	"html/convenient.html": {
+		"resources": [
+			"css/app/convenient.css",
+			"js/jquery.min.js",
+			"js/distance.js",
+			"js/mui.min.js",
+			"css/common.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/app/collect.css",
+			"img/shop.png",
+			"img/touxiang.png",
+			"js/data.js",
+			"js/template.js",
+			"html/convenient_list.html"
+		],
+		"refer": [
+			"html/convenient_list.html"
+		]
+	},
+	"html/regulation.html": {
+		"resources": [
+			"css/app/rule.css"
+		]
+	},
+	"html/shop_list.html": {
+		"resources": [
+			"js/jquery.min.js",
+			"js/template.js",
+			"js/mui.min.js",
+			"css/common.css",
+			"css/mui.min.css",
+			"js/data.js",
+			"css/app/collect.css",
+			"fonts/mui.ttf"
+		],
+		"refer": [
+			"html/shop.detail1.html",
+			"html/shop.detail.html"
+		]
+	},
+	"html/convenient_list.html": {
+		"resources": [
+			"js/jquery.min.js",
+			"js/data.js",
+			"js/template.js",
+			"css/app/convenient.css",
+			"js/mui.min.js",
+			"css/common.css",
+			"css/mui.min.css",
+			"css/app/collect.css"
+		]
+	},
+	"html/my.order.html": {
+		"resources": [
+			"css/app/order.css",
+			"img/goods1.png",
+			"js/mui.min.js",
+			"css/common.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css"
+		]
+	},
+	"html/select.address.html": {
+		"resources": [
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"css/common.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/app/goods.address.css"
+		]
+	},
+	"html/goods.detail.html": {
+		"resources": [
+			"img/details-3.png",
+			"css/app/goods.detail.css",
+			"img/goods.png",
+			"img/huixin.png",
+			"img/details-2.png",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"css/common.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/data.js",
+			"js/template.js"
+		],
+		"refer": [
+			"html/cart.html"
+		]
+	},
+	"html/register.html": {
+		"resources": [
+			"css/app/purse.css",
+			"js/template.js",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"css/common.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/data.js",
+			"html/register.html"
+		],
+		"refer": [
+			"html/register.html"
+		]
+	},
+	"html/log.html": {
+		"resources": [
+			"css/app/purse.css",
+			"img/admin.png",
+			"img/mima.png",
+			"js/jquery.min.js",
+			"js/mui.min.js",
+			"css/common.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/data.js"
+		],
+		"refer": [
+			"html/register.html"
+		]
+	}
+}
