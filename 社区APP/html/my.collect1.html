@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>我的收藏</title>
+		<link rel="stylesheet" type="text/css" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/common.css" />
+		<link rel="stylesheet" href="../css/app/collect.css" />
+		
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/mui.min.js"></script>
+		<script>
+			$(function() {
+				$(window).resize(function() {
+					windowChange();
+				});
+
+				function windowChange() {
+					var myDataL = $(".top").length;
+					var winWidth = $(window).width();
+					var lDiv = "";
+					for (i = 0; i < myDataL; i++) {
+						lDiv = $(".top").eq(i).children(".l-img").width() + 15;
+						$(".top").eq(i).children(".r-nick").width(winWidth - lDiv);
+					}
+				}
+				windowChange();
+			});
+		</script>
+	</head>
+
+	<body>
+		<!--头部-->
+		<header class="bar">
+			<a class="left mui-action-back mui-icon mui-icon-arrowleft"></a>
+			<h1 class="title">我的收藏</h1>
+		</header>
+		<div class="content">
+			<div class="contol">
+				<div class="appraise1 active">帖子</div>
+				<span></span>
+				<div class="appraise1">二手</div>
+			</div>
+			<section class="section" style="margin-top: 44px;">
+				<div class="block">
+					<div class="top">
+						<div class="l-img">
+							<img src="../img/touxiang.png" />
+						</div>
+						<div class="r-nick">
+							<span class="col">左手倒影</span>
+							<p>发布时间2015-12-23<span class="fjr">12:06</span></p>
+						</div>
+					</div>
+					<ul>
+						<li>
+							对于怪物猎人OL武器做好没有了这个是什么情况
+						</li>
+					</ul>
+					<div class="top">
+						<div class="l-img">
+							<img src="../img/touxiang.png" />
+						</div>
+						<div class="r-nick">
+							<span class="col">左手倒影</span>
+							<p>发布时间2015-12-23<span class="fjr">12:06</span></p>
+						</div>
+					</div>
+					<ul>
+						<li>
+							对于怪物猎人OL武器做好没有了这个是什么情况
+						</li>
+					</ul>
+				</div>
+			</section>
+			<section class="section" style="margin-top: 44px;display: none;">
+				<div class="block">
+					<div class="top">
+						<div class="l-img">
+							<img src="../img/touxiang.png" />
+						</div>
+						<div class="r-nick" style="white-space:nowrap;overflow: hidden;display: inline-block;">
+							<span class="col">左手倒影</span>
+							<p>发布时间2015-12-23<span class="fjr">12:06</span></p>
+						</div>
+					</div>
+
+					<div class="deig">
+						<div class="nickname" style="white-space:nowrap;overflow: hidden;display: inline-block;">
+							达芙妮鱼嘴鞋</span>
+						</div>
+
+						<div class="col nickname">￥90.00<del>￥198.00</del></div>
+					</div>
+					<div class="top">
+						<div class="l-img">
+							<img src="../img/touxiang.png" />
+						</div>
+						<div class="r-nick" style="white-space:nowrap;overflow: hidden;display: inline-block;">
+							<span class="col">左手倒影</span>
+							<p>发布时间2015-12-23<span class="fjr">12:06</span></p>
+						</div>
+					</div>
+
+					<div class="deig">
+						<div class="nickname" style="white-space:nowrap;overflow: hidden;display: inline-block;">
+							达芙妮鱼嘴鞋</span>
+						</div>
+
+						<div class="col nickname">￥90.00<del>￥198.00</del></div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<script>
+			$(function() {
+				$('.contol .appraise1').click(function() {
+					if (!$(this).hasClass('active')) {
+						$(this).addClass('active');
+						$('section').hide().eq($(this).index() / 2).show();
+						$(this).siblings().removeClass('active');
+					}
+				});
+			});
+		</script>
+	</body>
+
+</html>

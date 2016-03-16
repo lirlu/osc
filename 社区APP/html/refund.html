@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>申请退款</title>
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/common.css" />
+		<link rel="stylesheet" href="../css/app/refund.css" />
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/mui.min.js"></script>
+	</head>
+	<body>
+		<!--头部-->
+		<header class="bar">
+			<a class="left mui-action-back mui-icon mui-icon-arrowleft"></a>
+			<h1 class="title">申请退款</h1>
+		</header>
+		<div class="content">
+			<ul class="apply-refund">
+				<li>
+					申请服务
+					<span class="lire">仅退款
+					<b></b>
+					</span>
+				</li>
+				<ul class="tanchu" style="display: none;">
+					<li>退货退款<input type="radio" name="radio"></li>
+					<li>仅退款<input type="radio" name="radio"></li>
+				</ul>
+				<li>
+					货物状态
+					<span class="lire">已收到货<b></b></span>
+				</li>
+					<ul class="tanchu" style="display: none;">
+						<li>未收到货<input type="radio" name="radio1"></li>
+						<li>已收到货<input type="radio" name="radio1"></li>
+					</ul>
+				<li>
+					退款原因
+					<span class="lire">请选择<b></b></span>
+				</li>
+					<ul class="tanchu" style="display: none;">
+						<li>多拍/拍错/不想要<input type="radio" name="radio2"></li>
+						<li>商品少件/破损/污渍<input type="radio" name="radio2"></li>
+					</ul>
+			</ul>
+				
+			<form class="mui-input-group">
+				<div class="mui-input-row frf">
+					<div style="float: left;width: 95px;">退款金额</div>
+					<div style="float: left;width: 65%;"><input type="number" name="number" value="12.3" placeholder="请输入退款金额"/></div>
+				</div>
+			</form>
+			<div class="shuo">最多33.66元，含发货邮费0.00元</div>
+			<div class="nicks">退款说明</div>
+			<div class="mui-input-row">
+				<textarea placeholder="请输入退款说明，最多200字" rows="4"></textarea>
+			</div>
+			<div class="nicks">退款凭证</div>
+			<div class="liie_div">
+				<div class="liie">
+					<img src="../img/pingzheng.png" />
+				</div>
+				<div class="liie">
+					<img src="../img/pingzheng.png" />
+				</div>
+				<div class="liie">
+					<img src="../img/pingzheng.png" />
+				</div>
+			</div>
+			<div class="bottom">
+				<button class="tbn">提交申请</button>
+			</div>
+		</div>
+	</body>
+</html>
+

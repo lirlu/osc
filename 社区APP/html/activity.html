@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>小区活动</title>
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/common.css" />
+		<link rel="stylesheet" href="../css/app/activity.css" />
+		<style>
+			input[type=text] {
+				padding-left: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--头部-->
+		<header class="bar">
+			<a class="left">
+				<img src="../img/left-jiantou.png" />
+			</a>
+			<h1 class="title">小区活动</h1>
+		</header>
+		<div class="content">
+			<form>
+				<div class="input-div">
+					<span class="block">活动标题：</span>
+					<input type="text" placeholder="请输入活动标题" />
+				</div>
+				<div class="input-div">
+					<span class="block">活动开始时间：</span>
+					<input type="text" placeholder="请输入活动时间" />
+				</div>
+			</form>
+
+			<div class="neiot">
+				活动内容
+			</div>
+			<div class="mui-input-row">
+				<textarea placeholder="请输入活动内容" rows="3"></textarea>
+			</div>
+			<ul>
+				<li style="overflow: hidden;">
+					<div class="activity-img">
+						<img src="../img/activity1.png" />
+					</div>
+					<div class="activity-img">
+						<img src="../img/activity2.png" />
+					</div>
+					<div class="activity-img">
+						<img src="../img/activity3.png" />
+					</div>
+				</li>
+			</ul>
+			<div class="bottom">
+				<button class="tbn">提交</button>
+			</div>
+		</div>
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script>
+			$(function() {
+				$(window).resize(function() {
+					windowChange();
+				});
+
+				function windowChange() {
+					var myDataL = $(".input-div").length;
+					var winWidth = $(window).width();
+					var lDiv = "";
+					for (i = 0; i < myDataL; i++) {
+						lDiv = $(".input-div").eq(i).children(".block").width() + 15;
+						$(".input-div").eq(i).children("input").width(winWidth - lDiv);
+					}
+				}
+				windowChange();
+			});
+		</script>
+	</body>
+
+</html>

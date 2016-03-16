@@ -1,0 +1,70 @@
+.good{border-top: 1px solid #E5E5E5;}
+li{background: #FFFFFF;padding: 11px 15px;line-height: 21px;}
+li:after{height: 0;}
+.block{display: block;}
+.price{margin-top: 5px;height: 50px;}
+.left-p{height: 50px;float: left;line-height: 50px;}
+.right-p{height: 50px;float: right;padding-top: 8px;}
+button{width: 90px;border: 1px solid #FD4C3C;border-radius: 8px;background: #FD4C3C;color: #FFFFFF;padding: 8px 0;}
+.apprase{height: 44px;line-height: 44px;background: #FFFFFF;padding-left: 15px;}
+.magin{margin: 8px 0;}
+.apprase img{width: 20px;float: left;padding-top: 12px;margin-right: 5px;}
+i{width: 10px;height: 10px;display: inline-block;border-right: 1px solid #000;border-bottom: 1px solid #000;cursor: pointer;-webkit-transform: rotate(-45deg);float: right;margin-top: 17px; margin-right: 15px;}
+.picture{width: 80%;margin: 0 auto;text-align: center;}
+.picture img{width: 70%;}
+.picture img.cloth-img{width: 30%;}
+.like{border-top: 1px solid #E5E5E5;}
+.like li{width: 33.3333333%;text-align: center;float: left;padding: 11px 0;font-size: 14px;}
+.like li img{width: 70%;}
+.text-cen{text-align: center;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+.tiao{position: absolute;width: 1px;height: 100%;background: #E5E5E5;top: 0;bottom: 0;right: 0;}
+.like-li .fiir{width: 30%;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

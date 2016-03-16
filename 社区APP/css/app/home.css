@@ -1,0 +1,48 @@
+.banner li:after{height: 0;}
+ul.col-xs-1:after{height: 0;}
+ul.col-xs-1 {display: inline-block;width: 100%;background: #FFFFFF;white-space: nowrap;position: relative;clear:both;border-top: 1px solid #efefef;}
+.col-xs-1 li{width: 25%;float: left;position: relative;text-align: center;padding: 8px 0;overflow: hidden;background: #FFFFFF;min-height: 1px;height: 70px;}
+.col-xs-1 li:after{height: 0;}
+.col-xs-1 li:nth-child(4n){border-right: 0;}
+.col-xs-1 img{width: 40px;}
+.col-xs-1 span{white-space: nowrap;font-size: 15px;line-height: 15px;display: block;width: 100%;text-overflow: ellipsis;position: absolute;}
+.col-xs-1 .after{position: absolute;width: 100%;height: 1px;background: #EFEFEF;bottom: 0;top: 85px;left: 0;}
+.col-xs-1 .right-after{position: absolute;width: 1px;background: #EFEFEF;bottom: 0;right: 0;top: 0;}
+.contain{height: 2.5rem;line-height: 2.5rem;padding-left: 15px;}
+.bianming{display: inline-block;width: 100%;}
+.bianming img{width: 100%;}
+.bian{display: inline-block;color: #FFFFFF;white-space: nowrap;position: relative;overflow: hidden;padding: 0 15px;}
+.bian li{width: 33.333333333%;text-align: center;float: left;margin-top: 5px;}
+.bian img{width: 98%;}
+.bian li:after{height: 0;}
+.first-li{background: #00d3be;border: 1px solid #00D3BE;border-radius: 10px;}
+.second-li{background: #009efc;border: 1px solid #009efc;border-radius: 10px;}
+.three-li{background: #fac009;border: 1px solid #fac009;border-radius: 10px;}
+.ad{display: inline-block;padding: 0 15px;}
+.ad .top{margin-top: 0px;}
+.ad li{width: 49%;float: left;margin-top: 4px;}
+.ad li img{width: 100%;}
+.ad li:nth-child(2n){margin-left: 2%;}
+.ad li:after{height: 0;}
+.hot_city{border: 1px solid #FFFFFF;background: #FFFFFF;width: 28%;height: 45px;float: left;text-align: center;margin-left: 4%;line-height: 45px;margin-top: 8px;}
+.City{border-bottom: 1px solid #E5E5E5;width: 100%;box-sizing: border-box;overflow: hidden;padding-bottom: 20px;}
+.dies{width: 100%;box-sizing: border-box;padding: 0 15px;height: 44px;line-height: 44px;position: relative;border-bottom: 1px solid #E5E5E5;}
+.r_span{float: right;padding-right: 10px;}
+.i{width: 10px;height: 10px;display: inline-block;border-right: 1px solid #000;border-bottom: 1px solid #000;cursor: pointer;-webkit-transform: rotate(-45deg);position: absolute;right: 15px;top: 16px;}
+.dfeo{float: left;width: 20px;margin-top: 12px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>登录</title>
+		<link rel="stylesheet" type="text/css" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/common.css" />
+		<link rel="stylesheet" href="../css/app/purse.css" />
+
+	</head>
+
+	<body>
+		<!--头部-->
+		<header class="bar">
+			<a class="left mui-action-back mui-icon mui-icon-arrowleft"></a>
+			<h1 class="title">登录</h1>
+		</header>
+
+		<body>
+			<div class="content">
+				<div class="input-div pade">
+					<img src="../img/admin.png" />
+					<input type="text" id="tel" placeholder="请输入您的手机号码" />
+				</div>
+				<div class="input-div pade">
+					<img src="../img/mima.png" />
+					<input type="password" id="password" placeholder="请输入您的登录密码" />
+				</div>
+
+				<div class="bottom" id="logoin">
+					<button class="tbn" type="button">登录</button>
+				</div>
+				<div class="find">
+					没有账号<span class="col juli" address='register.html'>马上注册》</span>
+				</div>
+				<div class="find">
+					忘记密码<span class="col juli" address='find.password.html'>立即找回》</span>
+				</div>
+			</div>
+
+			<script type="text/javascript" src="../js/jquery.min.js"></script>
+			<script type="text/javascript" src="../js/mui.min.js"></script>
+			<script src="../js/data.js" type="text/javascript" charset="utf-8"></script>
+
+			<script type="text/javascript">
+				shequ.DomArr.Login(function() {
+					mui.openWindow({
+						url: 'use.html'
+					});
+				});
+				shequ.DomArr.Address();
+			</script>
+		</body>
+
+</html>

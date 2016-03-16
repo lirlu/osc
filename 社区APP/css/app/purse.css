@@ -1,0 +1,185 @@
+i {
+	width: 10px;
+	height: 10px;
+	display: inline-block;
+	border-right: 1px solid #4d4d4d;
+	border-bottom: 1px solid #4d4d4d;
+	cursor: pointer;
+	-webkit-transform: rotate(-45deg);
+	float: right;
+	margin-top: 5px;
+}
+
+li {
+	background: #FFFFFF;
+	padding: 11px 15px;
+	margin-top: 5px;
+}
+
+ul:after {
+	height: 0;
+}
+
+li:after {
+	height: 0;
+}
+
+.amount {
+	float: right;
+	color: #FD4C3C;
+}
+
+form {
+	position: relative;
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
+
+.input-div {
+	position: relative;
+	clear: left;
+	height: 44px;
+	overflow: hidden;
+	margin: 0;
+	background: #FFFFFF;
+	padding: 0;
+	margin-top: 5px;
+	line-height: 44px;
+}
+
+input[type=text],
+input[type=number],
+input[type=password] {
+	height: 44px;
+	-webkit-appearance: none;
+	margin-bottom: 0;
+	border: 0;
+	border-radius: 0;
+	background-color: transparent;
+	outline: none;
+	font-size: 16px;
+}
+
+.block {
+	display: inline-block;
+	padding-left: 15px;
+	float: left;
+}
+
+.center {
+	text-align: center;
+	font-size: 14px;
+	color: #FD4C3C;
+}
+
+.shengming {
+	width: 100%;
+	height: 2rem;
+	line-height: 2rem;
+	padding-left: 15px;
+}
+
+.juli {
+	padding-left: 15px;
+}
+
+.deji {
+	float: right;
+	color: #CCCCCC;
+	padding-right: 15px;
+}
+
+.input-div i {
+	margin-top: 16px;
+}
+
+.xiode li {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	line-height: 21px;
+}
+
+.xiode i {
+	position: absolute;
+	right: 12px;
+	top: 20px;
+}
+
+.xiode p {
+	margin-top: 5px;
+	padding-left: 8px;
+}
+
+.pade img {
+	width: 30px;
+	float: left;
+	margin-left: 15px;
+	margin-right: 10px;
+	margin-top: 6px;
+}
+
+.find {
+	width: 100%;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	margin-top: 30px;
+}
+
+.yan {
+	border: 1px solid #FF826C;
+	border-radius: 5px;
+	color: #FF826C;
+	width: 80px;
+	background: #FFFFFF;
+	position: absolute;
+	top: 6px;
+	padding: 5px 0;
+	right: 5px;
+	font-size: 15px;
+}
+
+.pade input {
+	width: 80%;
+}
+
+.rule-div {
+	height: 40px;
+	line-height: 40px;
+	padding-left: 15px;
+}
+
+.ruel form {
+	margin-top: 20px;
+}
+
+.mima {
+	height: 40px;
+	line-height: 44px;
+	padding-left: 15px;
+}
+
+.float1 {
+	float: left;
+}
+
+.float1 img {
+	width: 30px;
+	margin-top: 4px;
+	margin-right: 10px;
+}
+
+.payli {
+	height: 65px;
+}
+
+.right1 {
+	float: right;
+	line-height: 40px;
+}
+
+.wieu {
+	padding-top: 2px;
+}

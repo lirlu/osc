@@ -1,0 +1,40 @@
+ul{border-top: 1px solid #EFEFF4;}
+li{background: #FFFFFF;padding: 11px 15px;}
+.nickname{width: 100%;height: 44px;line-height: 44px;}
+.nickname img{width: 40px;float: left;margin-top: 5px;margin-right: 5px;}
+.appraise{padding-top: 10px;line-height: 1.5rem;font-size: 14px;}
+.appraise p{font-size: 14px;}
+p{font-size: 16px;color: #8f8f94;margin-bottom: 0;margin-top: 0;font-weight: normal;font-style: normal;font-variant:normal;display: block;}
+.contol{width: 100%;height: 2.5rem;line-height: 2.5rem;background: #FFFFFF;border-top: 1px solid #EFEFF4;}
+.appraise1{width: 50%;height: 2.5rem;float: left;text-align: center;border-bottom: 2px solid #ffffff;}
+.active{color: #FD4C3C;border-bottom: 2px solid #FD4C3C;}
+.apprase1{margin-top: 2px;}
+.apprase1 li:first-child{margin-top: 0;}
+.apprase1 li{line-height: 24px;margin-top: 8px;}
+.apprase1 li:after{left: 0;}
+.apprase1 p{font-size: 14px;}
+.block{display: block;}
+.block img{width: 20px;}
+.apprase2{margin-top: 2px;}
+.apprase2 li{height: 80px;margin-top: 8px;}
+.first-div{float: left;width: 70px;height: 80px;}
+.first-div img{width: 60%;border: 1px solid #EFEFF4;padding: 10px;}
+.second-div{float: left;height: 80px;width: 75%;display: -webkit-box;
+    overflow: hidden;
+    white-space: normal!important;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;}
+.second-div p{margin-top: 10px;}
+.second-div .btn{color: #FD4C3C;border: 1px solid #FD4C3C;position: absolute;right: 15px;padding: 3px 15px;border-radius: 8px;}
+.apprase2 li:after{left: 0;}
+.apprase2 li:first-child{margin-top: 0;}
+.score{height: 44px;line-height: 44px;background: #FFFFFF;margin-top: 5px;padding-left: 15px;}
+.score img{width: 23px;margin-top: 9px;float: left;margin-right: 10px;}
+.frli{float: left;margin-right: 8px;}
+textarea{border: 0;border-top: 1px solid #E5E5E5;}
+.frjfor img{width: 20px;float: right;}
+
+
+

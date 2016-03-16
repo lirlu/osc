@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>小区活动</title>
+		<link rel="stylesheet" href="../css/common.css" />
+		<link rel="stylesheet" href="../css/app/activity.css" />
+	</head>
+	<body>
+		<!--头部-->
+		<header class="bar">
+			<a class="left">
+				<img src="../img/left-jiantou.png" />
+			</a>
+			<h1 class="title">小区活动</h1>
+		</header>
+		<div class="content">
+			<div class="acti">
+				<div class="portrait">
+					<img src="../img/touxiang.png" />
+				</div>
+				<div class="portrait1">
+					左手倒影
+					<span class="address">交大东园</span>
+					<p>发布时间2015-12-23</p>
+				</div>
+			</div>
+			<ul>
+				<li>一起来打羽毛球吧</li>
+			</ul>
+			<div class="actity">
+				<div class="activity-img">
+					<img src="../img/activity1.png" />
+				</div>
+				<div class="activity-img">
+					<img src="../img/activity2.png" />
+				</div>
+				<div class="activity-img">
+					<img src="../img/activity3.png" />
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/jquery.min.js" ></script>
+	<script>
+		$(function() {
+	$(window).resize(function() {
+		windowChange();
+	})
+	function windowChange() {
+		var myDataL = $(".acti").length;
+		var winWidth = $(window).width();
+		var lDiv = "";
+		lDiv = $(".acti").children(".portrait").width() + 15;
+		$(".acti").children("portrait1").width(winWidth - lDiv);
+	}
+	windowChange();
+});
+	</script>
+		
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>交物业费</title>
+		<link rel="stylesheet" type="text/css" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/common.css" />
+		<link rel="stylesheet" href="../css/app/purse.css" />
+
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<!--头部-->
+		<header class="bar">
+			<a class="left mui-action-back mui-icon mui-icon-arrowleft"></a>
+			<h1 class="title">交物业费</h1>
+		</header>
+
+		<body>
+			<div class="content">
+				<form>
+					<div class="input-div">
+						<span class="block">小区名：</span>
+						<input type="text" placeholder="输入要交费的小区名" />
+					</div>
+					<div class="input-div">
+						<span class="block">缴费时段：</span>
+						<input type="text" placeholder="输入要交费的时段" />
+					</div>
+					<div class="input-div">
+						<span class="block">门牌号码：</span>
+						<input type="text" placeholder="输入您的门牌号码" />
+					</div>
+					<div class="input-div">
+						<span class="block">户主姓名：</span>
+						<input type="text" placeholder="输入户主姓名" />
+					</div>
+					<div class="input-div">
+						<span class="block">联系电话：</span>
+						<input type="text" placeholder="输入联系电话" />
+					</div>
+					<div class="input-div">
+						<span class="juli">缴费金额：</span><span class="col">800元</span>
+					</div>
+				</form>
+				<div class="bottom">
+					<button class="tbn">确认支付</button>
+				</div>
+			</div>
+		</body>
+		<script>
+			$(function() {
+				$(window).resize(function() {
+					windowChange();
+				})
+
+				function windowChange() {
+					var myDataL = $(".input-div").length;
+					var winWidth = $(window).width();
+					var lDiv = "";
+					for (i = 0; i < myDataL; i++) {
+						lDiv = $(".input-div").eq(i).children(".block").width() + 15;
+						$(".input-div").eq(i).children("input").width(winWidth - lDiv);
+					}
+				}
+				windowChange();
+			});
+		</script>
+
+</html>

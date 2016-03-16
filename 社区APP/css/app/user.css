@@ -1,0 +1,37 @@
+li{background: #FFFFFF;padding: 11px 15px;line-height: 25px;margin-top: 5px;}
+li:after{left: 0;}
+.nickname{width: 100%;height: 120px;text-align: center;line-height: 30px;}
+.touxiang{width: 80px;height: 80px;border: 1px solid #F7F7F8;border-radius: 50%;margin: 0 auto;padding-top: 8px;}
+.touxiang img{width: 80px;height: 80px;border: 1px solid #F7F7F8;border-radius: 50%;}
+li img{width: 25px;float: left;margin-right: 10px;}
+b{width: 10px;
+				    height: 10px;
+				    display: inline-block;
+				    border-right: 1px solid #CCCCCC;
+				    border-bottom: 1px solid #CCCCCC;
+				    cursor: pointer;
+				    -webkit-transform: rotate(-45deg);
+        			position: absolute;top: 50%;margin-top: -8px;right: 15px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

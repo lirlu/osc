@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>我的评价</title>
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/common.css" />
+		<link rel="stylesheet" href="../css/app/appraise.css" />
+
+	</head>
+
+	<body>
+		<!--头部-->
+		<header class="bar">
+			<a class="left mui-action-back mui-icon mui-icon-arrowleft">
+
+			</a>
+			<h1 class="title">我的评价</h1>
+		</header>
+		<div class="content">
+			<div class="contol">
+				<div class="appraise1 active dje">已评价</div>
+				<div class="appraise1 dje1">待评价</div>
+			</div>
+			<!--已评价-->
+			<div class="contol1 item">
+				<ul class="apprase1">
+					<li>
+						<span class="block">蓝山风味速溶三合一咖啡粉</span>
+						<span class="block col1">东西很好，味道也很好，给个好评！</span>
+						<span class="block">
+							<img src="../img/honxin.png" />
+							<img src="../img/honxin.png" />
+							<img src="../img/honxin.png" />
+							<img src="../img/huixin.png" />
+							<img src="../img/huixin.png" />
+						</span>
+						<span><p>已评价2015-12-24 17:27</p></span>
+					</li>
+					<li>
+						<span class="block">蓝山风味速溶三合一咖啡粉</span>
+						<span class="block col1">东西很好，味道也很好，给个好评！</span>
+						<span class="block">
+							<img src="../img/honxin.png" />
+							<img src="../img/honxin.png" />
+							<img src="../img/honxin.png" />
+							<img src="../img/huixin.png" />
+							<img src="../img/huixin.png" />
+						</span>
+						<span><p>已评价2015-12-24 17:27</p></span>
+					</li>
+				</ul>
+			</div>
+			<!--未评价-->
+			<div class="contol2 item" style="display: none;">
+				<ul class="apprase2">
+					<li>
+						<div class="first-div">
+							<img src="../img/coffee.png" />
+						</div>
+						<div class="second-div">
+							蓝山风味速溶三合一咖啡粉
+							<p>未评价</p>
+							<span class="btn">评价</span>
+						</div>
+					</li>
+					<li>
+						<div class="first-div">
+							<img src="../img/coffee.png" />
+						</div>
+						<div class="second-div">
+							蓝山风味速溶三合一咖啡粉
+							<p>未评价</p>
+							<span class="btn">评价</span>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/mui.min.js"></script>
+	<script>
+		$(function() {
+			$('.contol .appraise1').click(function() {
+				if ($(this).hasClass('active')) {
+					$(this).removeClass('active');
+					$(this).eq(0).addClass('active');
+					$(".item").eq($(this).index()).show();
+				} else {
+					$(this).addClass('active');
+					$(this).siblings().removeClass('active');
+					$(".item").hide().eq($(this).index()).show();
+				}
+			});
+		});
+	</script>
+
+</html>

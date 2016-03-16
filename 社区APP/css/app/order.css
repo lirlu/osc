@@ -1,0 +1,52 @@
+.header_div{box-sizing: border-box;width: 100%;height: 44px;line-height: 44px;background: #FFFFFF;border-top: 1px solid #E5E5E5;}
+.hh{width: 20%;text-align: center;float: left;}
+.active{color: #FD4C3C;border-bottom: 1px solid #FD4C3C;}
+li:after{position: absolute;height: 1px;background: #EFEFF4;left: 0;bottom: 0;}
+ul.tuikuan{margin-top: 8px;}
+ul.tuikuan li:after{left: 0;}
+ul.tuikuan li{background: #FFFFFF;line-height: 21px;padding: 5px 15px;}
+.r_f{float: right;}
+.l_f{float: left;}
+.l_img{width: 50px;height: 50px;border: 1px solid #CCCCCC;text-align: center;}
+.l_img img{width: 40px;margin-top: 7px;}
+.fefk{overflow: hidden;margin: 8px 0;padding-bottom: 8px;}
+.nick1{box-sizing: border-box;padding-left: 8px;float: left;width: 82%;}
+.nick1 p{margin-top: 8px;}
+.broe{text-align: right;line-height: 31px;}
+.rgt{color: #000000;font-weight: bold;}
+.gjot{height: 30px;line-height: 31px;}
+.dfv{line-height: 25px;}
+.fcr{color: #000000;padding-left: 10px;}
+.block{display: block;}
+.btnf{border: 1px solid #9D9D9D;color: #9D9D9D;background: #FFFFFF;outline: none;border-radius: 5px;float: right;width: 80px;text-align: center;padding: 5px 0;margin-left: 5px;}
+.frko{overflow: hidden;}
+.activeo{border: 1px solid #FD4C3C;color: #FD4C3C;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

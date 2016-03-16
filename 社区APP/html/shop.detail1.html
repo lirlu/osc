@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>商家详情</title>
+		<link rel="stylesheet" type="text/css" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/common.css" />
+		<link rel="stylesheet" href="../css/app/collect.css" />
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/template.js"></script>
+		<script type="text/javascript" src="../js/mui.min.js"></script>
+	</head>
+
+	<body>
+		<!--头部-->
+		<header class="bar">
+			<a class="left mui-action-back mui-icon mui-icon-arrowleft"></a>
+			<h1 class="title" id="shop_name"></h1>
+		</header>
+		<div class="content">
+			<section class="shops" id="moveList"></section>
+			<section class="shops" style="z-index: 1;">
+				<div class="all-div">
+					<div class="left-div">
+						<ul id="listLocal" style="margin-top: 0;">
+						</ul>
+					</div>
+					<div class="right-div fril">
+						<ul>
+							<li id="dataChil"></li>
+						</ul>
+					</div>
+				</div>
+			</section>
+		</div>
+	</body>
+	<script type="text/html" id="moveListTemp">
+		<div class="startime">
+			<img src="../img/time.png" />
+			<span>营业时间</span>
+			<span class="juli">{{seller_view.business_time}}</span>
+			<b></b>
+		</div>
+		<div class="startime1" style="z-index: 2;position: absolute;">
+			<div class="shoper">
+				<img src="../img/location.png" />
+				<span>商家地址</span>
+				<span class="juli">{{seller_view.addr}}</span>
+			</div>
+			<div class="shoper">
+				<img src="../img/tel.png" />
+				<span>联系电话</span>
+				<span class="juli">{{seller_view.tel}}</span>
+			</div>
+		</div>
+	</script>
+	<script type="text/html" id="listLocalTemp">
+		<li class="active1">全部</li>
+		{{each cate_info as value}}
+		<li data-name="{{value.cate_id}}">{{value.cate_name}}</li>
+		{{/each}}
+	</script>
+	<script type="text/html" id="dataChilTemp">
+		{{each goods_list as value}}
+		<div class="right-div goods" address='goods.detail.html' title="{{value.title}}" goods_id="{{value.goods_id}}">
+			<div class="li-left"><img src="http://192.168.2.15/attachs/{{value.photo}}"></div>
+			<div class="li-right">
+				<span class="dblock">{{value.title}}</span>
+				<span class="dblock size">{{value.unit}}</span>
+				<span class="dblock col size">{{'￥'+value.mall_price}}</span>
+			</div>
+			<i></i>
+		</div>
+		{{/each}}
+	</script>
+	<script type="text/javascript" src="../js/data.js"></script>
+	<script type="text/javascript">
+		shequ.DomArr.Address();
+		shequ.DomArr.shopList('mobile/goods/goods_list', 'mobile/goods/cate_goods');
+	</script>
+
+</html>

@@ -1,0 +1,69 @@
+body{background: #F7F7F8;margin: 0;padding: 0;font-family: arial,"宋体";box-sizing: border-box;color: #1a1a1a;}
+*{outline:0;}
+.col{color: #FD4C3C;}
+del{color: #CCCCCC;}
+a{text-decoration: none;color: #000000;}
+.col1{color: #9d9d9d;}
+.col2{color: #000000;}
+.col3{color: #3183E1;}
+.col4{color: #EE3E3E;}
+.col5{color: #10D10D;}
+.size{font-size: 14px;}
+section{display: block;box-sizing: border-box;}
+.mui-checkbox input[type=checkbox]:before {
+    font-size: 23px;
+}
+.mui-radio input[type=radio]:before {
+    font-size: 23px;
+}
+.mui-checkbox input[type=checkbox]:checked:before, .mui-radio input[type=radio]:checked:before {
+    color: #FD4C3C;
+}
+/*头部*/
+.bar{position: fixed;z-index: 10;right: 0;left: 0; height: 44px;padding-right: 10px;padding-left: 10px;border-bottom: 0;-webkit-backface-visibility: hidden;backface-visibility: hidden;top: 0;display: block;background: #FFFFFF;}
+.title{right: 40px;left: 40px;display: inline-block;overflow: hidden;width: auto;margin: 0;text-overflow: ellipsis;font-size: 17px;font-weight: 500;line-height: 44px;position: absolute;padding: 0;text-align: center; white-space: nowrap;}
+.bar .left{float: left;line-height: 44px;color: #000000;}
+.bar img{width: 20px;margin-top: 12px;}
+.bar span{float: left;}
+.bar .title{font-size: 17px;float: left;}
+.bar .left img{float: left;margin-right: 5px;}
+.bar .back{width: 10px;margin-left: 5px;}
+.bar .right{float: right;line-height: 44px;color: #000000;}
+/**底部*************************************************/
+.bar-tab{position: fixed;left: 0;bottom: 0;display: table;width: 100%;height: 50px;table-layout: fixed;background-color: #fff;border-top: 1px solid #EFEFEF;}
+.bar-tab .tab-item {display: table-cell;overflow: hidden;width: 1%;height: 50px;text-align: center;vertical-align: middle;white-space: nowrap;text-overflow: ellipsis;color: #bfbfbf;}
+.tab-label{display: block;font-size: 12px;}
+.bar-tab .active{color: #fd4c3c;}
+.content{padding-top: 44px;padding-bottom: 4px;position: relative;}
+/**列表******************************************************/
+ul{list-style-type: none;padding: 0;margin: 0;position: relative;}
+ul:after{height: 1px;background: #E5E5E5;position: absolute;right: 0;bottom: 0;content: '';transform: scaleY(.5);}
+ul li{list-style-type: none;position: relative;}
+li:after{height: 1px;background: #E5E5E5;position: absolute;right: 0;bottom: 0;content: '';transform: scaleY(.5);left: 15px;}
+/**输入框*************************************************/
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */color: #CCCCCC;  }
+::-moz-placeholder { /* Mozilla Firefox 19+ */color: #CCCCCC;  }
+input:-ms-input-placeholder,textarea:-ms-input-placeholder {color: #CCCCCC;  }
+input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {color: #CCCCCC;  }
+/***************************************************************/
+p{font-size: 14px;margin: 0;color: #9d9d9d;}
+.bottom{width: 100%;margin-top: 2rem;text-align: center;}
+.bottom .tbn{width: 95%;height: 44px;border: 1px solid #FD4C3C;background: #FD4C3C;color: #FFFFFF;border-radius: 5px;font-size: 16px;}
+.masking{position: absolute;width: 100%;height: 100%;background: #000000;filter:alpha(opacity=50);-moz-opacity:0.5;opacity:0.5;z-index: 2;display: none;}
+
+
+
+#button{float: right;border: 1px solid #FD4C3C;border-radius: 5px;background: #FD4C3C;color: #FFFFFF;padding: 5px 10px;margin-top: -5px;font-size: 0.9rem;}
+
+
+#moveList .shop_name:before{content: '商家名称：';}
+#moveList .business_time:before{content: '营业时间：';}
+#moveList .addr:before{content: '商家地址：';}
+#moveList .tel:before{content: '商家电话：';}
+#moveList .contact:before{content: '商家介绍：';}
+
+
+
+
+
+
