@@ -1,4 +1,4 @@
-var page = 0;
+var page = 0, cate_id = '';
 // 页面跳转
 $('body').delegate("[address]", 'tap', function() {
 	app.open($(this).attr('address'));
@@ -12,18 +12,20 @@ $('.content').delegate(' .startime', 'tap', function() {
 $('body').delegate('.left-div li', 'tap', function() {
 
 	$(this).addClass('active1').css('background', '#eee').siblings().removeClass('active1').css('background', '');
-	//本社区
-	shequ.DataList.ShopData(_url2, {
-		page: 1,
-		shop_id: Storage.getItem('shop_id'),
-		cate_id: $(this).attr('data-name')
-	}, 'dataChilTemp', '#dataChil');
+	// 查看分类下的商品数据
+	page = 0, cate_id = $(this).attr('data-name');
+	
+	product(function (res) {
+		// 右侧商品数据
+		$('#pnl-product').html(template('tpl-product', res));
+	});
 });
 
 // 分类列表
 function category (cb) {
 	var view = plus.webview.currentWebview();
 	var data = self.extras;
+	plus.nativeUI.showWaiting('请等待...');
 	
 	console.log('获取商品分类数据：' + app.url('mobile/goods/cate_goods'));
 	$.ajax({
@@ -52,13 +54,14 @@ function category (cb) {
 function product (cb) {
 	var view = plus.webview.currentWebview();
 	var data = view.extras;
+	plus.nativeUI.showWaiting('请等待...');
 	
 	console.log('获取商超的商品数据：' + app.url('mobile/goods/goods_list'));
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
 		'url'      : app.url('mobile/goods/goods_list'),
-		'data'     : {'page':page++, shop_id:data.shop_id}
+		'data'     : {'page':page++, 'shop_id':data.shop_id, 'cate_id':cate_id}
 	})
 	.fail(function (res) {
 		console.log('获取商超的商品数据失败：' + JSON.stringify(res));
