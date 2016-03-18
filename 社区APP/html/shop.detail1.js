@@ -43,7 +43,7 @@ function category (cb) {
 		//mui('#refreshContainer').pullRefresh().endPullupToRefresh();
 	})
 	.done(function (res) {
-		console.log('商品分类数据：' + JSON.stringify(res));
+		//console.log('商品分类数据：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		cb && cb(res);
@@ -72,7 +72,7 @@ function product (cb) {
 		//mui('#refreshContainer').pullRefresh().endPullupToRefresh();
 	})
 	.done(function (res) {
-		console.log('商品数据：' + JSON.stringify(res));
+		//console.log('商品数据：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		cb && cb(res);
