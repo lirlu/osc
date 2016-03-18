@@ -1,5 +1,6 @@
 var page = 0;
 function search (cb) {
+	plus.nativeUI.showWaiting("等待中...");
 	//console.log('定位数据：' + localStorage.getItem('LocationAddress'));
 	var addr = JSON.parse(localStorage.getItem('LocationAddress'));
 	console.log('请求附近商超数据：' + app.url('mobile/supermarketseller/superseller'));
@@ -68,14 +69,19 @@ mui.init({
 });
 
 // 点击商家列表
-$('body').delegate('[address]', 'tap', function() {
-	app.open($(this).attr('address'));
+$('#pnl-nearby-store').delegate('.shop', 'tap', function() {
+	var data = {
+		'shop_id'   : $(this).attr('shop_id'),
+		'shop_name' : $(this).attr('shop_name'),
+		'addr'      : $(this).attr('addr'),
+		'tel'       : $(this).attr('tel'),
+	};
+	app.open('shop.detail1.html', data);
 });
 
 
 mui.plusReady(function () {
 	// 加载附近商超
-	plus.nativeUI.showWaiting("等待中...");
 	// plus.geolocation.getCurrentPosition(function(res) {});
 	app.locate(function (pos) {
 		setTimeout(function () {

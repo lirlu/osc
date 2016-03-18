@@ -38,7 +38,7 @@ shequ.listMap = {
 
 //请求数据
 shequ.DataList = {
-	_url: 'http://192.168.2.15/index.php?s=/',
+	_url: 'http://192.168.2.23/index.php?s=/',
 	//请求函数
 	ShopData: function(_url, _data, id, text, fn) {
 

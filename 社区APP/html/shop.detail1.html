@@ -8,9 +8,6 @@
 		<link rel="stylesheet" type="text/css" href="../css/mui.min.css" />
 		<link rel="stylesheet" href="../css/common.css" />
 		<link rel="stylesheet" href="../css/app/collect.css" />
-		<script type="text/javascript" src="../js/jquery.min.js"></script>
-		<script type="text/javascript" src="../js/template.js"></script>
-		<script type="text/javascript" src="../js/mui.min.js"></script>
 	</head>
 
 	<body>
@@ -19,24 +16,24 @@
 			<a class="left mui-action-back mui-icon mui-icon-arrowleft"></a>
 			<h1 class="title" id="shop_name"></h1>
 		</header>
+		
 		<div class="content">
-			<section class="shops" id="moveList"></section>
-			<section class="shops" style="z-index: 1;">
+			<section class="shops" id="pnl-duty-info"></section>
+			<section class="shops" style="z-index: 1; margin-top: 60px;">
 				<div class="all-div">
 					<div class="left-div">
-						<ul id="listLocal" style="margin-top: 0;">
+						<ul id="pnl-category">
 						</ul>
 					</div>
-					<div class="right-div fril">
-						<ul>
-							<li id="dataChil"></li>
+					<div class="right-div fril" style="margin-top: 55px !important;">
+						<ul id="pnl-product">
 						</ul>
 					</div>
 				</div>
 			</section>
 		</div>
 	</body>
-	<script type="text/html" id="moveListTemp">
+	<script type="text/html" id="tpl-duty-info">
 		<div class="startime">
 			<img src="../img/time.png" />
 			<span>营业时间</span>
@@ -56,13 +53,13 @@
 			</div>
 		</div>
 	</script>
-	<script type="text/html" id="listLocalTemp">
+	<script type="text/html" id="tpl-category">
 		<li class="active1">全部</li>
 		{{each cate_info as value}}
 		<li data-name="{{value.cate_id}}">{{value.cate_name}}</li>
 		{{/each}}
 	</script>
-	<script type="text/html" id="dataChilTemp">
+	<script type="text/html" id="tpl-product">
 		{{each goods_list as value}}
 		<div class="right-div goods" address='goods.detail.html' title="{{value.title}}" goods_id="{{value.goods_id}}">
 			<div class="li-left"><img src="http://192.168.2.15/attachs/{{value.photo}}"></div>
@@ -75,10 +72,10 @@
 		</div>
 		{{/each}}
 	</script>
-	<script type="text/javascript" src="../js/data.js"></script>
-	<script type="text/javascript">
-		shequ.DomArr.Address();
-		shequ.DomArr.shopList('mobile/goods/goods_list', 'mobile/goods/cate_goods');
-	</script>
-
+	
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/mui.min.js"></script>
+    <script type="text/javascript" src="../js/template.js"></script>
+    <script type="text/javascript" src="../js/app.js"></script>
+	<script type="text/javascript" src="shop.detail1.js"></script>
 </html>
