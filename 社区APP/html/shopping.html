@@ -1,55 +1,47 @@
 <!DOCTYPE html>
 <html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>附近商超</title>
+	<link rel="stylesheet" href="../css/mui.min.css" />
+	<link rel="stylesheet" href="../css/common.css" />
+	<link rel="stylesheet" href="../css/app/collect.css" />
+</head>
 
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>附近商超</title>
-		<link rel="stylesheet" href="../css/mui.min.css" />
-		<link rel="stylesheet" href="../css/common.css" />
-		<link rel="stylesheet" href="../css/app/collect.css" />
-	</head>
+<body>
+	<!--头部-->
+	<header class="bar">
+		<a class="left mui-action-back mui-icon mui-icon-arrowleft"> </a>
+		<h1 class="title">附近商超</h1>
+	</header>
 
-	<body>
-		<!--头部-->
-		<header class="bar">
-			<a class="left mui-action-back mui-icon mui-icon-arrowleft"> </a>
-			<h1 class="title">附近商超</h1>
-		</header>
+	<div id="refreshContainer" class="content mui-content mui-scroll-wrapper">
+		<div class="mui-scroll">
+			<!--数据列表-->
+			<ul class="mui-table-view mui-table-view-chevron" id="pnl-nearby-store" style="margin-top:0 ;"></ul>
+		</div>
+	</div>
 
-		<div id="refreshContainer" class="content mui-content mui-scroll-wrapper">
-			<div class="mui-scroll">
-				<!--数据列表-->
-				<ul class="mui-table-view mui-table-view-chevron" id="listLocal" style="margin-top:0 ;"></ul>
+	<script type="text/html" id="tpl-nearby-store">
+		{{each seller_list as value}}
+		<div class="shop" address='shop.detail1.html' shop_id="{{value.shop_id}}" shop_name="{{value.shop_name}}" addr="{{value.addr}}" tel="{{value.tel}}">
+			<div class="shop-l">
+				<img src="http://192.168.2.15/attachs/{{value.logo}}" />
+			</div>
+			<div class="shop-r">
+				{{value.shop_name}}
+				<p>{{value.business_time}}</p>
+				<p class="loction">{{value.distance/1000}}</p>
 			</div>
 		</div>
+		{{/each}}
+	</script>
 
-		<script type="text/html" id="listLocalTemp">
-			{{each seller_list as value}}
-			<div class="shop" address='shop.detail1.html' shop_id="{{value.shop_id}}" shop_name="{{value.shop_name}}" addr="{{value.addr}}" tel="{{value.tel}}">
-				<div class="shop-l">
-					<img src="http://192.168.2.15/attachs/{{value.logo}}" />
-				</div>
-				<div class="shop-r">
-					{{value.shop_name}}
-					<p>{{value.business_time}}</p>
-					<p class="loction">{{value.distance/1000}}</p>
-				</div>
-			</div>
-			{{/each}}
-		</script>
-
-		<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../js/template.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../js/data.js" type="text/javascript" charset="utf-8"></script>
-		<script type="text/javascript">
-			shequ.DomArr.Pullup();
-			shequ.DomArr.Disfn();
-			shequ.DomArr.unShoping(function() {
-				shequ.DomArr.Nearby('mobile/supermarketseller/superseller');
-			});
-		</script>
-	</body>
-
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/mui.min.js"></script>
+    <script type="text/javascript" src="../js/template.js"></script>
+    <script type="text/javascript" src="../js/app.js"></script>
+    <script type="text/javascript" src="shopping.js"></script>
+</body>
 </html>
