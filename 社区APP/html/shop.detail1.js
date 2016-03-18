@@ -18,6 +18,7 @@ $('body').delegate('.left-div li', 'tap', function() {
 	// 查看分类下的商品数据
 	page = 0, cate_id = $(this).attr('data-name');
 	
+	$('#pnl-product').empty();
 	product(function (res) {
 		// 右侧商品数据
 		$('#pnl-product').html(template('tpl-product', res));
