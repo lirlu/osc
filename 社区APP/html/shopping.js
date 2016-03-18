@@ -2,9 +2,10 @@ var page = 0;
 function search (cb) {
 	//console.log('定位数据：' + localStorage.getItem('LocationAddress'));
 	var addr = JSON.parse(localStorage.getItem('LocationAddress'));
+	console.log('请求附近商超数据：' + app.url('mobile/supermarketseller/superseller'));
 	$.ajax({
 		'dataType' : 'json',
-		'type'     : 'post',
+		'type'     : 'get',
 		'url'      : app.url('mobile/supermarketseller/superseller'),
 		'data'     : {
 			page : page++,
@@ -31,7 +32,7 @@ function search (cb) {
 
 function funcPullUp () {
 	search(function (res) {
-		if (res.error.msg) { plus.nativeUI.toast(res.error.msg); }
+		if (200 != res.code) { plus.nativeUI.toast('请求数据失败'); return; }
 		
 		$('#pnl-nearby-store').prepend(template('tpl-nearby-store', res));
 		// 参数为true表示没有更多的数据了
@@ -41,9 +42,9 @@ function funcPullUp () {
 }
 function funcPullDown () {
 	search(function (res) {
-		if (res.error.msg) { plus.nativeUI.toast(res.error.msg); }
+		if (200 != res.code) { plus.nativeUI.toast('请求数据失败'); return; }
 		
-		$('#pnl-nearby-store').prepend(template('tpl-nearby-store', res));
+		$('#pnl-nearby-store').append(template('tpl-nearby-store', res));
 		// 参数为true表示没有更多的数据了
 		mui('#refreshContainer').pullRefresh().endPulldownToRefresh(false);
 		//mui('#refreshContainer').pullRefresh().disablePullupToRefresh();
@@ -82,3 +83,12 @@ mui.plusReady(function () {
 		}, 1000);
 	});
 });
+template.helper('image', function (v) {
+	return app.link.image + v;
+});
+
+
+
+
+
+

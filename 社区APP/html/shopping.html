@@ -27,7 +27,7 @@
 		{{each seller_list as value}}
 		<div class="shop" address='shop.detail1.html' shop_id="{{value.shop_id}}" shop_name="{{value.shop_name}}" addr="{{value.addr}}" tel="{{value.tel}}">
 			<div class="shop-l">
-				<img src="http://192.168.2.15/attachs/{{value.logo}}" />
+				<img src="{{value.logo | image}}" />
 			</div>
 			<div class="shop-r">
 				{{value.shop_name}}
