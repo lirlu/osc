@@ -19,7 +19,7 @@
 		
 		<div class="content">
 			<section class="shops" id="pnl-duty-info"></section>
-			<section class="shops" style="z-index: 1; margin-top: 60px;">
+			<section class="shops" style="z-index: 1;">
 				<div class="all-div">
 					<div class="left-div">
 						<ul id="pnl-category">
@@ -62,8 +62,8 @@
 	<script type="text/html" id="tpl-product">
 		{{each goods_list as value}}
 		<div class="right-div goods" address='goods.detail.html' title="{{value.title}}" goods_id="{{value.goods_id}}">
-			<div class="li-left"><img src="http://192.168.2.15/attachs/{{value.photo}}"></div>
-			<div class="li-right">
+			<div class="li-left"><img src="{{value.photo | image}}"></div>
+			<div class="li-right" style="padding-left: 5px;">
 				<span class="dblock">{{value.title}}</span>
 				<span class="dblock size">{{value.unit}}</span>
 				<span class="dblock col size">{{'￥'+value.mall_price}}</span>

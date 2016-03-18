@@ -1,4 +1,7 @@
 var page = 0, cate_id = '';
+template.helper('image', function (v) {
+	return app.link.image + v;
+});
 // 页面跳转
 $('body').delegate("[address]", 'tap', function() {
 	app.open($(this).attr('address'));
@@ -57,14 +60,15 @@ function product (cb) {
 	plus.nativeUI.showWaiting('请等待...');
 	
 	console.log('获取商超的商品数据：' + app.url('mobile/goods/goods_list'));
+	console.log(JSON.stringify({'page':page++, 'shop_id':data.shop_id, 'cate_id':cate_id}));
 	$.ajax({
 		'dataType' : 'json',
-		'type'     : 'post',
+		'type'     : 'get',
 		'url'      : app.url('mobile/goods/goods_list'),
 		'data'     : {'page':page++, 'shop_id':data.shop_id, 'cate_id':cate_id}
 	})
 	.fail(function (res) {
-		console.log('获取商超的商品数据失败：' + JSON.stringify(res));
+		//console.log('获取商超的商品数据失败：' + JSON.stringify(res));
 		app.error('获取商超的商品数据失败');
 		plus.nativeUI.closeWaiting();
 		page--;
@@ -72,7 +76,7 @@ function product (cb) {
 		//mui('#refreshContainer').pullRefresh().endPullupToRefresh();
 	})
 	.done(function (res) {
-		//console.log('商品数据：' + JSON.stringify(res));
+		console.log('商品数据：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		cb && cb(res);
