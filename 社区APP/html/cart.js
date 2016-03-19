@@ -1,6 +1,7 @@
 var cart = {};
 cart.add = function (item) {
 	var key = localStorage.getItem('key');
+	plus.nativeUI.showWaiting();
 	console.log('添加商品到购物车：' + app.url('mobile/cart/cartadd'));
 	$.ajax({
 		'dataType' : 'json',
@@ -11,10 +12,12 @@ cart.add = function (item) {
 	.fail(function (res) {
 		console.log('添加商品到购物车失败：' + JSON.stringify(res));
 		app.error('添加商品到购物车失败');
+		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
 		console.log('添加商品到购物车结果：' + JSON.stringify(res));
 		plus.nativeUI.toast(JSON.stringify(item) + '已成功加入购物车');
+		plus.nativeUI.closeWaiting();
 		
 		cart.refresh();
 	})

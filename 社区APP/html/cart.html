@@ -12,9 +12,6 @@
 <body>
 	<!--头部-->
 	<header class="bar">
-		<a class="left mui-action-back mui-icon mui-icon-arrowleft">
-
-		</a>
 		<h1 class="title">购物车</h1>
 	</header>
 	<div class="content">
@@ -51,12 +48,12 @@
 							<img src="{{product.goods_img | image}}" />
 						</div>
 						<div class="lei lit">
-							<span>{{product.add_time}}</span>
+							<span>{{product.name}}</span>
 							<div class="jeo">
 								<span class="col lei">￥{{product.price}}</span>
 								<div class="right-span btnimg">
 									<img src="../img/jian1.png" class="jian1" />
-									<span class="lei nfri col">1</span>
+									<span class="lei nfri col">{{product.goods_num}}</span>
 									<img src="../img/add.png" class="add" />
 								</div>
 							</div>
