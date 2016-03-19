@@ -61,10 +61,10 @@
 			</div>
 			<div class="right-p" id="goods_id">
 				{{if goods_info.goods_type==1}}
-				<button>加入购物车</button>
+				<button class="add-to-cart">加入购物车</button>
 				{{else if goods_info.goods_type==2}}
 				<a id="button" href="tel:{{goods_info.tel}}">立即预约</a> {{else}}
-				<button>加入购物车</button>
+				<button class="add-to-cart">加入购物车</button>
 				<a id="button" href="tel:{{goods_info.tel}}">立即预约</a> {{/if}}
 			</div>
 		</div>
@@ -72,13 +72,16 @@
 	</script>
 	<!--//渲染也许你还喜欢-->
 	<script type="text/html" id="tpl-related">
-		<li>
-			{{if goods_info1!=null}} {{each goods_info1 as value}}
-			<img src="{{value.photo | image}}" />
-			<div class="text-cen">{{value.title}}{{value.unit}}</div>
-			<div class="col text-cen">{{'￥'+value.mall_price}}</div>
-			<span class="tiao"></span> {{/each}} {{/if}}
-		</li>
+		{{if goods_info1!=null}}
+			{{each goods_info1 as value}}
+			<li data-product="{{value.goods_id}}" data-shop="{{value.shop_id}}" data-name="{{value.title}}">
+				<img src="{{value.photo | image}}" />
+				<div class="text-cen">{{value.title}}{{value.unit}}</div>
+				<div class="col text-cen">{{'￥'+value.mall_price}}</div>
+				<span class="tiao"></span>
+			</li>
+			{{/each}}
+		{{/if}}
 	</script>
 	
     <script type="text/javascript" src="../js/jquery.min.js"></script>
