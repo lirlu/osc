@@ -16,7 +16,7 @@ cart.add = function (item) {
 	})
 	.done(function (res) {
 		//console.log('添加商品到购物车结果：' + JSON.stringify(res));
-		plus.nativeUI.toast(JSON.stringify(item) + '已成功加入购物车');
+		plus.nativeUI.toast('已成功加入购物车');
 		plus.nativeUI.closeWaiting();
 		
 		cart.refresh();
@@ -145,12 +145,7 @@ function setQuantity (quantity, dom) {
 			'goods_id' : $(this).closest('.product').attr('data-product')
 		});
 	});
-	console.log(JSON.stringify({
-			'key'      : key, 
-			'num'      : quantity + now,
-			'cart'     : cart,
-			'goods_id' : $(dom).closest('.product').attr('data-product')
-		}));
+
 	plus.nativeUI.showWaiting();
 	$.ajax({
 		'dataType' : 'json',
@@ -199,4 +194,12 @@ $('.btn-checkout').on('tap', function () {
 	});
 	if (0 == selected.length) { app.error('请至少选择一个商品再结算'); return; }
 	app.open('checkout.html', {'selected':selected});
+});
+
+// 点击商家列表
+$('#pnl-cart').delegate('.shop', 'tap', function() {
+	var data = {
+		'shop_id'   : $(this).attr('data-shop')
+	};
+	app.open('shop.detail1.html', data);
 });
