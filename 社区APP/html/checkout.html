@@ -20,11 +20,11 @@
 			<ul class="order">
 				<li>
 					<span>在线支付</span>
-					<span class="right-span mui-radio mui-right"><input type="radio" name="radio" style="right: -8px;top: -1px;"></span>
+					<span class="right-span mui-radio mui-right"><input type="radio" name="payway" checked="checked" style="right: -8px;top: -1px;"></span>
 				</li>
 				<li>
 					<span>货到付款</span>
-					<span class="right-span mui-radio mui-right"><input type="radio" name="radio" style="right: -8px;top: -1px;"></span>
+					<span class="right-span mui-radio mui-right"><input type="radio" name="payway" style="right: -8px;top: -1px;"></span>
 				</li>
 			</ul>
 		</section>
@@ -32,7 +32,7 @@
 			<ul class="order delivery">
 				<li>
 					<span>配送时间</span>
-					<span class="right-span flride">立即配送<span class="col">(大约17:50到)</span></span>
+					<span class="right-span flride">立即配送</span>
 					<i></i>
 				</li>
 				<li>
@@ -41,8 +41,10 @@
 					<i></i>
 				</li>
 				<li>
-					<span>需要发票</span>
-					<span class="right-span mui-radio mui-right"><input type="radio" name="radio1" style="right: -8px;top: -1px;"></span>
+					<div class="mui-input-row mui-checkbox">
+						<label style="padding: 0;">需要发票</label>
+						<input name="checkbox1" value="Item 1" type="checkbox" style="right: -6px;top: -1px;">
+					</div>
 				</li>
 			</ul>
 		</section>

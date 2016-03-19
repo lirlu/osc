@@ -197,5 +197,6 @@ $('.btn-checkout').on('tap', function () {
 			'product' : $(this).closest('.product').attr('data-product')
 		});
 	});
+	if (0 == selected.length) { app.error('请至少选择一个商品再结算'); return; }
 	app.open('checkout.html', {'selected':selected});
 });
