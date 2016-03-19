@@ -1,5 +1,6 @@
 $('body').delegate("[address]", 'tap', function() {
-	var url = $(this).attr('address');
-	
-	app.open(url);
+	app.open($(this).attr('address'));
+});
+$('body').delegate('[data-outer]', 'tap', function () {
+	app.open('outer.html', {'url':$(this).attr('data-outer')});
 });
