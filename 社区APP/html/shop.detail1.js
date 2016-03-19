@@ -11,7 +11,7 @@ $('#pnl-product').delegate(".goods", 'tap', function() {
 		'goods_id' : $(this).attr('goods_id'),
 		'name'     : $(this).attr('title'),
 	};
-	console.log('参数：' + JSON.stringify(data));
+	//console.log('参数：' + JSON.stringify(data));
 	app.open('goods.detail.html', data);
 });
 
