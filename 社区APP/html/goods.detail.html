@@ -1,107 +1,90 @@
 <!DOCTYPE html>
 <html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>商品详情</title>
+    <link rel="stylesheet" href="../css/mui.min.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+	<link rel="stylesheet" href="../css/app/goods.detail.css" />
 
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>商品详情</title>
-		<link rel="stylesheet" type="text/css" href="../css/mui.min.css" />
-		<link rel="stylesheet" href="../css/common.css" />
-		<link rel="stylesheet" href="../css/app/goods.detail.css" />
+	<style>
+		.stars {
+			background-image: url(../img/huixin.png);
+			width: 22px;
+			height: 22px;
+			background-size: 22px;
+			background-repeat: no-repeat;
+			margin-top: 10px;
+		}
+		
+		.hong_star {
+			background-image: url(../img/honxin.png);
+		}
+	</style>
+</head>
 
-		<style>
-			.stars {
-				background-image: url(../img/huixin.png);
-				width: 22px;
-				height: 22px;
-				background-size: 22px;
-				background-repeat: no-repeat;
-				margin-top: 10px;
-			}
-			
-			.hong_star {
-				background-image: url(../img/honxin.png);
-			}
-		</style>
-	</head>
+<body>
+	<!--头部-->
+	<header class="bar">
+		<a class="left mui-action-back mui-icon mui-icon-arrowleft">
+		</a>
+		<h1 class="title" id="title"></h1>
+		<a class="right" id="stars">
+			<div class="stars"></div>
+		</a>
+	</header>
 
-	<body>
-		<!--头部-->
-		<header class="bar">
-			<a class="left mui-action-back mui-icon mui-icon-arrowleft">
-			</a>
-			<h1 class="title" id="title"></h1>
-			<a class="right" id="stars">
-				<div class="stars"></div>
-			</a>
-		</header>
-
-		<div class="content">
-			<ul class="good">
-				<li id="moveList"></li>
-			</ul>
-			<div class="apprase magin">
-				<img src="../img/details-3.png" /> 评价
-				<i></i>
-			</div>
-			<div class="apprase">
-				也许你还喜欢
-			</div>
-			<ul class="like" id="listLocal"></ul>
+	<div class="content">
+		<ul class="good">
+			<li id="pnl-product"></li>
+		</ul>
+		<div class="apprase magin">
+			<img src="../img/details-3.png" /> 评价
+			<i></i>
 		</div>
-		<!--//商品-->
-		<script type="text/html" id="moveListTemp">
+		<div class="apprase">
+			也许你还喜欢
+		</div>
+		<ul class="like" id="pnl-related"></ul>
+	</div>
+	<!--//商品-->
+	<script type="text/html" id="tpl-product">
 
-			<div class="picture">
-				<img src="http://192.168.2.15/attachs/{{goods_info.photo}}" />
+		<div class="picture">
+			<img src="http://192.168.2.15/attachs/{{goods_info.photo}}" />
+		</div>
+		<span class="block">{{goods_info.title}}{{goods_info.unit}}</span>
+		<div class="price">
+			<div class="left-p">
+				<span class="col">{{'￥'+goods_info.mall_price}}</span>
 			</div>
-			<span class="block">{{goods_info.title}}{{goods_info.unit}}</span>
-			<div class="price">
-				<div class="left-p">
-					<span class="col">{{'￥'+goods_info.mall_price}}</span>
-				</div>
-				<div class="right-p" id="goods_id">
-					{{if goods_info.goods_type==1}}
-					<button>加入购物车</button>
-					{{else if goods_info.goods_type==2}}
-					<a id="button" href="tel:{{goods_info.tel}}">立即预约</a> {{else}}
-					<button>加入购物车</button>
-					<a id="button" href="tel:{{goods_info.tel}}">立即预约</a> {{/if}}
-				</div>
+			<div class="right-p" id="goods_id">
+				{{if goods_info.goods_type==1}}
+				<button>加入购物车</button>
+				{{else if goods_info.goods_type==2}}
+				<a id="button" href="tel:{{goods_info.tel}}">立即预约</a> {{else}}
+				<button>加入购物车</button>
+				<a id="button" href="tel:{{goods_info.tel}}">立即预约</a> {{/if}}
 			</div>
+		</div>
 
-		</script>
-		<!--//渲染也许你还喜欢-->
-		<script type="text/html" id="listLocalTemp">
-			<li>
-				{{if goods_info1!=null}} {{each goods_info1 as value}}
-				<img src="http://192.168.2.15/attachs/{{value.photo}}" />
-				<div class="text-cen">{{value.title}}{{value.unit}}</div>
-				<div class="col text-cen">{{'￥'+value.mall_price}}</div>
-				<span class="tiao"></span> {{/each}} {{/if}}
-			</li>
-		</script>
-		<script type="text/javascript" src="../js/jquery.min.js"></script>
-		<script src="../js/template.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../js/data.js" type="text/javascript" charset="utf-8"></script>
-		<script type="text/javascript">
-			//设置title值
-			$('#title').html(window.localStorage.getItem('title'));
-			//商品
-			shequ.DomArr.moveShop('mobile/goods/goods_view', {
-				shop_id: window.localStorage.getItem('shop_id'),
-				goods_id: window.localStorage.getItem('goods_id')
-			}, function() {
-				shequ.DomArr.ShopCart();
-			});
-			//渲染也许你还喜欢
-			shequ.DataList.ShopData('mobile/goods/goods_view', {
-				shop_id: window.localStorage.getItem('shop_id'),
-				goods_id: window.localStorage.getItem('goods_id')
-			}, 'listLocalTemp', 'listLocal');
-			
-		</script>
-	</body>
-
+	</script>
+	<!--//渲染也许你还喜欢-->
+	<script type="text/html" id="tpl-related">
+		<li>
+			{{if goods_info1!=null}} {{each goods_info1 as value}}
+			<img src="http://192.168.2.15/attachs/{{value.photo}}" />
+			<div class="text-cen">{{value.title}}{{value.unit}}</div>
+			<div class="col text-cen">{{'￥'+value.mall_price}}</div>
+			<span class="tiao"></span> {{/each}} {{/if}}
+		</li>
+	</script>
+	
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/mui.min.js"></script>
+    <script type="text/javascript" src="../js/template.js"></script>
+    <script type="text/javascript" src="../js/app.js"></script>
+    <script type="text/javascript" src="goods.detail.js"></script>
+</body>
 </html>

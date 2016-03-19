@@ -3,8 +3,16 @@ template.helper('image', function (v) {
 	return app.link.image + v;
 });
 // 页面跳转
-$('body').delegate("[address]", 'tap', function() {
-	app.open($(this).attr('address'));
+$('#pnl-product').delegate(".goods", 'tap', function() {
+	var view = plus.webview.currentWebview();
+	
+	var data = {
+		'shop_id'  : view.extras.shop_id, 
+		'goods_id' : $(this).attr('goods_id'),
+		'name'     : $(this).attr('title'),
+	};
+	console.log('参数：' + JSON.stringify(data));
+	app.open('goods.detail.html', data);
 });
 
 $('.content').delegate(' .startime', 'tap', function() {	
@@ -28,7 +36,7 @@ $('body').delegate('.left-div li', 'tap', function() {
 // 分类列表
 function category (cb) {
 	var view = plus.webview.currentWebview();
-	var data = self.extras;
+	var data = view.extras;
 	plus.nativeUI.showWaiting('请等待...');
 	
 	console.log('获取商品分类数据：' + app.url('mobile/goods/cate_goods'));
