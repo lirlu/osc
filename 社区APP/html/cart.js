@@ -40,7 +40,7 @@ cart.refresh = function () {
 		app.error('加载购物车数据失败');
 	})
 	.done(function (res) {
-		//console.log('购物车数据：' + JSON.stringify(res));
+		console.log('购物车数据：' + JSON.stringify(res));
 		
 		$('#pnl-cart').empty().append(template('tpl-cart', res));
 	})
@@ -132,18 +132,31 @@ $('#pnl-cart').delegate('.mui-icon-trash', 'tap', function () {
 
 function setQuantity (quantity, dom) {
 	var key = localStorage.getItem('key');
-	var now = parseInt($(dom).text(), 10);
+	var now = parseInt($(dom).text()||'1', 10);
 	if (quantity + now < 1) { plus.nativeUI.toast('数量最小只能为1。或者你可以选择删除'); return; }
 	
+	var cart = [];
+	$('#pnl-cart .product input[name=checkbox]:checked').each(function () {
+		cart.push({
+			'goods_id' : $(this).closest('.product').attr('data-product')
+		});
+	});
+	console.log(JSON.stringify({
+			'key'      : key, 
+			'num'      : quantity + now,
+			'cart'     : cart,
+			'goods_id' : $(dom).closest('.product').attr('data-product')
+		}));
 	plus.nativeUI.showWaiting();
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
 		'url'      : app.url('mobile/cart/add_num'),
 		'data'     : {
-			'key'     : key, 
-			'num'     : quantity + now, 
-			'shop_id' : $(dom).closest('.product').attr('.data-product')
+			'key'      : key, 
+			'num'      : quantity + now,
+			'cart'     : cart,
+			'goods_id' : $(dom).closest('.product').attr('data-product')
 		}
 	})
 	.fail(function (res) {
@@ -152,14 +165,15 @@ function setQuantity (quantity, dom) {
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		//console.log('修改商品数量结果：' + JSON.stringify(res));
+		console.log('修改商品数量结果：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
 		
 		
 		$(dom).text(quantity + now);
 		//cart.refresh();
-		cart.total();
+		//cart.total();
+		$('span.total').text('￥' + (res.money||'0.00'));
 	})
 	;
 }
