@@ -39,7 +39,35 @@ function refresh () {
 	})
 	;
 }
+$('.btn-choose-time').on('tap', function () {
+	var options = {
+		"type"       : "hour",
+		"customData" : {
+			"h":[
+				{"text":"上午","value":"上午"},
+				{"text":"下午","value":"下午"},
+				{"text":"晚上","value":"晚上"}
+			]
+		},
+		"labels"     :["年", "月", "日", "时段", "分"]
+	};
+
+	var picker = new mui.DtPicker(options);
+	picker.show(function(res) {
+
+		console.log('选择结果: ' + res.text);
+		console.log(JSON.stringify(res));
+		if (1 == 1) {
+			plus.nativeUI.toast('不能选择今天以前的时间');
+			return false;
+		}
+		picker.dispose();
+	});
+});
 // 点击留言
 $('.btn-leave-note').on('tap', function () {
 	app.open('remark.html');
 });
+function doLeaveNote (text) {
+	
+}
