@@ -18,64 +18,8 @@
 		<h1 class="title">购物车</h1>
 	</header>
 	<div class="content">
-		<section id="ContBox">
-			<ul class="order deli">
-				<li class="order_li">
-					<span class="lei mui-checkbox mui-left pare"><input type="checkbox" name="checkbox" style="left: -12px;top: -2px;"></span>
-					<span class="image"><img src="../img/shops.png"></span>
-					<span class="col1">GOGO一品天下店</span>
-					<span class="i"></span>
-					<span class="right-span mui-icon mui-icon-trash"></span>
-				</li>
-				<li class="order_li">
-					<div class="goodsone">
-						<div class="lei  mui-checkbox mui-left">
-							<input type="checkbox" name="checkbox" style="left: -12px;">
-						</div>
-						<div>
-							<div class="lfri">
-								<img src="../img/good.png" />
-							</div>
-							<div class="lei lit">
-								<span>巧培台湾牛扎糖手工进口扎糖果</span>
-								<div class="jeo">
-									<span class="col lei">￥15.20</span>
-									<div class="right-span btnimg">
-										<img src="../img/jian1.png" class="jian1" />
-										<span class="lei nfri col">1</span>
-										<img src="../img/add.png" class="add" />
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</li>
-				<li class="order_li">
-					<div class="goodsone">
-						<div class="lei  mui-checkbox mui-left">
-							<input type="checkbox" name="checkbox" style="left: -12px;">
-						</div>
-						<div>
-							<div class="lfri">
-								<img src="../img/good.png" />
-							</div>
-							<div class="lei lit">
-								<span>巧培台湾牛扎糖手工进口扎糖果</span>
-								<div class="jeo">
-									<span class="col lei">￥15.20</span>
-									<div class="right-span btnimg">
-										<img src="../img/jian1.png" class="jian1" />
-										<span class="lei nfri col">1</span>
-										<img src="../img/add.png" class="add" />
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</li>
-			</ul>
-
-		</section>
+		<section id="pnl-cart"></section>
+		
 		<ul class="order deli" id='result'>
 			<li>
 				合计：<span class="col">15.20元</span><span class="size col1">（不含运费）</span>
@@ -83,6 +27,48 @@
 			</li>
 		</ul>
 	</div>
+	<!-- 购物车模板 开始 -->
+	<script type="text/html" id="tpl-cart">
+		{{each cart_list as item}}
+		<ul class="order deli">
+			<li class="order_li shop" data-shop="{{item.shop_view.shop_id}}">
+				<span class="lei mui-checkbox mui-left pare">
+					<input type="checkbox" name="checkbox" style="left: -12px;top: -2px;">
+				</span>
+				<span class="image"><img src="{{item.shop_view.logo | image}}"></span>
+				<span class="col1">{{item.shop_view.shop_name}}</span>
+				<span class="i"></span>
+				<span class="right-span mui-icon mui-icon-trash"></span>
+			</li>
+			{{each item.goods_list as product}}
+			<li class="order_li product" data-product="{{product.goods_id}}">
+				<div class="goodsone">
+					<div class="lei  mui-checkbox mui-left">
+						<input type="checkbox" name="checkbox" style="left: -12px;">
+					</div>
+					<div>
+						<div class="lfri">
+							<img src="{{product.goods_img | image}}" />
+						</div>
+						<div class="lei lit">
+							<span>{{product.add_time}}</span>
+							<div class="jeo">
+								<span class="col lei">￥{{product.price}}</span>
+								<div class="right-span btnimg">
+									<img src="../img/jian1.png" class="jian1" />
+									<span class="lei nfri col">1</span>
+									<img src="../img/add.png" class="add" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+			{{/each}}
+		</ul>
+		{{/each}}
+	</script>
+	<!-- 购物车模板 结束 -->
 	
     <script type="text/javascript" src="../js/jquery.min.js"></script>
     <script type="text/javascript" src="../js/mui.min.js"></script>

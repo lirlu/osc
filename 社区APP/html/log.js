@@ -46,6 +46,7 @@ $('body').delegate('#logoin button', 'tap', function() {
 		
 		localStorage.setItem('key', res.key);
 		plus.webview.getWebviewById('user.html').evalJS('refresh()');
+		plus.webview.getWebviewById('cart.html').evalJS('cart.refresh()');
 		plus.webview.show('user.html', 'pop-in', 200);
 		plus.webview.currentWebview().close();
 	})
