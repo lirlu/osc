@@ -7,6 +7,16 @@ mui.init({
 	}
 });
 
+mui.back = function() {
+	//首次按键，提示‘再按一次退出应用’
+	if (new Date().getTime() - app.esced < 2000) {
+		plus.runtime.quit();
+	} else {
+		app.esced = new Date().getTime();
+		mui.toast('再按一次退出应用');
+	}
+};
+
 //创建子页面，首个选项卡页面显示，其它均隐藏；
 mui.plusReady(function() {
 
