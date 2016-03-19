@@ -8,7 +8,6 @@
 		<link rel="stylesheet" type="text/css" href="../css/mui.min.css" />
 		<link rel="stylesheet" href="../css/common.css" />
 		<link rel="stylesheet" href="../css/app/purse.css" />
-
 	</head>
 
 	<body>
@@ -33,25 +32,17 @@
 					<button class="tbn" type="button">登录</button>
 				</div>
 				<div class="find">
-					没有账号<span class="col juli" address='register.html'>马上注册》</span>
+					没有账号<span class="col juli" data-url='register.html'>马上注册》</span>
 				</div>
 				<div class="find">
-					忘记密码<span class="col juli" address='find.password.html'>立即找回》</span>
+					忘记密码<span class="col juli" data-url='find.password.html'>立即找回》</span>
 				</div>
 			</div>
 
-			<script type="text/javascript" src="../js/jquery.min.js"></script>
-			<script type="text/javascript" src="../js/mui.min.js"></script>
-			<script src="../js/data.js" type="text/javascript" charset="utf-8"></script>
-
-			<script type="text/javascript">
-				shequ.DomArr.Login(function() {
-					mui.openWindow({
-						url: 'use.html'
-					});
-				});
-				shequ.DomArr.Address();
-			</script>
+			<script src="../js/jquery.min.js"></script>
+			<script src="../js/mui.min.js"></script>
+    		<script src="../js/app.js"></script>
+			<script src="log.js"></script>
 		</body>
 
 </html>

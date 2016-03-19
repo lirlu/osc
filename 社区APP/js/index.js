@@ -26,6 +26,10 @@ mui.plusReady(function() {
 mui('nav.bar-tab').on('tap', '.tab-item', function() {
 	$('nav.bar-tab .tab-item').removeClass("active");
 	$(this).addClass("active");
-	//app.load({'url' : 'html/' + this.getAttribute('data-url')});
-	plus.webview.show(this.getAttribute('data-url'), 'pop-in', 200);
+	var view = this.getAttribute('data-url');
+	if ('user.html' == view && !localStorage.getItem('key')) {
+		app.open('html/log.html');
+	} else {
+		plus.webview.show(view, 'pop-in', 200);
+	}
 });
