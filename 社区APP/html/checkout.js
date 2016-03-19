@@ -72,5 +72,5 @@ $('.btn-leave-note').on('tap', function () {
 	app.open('remark.html');
 });
 function doLeaveNote (text) {
-	
+	console.log('留言信息：' + text);
 }
