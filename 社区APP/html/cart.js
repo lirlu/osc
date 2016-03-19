@@ -189,3 +189,13 @@ $('#pnl-cart').delegate('.quantity-decrease', 'tap', function () {
 $('#pnl-cart').delegate('.quantity-increase', 'tap', function () {
 	setQuantity( 1, $(this).prev());
 });
+// 增加数量
+$('.btn-checkout').on('tap', function () {
+	var selected = [];
+	$('#pnl-cart .product input[name=checkbox]:checked').each(function () {
+		selected.push({
+			'product' : $(this).closest('.product').attr('data-product')
+		});
+	});
+	app.open('checkout.html', {'selected':selected});
+});
