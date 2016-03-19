@@ -39,3 +39,7 @@ function refresh () {
 	})
 	;
 }
+// 点击留言
+$('.btn-leave-note').on('tap', function () {
+	app.open('remark.html');
+});
