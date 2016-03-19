@@ -39,7 +39,7 @@
 		<ul class="good">
 			<li id="pnl-product"></li>
 		</ul>
-		<div class="apprase magin">
+		<div class="apprase magin view-comment">
 			<img src="../img/details-3.png" /> 评价
 			<i></i>
 		</div>
@@ -50,7 +50,7 @@
 	</div>
 	<!--//商品-->
 	<script type="text/html" id="tpl-product">
-
+		<div class="product-data mui-hidden" data-product="{{goods_info.goods_id}}" data-shop="{{goods_info.shop_id}}" data-name="{{goods_info.title}}"></div>
 		<div class="picture">
 			<img src="{{goods_info.photo | image}}" />
 		</div>

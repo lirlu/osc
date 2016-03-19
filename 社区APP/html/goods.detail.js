@@ -8,6 +8,32 @@ $('ul#pnl-related').delegate('li', 'tap', function () {
 	
 	init(data);
 });
+// 收藏按钮
+$('body').delegate('#stars', 'tap', function() {
+	if (!window.localStorage.getItem('key')) {
+		app.open('log.html');
+	} else {
+		app.open('goods.detail.html');
+	};
+});
+// 加入购物车
+$('#pnl-product').delegate('.add-to-cart', 'tap', function() {
+	if (!window.localStorage.getItem('key')) {
+		app.open('log.html');
+	} else {
+		var dom = $('#pnl-product .product-data');
+		var data = {
+			'shop_id'  : $(dom).attr('data-shop'),
+			'goods_id' : $(dom).attr('data-product'),
+		};
+		plus.webview.getWebviewById('cart.html').evalJS('cart.add('+JSON.stringify(data)+')');
+	};
+});
+// 查看评价
+$('.content').delegate('.view-comment', 'tap', function() {
+	app.open('goods.appraise.html');
+});
+// 重新初始化页面
 function init (data) {
 	plus.nativeUI.showWaiting('请等待...');
 	
