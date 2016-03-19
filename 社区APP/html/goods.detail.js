@@ -34,3 +34,6 @@ mui.plusReady(function () {
 	})
 	;
 });
+template.helper('image', function (v) {
+	return app.link.image + v;
+});

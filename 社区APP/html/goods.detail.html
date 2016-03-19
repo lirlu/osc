@@ -52,7 +52,7 @@
 	<script type="text/html" id="tpl-product">
 
 		<div class="picture">
-			<img src="http://192.168.2.15/attachs/{{goods_info.photo}}" />
+			<img src="{{goods_info.photo | image}}" />
 		</div>
 		<span class="block">{{goods_info.title}}{{goods_info.unit}}</span>
 		<div class="price">
@@ -74,7 +74,7 @@
 	<script type="text/html" id="tpl-related">
 		<li>
 			{{if goods_info1!=null}} {{each goods_info1 as value}}
-			<img src="http://192.168.2.15/attachs/{{value.photo}}" />
+			<img src="{{value.photo | image}}" />
 			<div class="text-cen">{{value.title}}{{value.unit}}</div>
 			<div class="col text-cen">{{'￥'+value.mall_price}}</div>
 			<span class="tiao"></span> {{/each}} {{/if}}
