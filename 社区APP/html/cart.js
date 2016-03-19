@@ -52,6 +52,9 @@ mui.plusReady(function () {
 template.helper('image', function (v) {
 	return app.link.image + v;
 });
+template.helper('price', function (v) {
+	return parseInt(v, 10) / 100;
+});
 // 行踪商品
 $('#pnl-cart').delegate('.shop>.mui-checkbox>input[type=checkbox]', 'change', function () {
 	var dom = $(this).closest('li.shop');
@@ -92,4 +95,46 @@ $('#pnl-cart').delegate('.mui-icon-trash', 'tap', function () {
 		$('#pnl-cart').empty().append(template('tpl-cart', res));
 	})
 	;
+});
+
+
+function setQuantity (quantity, dom) {
+	var key = localStorage.getItem('key');
+	var now = parseInt($(dom).text(), 10);
+	if (quantity + now < 1) { plus.nativeUI.toast('数量最小只能为1。或者你可以选择删除'); return; }
+	
+	plus.nativeUI.showWaiting();
+	$.ajax({
+		'dataType' : 'json',
+		'type'     : 'post',
+		'url'      : app.url('mobile/cart/add_num'),
+		'data'     : {
+			'key'     : key, 
+			'num'     : quantity + now, 
+			'shop_id' : $(dom).closest('.product').attr('.data-product')
+		}
+	})
+	.fail(function (res) {
+		console.log('修改商品数量失败：' + JSON.stringify(res));
+		app.error('修改商品数量失败');
+		plus.nativeUI.closeWaiting();
+	})
+	.done(function (res) {
+		//console.log('修改商品数量结果：' + JSON.stringify(res));
+		plus.nativeUI.closeWaiting();
+		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
+		
+		
+		$(dom).text(quantity + now);
+		//cart.refresh();
+	})
+	;
+}
+// 减少数量
+$('#pnl-cart').delegate('.quantity-decrease', 'tap', function () {
+	setQuantity(-1, $(this).next());
+});
+// 增加数量
+$('#pnl-cart').delegate('.quantity-increase', 'tap', function () {
+	setQuantity( 1, $(this).prev());
 });

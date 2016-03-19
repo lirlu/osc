@@ -50,11 +50,11 @@
 						<div class="lei lit">
 							<span>{{product.name}}</span>
 							<div class="jeo">
-								<span class="col lei">￥{{product.price}}</span>
+								<span class="col lei">￥{{product.price | price}}</span>
 								<div class="right-span btnimg">
-									<img src="../img/jian1.png" class="jian1" />
+									<img src="../img/jian1.png" class="jian1 quantity-decrease" />
 									<span class="lei nfri col">{{product.goods_num}}</span>
-									<img src="../img/add.png" class="add" />
+									<img src="../img/add.png" class="add quantity-increase" />
 								</div>
 							</div>
 						</div>
