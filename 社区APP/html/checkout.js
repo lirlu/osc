@@ -64,6 +64,9 @@ $('.btn-choose-time').on('tap', function () {
 		picker.dispose();
 	});
 });
+$('[name=invoice]').on('change', function () {
+	$('.invoice-input-row').toggleClass('mui-hidden');
+});
 // 点击留言
 $('.btn-leave-note').on('tap', function () {
 	app.open('remark.html');
