@@ -85,12 +85,16 @@ template.helper('image', function (v) {
 template.helper('price', function (v) {
 	return parseInt(v, 10) / 100;
 });
-// 行踪商品
-$('#pnl-cart').delegate('.shop>.mui-checkbox>input[type=checkbox]', 'change', function () {
+// 选中商品
+$('#pnl-cart').delegate('.shop .mui-checkbox>input[type=checkbox]', 'change', function () {
 	var dom = $(this).closest('li.shop');
 	
 	$(dom).nextUntil('li.shop').find('input[type=checkbox]').prop('checked', $(this).prop('checked'));
 	
+	cart.total();
+});
+// 选中商品
+$('#pnl-cart').delegate('.product .mui-checkbox>input[type=checkbox]', 'change', function () {
 	cart.total();
 });
 // 移除购物车
@@ -129,7 +133,7 @@ $('#pnl-cart').delegate('.mui-icon-trash', 'tap', function () {
 	;
 });
 
-
+// 修改商品数量
 function setQuantity (quantity, dom) {
 	var key = localStorage.getItem('key');
 	var now = parseInt($(dom).text()||'1', 10);
