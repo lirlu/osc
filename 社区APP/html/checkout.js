@@ -1,5 +1,12 @@
 mui.init();
 
+template.helper('image', function (v) {
+	return app.link.image + v;
+});
+template.helper('price', function (v) {
+	return parseInt(v, 10) / 100;
+});
+
 mui.plusReady(refresh);
 function refresh () {
 	var view = plus.webview.currentWebview();
@@ -11,13 +18,13 @@ function refresh () {
 	}
 	
 	var key = localStorage.getItem('key');
+	//console.log('结算请求：' + JSON.stringify({'key':key, 'cart':data.selected}));
 	plus.nativeUI.showWaiting();
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
-		'url'      : app.url('mobile/cart/add_num'),
-		'data'     : {'key':key, 'cart':data.selected
-		}
+		'url'      : app.url('mobile/order/order_checkout'),
+		'data'     : {'key':key, 'cart':data.selected}
 	})
 	.fail(function (res) {
 		console.log('结算初始化失败：' + JSON.stringify(res));
@@ -27,6 +34,8 @@ function refresh () {
 	.done(function (res) {
 		console.log('结算数据：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
+		
+		$('#pnl-product').append(template('tpl-product', res));
 	})
 	;
 }

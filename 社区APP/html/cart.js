@@ -189,7 +189,7 @@ $('.btn-checkout').on('tap', function () {
 	var selected = [];
 	$('#pnl-cart .product input[name=checkbox]:checked').each(function () {
 		selected.push({
-			'product' : $(this).closest('.product').attr('data-product')
+			'goods_id' : $(this).closest('.product').attr('data-product')
 		});
 	});
 	if (0 == selected.length) { app.error('请至少选择一个商品再结算'); return; }

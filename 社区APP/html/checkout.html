@@ -7,6 +7,12 @@
 	<link rel="stylesheet" href="../css/mui.min.css" />
 	<link rel="stylesheet" href="../css/common.css" />
 	<link rel="stylesheet" href="../css/app/cart.css" />
+	<style>
+		.pro-row {
+			height: 30px;
+			display: block;
+		}
+	</style>
 </head>
 <body>
 	<!--头部-->
@@ -48,27 +54,36 @@
 				</li>
 			</ul>
 		</section>
-		<section>
-			<ul class="order delivery">
-				<li>汉堡王（成都龙湖广场店）</li>
-				<li>
-					<span>王道川蜀鸡翅（一对）</span>
-					<span class="right-span">￥11.00</span>
-					<span class="right-span num">X1</span>
-					<div class="prace">
-						合计金额：<span class="col">17.00</span>元
-					</div>
-				</li>
-				<li>
-					<span>商品金额：￥：11</span>
-					<span class="centen">合计金额：<span class="col">17.00</span>元</span>
-				</li>
-			</ul>
-		</section>
+		<section id="pnl-product"></section>
 		<div class="bottom">
 			<button class="tbn">确认下单</button>
 		</div>
 	</div>
+	<!-- 购物车模板 开始 -->
+	<script type="text/html" id="tpl-product">
+		{{each cart_list as item}}
+		<ul class="order delivery">
+			<li>{{item.shop_view.shop_name}}</li>
+			{{each item.goods_list as product}}
+			<li class="mui-row pro-row">
+				<span class="mui-col-xs-6">{{product.name}}</span>
+				<span class="mui-col-xs-3 mui-text-right">￥{{product.price | price}}</span>
+				<span class="mui-col-xs-3 mui-text-right">x{{product.goods_num}}</span>
+			</li>
+			{{/each}}
+			<li>
+				<span>&nbsp;</span>
+				<span class="centen">合计金额：<span class="col">{{item.money | price}}</span>元</span>
+			</li>
+		</ul>
+		{{/each}}
+		<ul class="order delivery">
+			<li>
+				<span>商品金额：￥{{total | price}}</span>
+				<span class="centen">合计金额：<span class="col">{{total | price}}</span>元</span>
+			</li>
+		</ul>
+	</script>
 	
     <script src="../js/jquery.min.js"></script>
     <script src="../js/mui.min.js"></script>
