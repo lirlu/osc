@@ -46,6 +46,36 @@ cart.refresh = function () {
 	})
 	;
 }
+// 计算选中商品总价值
+cart.total = function () {
+	var key = localStorage.getItem('key');
+	var cart = [];
+	$('#pnl-cart .product input[name=checkbox]:checked').each(function () {
+		cart.push({
+			'goods_id' : $(this).closest('.product').attr('data-product')
+		});
+	});
+	
+	console.log('计算选中商品总价值：' + app.url('mobile/cart/cart_money'));
+	console.log('参数：' + JSON.stringify({'key':key, 'cart':cart}));
+	$.ajax({
+		'dataType' : 'json',
+		'type'     : 'post',
+		'url'      : app.url('mobile/cart/cart_money'),
+		'data'     : {'key':key, 'cart':cart}
+	})
+	.fail(function (res) {
+		console.log('计算选中商品总价值失败：' + JSON.stringify(res));
+		app.error('计算选中商品总价值失败');
+	})
+	.done(function (res) {
+		console.log('选中商品总价值：' + JSON.stringify(res));
+		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
+		$('span.total').text('￥' + res.money);
+	})
+	;
+}
+
 mui.plusReady(function () {
 	cart.refresh();
 });
@@ -60,6 +90,8 @@ $('#pnl-cart').delegate('.shop>.mui-checkbox>input[type=checkbox]', 'change', fu
 	var dom = $(this).closest('li.shop');
 	
 	$(dom).nextUntil('li.shop').find('input[type=checkbox]').prop('checked', $(this).prop('checked'));
+	
+	cart.total();
 });
 // 移除购物车
 $('#pnl-cart').delegate('.mui-icon-trash', 'tap', function () {
@@ -127,6 +159,7 @@ function setQuantity (quantity, dom) {
 		
 		$(dom).text(quantity + now);
 		//cart.refresh();
+		cart.total();
 	})
 	;
 }
