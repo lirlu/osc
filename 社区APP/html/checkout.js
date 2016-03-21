@@ -57,6 +57,7 @@ $('.btn-choose-time').on('tap', function () {
 
 		console.log('选择结果: ' + res.text);
 		console.log(JSON.stringify(res));
+		$('.time-hint').text(res.text);
 		if (1 == 1) {
 			plus.nativeUI.toast('不能选择今天以前的时间');
 			return false;
@@ -73,5 +74,5 @@ $('.btn-leave-note').on('tap', function () {
 });
 function doLeaveNote (text) {
 	//console.log('留言信息：' + text);
-	$('[name=note-text]').val(text);
+	$('.note-hint').text(text);
 }

@@ -13,6 +13,12 @@
 			height: 30px;
 			display: block;
 		}
+		.note-hint {
+			width: 210px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
 	</style>
 </head>
 <body>
@@ -39,13 +45,13 @@
 			<ul class="order delivery">
 				<li class="btn-choose-time">
 					<span>配送时间</span>
-					<span class="right-span flride">立即配送</span>
+					<span class="right-span flride time-hint">立即配送</span>
 					<input type="hidden" name="delivery-time" />
 					<i></i>
 				</li>
 				<li class="btn-leave-note">
 					<span>配送备注</span>
-					<span class="right-span flride">（选填）可输入特殊要求</span>
+					<span class="right-span flride note-hint">（选填）可输入特殊要求</span>
 					<input type="hidden" name="note-text" />
 					<i></i>
 				</li>
