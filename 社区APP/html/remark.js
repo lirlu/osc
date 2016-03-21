@@ -3,6 +3,8 @@ mui.init();
 mui.plusReady(function () {
 	var view = plus.webview.currentWebview();
 	var data = view.extras;
+	
+	if (data.note) { $('#note-text').val(data.note); }
 });
 
 $('.bad>.bad').on('tap', function () {
