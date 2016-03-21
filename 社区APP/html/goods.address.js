@@ -94,4 +94,31 @@ $('.pnl-address').delegate('.btn-del', 'tap', function () {
 	;
 });
 
+$('.pnl-address').delegate('input[type=radio]', 'change', function () {
+	var dom  = $(this).closest('.addr-item');
+	var key  = localStorage.getItem('key');
+	
+	plus.nativeUI.showWaiting();
+	$.ajax({
+		'dataType' : 'json',
+		'type'     : 'post',
+		'url'      : app.url('mobile/userinfo/check'),
+		'data'     : {'key':key, 'id':$(dom).attr('data-id')}
+	})
+	.fail(function (res) {
+		console.log('设置默认收货地址失败：' + JSON.stringify(res));
+		app.error('设置默认收货地址失败');
+		plus.nativeUI.closeWaiting();
+	})
+	.done(function (res) {
+		console.log('设置默认收货地址结果：' + JSON.stringify(res));
+		plus.nativeUI.closeWaiting();
+		
+		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
+		if (false == res.status) {app.error(res.msg); return;};
+		if (res.msg) { plus.nativeUI.toast(res.msg); };
+	})
+	;
+});
+
 
