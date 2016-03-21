@@ -5,8 +5,12 @@ mui.plusReady(function () {
 	var data = view.extras;
 });
 
+$('.bad>.bad').on('tap', function () {
+	var v = $('#note-text').val();
+	$('#note-text').val(v + (v?',':'') + $(this).text());
+});
 $('.btn-submit').on('tap', function () {
 	plus.webview.currentWebview().close();
-	var text = '我不吃辣';
+	var text = $('#note-text').val();
 	plus.webview.getWebviewById('checkout.html').evalJS('doLeaveNote("'+text+'")');
 });
