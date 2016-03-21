@@ -26,7 +26,7 @@
 		{{each addr_list as item}}
 		<li class="addr-item" data-id="{{item.id}}">
 			<span class="mui-radio mui-right" style="float: right;">
-				<input type="radio" name="radio" checked style="right: 0;top: 15px;">
+				<input type="radio" name="radio" {{if 1==item.is_check}}checked="checked"{{/if}} style="right: 0;top: 15px;">
 			</span>
 			<span class="jianju">{{item.name}}</span>
 			<span class="jianju mui-hidden">女士</span>
