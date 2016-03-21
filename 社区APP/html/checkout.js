@@ -69,8 +69,9 @@ $('[name=invoice]').on('change', function () {
 });
 // 点击留言
 $('.btn-leave-note').on('tap', function () {
-	app.open('remark.html');
+	app.open('remark.html', {'note':$('[name=note-text]').val()});
 });
 function doLeaveNote (text) {
-	console.log('留言信息：' + text);
+	//console.log('留言信息：' + text);
+	$('[name=note-text]').val(text);
 }

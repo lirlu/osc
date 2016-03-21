@@ -38,7 +38,7 @@
 				<span class="right-span mui-icon mui-icon-trash"></span>
 			</li>
 			{{each item.goods_list as product}}
-			<li class="order_li product" data-product="{{product.goods_id}}">
+			<li class="order_li product" data-product="{{product.goods_id}}" data-shop="{{item.shop_view.shop_id}}">
 				<div class="goodsone">
 					<div class="lei  mui-checkbox mui-left">
 						<input type="checkbox" name="checkbox" style="left: -12px;">

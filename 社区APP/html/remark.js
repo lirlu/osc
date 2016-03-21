@@ -7,7 +7,7 @@ mui.plusReady(function () {
 	if (data.note) { $('#note-text').val(data.note); }
 });
 
-$('.bad>.bad').on('tap', function () {
+$('.fr>.bad').on('tap', function () {
 	var v = $('#note-text').val();
 	$('#note-text').val(v + (v?',':'') + $(this).text());
 });
