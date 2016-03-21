@@ -19,6 +19,14 @@
 		.btn-area {
 			display: block;
 		}
+		.btn-area .deji {
+			margin-left: 15px;
+			float: left;
+		}
+		.btn-area i {
+			margin-right: 15px;
+		}
+		
 		.mui-pciker-list>li {
 			padding-top: 0;
 			padding-bottom: 0;
@@ -37,23 +45,27 @@
 		<form>
 			<div class="input-div">
 				<span class="block">姓名：</span>
-				<input type="text" placeholder="请输入姓名" />
+				<input type="text" name="name" placeholder="请输入姓名" />
 			</div>
 			<div class="input-div">
 				<span class="block">电话：</span>
-				<input type="number" placeholder="请输入电话号码" />
+				<input type="number" name="tel" placeholder="请输入电话号码" />
 			</div>
 			<div class="input-div btn-area">
 				<span class="block">地址：</span>
-				<span class="deji">请选择地址<i></i></span>
+				<span class="deji">请选择地址</span>
+				<i></i>
+				<input type="hidden" name="provice" />
+				<input type="hidden" name="city" />
+				<input type="hidden" name="state" />
 			</div>
 			<div class="input-div">
 				<span class="block">详细地址：</span>
-				<input type="text" placeholder="请输入详细地址" />
+				<input type="text" name="addr" placeholder="请输入详细地址" />
 			</div>
 		</form>
 		<div class="bottom">
-			<button class="tbn">保存地址</button>
+			<button class="tbn btn-submit">保存地址</button>
 		</div>
 	</div>
 	
