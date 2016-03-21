@@ -19,45 +19,38 @@
 		<h1 class="title">管理收货地址</h1>
 	</header>
 	<div class="content">
-		<ul>
-			<li>
-				<span class="mui-radio mui-right" style="float: right;">
-					<input type="radio" name="radio" checked style="right: 0;top: 15px;">
-				</span>
-				<span class="jianju">王小雨</span>
-				<span class="jianju">女士</span>
-				<span class="jianju">18273758959</span>
-				<p>
-					<span class="jianju">交大东园5幢3单元202</span>
-					<span class="col">【默认地址】</span>
-				</p>
-			</li>
-			<div class="bianji">
-				<img src="../img/delete4.png" />
-				<img src="../img/bianji4.png" />
-			</div>
-			<li>
-				<span class="mui-radio mui-right" style="float: right;">
-					<input type="radio" name="radio" style="right: 0;top: 15px;">
-				</span>
-				<span class="jianju">王小雨</span>
-				<span class="jianju">女士</span>
-				<span class="jianju">18273758959</span>
-				<p>
-					<span class="jianju">交大东园5幢3单元202</span>
-				</p>
-			</li>
-			<div class="bianji">
-				<img src="../img/delete4.png" />
-				<img src="../img/bianji4.png" />
-			</div>
-		</ul>
+		<ul class="pnl-address"></ul>
 	</div>
+	<!-- 收货地址模板 开始 -->
+	<script type="text/html" id="tpl-address">
+		{{each addr_list as item}}
+		<li class="addr-item" data-id="{{item.id}}">
+			<span class="mui-radio mui-right" style="float: right;">
+				<input type="radio" name="radio" checked style="right: 0;top: 15px;">
+			</span>
+			<span class="jianju">{{item.name}}</span>
+			<span class="jianju mui-hidden">女士</span>
+			<span class="jianju">{{item.tel}}</span>
+			<p>
+				
+				{{$area item.provice item.city item.state}}&nbsp;&nbsp;
+				<span class="jianju">{{item.addr}}</span>
+				<span class="col mui-hidden">【默认地址】</span>
+			</p>
+			<div class="bianji">
+				<img src="../img/delete4.png" class="btn-del" />
+				<img src="../img/bianji4.png" class="btn-edit" />
+			</div>
+		</li>
+		{{/each}}
+	</script>
+	<!-- 收货地址模板 结束 -->
 	
     <script type="text/javascript" src="../js/jquery.min.js"></script>
     <script type="text/javascript" src="../js/mui.min.js"></script>
     <script type="text/javascript" src="../js/template.js"></script>
     <script type="text/javascript" src="../js/app.js"></script>
+    <script type="text/javascript" src="../js/city.data-3.js"></script>
     <script type="text/javascript" src="goods.address.js"></script>
 </body>
 </html>
