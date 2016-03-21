@@ -7,14 +7,21 @@
 	<link rel="stylesheet" href="../css/mui.min.css" />
 	<link rel="stylesheet" href="../css/common.css" />
 	<link rel="stylesheet" href="../css/app/purse.css" />
+	<style>
+		.input-div:last-child input {
+			width: 60%;
+		}
+		.input-div>input {
+			width: 75%;
+			float: left;
+		}
+	</style>
 </head>
 
 <body>
 	<!--头部-->
 	<header class="bar">
-		<a class="left mui-icon mui-action-back mui-icon-arrowleft">
-
-		</a>
+		<a class="left mui-icon mui-action-back mui-icon-arrowleft"></a>
 		<h1 class="title">编辑地址</h1>
 	</header>
 	<div class="content">
@@ -25,7 +32,7 @@
 			</div>
 			<div class="input-div">
 				<span class="block">电话：</span>
-				<input type="text" placeholder="请输入电话号码" />
+				<input type="number" placeholder="请输入电话号码" />
 			</div>
 			<div class="input-div">
 				<span class="block">地址：</span>
