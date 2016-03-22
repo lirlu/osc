@@ -1,6 +1,6 @@
 var cart = {};
 cart.add = function (item) {
-	var key = localStorage.getItem('key');
+	var key = app.store('key');
 	plus.nativeUI.showWaiting();
 	console.log('添加商品到购物车：' + app.url('mobile/cart/cartadd'));
 	$.ajax({
@@ -27,7 +27,7 @@ cart.remove = function (item) {
 	
 }
 cart.refresh = function () {
-	var key = localStorage.getItem('key');
+	var key = app.store('key');
 	console.log('加载购物车数据：' + app.url('mobile/cart/cart_list'));
 	$.ajax({
 		'dataType' : 'json',
@@ -48,7 +48,7 @@ cart.refresh = function () {
 }
 // 计算选中商品总价值
 cart.total = function () {
-	var key = localStorage.getItem('key');
+	var key = app.store('key');
 	var cart = [];
 	$('#pnl-cart .product input[name=checkbox]:checked').each(function () {
 		cart.push({
@@ -117,7 +117,7 @@ $('#pnl-cart').delegate('.mui-icon-trash', 'tap', function () {
 	});
 	if (0 == ary.length) { plus.nativeUI.toast('请至少选择一个商品再删除！'); return; }
 	
-	var key = localStorage.getItem('key');
+	var key = app.store('key');
 	console.log('删除购物车商品：' + app.url('mobile/cart/cart_del'));
 	plus.nativeUI.showWaiting();
 	$.ajax({
@@ -143,7 +143,7 @@ $('#pnl-cart').delegate('.mui-icon-trash', 'tap', function () {
 
 // 修改商品数量
 function setQuantity (quantity, dom) {
-	var key = localStorage.getItem('key');
+	var key = app.store('key');
 	var now = parseInt($(dom).text()||'1', 10);
 	if (quantity + now < 1) { plus.nativeUI.toast('数量最小只能为1。或者你可以选择删除'); return; }
 	

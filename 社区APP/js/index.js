@@ -41,7 +41,7 @@ $('nav.bar-tab .tab-item').on('tap', function() {
 	$('nav.bar-tab .tab-item').removeClass("active");
 	$(this).addClass("active");
 	var view = this.getAttribute('data-url');
-	if ('user.html' == view && !localStorage.getItem('key')) {
+	if ('user.html' == view && !app.store('key')) {
 		app.open('html/log.html');
 	} else {
 		plus.webview.show(view, 'pop-in', 200);

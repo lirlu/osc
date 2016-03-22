@@ -5,7 +5,7 @@ $('body').delegate('[data-url]', 'tap', function () {
 mui.plusReady(refresh);
 
 function refresh () {
-	var key = localStorage.getItem('key');
+	var key = app.store('key');
 	
 	if (!key) { return; }
 	
@@ -23,6 +23,7 @@ function refresh () {
 	})
 	.done(function (res) {
 		console.log('取得用户信息：' + JSON.stringify(res));
+		app.store('user', JSON.stringify(res));
 		//plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }

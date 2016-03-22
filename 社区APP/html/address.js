@@ -42,7 +42,7 @@ mui.plusReady(function () {
 	// 修改收货地址	
 	if (data.id) {
 		plus.nativeUI.showWaiting();
-		var key  = localStorage.getItem('key');
+		var key  = app.store('key');
 		
 		$.ajax({
 			'dataType' : 'json',
@@ -79,7 +79,7 @@ mui.plusReady(function () {
 });
 
 $('.btn-submit').on('tap', function () {
-	var key  = localStorage.getItem('key');
+	var key  = app.store('key');
 	var data = {
 		'key'     : key,
 		'id'      : $('[name=id]').val(),

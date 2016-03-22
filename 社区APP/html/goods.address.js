@@ -34,7 +34,7 @@ template.helper('$area', function (pro, city, ctr) {
 mui.plusReady(refresh);
 
 function refresh () {
-	var key  = localStorage.getItem('key');
+	var key  = app.store('key');
 	
 	plus.nativeUI.showWaiting();
 	$.ajax({
@@ -72,7 +72,7 @@ $('.pnl-address').delegate('.btn-edit', 'tap', function () {
 // 点击删除
 $('.pnl-address').delegate('.btn-del', 'tap', function () {
 	var dom  = $(this).closest('.addr-item');
-	var key  = localStorage.getItem('key');
+	var key  = app.store('key');
 	
 	plus.nativeUI.showWaiting();
 	$.ajax({
@@ -101,7 +101,7 @@ $('.pnl-address').delegate('.btn-del', 'tap', function () {
 
 $('.pnl-address').delegate('input[type=radio]', 'change', function () {
 	var dom  = $(this).closest('.addr-item');
-	var key  = localStorage.getItem('key');
+	var key  = app.store('key');
 	
 	plus.nativeUI.showWaiting();
 	$.ajax({

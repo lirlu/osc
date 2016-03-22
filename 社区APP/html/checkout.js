@@ -33,7 +33,7 @@ function refresh () {
 		return;
 	}
 	
-	var key = localStorage.getItem('key');
+	var key = app.store('key');
 	//console.log('结算请求：' + JSON.stringify({'key':key, 'cart':data.selected}));
 	plus.nativeUI.showWaiting();
 	$.ajax({
@@ -139,7 +139,7 @@ function doLeaveNote (text) {
 // 提交订单
 $('.btn-submit').on('tap', function () {
 	var view = plus.webview.currentWebview();
-	var key  = localStorage.getItem('key');
+	var key  = app.store('key');
 
 	var data = {
 		'key'    : key,

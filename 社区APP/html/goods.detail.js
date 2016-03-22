@@ -10,7 +10,7 @@ $('ul#pnl-related').delegate('li', 'tap', function () {
 });
 // 收藏按钮
 $('body').delegate('#stars', 'tap', function() {
-	if (!window.localStorage.getItem('key')) {
+	if (!app.store('key')) {
 		app.open('log.html');
 	} else {
 		app.open('goods.detail.html');
@@ -18,7 +18,7 @@ $('body').delegate('#stars', 'tap', function() {
 });
 // 加入购物车
 $('#pnl-product').delegate('.add-to-cart', 'tap', function() {
-	if (!window.localStorage.getItem('key')) {
+	if (!app.store('key')) {
 		app.open('log.html');
 	} else {
 		var dom = $('#pnl-product .product-data');

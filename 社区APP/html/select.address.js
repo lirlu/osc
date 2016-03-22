@@ -10,7 +10,7 @@ mui.plusReady(function () {
 });
 
 function refresh () {
-	var key  = localStorage.getItem('key');
+	var key  = app.store('key');
 	
 	plus.nativeUI.showWaiting();
 	$.ajax({

@@ -1,7 +1,7 @@
 mui.init();
 
 mui.plusReady(function () {
-	var key = localStorage.getItem('key');
+	var key = app.store('key');
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
