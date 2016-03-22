@@ -83,7 +83,6 @@ $('.btn-submit').on('tap', function () {
 	.fail(function (res) {
 		console.log('找回密码失败：' + JSON.stringify(res));
 		app.error('找回密码失败');
-		times = 0;
 	})
 	.done(function (res) {
 		console.log('找回密码结果：' + JSON.stringify(res));
@@ -91,11 +90,9 @@ $('.btn-submit').on('tap', function () {
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
 		if (false == res.status) {app.error(res.msg); return;};
-		
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
 		
-		app.open('log.html');
-		
+		//app.open('log.html');
 		setTimeout(function (){plus.webview.currentWebview().close();}, 500);
 	})
 	;
