@@ -56,7 +56,7 @@ mui.plusReady(function () {
 			plus.nativeUI.closeWaiting();
 		})
 		.done(function (res) {
-			console.log('取得收货地址：' + JSON.stringify(res));
+			//console.log('取得收货地址：' + JSON.stringify(res));
 			plus.nativeUI.closeWaiting();
 			
 			if (res.error && res.error.msg) { app.error(res.error.msg); return; }
