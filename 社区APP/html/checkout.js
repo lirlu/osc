@@ -1,3 +1,5 @@
+var payment = {'channels':[]};
+
 mui.init();
 
 template.helper('image', function (v) {
@@ -7,7 +9,17 @@ template.helper('price', function (v) {
 	return parseInt(v, 10) / 100;
 });
 
-mui.plusReady(refresh);
+mui.plusReady(function () {
+    // 获取支付通道
+    plus.payment.getChannels(function (channels) {
+		payment.channels = channels;
+		$('#pnl-payway').prepend(template('tpl-payway', {data:channels}));
+    }, function (e) {
+        alert("获取支付通道失败：" + e.message);
+    });
+    
+    refresh();
+});
 function refresh () {
 	var view = plus.webview.currentWebview();
 	var data = view.extras;
@@ -124,11 +136,6 @@ function doLeaveNote (text) {
 $('.btn-submit').on('tap', function () {
 	var view = plus.webview.currentWebview();
 	var key  = localStorage.getItem('key');
-	
-	app.open('checkout.success.html');
-	
-	
-	return;
 
 	var data = {
 		'key'    : key,
@@ -143,6 +150,16 @@ $('.btn-submit').on('tap', function () {
 	if (!data.address) { alert('请选择收货地址'); return; }
 	if (data.invoice && !data.title) { alert('请填写发票抬头'); return; }
 	
+	// 获取支付通道
+	var channel;
+	for (var i in payment.channels) {
+		if (data.payway == payment.channels[i]) {
+			channel = payment.channels[i];
+			break;
+		}
+	}
+	
+	// 从服务器请求支付订单
 	plus.nativeUI.showWaiting('正在提交订单...');
 	$.ajax({
 		'dataType' : 'json',
@@ -158,33 +175,24 @@ $('.btn-submit').on('tap', function () {
 	.done(function (res) {
 		console.log('提交订单结果：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
-	})
-	;
-});
-// 向服务器上报支付的结果
-function report (iOrderNo) {
-	$.ajax({
-		'dataType' : 'json',
-		'type'     : 'post',
-		'url'      : app.url('mobile/order/order_checkout'),
-		'data'     : data
-	})
-	.fail(function (res) {
-		console.log('提交订单失败：' + JSON.stringify(res));
-		app.error('提交订单失败');
-		plus.nativeUI.closeWaiting();
-	})
-	.done(function (res) {
-		console.log('提交订单结果：' + JSON.stringify(res));
-		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
 		if (false == res.status) {app.error(res.msg); return;};
-		
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
+		
+		if ('cash' == data.payway) { success(res.orderNo); return; }
+		
+		plus.payment.request(channel, xhr.responseText, function (result) {
+            plus.nativeUI.alert("支付成功！", function () { success(res.orderNo); });
+        }, function(error) {
+        	console.log(JSON.stringify(error));
+            plus.nativeUI.alert("支付失败：" + error.message);
+        });
 	})
 	;
-};
+});
+
 // 支付成功，跳转到提示页面
 function success (iOrderNo) {
+	app.open('checkout.success.html', {'id':iOrderNo});
 };

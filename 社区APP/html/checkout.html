@@ -40,14 +40,12 @@
 	<div class="content">
 		<section class="paytype">
 			<div class="pay-style">选择支付支付</div>
-			<ul class="order">
-				<li>
-					<span>在线支付</span>
-					<span class="right-span mui-radio mui-right"><input type="radio" name="payway" checked="checked" style="right: -8px;top: -1px;"></span>
-				</li>
+			<ul class="order" id="pnl-payway">
 				<li>
 					<span>货到付款</span>
-					<span class="right-span mui-radio mui-right"><input type="radio" name="payway" style="right: -8px;top: -1px;"></span>
+					<span class="right-span mui-radio mui-right">
+						<input type="radio" name="payway" value="cash" checked="checked" style="right: -8px;top: -1px;">
+					</span>
 				</li>
 			</ul>
 		</section>
@@ -116,6 +114,16 @@
 				<span class="centen">合计金额：<span class="col">{{total | price}}</span>元</span>
 			</li>
 		</ul>
+	</script>
+	<script type="text/html" id="tpl-payway">
+		{{each data as item}}
+		<li>
+			<span>{{item.description}}</span>
+			<span class="right-span mui-radio mui-right">
+				<input type="radio" name="payway" value="{{item.id}}" style="right: -8px;top: -1px;">
+			</span>
+		</li>
+		{{/each}}
 	</script>
 	
     <script src="../js/jquery.min.js"></script>
