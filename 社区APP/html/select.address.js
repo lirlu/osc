@@ -37,6 +37,20 @@ function refresh () {
 	})
 	;
 }
+
+// 选择某一个收货地址
+$('#pnl-address').delegate('input[name="radio"]', 'change', function (e) {
+	var id = $(this).closest('li.addr-item').attr('data-id');
+	for (var i in cache) {
+		if (id == cache[i].id) {
+			var txt = JSON.stringify(cache[i]);
+			plus.webview.getWebviewById('checkout.html').evalJS('doSetAddress('+txt+')');
+			plus.webview.currentWebview().close();
+			break;
+		}
+	}
+});
+
 template.helper('$checked', function (v) {
 	return extras.select == v ? 'checked="checked"' : '';
 });
