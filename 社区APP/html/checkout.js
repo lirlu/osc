@@ -39,6 +39,14 @@ function refresh () {
 	})
 	;
 }
+// 选择收货地址
+$('section.address li').on('tap', function () {
+	app.open('select.address.html', {'select':$('[name=delivery-addr]').val()});
+});
+function doSetAddress (item) {
+	console.log('选择收货地址：' + JSON.stringify(item));
+}
+// 选择送货时间
 $('.btn-choose-time').on('tap', function () {
 	var options = {
 		"type"       : "hour",
