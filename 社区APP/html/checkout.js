@@ -103,8 +103,8 @@ $('.btn-choose-time').on('tap', function () {
 		console.log(JSON.stringify(res));
 		$('.time-hint').text(res.text);
 		if (1 == 1) {
-			plus.nativeUI.toast('不能选择今天以前的时间');
-			return false;
+			//plus.nativeUI.toast('不能选择今天以前的时间');
+			//return false;
 		}
 		picker.dispose();
 	});
@@ -120,3 +120,39 @@ function doLeaveNote (text) {
 	//console.log('留言信息：' + text);
 	$('.note-hint').text(text);
 }
+// 提交订单
+$('.btn-submit').on('tap', function () {
+	var view = plus.webview.currentWebview();
+	var key  = localStorage.getItem('key');
+
+	var data = {
+		'key'    : key,
+		'payway' : $('[name=payway]:checked').val(),
+		'cart'   : view.extras.selected,
+		'address': $('[name=delivery-addr]').val(),
+		'time'   : $('[name=delivery-time]').val(),
+		'note'   : $('[name=note-text]').val(),
+		'invoice': $('[name=invoice]').is(':checked'),
+		'title'  : $('[name=invoice-name]').val(),
+	};
+	if (!data.address) { alert('请选择收货地址'); return; }
+	if (data.invoice && !data.title) { alert('请填写发票抬头'); return; }
+	
+	plus.nativeUI.showWaiting('正在提交订单...');
+	$.ajax({
+		'dataType' : 'json',
+		'type'     : 'post',
+		'url'      : app.url('mobile/order/order_checkout'),
+		'data'     : data
+	})
+	.fail(function (res) {
+		console.log('提交订单失败：' + JSON.stringify(res));
+		app.error('提交订单失败');
+		plus.nativeUI.closeWaiting();
+	})
+	.done(function (res) {
+		console.log('提交订单结果：' + JSON.stringify(res));
+		plus.nativeUI.closeWaiting();
+	})
+	;
+});
