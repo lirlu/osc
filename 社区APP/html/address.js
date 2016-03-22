@@ -2,10 +2,11 @@ var picker = new mui.PopPicker({layer: 3});
 picker.setData(cityData3);
 
 var mask = mui.createMask();
+
 mui.plusReady(function () {
 	var view = plus.webview.currentWebview();
 	var data = view.extras;
-	
+	// 修改收货地址	
 	if (data.id) {
 		plus.nativeUI.showWaiting();
 		var key  = localStorage.getItem('key');
