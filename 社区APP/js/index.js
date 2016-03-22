@@ -33,7 +33,11 @@ mui.plusReady(function() {
 	setTimeout(function() { plus.nativeUI.closeWaiting(); }, 200);
 });
 
-mui('nav.bar-tab').on('tap', '.tab-item', function() {
+function trigger (name) {
+	$('[data-url="'+name+'"]').trigger('tap');
+}
+
+$('nav.bar-tab .tab-item').on('tap', function() {
 	$('nav.bar-tab .tab-item').removeClass("active");
 	$(this).addClass("active");
 	var view = this.getAttribute('data-url');

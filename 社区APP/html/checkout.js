@@ -124,16 +124,21 @@ function doLeaveNote (text) {
 $('.btn-submit').on('tap', function () {
 	var view = plus.webview.currentWebview();
 	var key  = localStorage.getItem('key');
+	
+	app.open('checkout.success.html');
+	
+	
+	return;
 
 	var data = {
 		'key'    : key,
-		'payway' : $('[name=payway]:checked').val(),
-		'cart'   : view.extras.selected,
-		'address': $('[name=delivery-addr]').val(),
-		'time'   : $('[name=delivery-time]').val(),
-		'note'   : $('[name=note-text]').val(),
-		'invoice': $('[name=invoice]').is(':checked'),
-		'title'  : $('[name=invoice-name]').val(),
+		'payway' : $('[name=payway]:checked').val(),// 支付方式
+		'cart'   : view.extras.selected,// 选中结算的商品
+		'address': $('[name=delivery-addr]').val(),//收货地址ID
+		'time'   : $('[name=delivery-time]').val(),//送货时间
+		'note'   : $('[name=note-text]').val(),//买家留言
+		'invoice': $('[name=invoice]').is(':checked'),//是否需要发票
+		'title'  : $('[name=invoice-name]').val(),//发票抬头
 	};
 	if (!data.address) { alert('请选择收货地址'); return; }
 	if (data.invoice && !data.title) { alert('请填写发票抬头'); return; }
@@ -142,7 +147,7 @@ $('.btn-submit').on('tap', function () {
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
-		'url'      : app.url('mobile/order/order_checkout'),
+		'url'      : app.url('mobile/order/order_add'),
 		'data'     : data
 	})
 	.fail(function (res) {
