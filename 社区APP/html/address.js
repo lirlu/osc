@@ -3,6 +3,39 @@ picker.setData(cityData3);
 
 var mask = mui.createMask();
 
+function area (pro, city, ctr) {
+	var a, b, c;
+	
+	for (var i in cityData3) {
+		var item = cityData3[i];
+		if (item.value == pro) {
+			a = item;
+			break;
+		}
+	}
+	a = a ? a : {'text':'', 'children':[]};
+	
+	for (var i in a.children) {
+		var item = a.children[i];
+		if (item.value == city) {
+			b = item;
+			break;
+		}
+	}
+	b = b ? b : {'text':'', 'children':[]};
+	
+	for (var i in b.children) {
+		var item = b.children[i];
+		if (item.value == ctr) {
+			c = item;
+			break;
+		}
+	}
+	c = c ? c : {'text':'', 'children':[]};
+	
+	return (a.text +' '+ b.text +' '+ c.text);
+};
+
 mui.plusReady(function () {
 	var view = plus.webview.currentWebview();
 	var data = view.extras;
@@ -28,16 +61,17 @@ mui.plusReady(function () {
 			
 			if (res.error && res.error.msg) { app.error(res.error.msg); return; }
 			if (false == res.status) {app.error(res.msg); return;};
-			
 			if (res.msg) { plus.nativeUI.toast(res.msg); };
 			
-			$('[name=id]').val(res.id);
-			$('[name=name]').val(res.name);
-			$('[name=tel]').val(res.tel);
-			$('[name=provice]').val(res.provice);
-			$('[name=city]').val(res.city);
-			$('[name=state]').val(res.state);
-			$('[name=addr]').val(res.addr);
+			$('[name=id]').val(res.addr_info.id);
+			$('[name=name]').val(res.addr_info.name);
+			$('[name=tel]').val(res.addr_info.tel);
+			$('[name=provice]').val(res.addr_info.provice);
+			$('[name=city]').val(res.addr_info.city);
+			$('[name=state]').val(res.addr_info.state);
+			$('[name=addr]').val(res.addr_info.addr);
+			
+			$('.btn-area .deji').text(area(res.addr_info.provice, res.addr_info.city, res.addr_info.state));
 		})
 		;
 		
