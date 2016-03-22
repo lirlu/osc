@@ -85,6 +85,14 @@ template.helper('image', function (v) {
 template.helper('price', function (v) {
 	return parseInt(v, 10) / 100;
 });
+
+// 点击商家列表
+$('#pnl-cart').delegate('.shop>.image, .shop>.col1', 'tap', function() {
+	var data = {
+		'shop_id'   : $(this).attr('data-shop')
+	};
+	app.open('shop.detail1.html', data);
+});
 // 选中商品
 $('#pnl-cart').delegate('.shop .mui-checkbox>input[type=checkbox]', 'change', function () {
 	var dom = $(this).closest('li.shop');
@@ -196,12 +204,4 @@ $('.btn-checkout').on('tap', function () {
 	});
 	if (0 == selected.length) { app.error('请至少选择一个商品再结算'); return; }
 	app.open('checkout.html', {'selected':selected});
-});
-
-// 点击商家列表
-$('#pnl-cart').delegate('.shop', 'tap', function() {
-	var data = {
-		'shop_id'   : $(this).attr('data-shop')
-	};
-	app.open('shop.detail1.html', data);
 });

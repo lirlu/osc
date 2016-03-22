@@ -64,7 +64,12 @@ function refresh () {
 $('.btn-add-addr').on('tap', function () {
 	app.open('address.html');
 });
-
+// 点击编辑
+$('.pnl-address').delegate('.btn-edit', 'tap', function () {
+	var dom  = $(this).closest('.addr-item');
+	app.open('address.html', {'id':$(dom).closest('li.addr-item').attr('data-id')});
+});
+// 点击删除
 $('.pnl-address').delegate('.btn-del', 'tap', function () {
 	var dom  = $(this).closest('.addr-item');
 	var key  = localStorage.getItem('key');
