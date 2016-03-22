@@ -45,7 +45,43 @@ $('section.address li').on('tap', function () {
 });
 function doSetAddress (item) {
 	console.log('选择收货地址：' + JSON.stringify(item));
+	
+	$('section.address li input').val(item.id);
+	$('section.address li span.human').text(item.name + ' ' + item.tel);
+	$('section.address li span.addr').text(area(item.provice, item.city, item.state) +' '+ item.addr);
 }
+function area (pro, city, ctr) {
+	var a, b, c;
+	
+	for (var i in cityData3) {
+		var item = cityData3[i];
+		if (item.value == pro) {
+			a = item;
+			break;
+		}
+	}
+	a = a ? a : {'text':'', 'children':[]};
+	
+	for (var i in a.children) {
+		var item = a.children[i];
+		if (item.value == city) {
+			b = item;
+			break;
+		}
+	}
+	b = b ? b : {'text':'', 'children':[]};
+	
+	for (var i in b.children) {
+		var item = b.children[i];
+		if (item.value == ctr) {
+			c = item;
+			break;
+		}
+	}
+	c = c ? c : {'text':'', 'children':[]};
+	
+	return (a.text +' '+ b.text +' '+ c.text);
+};
 // 选择送货时间
 $('.btn-choose-time').on('tap', function () {
 	var options = {
