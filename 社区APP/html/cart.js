@@ -26,6 +26,9 @@ cart.add = function (item) {
 cart.remove = function (item) {
 	
 }
+cart.empty = function () {
+	
+}
 cart.refresh = function () {
 	var key = app.store('key');
 	console.log('加载购物车数据：' + app.url('mobile/cart/cart_list'));

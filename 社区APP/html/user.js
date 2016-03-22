@@ -7,7 +7,11 @@ mui.plusReady(refresh);
 function refresh () {
 	var key = app.store('key');
 	
-	if (!key) { return; }
+	if (!key) {
+		$('.touxiang').empty().append('<a data-url="log.html"><img src="../img/touxiang.png" /></a>');
+		$('.username').empty().append('<a data-url="log.html">未登录</a>');
+		return;
+	}
 	
 	//plus.nativeUI.showWaiting();
 	$.ajax({
@@ -30,7 +34,8 @@ function refresh () {
 		if (false == res.status) {app.error(res.msg); return;};
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
 		
-		$('.nickname>div:last').text(res.user_info.nickname || res.user_info.account || '');
+		$('.touxiang').empty().append('<img src="../img/touxiang.png" />');
+		$('.username').empty().append(res.user_info.nickname || res.user_info.account || '');
 	})
 	;
 }
