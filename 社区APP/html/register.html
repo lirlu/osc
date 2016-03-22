@@ -1,87 +1,63 @@
 <!DOCTYPE html>
 <html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>注册账号</title>
+	<link rel="stylesheet" href="../css/mui.min.css" />
+	<link rel="stylesheet" href="../css/common.css" />
+	<link rel="stylesheet" href="../css/app/purse.css" />
 
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>注册账号</title>
-		<link rel="stylesheet" href="../css/mui.min.css" />
-		<link rel="stylesheet" href="../css/common.css" />
-		<link rel="stylesheet" href="../css/app/purse.css" />
+	<style>
+		input[type=text],
+		input[type=number],
+		input[type=password] {
+			padding: 0;
+		}
+	</style>
+</head>
 
-		<style>
-			input[type=text],
-			input[type=number],
-			input[type=password] {
-				padding: 0;
-			}
-		</style>
-	</head>
+<body>
+	<!--头部-->
+	<header class="bar">
+		<a class="left mui-action-back mui-icon mui-icon-arrowleft"></a>
+		<h1 class="title">注册账号</h1>
+	</header>
 
-	<body>
-		<!--头部-->
-		<header class="bar">
-			<a class="left mui-action-back mui-icon mui-icon-arrowleft"></a>
-			<h1 class="title">注册账号</h1>
-		</header>
-
-		<body>
-			<div class="content">
-				<form action="" method="post" id="logoinForm">
-					<div class="input-div">
-						<span class="block">联系电话：</span>
-						<input type="text" id="tel" name="mobile" placeholder="请输入您的手机号码" />
-					</div>
-					<button type="button" class="yan" id="code">验证码</button>
-					<div class="input-div">
-						<span class="block">验证码：</span>
-						<input type="text" name="code" id="code1" placeholder="请输入您的手机验证码" />
-					</div>
-					<div class="input-div">
-						<span class="block">密码：</span>
-						<input type="password" name="password1" id="password1" placeholder="请输入您的密码" />
-					</div>
-					<div class="input-div">
-						<span class="block">确认密码：</span>
-						<input type="password" name="password2" id="password2" placeholder="请再次输入您的密码" />
-					</div>
-				</form>
-				<div class="rule-div">
-					<form class="ruel" from="logoinForm">
-						<span class="mui-checkbox mui-left"><input id="checkbox"  type="checkbox" checked="checked" name="checkbox" style="left: 0;top: 6px;" /></span>
-					</form>
-					<span style="padding-left: 30px;">同意《服务标准及违约责任约束》</span>
-				</div>
-				<div class="bottom" id="submit">
-					<button class="tbn" type="button">确认</button>
-				</div>
+	<div class="content">
+		<form action="" method="post" id="logoinForm">
+			<div class="input-div">
+				<span class="block">联系电话：</span>
+				<input type="text" id="tel" name="mobile" placeholder="请输入您的手机号码" />
 			</div>
-		</body>
-		<script type="text/javascript" src="../js/jquery.min.js"></script>
-		<script type="text/javascript" src="../js/mui.min.js"></script>
-		<script src="../js/data.js" type="text/javascript" charset="utf-8"></script>
-		<script>
-			$(function() {
-				//执行
-				shequ.DomArr.setUse('mobile/user/verification','mobile/user/register',function(){
-					mui.openWindow({
-						url:'log.html'
-					});
-				});
-				$(window).resize(function() {
-					windowChange();
-				});
-				function windowChange() {
-					var myDataL = $(".input-div").length;
-					var winWidth = $(window).width();
-					var lDiv = "";
-					for (i = 0; i < myDataL; i++) {
-						lDiv = $(".input-div").eq(i).children(".block").width() + 15;
-						$(".input-div").eq(i).children("input").width(winWidth - lDiv);
-					}
-				}
-				windowChange();
-			});
-		</script> 
-
+			<button type="button" class="yan" id="code">验证码</button>
+			<div class="input-div">
+				<span class="block">验证码：</span>
+				<input type="text" name="code" id="code1" placeholder="请输入您的手机验证码" />
+			</div>
+			<div class="input-div">
+				<span class="block">密码：</span>
+				<input type="password" name="password1" id="password1" placeholder="请输入您的密码" />
+			</div>
+			<div class="input-div">
+				<span class="block">确认密码：</span>
+				<input type="password" name="password2" id="password2" placeholder="请再次输入您的密码" />
+			</div>
+		</form>
+		<div class="rule-div">
+			<form class="ruel" from="logoinForm">
+				<span class="mui-checkbox mui-left"><input id="checkbox"  type="checkbox" checked="checked" name="checkbox" style="left: 0;top: 6px;" /></span>
+			</form>
+			<span style="padding-left: 30px;">同意《服务标准及违约责任约束》</span>
+		</div>
+		<div class="bottom" id="submit">
+			<button class="tbn" type="button">确认</button>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/app.js"></script>
+	<script type="text/javascript" src="register.js"></script>
+</body>
 </html>

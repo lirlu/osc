@@ -14,7 +14,7 @@ mui.plusReady(function () {
 		$.ajax({
 			'dataType' : 'json',
 			'type'     : 'post',
-			'url'      : app.url('mobile/userinfo/addr_add'),
+			'url'      : app.url('mobile/userinfo/addr_edit'),
 			'data'     : {'key':key, 'id':data.id}
 		})
 		.fail(function (res) {
