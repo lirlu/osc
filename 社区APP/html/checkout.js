@@ -1,3 +1,6 @@
+// wxpay  微信
+// alipay 支付宝
+// cash   货到付款
 var payment = {'channels':[]};
 
 mui.init();
@@ -13,6 +16,7 @@ mui.plusReady(function () {
     // 获取支付通道
     plus.payment.getChannels(function (channels) {
 		payment.channels = channels;
+		
 		$('#pnl-payway').prepend(template('tpl-payway', {data:channels}));
     }, function (e) {
         alert("获取支付通道失败：" + e.message);
@@ -195,4 +199,10 @@ $('.btn-submit').on('tap', function () {
 // 支付成功，跳转到提示页面
 function success (iOrderNo) {
 	app.open('checkout.success.html', {'id':iOrderNo});
+	setTimeout(function () {
+		plus.webview.currentWebview().close();
+	}, 500);
+	setTimeout(function () {
+		plus.webview.getWebviewById('cart.html').evalJS('cart.refresh()');
+	}, 800);
 };
