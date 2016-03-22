@@ -4,5 +4,5 @@ $('.btn-logout').on('tap', function () {
 	
 	setTimeout(function () {
 		plus.webview.currentWebview().close();
-	}, 100);
+	}, 500);
 });
