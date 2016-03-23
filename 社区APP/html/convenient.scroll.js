@@ -23,6 +23,7 @@ function next (cb) {
 		if (false == res.status) {app.error(res.msg); return;};
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
 		
+		data.page++;
 		cb && cb(res);
 	})
 	;
@@ -31,6 +32,7 @@ function next (cb) {
 function funcPullupRefresh () {
 	next(function (res) {
 		var noMore = data.page * data.limit >= res.total;
+		
 		$('#pnl-shop').append(template('tpl-shop', res));
 		mui('#refreshContainer').pullRefresh().endPullupToRefresh(noMore);//参数为true代表没有更多数据了。
 	});
@@ -53,7 +55,7 @@ mui.plusReady(function() {
 		data.lat = res.coords.latitude;
 		data.lng = res.coords.longitude;
 		
-		//mui('#refreshContainer').pullRefresh().pullupLoading();
+		mui('#refreshContainer').pullRefresh().pullupLoading();
 	}, {
 		provider: 'baidu'
 	});
