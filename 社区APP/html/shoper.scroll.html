@@ -13,22 +13,24 @@
 	<!--头部-->
 	<div class="content" style="padding-top: 0;">
 		<div class="contol">
-			<div class="appraise1 activet">本社区</div>
+			<div class="appraise1 btn-local-shop">本社区</div>
 			<span></span>
-			<div class="appraise1">全部分类</div>
+			<div class="appraise1 btn-all-category">全部分类</div>
 		</div>
 		<div id="refreshContainer" class="mui-content mui-scroll-wrapper">
 			<div class="mui-scroll">
 				<!--数据列表-->
-				<ul class="mui-table-view mui-table-view-chevron" id="listLocal"></ul>
+				<ul class="mui-table-view mui-table-view-chevron" id="pnl-shop"></ul>
 			</div>
 		</div>
 	</div>
-	<script type="text/html" id="listLocalTemp">
+	
+	<script type="text/html" id="tpl-shop">
+		<div class="shop-empty-line" style="margin-top: 50px;"></div>
 		{{each seller_list as value}}
 		<div class="shop" address='shop.detail.html' shop_id="{{value.shop_id}}">
 			<div class="shop-l">
-				<img src="http://192.168.2.15/attachs/{{value.logo}}" />
+				<img src="{{value.logo | image}}" />
 			</div>
 			<div class="shop-r">
 				{{value.shop_name}}
@@ -38,7 +40,7 @@
 		</div>
 		{{/each}}
 	</script>
-	<script type="text/html" id="listSortTemp">
+	<script type="text/html" id="tpl-category">
 		<div class="all-div">
 			{{each cate_info as value}}
 			<div class="right-div" data-name="{{value.cate_id}}" style="top:0">
@@ -56,25 +58,11 @@
 			{{/each}}
 		</div>
 	</script>
-	<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-	<script src="../js/template.js" type="text/javascript" charset="utf-8"></script>
-	<script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
-	<script src="../js/data.js" type="text/javascript" charset="utf-8"></script>
-	<script type="text/javascript">
-		shequ.listMap.shopMap();
-		//-------------------------本社区-------------------------------
-		shequ.DataList.ShopData('mobile/index/union_seller/', {
-			page: 1
-		}, 'listLocalTemp', '#listLocal', function() {
-			shequ.DomArr.Disfn();
-		});
-		//执行
-		shequ.DomArr.ShopTab('mobile/index/union_seller/', {
-			page: 1
-		}, 'mobile/cateseller/union_seller_cate/');
-		//滑动加载和刷新数据
-		shequ.DomArr.Pullup();
-		shequ.DomArr.unShoping()
-	</script>
+	
+	<script type="text/javascript" src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/template.js"></script>
+	<script type="text/javascript" src="../js/app.js"></script>
+	<script type="text/javascript" src="shoper.scroll.js"></script>
 </body>
 </html>
