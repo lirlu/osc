@@ -3,12 +3,34 @@ template.helper('image', function (v) {
 	return app.link.image + v;
 });
 mui.plusReady(function () {
+	var key = app.store('key');
+	$.ajax({
+		'dataType' : 'json',
+		'type'     : 'post',
+		'url'      : app.url('mobile/userinfo/index'),
+		'data'     : {'key':key}
+	})
+	.fail(function (res) {
+		console.log('取得我的余额失败：' + JSON.stringify(res));
+		app.error('取得我的余额失败');
+	})
+	.done(function (res) {
+		console.log('取得我的余额：' + JSON.stringify(res));
+		
+		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
+		if (false == res.status) {app.error(res.msg); return;};
+		if (res.msg) { plus.nativeUI.toast(res.msg); };
+		
+		$('.integral .num').text(res.user_info.money);
+	})
+	;
+	
 	plus.nativeUI.showWaiting('请稍后...');
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
 		'url'      : app.url('mobile/userinfo/chongzhi_log'),
-		'data'     : { 'key':app.store('key') }
+		'data'     : { 'key':key }
 	})
 	.fail(function (res) {
 		console.log('查询米币商城商品失败：' + JSON.stringify(res));
