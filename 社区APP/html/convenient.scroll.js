@@ -31,7 +31,7 @@ function next (cb) {
 
 function funcPullupRefresh () {
 	next(function (res) {
-		var noMore = data.page * data.limit >= res.total;
+		var noMore = data.page * data.limit >= (res.total||1);
 		
 		$('#pnl-shop').append(template('tpl-shop', res));
 		mui('#refreshContainer').pullRefresh().endPullupToRefresh(noMore);//参数为true代表没有更多数据了。
@@ -114,6 +114,10 @@ $('#pnl-shop').delegate('.shop', 'tap', function() {
 		'tel'       : $(this).attr('tel'),
 	};
 	app.open('shop.detail1.html', data);
+});
+
+$('.contol .appraise1').on('tap', function () {
+	$(this).removeClass('activet').addClass('activet').siblings().removeClass('activet');
 });
 
 //点击一级列表
