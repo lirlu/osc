@@ -49,7 +49,7 @@ mui.plusReady(function () {
 	if (mui.os.android) {
 		setTimeout(function () {
 			mui('#refreshContainer').pullRefresh().pullupLoading();
-		},2000);
+		},1000);
 	} else {
 		setTimeout(function () {
 			mui('#refreshContainer').pullRefresh().pullupLoading();
