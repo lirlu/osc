@@ -41,22 +41,22 @@
 	<script type="text/html" id="tpl-publish">
 		<div class="acti">
 			<div class="portrait">
-				<img src="../img/touxiang.png" />
+				<img src="{{pengche_view.img | image}}" />
 			</div>
 			<div class="portrait1">
-				<span class="col">左手倒影</span>
+				<span class="col">{{pengche_view.nickname || pengche_view.account}}</span>
 				<span class="carperson">车主</span>
-				<p>发布时间2015-12-23</p>
+				<p>发布时间{{pengche_view.add_time}}</p>
 			</div>
 		</div>
 		<section>
 			<ul>
-				<li>标题内容：6点下班开往交大东园，可带3人</li>
-				<li>联系电话：1738485868</li>
-				<li>出发地址：府南新区</li>
-				<li>到达地址：交大东园</li>
-				<li>可带人数：3</li>
-				<li>出发地址：2015-12-24<span class="juli">12:00</span></li>
+				<li>标题内容：{{pengche_view.content}}</li>
+				<li>联系电话：{{pengche_view.account}}</li>
+				<li>出发地址：{{pengche_view.set_addr}}</li>
+				<li>到达地址：{{pengche_view.addr}}</li>
+				<li>可带人数：{{pengche_view.num}}</li>
+				<li>出发时间：{{pengche_view.set_out}}</li>
 			</ul>
 		</section>
 	</script>
