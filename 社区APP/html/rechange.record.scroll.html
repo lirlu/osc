@@ -40,16 +40,18 @@
 	<!-- 充值纪录模板 开始 -->
 	<script type="text/html" id="tpl-record">
 		{{each data as item}}
-		<div class="time">2015年12月</div>
+		<div class="time">{{item.month}}</div>
 		<ul>
+			{{each item.data as row}}
 			<li class="mui-row">
 				<div class="mui-col-xs-7">
 					米币充值
-					<p>{{'1' == item.status ? '充值成功' : '充值失败'}}</p>
-					<p>{{item.add_time}}</p>
+					<p>{{'1' == row.status ? '充值成功' : '充值失败'}}</p>
+					<p>{{row.add_time}}</p>
 				</div>
-				<div class="ui-col-xs-5 mui-text-right col">{{item.money}}</div>
+				<div class="ui-col-xs-5 mui-text-right col">{{row.money}}</div>
 			</li>
+			{{/each}}
 		</ul>
 		{{/each}}
 	</script>
