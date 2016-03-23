@@ -1,8 +1,8 @@
-var data = {'type':'', 'page':0, 'limit':15, 'key':app.store('key'), 'cate_id':'', 'lat':'', 'lng':''}
+var data = {'tab':'', 'page':0, 'limit':15, 'key':app.store('key'), 'cate_id':'', 'lat':'', 'lng':''}
 // 本社区
 function next (cb) {
 	console.log('请求数据：' + JSON.stringify(data));
-	var url = 'carpool' == data.type ? 'mobile/index/pingche' : 'mobile/index/convenient_seller';
+	var url = 'carpool' == data.tab ? 'mobile/index/pingche' : 'mobile/index/convenient_seller';
 	plus.nativeUI.showWaiting();
 	$.ajax({
 		'dataType' : 'json',
@@ -33,7 +33,7 @@ function funcPullupRefresh () {
 	next(function (res) {
 		var noMore = data.page * data.limit >= (res.total||1);
 		
-		if ('carpool' == data.type) {
+		if ('carpool' == data.tab) {
 			$('#pnl-shop').append(template('tpl-carpool', res));// 拼车数据
 		} else {
 			$('#pnl-shop').append(template('tpl-shop', res));// 本小区数据
@@ -67,7 +67,6 @@ mui.plusReady(function() {
 });
 
 template.helper('image', function (v) {
-	
 	return v ? (app.link.image + v) : '../img/iconfont-morentouxiang.png';
 });
 
@@ -140,7 +139,7 @@ $('#pnl-shop').delegate('.shop', 'tap', function() {
 });
 
 $('.contol .appraise1').on('tap', function () {
-	data.type = $(this).attr('data-type');
+	data.tab = $(this).attr('data-type');
 	$(this).removeClass('activet').addClass('activet').siblings().removeClass('activet');
 });
 
