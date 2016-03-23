@@ -29,7 +29,7 @@ mui.plusReady(function () {
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
-		'url'      : app.url('mobile/userinfo/chongzhi_log'),
+		'url'      : app.url('mobile/IntegralGoods/goods_list'),
 		'data'     : { 'key':key }
 	})
 	.fail(function (res) {

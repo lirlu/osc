@@ -31,16 +31,16 @@
 	<script type="text/html" id="tpl-product">
 		{{each list as item}}
 		<li class="mui-table-view-cell mui-media">
-			<a href="javascript:;" class="product">
+			<a href="javascript:;" class="product" data-product="{{item.goods_id}}" data-shop="{{item.shop_id}}" style="padding-bottom: 0;">
 				<div class="f-l img">
-					<img src="../img/lafang.png">
+					<img src="{{item.face_pic | image}}">
 				</div>	
 				<div class="mui-media-body">
-					<span class="mui-ellipsis-2">拉芳营养柔顺护理水润去屑洗发露400ml2瓶装</span>
+					<span class="mui-ellipsis-2">{{item.title}}</span>
 					<div class="media-body">
-						<p class='mui-ellipsis'>限量2000款</p>
-						<span class="col gkto">9米币</span>
-						<del>￥12.8</del>
+						<p class='mui-ellipsis'>限购{{item.limit_num}}份</p>
+						<span class="col gkto">{{item.integral}}米币</span>
+						<del>￥{{item.price}}</del>
 						<span class="btn btn-buy">我要兑</span>
 					</div>
 				</div>
