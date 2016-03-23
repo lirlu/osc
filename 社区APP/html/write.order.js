@@ -1,17 +1,21 @@
 // 数量加减
-$('.float-r .add').click(function(){
+$('#pnl-product').delegate('.float-r .add', 'tap', function(){
 	var num = $(this).siblings('.number').text();
 	if(num < 9){
 		num++;
 		num = $(this).siblings('.number').text(num);
 	}
 });
-$('.float-r .distance').click(function(){
+$('#pnl-product').delegate('.float-r .distance', 'tap', function(){
 	var num = $(this).siblings('.number').text();
 	if(num > 1){
 		num--;
 		num = $(this).siblings('.number').text(num);
 	}
+});
+
+template.helper('image', function (v) {
+	return app.link.image + v;
 });
 
 mui.plusReady(function () {
@@ -28,6 +32,7 @@ mui.plusReady(function () {
 	.fail(function (res) {
 		console.log('取得商品详情失败：' + JSON.stringify(res));
 		app.error('取得商品详情失败');
+		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
 		console.log('取得商品详情：' + JSON.stringify(res));
@@ -37,7 +42,7 @@ mui.plusReady(function () {
 		if (false == res.status) {app.error(res.msg); return;};
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
 		
-		//$('#pnl-product').append(template('tpl-product', res));
+		$('#pnl-product').append(template('tpl-product', {data:[res.info]}));
 	})
 	;
 });

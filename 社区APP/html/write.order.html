@@ -14,6 +14,19 @@
 		.clasify {
 			height: 120px;
 		}
+		.clasify>div {
+			height: auto;
+		}
+		.fj {
+			padding-top: 5px;
+			padding-bottom: 5px;
+		}
+		.float-r .add,
+		.float-r .distance {
+			width: 28px;
+			padding: 3px;
+			margin-top: -3px;
+		}
 	</style>
 </head>
 <body>
@@ -31,30 +44,39 @@
 				<span>地址：成都市金牛区群星路13号</span>
 			</li>
 		</ul>
-		<div class="clasify">
+		
+		<div id="pnl-product"></div>
+		<div class="bottom">
+			<button class="tbn" disabled="disabled">立即领取</button>
+		</div>
+	</div>
+	
+	<!-- 兑换商品信息 开始 -->
+	<script type="text/html" id="tpl-product">
+		{{each data as item}}
+		<div class="clasify product" data-shop="{{item.shop_id}}" data-product="{{item.goods_id}}">
 			<div class="l-div">
-				<img src="../img/duihuan.png" />
+				<img src="{{item.face_pic | image}}" />
 			</div>
 			<div class="r-div">
-				<span>《新仙剑奇侠传》第二波游戏礼盒包</span>
+				<span>{{item.title}}</span>
 				<div class="class">
-					<div class="fj"><span class="col gf">9</span>米币</div>
+					<div class="fj"><span class="col gf">{{item.integral}}</span>米币</div>
 					<div class="block">
-						市场参考价300.00
+						市场参考价￥{{item.price}}
 						<div class="float-r">
 							<span class="f-l">数量：</span>
 							<img src="../img/jian1.png" class="distance" />
 							<span class="f-l number">1</span>
 							<img src="../img/add.png" class="add" />
 						</div>
-					</div>	
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="bottom">
-			<button class="tbn">立即领取</button>
-		</div>
-	</div>
+		{{/each}}
+	</script>
+	<!-- 兑换商品信息 结束 -->
 	
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
 	<script type="text/javascript" src="../js/mui.min.js"></script>
