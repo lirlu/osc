@@ -1,4 +1,4 @@
-var data = {'tab':'', 'page':0, 'limit':15, 'key':app.store('key'), 'cate_id':'', 'lat':'', 'lng':''}
+var data = {'tab':'', 'page':0, 'limit':15, 'key':app.store('key'), 'cate_id':'', 'lat':'', 'lng':'', 'type':''}
 // 本社区
 function next (cb) {
 	console.log('请求数据：' + JSON.stringify(data));
@@ -69,6 +69,11 @@ mui.plusReady(function() {
 template.helper('image', function (v) {
 	return v ? (app.link.image + v) : '../img/iconfont-morentouxiang.png';
 });
+
+function toggleCarpoolType () {
+	// 显示拼车类型选择
+	$('ul.type').removeClass('mui-hidden');
+}
 
 // 选择本社区
 $('.btn-local-shop').on('tap', function () {
