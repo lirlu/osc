@@ -21,7 +21,9 @@ app.store = function (key, value) {
 	} else if (key && value) {
 		localStorage.setItem(key, JSON.stringify(value));
 	} else if (!value) {
-		return localStorage.getItem(key);
+		var v = localStorage.getItem(key);
+		try { v = JSON.parse(v); } catch (e) {}
+		return v;
 	}
 }
 /**
