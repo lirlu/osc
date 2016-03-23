@@ -2,12 +2,12 @@ var data = {'type':'', 'page':0, 'limit':15, 'key':app.store('key'), 'cate_id':'
 // 本社区
 function next (cb) {
 	console.log('请求数据：' + JSON.stringify(data));
-	
+	var url = 'carpool' == data.type ? 'mobile/index/pingche' : 'mobile/index/convenient_seller';
 	plus.nativeUI.showWaiting();
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
-		'url'      : app.url('mobile/index/convenient_seller'),
+		'url'      : app.url(url),
 		'data'     : data
 	})
 	.fail(function (res) {
@@ -33,7 +33,12 @@ function funcPullupRefresh () {
 	next(function (res) {
 		var noMore = data.page * data.limit >= (res.total||1);
 		
-		$('#pnl-shop').append(template('tpl-shop', res));
+		if ('carpool' == data.type) {
+			$('#pnl-shop').append(template('tpl-carpool', res));// 拼车数据
+		} else {
+			$('#pnl-shop').append(template('tpl-shop', res));// 本小区数据
+		}
+		
 		mui('#refreshContainer').pullRefresh().endPullupToRefresh(noMore);//参数为true代表没有更多数据了。
 	});
 }
@@ -62,24 +67,31 @@ mui.plusReady(function() {
 });
 
 template.helper('image', function (v) {
-	return app.link.image + v;
+	
+	return v ? (app.link.image + v) : '../img/iconfont-morentouxiang.png';
 });
 
 // 选择本社区
 $('.btn-local-shop').on('tap', function () {
-	$('#pnl-shop').empty();
+	$('#pnl-shop').empty(); data.page = 0;
+	mui('#refreshContainer').pullRefresh().pullupLoading();
+});
+
+// 选择拼车服务
+$('.btn-take-ride').on('tap', function () {
+	$('#pnl-shop').empty(); data.page = 0;
 	mui('#refreshContainer').pullRefresh().pullupLoading();
 });
 
 // 选择全部分类
 $('.btn-all-category').on('tap', function () {
-	$('#pnl-shop').empty();
+	$('#pnl-shop').empty(); data.page = 0;
 	
 	plus.nativeUI.showWaiting();
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
-		'url'      : app.url('mobile/cateseller/convenient_seller_cate/'),
+		'url'      : app.url('mobile/cateseller/convenient_seller_cate'),
 		'data'     : {'key':data.key}
 	})
 	.fail(function (res) {
@@ -116,7 +128,19 @@ $('#pnl-shop').delegate('.shop', 'tap', function() {
 	app.open('shop.detail1.html', data);
 });
 
+// 点击商家列表
+$('#pnl-shop').delegate('.shop', 'tap', function() {
+	var data = {
+		'shop_id'   : $(this).attr('shop_id'),
+		'shop_name' : $(this).attr('shop_name'),
+		'addr'      : $(this).attr('addr'),
+		'tel'       : $(this).attr('tel'),
+	};
+	app.open('shop.detail1.html', data);
+});
+
 $('.contol .appraise1').on('tap', function () {
+	data.type = $(this).attr('data-type');
 	$(this).removeClass('activet').addClass('activet').siblings().removeClass('activet');
 });
 
