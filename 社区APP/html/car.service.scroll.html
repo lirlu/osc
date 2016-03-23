@@ -27,7 +27,7 @@
 	
 	<script type="text/html" id="tpl-shop">
 		{{each seller_list as value}}
-		<div class="shop" address='shop.detail.html'>
+		<div class="shop" shop_id="{{value.shop_id}}">
 			<div class="shop-l">
 				<img src="http://192.168.2.15/attachs/{{value.logo}}" />
 			</div>
