@@ -114,9 +114,7 @@ $('.btn-choose-time').on('tap', function () {
 
 	var picker = new mui.DtPicker(options);
 	picker.show(function(res) {
-
-		console.log('选择结果: ' + res.text);
-		console.log(JSON.stringify(res));
+		$('[name=delivery-time]').val(res.text);
 		$('.time-hint').text(res.text);
 		if (1 == 1) {
 			//plus.nativeUI.toast('不能选择今天以前的时间');
@@ -148,7 +146,7 @@ $('.btn-submit').on('tap', function () {
 		'address': $('[name=delivery-addr]').val(),//收货地址ID
 		'time'   : $('[name=delivery-time]').val(),//送货时间
 		'note'   : $('[name=note-text]').val(),//买家留言
-		'invoice': $('[name=invoice]').is(':checked'),//是否需要发票
+		'invoice': $('[name=invoice]').is(':checked') ? 1 : 0,//是否需要发票
 		'title'  : $('[name=invoice-name]').val(),//发票抬头
 	};
 	if (!data.address) { alert('请选择收货地址'); return; }
@@ -183,10 +181,10 @@ $('.btn-submit').on('tap', function () {
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
 		if (false == res.status) {app.error(res.msg); return;};
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
-		
+		if (!res.error) { plus.nativeUI.toast('提交失败...'); return; }
 		if ('cash' == data.payway) { success(res.orderNo); return; }
 		
-		plus.payment.request(channel, xhr.responseText, function (result) {
+		plus.payment.request(channel, res.url, function (result) {
             plus.nativeUI.alert("支付成功！", function () { success(res.orderNo); });
         }, function(error) {
         	console.log(JSON.stringify(error));
