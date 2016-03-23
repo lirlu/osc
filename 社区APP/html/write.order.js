@@ -13,6 +13,49 @@ $('#pnl-product').delegate('.float-r .distance', 'tap', function(){
 		num = $(this).siblings('.number').text(num);
 	}
 });
+// 选择收货地址
+$('.btn-pick-addr').on('tap', function () {
+	app.open('select.address.html');
+});
+function area (pro, city, ctr) {
+	var a, b, c;
+	
+	for (var i in cityData3) {
+		var item = cityData3[i];
+		if (item.value == pro) {
+			a = item;
+			break;
+		}
+	}
+	a = a ? a : {'text':'', 'children':[]};
+	
+	for (var i in a.children) {
+		var item = a.children[i];
+		if (item.value == city) {
+			b = item;
+			break;
+		}
+	}
+	b = b ? b : {'text':'', 'children':[]};
+	
+	for (var i in b.children) {
+		var item = b.children[i];
+		if (item.value == ctr) {
+			c = item;
+			break;
+		}
+	}
+	c = c ? c : {'text':'', 'children':[]};
+	
+	return (a.text +' '+ b.text +' '+ c.text);
+};
+function doSetAddress (item) {
+	
+	$('[name=addr]').val(item.id);
+	$('span.name').text('姓名：' + item.name);
+	$('span.mobile').text('电话：' + item.tel);
+	$('span.addr').text('地址：' + area(item.provice, item.city, item.state) +' '+ item.addr);
+}
 
 template.helper('image', function (v) {
 	return app.link.image + v;
@@ -42,7 +85,17 @@ mui.plusReady(function () {
 		if (false == res.status) {app.error(res.msg); return;};
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
 		
+		doSetAddress(res.addr_view);
 		$('#pnl-product').append(template('tpl-product', {data:[res.info]}));
+		$('.btn-submit').prop('disabled', false);
 	})
 	;
 });
+
+$('.btn-submit').on('tap', function () {
+	
+});
+
+
+
+

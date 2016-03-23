@@ -40,11 +40,16 @@ function refresh () {
 
 // 选择某一个收货地址
 $('#pnl-address').delegate('input[name="radio"]', 'change', function (e) {
+	var view = plus.webview.currentWebview();
+	extras = view.extras;
+	
 	var id = $(this).closest('li.addr-item').attr('data-id');
 	for (var i in cache) {
 		if (id == cache[i].id) {
 			var txt = JSON.stringify(cache[i]);
-			plus.webview.getWebviewById('checkout.html').evalJS('doSetAddress('+txt+')');
+			
+	
+			plus.webview.getWebviewById(extras._FROM_).evalJS('doSetAddress('+txt+')');
 			plus.webview.currentWebview().close();
 			break;
 		}
