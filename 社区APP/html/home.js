@@ -7,6 +7,7 @@ $('body').delegate('[data-outer]', 'tap', function () {
 
 mui.plusReady(function () {
 	app.locate(function (res) {
-		$('header .left span').text(res.address.street);
+		var addr = res.address;
+		$('header .left span').text(addr.street || addr.district || addr.city || addr.province);
 	});
 });
