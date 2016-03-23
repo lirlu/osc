@@ -103,6 +103,16 @@ $('.btn-all-category').on('tap', function () {
 	;
 });
 
+// 点击商家列表
+$('#pnl-shop').delegate('.shop', 'tap', function() {
+	var data = {
+		'shop_id'   : $(this).attr('shop_id'),
+		'shop_name' : $(this).attr('shop_name'),
+		'addr'      : $(this).attr('addr'),
+		'tel'       : $(this).attr('tel'),
+	};
+	app.open('shop.detail1.html', data);
+});
 
 //点击一级列表
 $('body').delegate('.left-div', 'tap', function() {
