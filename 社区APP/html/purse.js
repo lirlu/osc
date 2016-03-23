@@ -1,6 +1,6 @@
 mui.init();
 
-mui.plusReady(function () {
+function refresh () {
 	var key = app.store('key');
 	$.ajax({
 		'dataType' : 'json',
@@ -24,7 +24,9 @@ mui.plusReady(function () {
 		$('.amount').val((res.money || '0') + '米币');
 	})
 	;
-});
+}
+
+mui.plusReady(refresh);
 
 $('body').delegate('[data-url]', 'tap', function () {
 	app.open($(this).attr('data-url'));

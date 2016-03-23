@@ -6,7 +6,7 @@ function next (cb) {
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
-		'url'      : app.url('mobile/user/login'),
+		'url'      : app.url('mobile/userinfo/chongzhi_log'),
 		'data'     : {key:key, page:data.page+1}
 	})
 	.fail(function (res) {

@@ -1,81 +1,67 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>米币充值</title>
-		<link rel="stylesheet" href="../css/mui.min.css" />
-		<link rel="stylesheet" href="../css/common.css" />
-		<link rel="stylesheet" href="../css/app/purse.css" />
-		<script type="text/javascript" src="../js/jquery.min.js"></script>
-		<script src="../js/mui.min.js"></script>
-	</head>
-	<body>
-		<!--头部-->
-		<header class="bar">
-			<a class="left mui-action-back mui-icon mui-icon-arrowleft"></a>
-			<h1 class="title">米币充值</h1>
-		</header>
-		<div class="content">
-			<ul><li>当前账户：<span>18193847576</span></li></ul>
-			<form>
-				<div class="input-div">
-					<span class="block">充值金额：</span>
-					<input type="number" placeholder="请输入充值金额" style="padding: 0;"/>
-				</div>
-			</form>
-			<div class="shengming center">充值声明：1米币=1人民币</div>
-			<div class="shengming">选择充值方式</div>
-			<ul>
-				<li class="payli">
-					<div class="float1">
-						<img src="../img/weixinzhifu.png" />
-					</div>
-					<div class="float1 wieu">
-						微信支付
-						<p>推荐安装微信5.0以上版本的使用</p>
-					</div>
-					<div class="right1">
-						<span class="mui-radio mui-right">
-							<input type="radio" name="radio" style="top: 10px;right: 0;" />
-						</span>
-					</div>
-				</li>
-				<li class="payli" style="margin-top: 0;border-top: 1px solid #E5E5E5;">
-					<div class="float1">
-						<img src="../img/zhifubao.png" />
-					</div>
-					<div class="float1 wieu">
-						支付宝
-						<p>推荐安装支付宝5.0以上版本的使用</p>
-					</div>
-					<div class="right1">	
-						<span class="mui-radio mui-right">
-							<input type="radio" name="radio" style="top: 10px;right: 0;" />
-						</span>
-					</div>
-				</li>
-			</ul>
-			<div class="bottom">
-				<button class="tbn" id="tbn">确认充值</button>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>米币充值</title>
+	<link rel="stylesheet" href="../css/mui.min.css" />
+	<link rel="stylesheet" href="../css/common.css" />
+	<link rel="stylesheet" href="../css/app/purse.css" />
+</head>
+<body>
+	<!--头部-->
+	<header class="bar">
+		<a class="left mui-action-back mui-icon mui-icon-arrowleft"></a>
+		<h1 class="title">米币充值</h1>
+	</header>
+	<div class="content">
+		<ul><li>当前账户：<span class="account">18193847576</span></li></ul>
+		<form>
+			<div class="input-div">
+				<span class="block">充值金额：</span>
+				<input type="number" id="money" placeholder="请输入充值金额" style="padding: 0;"/>
 			</div>
+		</form>
+		<div class="shengming center">充值声明：1米币=1人民币</div>
+		<div class="shengming">选择充值方式</div>
+		<ul>
+			<li class="payli">
+				<div class="float1">
+					<img src="../img/weixinzhifu.png" />
+				</div>
+				<div class="float1 wieu">
+					微信支付
+					<p>推荐安装微信5.0以上版本的使用</p>
+				</div>
+				<div class="right1">
+					<span class="mui-radio mui-right">
+						<input type="radio" name="radio" value="wxpay" checked="checked" style="top: 10px;right: 0;" />
+					</span>
+				</div>
+			</li>
+			<li class="payli" style="margin-top: 0;border-top: 1px solid #E5E5E5;">
+				<div class="float1">
+					<img src="../img/zhifubao.png" />
+				</div>
+				<div class="float1 wieu">
+					支付宝
+					<p>推荐安装支付宝5.0以上版本的使用</p>
+				</div>
+				<div class="right1">	
+					<span class="mui-radio mui-right">
+						<input type="radio" name="radio" value="alipay" style="top: 10px;right: 0;" />
+					</span>
+				</div>
+			</li>
+		</ul>
+		<div class="bottom">
+			<button class="tbn btn-submit" id="tbn">确认充值</button>
 		</div>
-	</body>
+	</div>
+	
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
 	<script type="text/javascript" src="../js/mui.min.js" ></script>
-	<script type="text/javascript" src="../js/app/rechange.js" ></script>
-	<script>
-		$(function() {
-			$(window).resize(function() {
-				windowChange();
-			});
-			function windowChange() {
-				var winWidth = $(window).width();
-				var lDiv = "";
-				lDiv = $(".input-div").children(".block").width() + 15;
-				$('.input-div').children("input").width(winWidth - lDiv);
-			}
-			windowChange();
-		});
-	</script>
+	<script type="text/javascript" src="../js/app.js" ></script>
+	<script type="text/javascript" src="rechange.js" ></script>
+</body>
 </html>

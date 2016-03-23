@@ -44,7 +44,8 @@ $('body').delegate('#logoin button', 'tap', function() {
 		if (200 != res.code) { app.error('请求登录失败'); return; }
 		if (0 == res.status) { app.error(res.msg); return;}
 		
-		localStorage.setItem('key', res.key);
+		app.store('key', res.key);
+		
 		plus.webview.getWebviewById('user.html').evalJS('refresh()');
 		plus.webview.getWebviewById('cart.html').evalJS('cart.refresh()');
 		plus.webview.show('user.html', 'pop-in', 200);
