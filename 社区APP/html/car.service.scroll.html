@@ -3,14 +3,13 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	<title>联盟商家-列表页面</title>
+	<title>汽车服务-内容列表</title>
 	<link rel="stylesheet" href="../css/mui.min.css" />
 	<link rel="stylesheet" href="../css/common.css" />
 	<link rel="stylesheet" href="../css/app/collect.css" />
 </head>
 
-<body>
-	<!--头部-->
+<body>	
 	<div class="content" style="padding-top: 0;">
 		<div class="contol">
 			<div class="appraise1 btn-local-shop">本社区</div>
@@ -20,17 +19,17 @@
 		<div id="refreshContainer" class="mui-content mui-scroll-wrapper">
 			<div class="mui-scroll">
 				<!--数据列表-->
-				<ul class="mui-table-view mui-table-view-chevron" id="pnl-shop"></ul>
+				<section class="mui-table-view mui-table-view-chevron" id="pnl-shop"></section>
 			</div>
 		</div>
 	</div>
 	
+	
 	<script type="text/html" id="tpl-shop">
-		<div class="shop-empty-line" style="margin-top: 50px;"></div>
 		{{each seller_list as value}}
-		<div class="shop" shop_id="{{value.shop_id}}">
+		<div class="shop" address='shop.detail.html'>
 			<div class="shop-l">
-				<img src="{{value.logo | image}}" />
+				<img src="http://192.168.2.15/attachs/{{value.logo}}" />
 			</div>
 			<div class="shop-r">
 				{{value.shop_name}}
@@ -41,9 +40,9 @@
 		{{/each}}
 	</script>
 	<script type="text/html" id="tpl-category">
-		<div class="all-div" style="min-height: 800px;">
-			{{each cate_info as value}}
-			<div class="right-div" data-name="{{value.cate_id}}" style="top:0">
+		<div class="all-div" style="min-height: 800px; ">
+			{{each cate_info as value i}}
+			<div class="right-div" data-name="{{value.cate_id}}">
 				<ul class="namme">
 					{{each value.cate_list as value }}
 					<li data-name='{{value.cate_id}}'>{{value.cate_name}}</li>
@@ -63,6 +62,6 @@
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
 	<script type="text/javascript" src="../js/template.js"></script>
 	<script type="text/javascript" src="../js/app.js"></script>
-	<script type="text/javascript" src="shoper.scroll.js"></script>
+	<script type="text/javascript" src="car.service.scroll.js"></script>
 </body>
 </html>
