@@ -91,10 +91,55 @@ mui.plusReady(function () {
 	})
 	;
 });
-
+// 提交兑换
 $('.btn-submit').on('tap', function () {
+	var view = plus.webview.currentWebview();
+	var data = view.extras, key = app.store('key');
 	
+	var data = {
+		'key'      : key,
+		'addr_id'  : $('[name=addr]').val(),
+		'products' : [],
+	};
+	$('#pnl-product .product').each(function (item, idx) {
+		data.products.push({
+			'shop_id'  : $(item).attr('data-shop'),
+			'goods_id' : $(item).attr('data-product'),
+			'num'      : $(item).find('.num').text(),
+		});
+	});
+	data.shop_id  = data.products[0].shop_id;
+	data.goods_id = data.products[0].goods_id;
+	data.num      = data.products[0].num;
+	
+	plus.nativeUI.showWaiting('正在兑换...');
+	$.ajax({
+		'dataType' : 'json',
+		'type'     : 'post',
+		'url'      : app.url('mobile/IntegralGoods/exchange'),
+		'data'     : data
+	})
+	.fail(function (res) {
+		console.log('取得商品详情失败：' + JSON.stringify(res));
+		app.error('取得商品详情失败');
+		plus.nativeUI.closeWaiting();
+	})
+	.done(function (res) {
+		console.log('取得商品详情：' + JSON.stringify(res));
+		plus.nativeUI.closeWaiting();
+		
+		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
+		if (false == res.status) {app.error(res.msg); return;};
+		if (res.msg) { plus.nativeUI.toast(res.msg); };
+		
+		plus.nativeUI.alert('兑换成功', function () { success(res); });
+	})
+	;
 });
+
+function success (res) {
+	plus.webview.currentWebview().close();
+}
 
 
 
