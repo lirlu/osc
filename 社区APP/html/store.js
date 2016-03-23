@@ -30,7 +30,7 @@ mui.plusReady(function () {
 		'dataType' : 'json',
 		'type'     : 'post',
 		'url'      : app.url('mobile/IntegralGoods/goods_list'),
-		'data'     : { 'key':key }
+		'data'     : { 'key':key, 'page':1, 'limit':9999}
 	})
 	.fail(function (res) {
 		console.log('查询米币商城商品失败：' + JSON.stringify(res));
