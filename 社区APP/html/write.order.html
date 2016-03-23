@@ -1,82 +1,65 @@
-/<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>填写订单</title>
-		<link rel="stylesheet" type="text/css" href="../css/mui.min.css" />
-		<link rel="stylesheet" href="../css/common.css" />
-		<link rel="stylesheet" href="../css/app/integral.css" />
-		<style>
-			.r-div {
-				margin-left: 15px;
-			}
-			.clasify {
-				height: 120px;
-			}
-		</style>
-
-		<script type="text/javascript" src="../js/jquery.min.js"></script>
-		<script type="text/javascript" src="../js/mui.min.js"></script>
-	</head>
-	<body>
-		<!--头部-->
-		<header class="bar">
-			<a class="left mui-action-back mui-icon mui-icon-arrowleft">
-				
-			</a>
-			<h1 class="title">填写订单</h1>
-		</header>
-		<div class="content">
-			<ul>
-				<li>选择收货地址<i></i></li>
-				<li>
-					<span>姓名：白李登峰</span>
-					<span>电话：173784858689</span>
-					<span>地址：成都市金牛区群星路13号</span>
-				</li>
-			</ul>
-			<div class="clasify">
-				<div class="l-div">
-					<img src="../img/duihuan.png" />
-				</div>
-				<div class="r-div">
-					<span>《新仙剑奇侠传》第二波游戏礼盒包</span>
-					<div class="class">
-						<div class="fj"><span class="col gf">9</span>米币</div>
-						<div class="block">
-							市场参考价300.00
-							<div class="float-r">
-								<span class="f-l">数量：</span>
-								<img src="../img/jian1.png" class="distance" />
-								<span class="f-l number">1</span>
-								<img src="../img/add.png" class="add" />
-							</div>
-						</div>	
-					</div>
-				</div>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>填写订单</title>
+	<link rel="stylesheet" type="text/css" href="../css/mui.min.css" />
+	<link rel="stylesheet" href="../css/common.css" />
+	<link rel="stylesheet" href="../css/app/integral.css" />
+	<style>
+		.r-div {
+			margin-left: 15px;
+		}
+		.clasify {
+			height: 120px;
+		}
+	</style>
+</head>
+<body>
+	<!--头部-->
+	<header class="bar">
+		<a class="left mui-action-back mui-icon mui-icon-arrowleft"></a>
+		<h1 class="title">填写订单</h1>
+	</header>
+	<div class="content">
+		<ul>
+			<li>选择收货地址<i></i></li>
+			<li>
+				<span>姓名：白李登峰</span>
+				<span>电话：173784858689</span>
+				<span>地址：成都市金牛区群星路13号</span>
+			</li>
+		</ul>
+		<div class="clasify">
+			<div class="l-div">
+				<img src="../img/duihuan.png" />
 			</div>
-			<div class="bottom">
-				<button class="tbn">立即领取</button>
+			<div class="r-div">
+				<span>《新仙剑奇侠传》第二波游戏礼盒包</span>
+				<div class="class">
+					<div class="fj"><span class="col gf">9</span>米币</div>
+					<div class="block">
+						市场参考价300.00
+						<div class="float-r">
+							<span class="f-l">数量：</span>
+							<img src="../img/jian1.png" class="distance" />
+							<span class="f-l number">1</span>
+							<img src="../img/add.png" class="add" />
+						</div>
+					</div>	
+				</div>
 			</div>
 		</div>
-		
-		<script>
-		/**数量加减**********/
-			$('.float-r .add').click(function(){
-				var num = $(this).siblings('.number').text();
-				if(num<9){
-					num++;
-					num = $(this).siblings('.number').text(num);
-				}
-			});
-			$('.float-r .distance').click(function(){
-				var num = $(this).siblings('.number').text();
-				if(num>1){
-					num--;
-					num = $(this).siblings('.number').text(num);
-				}
-			});
-		</script>
-	</body>
+		<div class="bottom">
+			<button class="tbn">立即领取</button>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/template.js"></script>
+	<script type="text/javascript" src="../js/app.js"></script>
+	<script type="text/javascript" src="write.order.js"></script>
+</body>
 </html>

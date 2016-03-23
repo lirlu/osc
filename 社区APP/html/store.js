@@ -57,8 +57,12 @@ $('#pnl-product').delegate('.product', 'tap', function (e) {
 // 米币兑换商品
 $('#pnl-product').delegate('.btn-buy', 'tap', function (e) {
 	e.stopPropagation();
+	var data = {
+		'goods_id' : $(this).closest('.product').attr('data-product'),
+		'shop_id'  : $(this).closest('.product').attr('data-shop'),
+	};
 	
-	app.open('write.order.html', {'id':$(this).closest('.product').attr('data-id')});
+	app.open('write.order.html', data);
 });
 
 
