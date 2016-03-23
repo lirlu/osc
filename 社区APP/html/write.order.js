@@ -101,17 +101,18 @@ $('.btn-submit').on('tap', function () {
 		'addr_id'  : $('[name=addr]').val(),
 		'products' : [],
 	};
-	$('#pnl-product .product').each(function (item, idx) {
+	$('#pnl-product .product').each(function (idx, item) {
 		data.products.push({
 			'shop_id'  : $(item).attr('data-shop'),
 			'goods_id' : $(item).attr('data-product'),
-			'num'      : $(item).find('.num').text(),
+			'num'      : $(item).find('.number').text(),
 		});
 	});
 	data.shop_id  = data.products[0].shop_id;
 	data.goods_id = data.products[0].goods_id;
 	data.num      = data.products[0].num;
 	
+	console.log('兑换数据：' + JSON.stringify(data));
 	plus.nativeUI.showWaiting('正在兑换...');
 	$.ajax({
 		'dataType' : 'json',
