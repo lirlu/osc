@@ -137,6 +137,19 @@ $('#pnl-shop').delegate('.shop', 'tap', function() {
 	};
 	app.open('shop.detail1.html', data);
 });
+// 点击拼车信息
+$('#pnl-shop').delegate('.carpool', 'tap', function() {
+	var data = {
+		'id'   : $(this).attr('data-id'),
+		'type' : $(this).attr('data-type'),
+	};
+	
+	if ('owner' == $(this).attr('data-type')) {
+		app.open('publish.owner.html', data);
+	} else {
+		app.open('publish.passenger.html', data);	
+	}
+});
 
 $('.contol .appraise1').on('tap', function () {
 	data.tab = $(this).attr('data-type');

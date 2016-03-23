@@ -65,10 +65,10 @@
 	<script type="text/html" id="tpl-carpool">
 		<div class="shop-empty-line" style="margin-top: 50px;"></div>
 		{{each list as item}}
-		<div class="carpool" data-id="{{item.id}}">
+		<div class="carpool" data-id="{{item.id}}" data-type="{{'1'==item.type ? 'owner' : 'passenger'}}">
 			<div class="mui-row">
 				<div class="mui-col-xs-3">
-					<img src="{{item.logo | image}}"/>
+					<img src="{{item.img | image}}"/>
 				</div>
 				<div class="mui-col-xs-9">
 					<p class="name">{{item.username}}</p>
