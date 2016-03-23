@@ -45,18 +45,10 @@
 			<li class="mui-row">
 				<div class="mui-col-xs-7">
 					米币充值
-					<p>充值成功</p>
-					<p>12月20日23:06</p>
+					<p>{{'1' == item.status ? '充值成功' : '充值失败'}}</p>
+					<p>{{item.add_time}}</p>
 				</div>
-				<div class="ui-col-xs-5 mui-text-right col">￥：6.0</div>
-			</li>
-			<li class="mui-row">
-				<div class="mui-col-xs-7">
-					米币充值
-					<p>充值成功</p>
-					<p>12月20日23:06</p>
-				</div>
-				<div class="ui-col-xs-5 mui-text-right col">￥：6.0</div>
+				<div class="ui-col-xs-5 mui-text-right col">{{item.money}}</div>
 			</li>
 		</ul>
 		{{/each}}

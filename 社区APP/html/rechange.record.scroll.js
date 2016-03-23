@@ -29,8 +29,9 @@ function next (cb) {
 
 function funcPullupRefresh () {
 	next(function (res) {
+		var noMore = data.page * data.limit >= res.total;
 		$('#pnl-record').append(template('tpl-record', {data:res.list}));
-		mui('#refreshContainer').pullRefresh().endPullupToRefresh(res.noMore);//参数为true代表没有更多数据了。
+		mui('#refreshContainer').pullRefresh().endPullupToRefresh(noMore);//参数为true代表没有更多数据了。
 	});
 }
 mui.init({

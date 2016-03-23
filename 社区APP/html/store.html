@@ -1,82 +1,59 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>米币商城</title>
-		<link rel="stylesheet" href="../css/mui.min.css" />
-		<link rel="stylesheet" href="../css/common.css" />
-		<link rel="stylesheet" href="../css/app/integral.css" />
-		<script type="text/javascript" src="../js/jquery.min.js"></script>
-		<script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
-	</head>
-	<body>
-		<!--头部-->
-		<header class="bar">
-				<a class="left mui-action-back mui-icon mui-icon-arrowleft">
-				
-			</a>
-			<h1 class="title">米币商城</h1>
-		</header>
-		<div class="content">
-			<div class="integral">
-				<span class="f-l">当前米币</span>
-				<span class="num">265</span>
-			</div>
-			<div class="integral bish">
-				<span class="f-l">今日必说</span>
-				<span class="f-r">每天10点开抢</span>
-			</div>
-			<ul class="mui-table-view">
-				<li class="mui-table-view-cell mui-media">
-					<a href="#">
-						<div class="f-l img">
-							<img src="../img/lafang.png">
-						</div>	
-						<div class="mui-media-body">
-							<span class="mui-ellipsis-2">拉芳营养柔顺护理水润去屑洗发露400ml2瓶装</span>
-							<div class="media-body">
-								<p class='mui-ellipsis'>限量2000款</p>
-								<span class="col gkto">9米币</span>
-								<del>￥12.8</del>
-								<span class="btn">我要兑</span>
-							</div>
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<a href="#">
-						<div class="f-l img">
-							<img src="../img/lafang.png">
-						</div>	
-						<div class="mui-media-body">
-							<span class="mui-ellipsis-2">拉芳营养柔顺护理水润去屑洗发露400ml2瓶装</span>
-							<div class="media-body">
-								<p class='mui-ellipsis'>限量2000款</p>
-								<span class="col gkto">9米币</span>
-								<del>￥12.8</del>
-								<span class="btn">我要兑</span>
-							</div>
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<a href="#">
-						<div class="f-l img">
-							<img src="../img/lafang.png">
-						</div>	
-						<div class="mui-media-body">
-							<span class="mui-ellipsis-2">拉芳营养柔顺护理水润去屑洗发露400ml2瓶装</span>
-							<div class="media-body">
-								<p class='mui-ellipsis'>限量2000款</p>
-								<span class="col gkto">9米币</span>
-								<del>￥12.8</del>
-								<span class="btn">我要兑</span>
-							</div>
-						</div>
-					</a>
-				</li>
-			</ul>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>米币商城</title>
+	<link rel="stylesheet" href="../css/mui.min.css" />
+	<link rel="stylesheet" href="../css/common.css" />
+	<link rel="stylesheet" href="../css/app/integral.css" />
+</head>
+<body>
+	<!--头部-->
+	<header class="bar">
+		<a class="left mui-action-back mui-icon mui-icon-arrowleft"></a>
+		<h1 class="title">米币商城</h1>
+	</header>
+	<div class="content">
+		<div class="integral">
+			<span class="f-l">当前米币</span>
+			<span class="num">265</span>
 		</div>
-	</body>
+		<div class="integral bish">
+			<span class="f-l">今日必说</span>
+			<span class="f-r">每天10点开抢</span>
+		</div>
+		<ul class="mui-table-view" id="pnl-product">
+		</ul>
+	</div>
+	
+	<!-- 米币商城商品 开始 -->
+	<script type="text/html" id="tpl-product">
+		{{each data as item}}
+		<li class="mui-table-view-cell mui-media">
+			<a href="#">
+				<div class="f-l img">
+					<img src="../img/lafang.png">
+				</div>	
+				<div class="mui-media-body">
+					<span class="mui-ellipsis-2">拉芳营养柔顺护理水润去屑洗发露400ml2瓶装</span>
+					<div class="media-body">
+						<p class='mui-ellipsis'>限量2000款</p>
+						<span class="col gkto">9米币</span>
+						<del>￥12.8</del>
+						<span class="btn">我要兑</span>
+					</div>
+				</div>
+			</a>
+		</li>
+		{{/each}}
+	</script>
+	<!-- 米币商城商品 结束 -->
+	
+	<script type="text/javascript" src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/template.js"></script>
+	<script type="text/javascript" src="../js/app.js"></script>
+	<script type="text/javascript" src="store.js"></script>
+</body>
 </html>
