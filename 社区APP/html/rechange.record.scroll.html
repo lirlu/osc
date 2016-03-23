@@ -12,62 +12,54 @@
 			clear: both;
 			width: 100%;
 		}
-		.content>ul>li {
+		.content {
+			padding-top: 0px;
+		}
+		#pnl-record li {
 			border-bottom: 1px solid #DDDDDD;
 			height: 80px;
+		}
+		#pnl-record li:last-child {
+			border-bottom-color: transparent;
+		}
+		#pnl-record .time {
+			background-color: #F7F7F8;
 		}
 	</style>
 </head>
 <body>
-	<!--内容-->
-	<div class="content">
-		<div class="time">2015年12月</div>
-		<ul>
-			<li class="mui-row">
-				<div class="mui-col-xs-7">
-					米币充值
-					<p>充值成功</p>
-					<p>12月20日23:06</p>
-				</div>
-				<div class="ui-col-xs-5 mui-text-right col">￥：6.0</div>
-			</li>
-			<li class="mui-row">
-				<div class="mui-col-xs-7">
-					米币充值
-					<p>充值成功</p>
-					<p>12月20日23:06</p>
-				</div>
-				<div class="ui-col-xs-5 mui-text-right col">￥：6.0</div>
-			</li>
-			<li class="mui-row">
-				<div class="mui-col-xs-7">
-					米币充值
-					<p>充值成功</p>
-					<p>12月20日23:06</p>
-				</div>
-				<div class="ui-col-xs-5 mui-text-right col">￥：6.0</div>
-			</li>
-			<li class="mui-row">
-				<div class="mui-col-xs-7">
-					米币充值
-					<p>充值成功</p>
-					<p>12月20日23:06</p>
-				</div>
-				<div class="ui-col-xs-5 mui-text-right col">￥：6.0</div>
-			</li>
-		</ul>
-		<div class="time">2015年12月</div>
-		<ul>
-			<li class="mui-row">
-				<div class="mui-col-xs-7">
-					米币充值
-					<p>充值成功</p>
-					<p>12月20日23:06</p>
-				</div>
-				<div class="ui-col-xs-5 mui-text-right col">￥：6.0</div>
-			</li>
-		</ul>
+	<div id="refreshContainer" class="mui-content mui-scroll-wrapper">
+		<div class="mui-scroll">
+			<!--内容-->
+			<ul class="mui-table-view mui-table-view-chevron" id="pnl-record">
+	      
+			</ul>
+		</div>
 	</div>
+	
+	<!-- 充值纪录模板 开始 -->
+	<script type="text/html" id="tpl-record">
+		<div class="time">2015年12月</div>
+		<ul>
+			<li class="mui-row">
+				<div class="mui-col-xs-7">
+					米币充值
+					<p>充值成功</p>
+					<p>12月20日23:06</p>
+				</div>
+				<div class="ui-col-xs-5 mui-text-right col">￥：6.0</div>
+			</li>
+			<li class="mui-row">
+				<div class="mui-col-xs-7">
+					米币充值
+					<p>充值成功</p>
+					<p>12月20日23:06</p>
+				</div>
+				<div class="ui-col-xs-5 mui-text-right col">￥：6.0</div>
+			</li>
+		</ul>
+	</script>
+	<!-- 充值纪录模板 结束 -->
 	
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
 	<script type="text/javascript" src="../js/mui.min.js"></script>
