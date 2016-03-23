@@ -2,7 +2,7 @@ var page = 0;
 function search (cb) {
 	plus.nativeUI.showWaiting("等待中...");
 	//console.log('定位数据：' + app.store('LocationAddress'));
-	var addr = JSON.parse(app.store('LocationAddress'));
+	var addr = app.store('LocationAddress') || {coords:{}};
 	console.log('请求附近商超数据：' + app.url('mobile/supermarketseller/superseller'));
 	$.ajax({
 		'dataType' : 'json',
