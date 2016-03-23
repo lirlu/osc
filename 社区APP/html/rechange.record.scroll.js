@@ -1,4 +1,4 @@
-var data = {page:0};
+var data = {page:0, limit:10};
 
 function next (cb) {
 	var key = app.store('key');
@@ -29,7 +29,7 @@ function next (cb) {
 
 function funcPullupRefresh () {
 	next(function (res) {
-		$('#pnl-record').append(template('tpl-record', {data:res}));
+		$('#pnl-record').append(template('tpl-record', {data:res.list}));
 		mui('#refreshContainer').pullRefresh().endPullupToRefresh(res.noMore);//参数为true代表没有更多数据了。
 	});
 }

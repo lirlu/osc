@@ -39,6 +39,7 @@
 	
 	<!-- 充值纪录模板 开始 -->
 	<script type="text/html" id="tpl-record">
+		{{each data as item}}
 		<div class="time">2015年12月</div>
 		<ul>
 			<li class="mui-row">
@@ -58,6 +59,7 @@
 				<div class="ui-col-xs-5 mui-text-right col">￥：6.0</div>
 			</li>
 		</ul>
+		{{/each}}
 	</script>
 	<!-- 充值纪录模板 结束 -->
 	
