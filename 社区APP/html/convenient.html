@@ -1,38 +1,26 @@
 <!DOCTYPE html>
 <html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>便捷中心</title>
+	<link rel="stylesheet" href="../css/mui.min.css" />
+	<link rel="stylesheet" href="../css/common.css" />
+	<link rel="stylesheet" href="../css/app/convenient.css" />
+	<link rel="stylesheet" href="../css/app/collect.css" />
+</head>
 
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>便捷中心</title>
-		<link rel="stylesheet" href="../css/mui.min.css" />
-		<link rel="stylesheet" href="../css/common.css" />
-		<link rel="stylesheet" href="../css/app/convenient.css" />
-		<link rel="stylesheet" href="../css/app/collect.css" />
-	</head>
+<body>
+	<!--蒙版-->
+	<div class="masking"></div>
+	<!--头部-->
+	<header class="bar">
+		<a class="left mui-action-back mui-icon mui-icon-arrowleft"></a>
+		<h1 class="title">便捷中心</h1>
+		<a class="right mui-icon mui-icon-compose" address='announce1.html'></a>
+	</header>
 
-	<body>
-		<!--蒙版-->
-		<div class="masking"></div>
-		<!--头部-->
-		<header class="bar">
-			<a class="left mui-action-back mui-icon mui-icon-arrowleft"></a>
-			<h1 class="title">便捷中心</h1>
-			<a class="right mui-icon mui-icon-compose" address='announce1.html'></a>
-		</header>
-
-		<script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
-		<script type="text/javascript">
-			mui.init({
-				subpages: [{
-					url: 'convenient_list.html',
-					id: 'convenient_list.html',
-					styles: {
-						top: '44px'
-					}
-				}]
-			});
-		</script>
-	</body>
-
+	<script type="text/javascript" src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="convenient.js"></script>
+</body>
 </html>
