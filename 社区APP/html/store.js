@@ -21,7 +21,7 @@ mui.plusReady(function () {
 		if (false == res.status) {app.error(res.msg); return;};
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
 		
-		$('.integral .num').text(res.user_info.money);
+		$('.integral .num').text(res.user_info.integral);
 	})
 	;
 	

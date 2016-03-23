@@ -21,7 +21,7 @@ function refresh () {
 		if (false == res.status) {app.error(res.msg); return;};
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
 		
-		$('.amount').val((res.user_info.money || '0') + '米币');
+		$('.amount').text((res.user_info.integral || '0') + '米币');
 	})
 	;
 }
