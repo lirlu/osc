@@ -174,6 +174,6 @@ $('body').delegate('.product-order .btn-odr-comment', 'tap', function () {
 	var dom  = this, odr = $(dom).closest('.product-order');
 	var data = {'order_id':$(odr).attr('data-id'), 'order_no':$(odr).attr('data-no'), 'key':_Data.key};
 	
-	app.open('all.appraise.html', data);
+	app.open('goods.appraise.html', data);
 });
 
