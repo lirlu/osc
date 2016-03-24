@@ -74,3 +74,6 @@ mui.plusReady(function () {
 template.helper('image', function (v) {
 	return app.link.image + v;
 });
+template.helper('price', function (v) {
+	return v / 100;
+});

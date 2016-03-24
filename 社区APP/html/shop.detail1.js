@@ -2,6 +2,9 @@ var page = 0, cate_id = '';
 template.helper('image', function (v) {
 	return app.link.image + v;
 });
+template.helper('price', function (v) {
+	return v / 100;
+});
 // 页面跳转
 $('#pnl-product').delegate(".goods", 'tap', function() {
 	var view = plus.webview.currentWebview();
