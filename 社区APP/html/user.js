@@ -34,7 +34,9 @@ function refresh () {
 		if (false == res.status) {app.error(res.msg); return;};
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
 		
-		$('.touxiang').empty().append('<img src="../img/touxiang.png" />');
+		var src = res.user_info.img ? (app.link.image + res.user_info.img) : '../img/iconfont-morentouxiang.png';
+		
+		$('.touxiang').empty().append($('<img />').attr('src', src));
 		$('.username').empty().append(res.user_info.nickname || res.user_info.account || '');
 	})
 	;
