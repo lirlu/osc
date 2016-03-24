@@ -7,8 +7,38 @@
 		<link rel="stylesheet" href="../css/mui.min.css" />
 		<link rel="stylesheet" href="../css/common.css" />
 		<link rel="stylesheet" href="../css/app/refund.css" />
-		<script type="text/javascript" src="../js/jquery.min.js"></script>
-		<script type="text/javascript" src="../js/mui.min.js"></script>
+		<style>
+			.lire select {
+				min-width: 150px;
+				width: auto;
+				padding: 0;
+				margin-bottom: 0;
+			}
+			.lire b {
+				width: 10px;
+				height: 10px;
+			}
+			.nicks {
+				margin-top: 10px;
+				margin-bottom: 10px;
+				display: block;
+			}
+			.mui-icon-plusempty {
+				margin-right: 20px;
+				color: #FD4C3C;
+				font-weight: bold;
+			}
+			.image-evidence {
+				min-height: 50px;
+				display: block;
+				background-color: #FFFFFF;
+			}
+			.image-evidence img {
+				padding: 10px;
+				width: 100%;
+				height: auto;
+			}
+		</style>
 	</head>
 	<body>
 		<!--头部-->
@@ -20,59 +50,65 @@
 			<ul class="apply-refund">
 				<li>
 					申请服务
-					<span class="lire">仅退款
-					<b></b>
+					<span class="lire">
+						<select name="refund-type">
+							<option value="1">仅退款</option>
+							<option value="2">退货退款</option>
+						</select>
+						<b></b>
 					</span>
 				</li>
-				<ul class="tanchu" style="display: none;">
-					<li>退货退款<input type="radio" name="radio"></li>
-					<li>仅退款<input type="radio" name="radio"></li>
-				</ul>
 				<li>
 					货物状态
-					<span class="lire">已收到货<b></b></span>
+					<span class="lire">
+						<select name="refund-delivered">
+							<option value="1">未收到货</option>
+							<option value="2">已收到货</option>
+						</select>
+						<b></b>
+					</span>
 				</li>
-					<ul class="tanchu" style="display: none;">
-						<li>未收到货<input type="radio" name="radio1"></li>
-						<li>已收到货<input type="radio" name="radio1"></li>
-					</ul>
 				<li>
 					退款原因
-					<span class="lire">请选择<b></b></span>
+					<span class="lire">
+						<select name="refund-reason">
+							<option value="1">点错了、点多了</option>
+							<option value="2">计划有变，不想要了</option>
+							<option value="3">地址、电话输入有误</option>
+							<option value="4">产品质量有问题</option>
+							<option value="5">其他</option>
+						</select>
+						<b></b>
+					</span>
 				</li>
-					<ul class="tanchu" style="display: none;">
-						<li>多拍/拍错/不想要<input type="radio" name="radio2"></li>
-						<li>商品少件/破损/污渍<input type="radio" name="radio2"></li>
-					</ul>
 			</ul>
 				
 			<form class="mui-input-group">
 				<div class="mui-input-row frf">
 					<div style="float: left;width: 95px;">退款金额</div>
-					<div style="float: left;width: 65%;"><input type="number" name="number" value="12.3" placeholder="请输入退款金额"/></div>
+					<div style="float: left;width: 65%;">
+						<input type="number" name="number" value="12.3" placeholder="请输入退款金额"/>
+					</div>
 				</div>
 			</form>
-			<div class="shuo">最多33.66元，含发货邮费0.00元</div>
+			<div class="shuo">最多 <span class="total">0</span> 元，含发货邮费 <span class="postage">0</span> 元</div>
 			<div class="nicks">退款说明</div>
 			<div class="mui-input-row">
-				<textarea placeholder="请输入退款说明，最多200字" rows="4"></textarea>
+				<textarea placeholder="请输入退款说明，最少10个字，最多200个字" rows="4"></textarea>
 			</div>
-			<div class="nicks">退款凭证</div>
-			<div class="liie_div">
-				<div class="liie">
-					<img src="../img/pingzheng.png" />
-				</div>
-				<div class="liie">
-					<img src="../img/pingzheng.png" />
-				</div>
-				<div class="liie">
-					<img src="../img/pingzheng.png" />
-				</div>
+
+			<div class="nicks">退款凭证<span class="mui-icon mui-icon-plusempty mui-pull-right"></span></div>
+			<div class="mui-row image-evidence">
 			</div>
 			<div class="bottom">
-				<button class="tbn">提交申请</button>
+				<button class="tbn btn-submit">提交申请</button>
 			</div>
 		</div>
+		
+		<script type="text/javascript" src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/app.js"></script>
+		<script type="text/javascript" src="refund.js"></script>
 	</body>
 </html>
 
