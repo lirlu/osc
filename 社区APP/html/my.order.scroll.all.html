@@ -42,6 +42,8 @@
 					<span class="col r_f">已完成</span>
 					{{else if '4' == item.status}}
 					<span class="col r_f">待评价</span>
+					{{else if '5' == item.status}}
+					<span class="col r_f">已取消</span>
 					{{else}}
 					<!-- 无操作 |重新购买 -->
 					{{/if}}
@@ -89,6 +91,8 @@
 					<button class="btnf activeo btn-odr-comment">立即评价</button>
 					{{else if '4' == item.status}}
 					<button class="btnf activeo btn-odr-comment">立即评价</button>
+					{{else if '5' == item.status}}
+					<button class="btnf activeo btn-odr-comment" disabled="disabled">已取消</button>
 					{{else}}
 					<!-- 无操作 |重新购买 -->
 					{{/if}}
