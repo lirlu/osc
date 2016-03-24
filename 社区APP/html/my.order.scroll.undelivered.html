@@ -51,10 +51,10 @@
 				{{each item.goods_list as product}}
 				<div class="fefk">
 					<div class="l_f l_img">
-						<img src="../img/goods1.png" />
+						<img src="{{product.img | image}}" />
 					</div>	
 					<div class="nick1">
-						米饭（含打包盒0.5元）<span class="r_f col1">x{{product.num}}</span>
+						{{product.title}}<span class="r_f col1">x{{product.num}}</span>
 						<p>￥{{product.price | price}}</p>
 					</div>
 				</div>
