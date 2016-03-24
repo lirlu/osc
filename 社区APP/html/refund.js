@@ -23,6 +23,11 @@ mui.plusReady(function () {
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
 		if (false == res.status) {app.error(res.msg); return;};
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
+		if ('1' == res.title) {
+			plus.nativeUI.toast('此订单退款请求已提交');
+			plus.webview.currentWebview().close();
+			return;
+		}
 		
 		$('.total').text(res.price / 100);
 		$('.postage').text(res.freight);
@@ -91,12 +96,12 @@ function upload (image) {
 	function _cb (result, status) {
 		var res = result.responseText;
 		plus.nativeUI.closeWaiting();
-		console.log(res);
 		
-		// 上传完成
-		if ( status == 200 ) { 
+		try { res = JSON.parse(res); } catch (e) { status = 404 }
+		
+		if (status == 200) { 
 			//plus.nativeUI.toast('上传文件成功');
-			append(image);
+			append({'path':image.path, 'id':res.id, 'name':res.img});
 		} else {
 			plus.nativeUI.toast('上传图片失败');
 		}
@@ -110,8 +115,9 @@ function upload (image) {
 }
 
 function append (image) {
+	//console.log(JSON.stringify(image));
 	var dom = $('<div class="mui-col-xs-4"></div>').appendTo($('.image-evidence'));
-	$('<img />').attr('src', image.path).attr('data-id', image.id).attr('data-name', image.img).appendTo(dom);
+	$('<img />').attr('src', image.path).attr('data-id', image.id).attr('data-name', image.name).appendTo(dom);
 }
 
 // 提交退款申请
@@ -119,15 +125,15 @@ $('.btn-submit').on('tap', function () {
 	var view = plus.webview.currentWebview();
 	
 	var data = {
-		'key'       : app.store('key'),
-		'order_id'  : view.extras.order_id,
-		'order_no'  : view.extras.order_no,
-		'type'      : $('[name=refund-type]').val(),
-		'delivered' : $('[name=refund-delivered]').val(),
-		'reason'    : $('[name=refund-reason]').val(),
-		'number'    : $('[name=number]').val(),
-		'message'   : $('[name=message]').val(),
-		'images'    : [],
+		'key'       : app.store('key'),// 用户KEY
+		'order_id'  : view.extras.order_id,// 订单ID
+		'order_no'  : view.extras.order_no,// 订单编号
+		'type'      : $('[name=refund-type]').val(),// 申请服务
+		'delivered' : $('[name=refund-delivered]').val(),// 货物状态
+		'reason'    : $('[name=refund-reason]').val(),// 退款原因
+		'number'    : $('[name=number]').val(),// 退款金额
+		'message'   : $('[name=message]').val(),// 退款说明
+		'images'    : [],// 图片数据
 	};
 	$('.image-evidence img').each(function (idx, item) {
 		data.images.push({
@@ -140,7 +146,7 @@ $('.btn-submit').on('tap', function () {
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
-		'url'      : app.url('mobile/order/refund_view'),
+		'url'      : app.url('mobile/order/refund'),
 		'data'     : data
 	})
 	.fail(function (res) {
