@@ -116,7 +116,7 @@ function upload (image) {
 
 function append (image) {
 	//console.log(JSON.stringify(image));
-	var dom = $('<div class="mui-col-xs-4"></div>').appendTo($('.image-evidence'));
+	var dom = $('<div class="mui-col-xs-4"><span class="mui-icon mui-icon-closeempty"></span></div>').appendTo($('.image-evidence'));
 	$('<img />').attr('src', image.path).attr('data-id', image.id).attr('data-name', image.name).appendTo(dom);
 }
 
@@ -164,6 +164,33 @@ $('.btn-submit').on('tap', function () {
 		
 		//app.open('refund.succeed.html', view.extras);
 		setTimeout(function () { plus.webview.currentWebview().close(); }, 500);
+	})
+	;
+});
+
+$('.image-evidence').delegate('.mui-icon', 'tap', function () {
+	var dom = this;
+	plus.nativeUI.showWaiting('正在提交...');
+	$.ajax({
+		'dataType' : 'json',
+		'type'     : 'post',
+		'url'      : app.url('mobile/order/refund_img_del'),
+		'data'     : {'key':app.store('key'), 'id':$(dom).siblings('img').attr('data-id')}
+	})
+	.fail(function (res) {
+		console.log('删除图片失败：' + JSON.stringify(res));
+		app.error('删除图片失败');
+		plus.nativeUI.closeWaiting();
+	})
+	.done(function (res) {
+		console.log('删除图片：' + JSON.stringify(res));
+		plus.nativeUI.closeWaiting();
+		
+		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
+		if (false == res.status) {app.error(res.msg); return;};
+		if (res.msg) { plus.nativeUI.toast(res.msg); };
+		
+		$(dom).closest('div').remove();
 	})
 	;
 });
