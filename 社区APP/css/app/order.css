@@ -23,6 +23,7 @@ ul.tuikuan li{background: #FFFFFF;line-height: 21px;padding: 5px 15px;}
 .activeo{border: 1px solid #FD4C3C;color: #FD4C3C;}
 
 #pnl-order {padding-bottom: 70px;}
+#pnl-order button[disabled] { color: #F3F3F3; border-color: #F3F3F3; }
 
 
 
