@@ -33,7 +33,6 @@ function next (cb) {
 
 function funcPullupRefresh () {
 	next(function (res) {
-		console.log(JSON.stringify(res.list[0]));
 		var noMore = _Data.page * _Data.limit >= (res.total||1);
 		$('#pnl-order').append(template('tpl-order', res));
 		
@@ -80,7 +79,7 @@ $('body').delegate('.product-order .btn-odr-repay', 'tap', function () {
 		'dataType' : 'json',
 		'type'     : 'post',
 		'url'      : app.url('mobile/order/pay'),
-		'data'     : {'id':$(odr).attr('data-id'), 'no':$(odr).attr('data-no'), 'key':_Data.key}
+		'data'     : {'order_id':$(odr).attr('data-id'), 'order_no':$(odr).attr('data-no'), 'key':_Data.key}
 	})
 	.fail(function (res) {
 		console.log('重新支付订单失败：' + JSON.stringify(res));
@@ -110,7 +109,7 @@ $('body').delegate('.product-order .btn-odr-cancel', 'tap', function () {
 		'dataType' : 'json',
 		'type'     : 'post',
 		'url'      : app.url('mobile/order/cancel'),
-		'data'     : {'id':$(odr).attr('data-id'), 'no':$(odr).attr('data-no'), 'key':_Data.key}
+		'data'     : {'order_id':$(odr).attr('data-id'), 'order_no':$(odr).attr('data-no'), 'key':_Data.key}
 	})
 	.fail(function (res) {
 		console.log('取消支付订单失败：' + JSON.stringify(res));
@@ -140,7 +139,7 @@ $('body').delegate('.product-order .btn-odr-confirm', 'tap', function () {
 		'dataType' : 'json',
 		'type'     : 'post',
 		'url'      : app.url('mobile/order/take_deliver'),
-		'data'     : {'id':$(odr).attr('data-id'), 'no':$(odr).attr('data-no'), 'key':_Data.key}
+		'data'     : {'order_id':$(odr).attr('data-id'), 'order_no':$(odr).attr('data-no'), 'key':_Data.key}
 	})
 	.fail(function (res) {
 		console.log('取消支付订单失败：' + JSON.stringify(res));
@@ -165,7 +164,7 @@ $('body').delegate('.product-order .btn-odr-confirm', 'tap', function () {
 // 评论订单
 $('body').delegate('.product-order .btn-odr-comment', 'tap', function () {
 	var dom  = this, odr = $(dom).closest('.product-order');
-	var data = {'id':$(odr).attr('data-id'), 'no':$(odr).attr('data-no'), 'key':_Data.key};
+	var data = {'order_id':$(odr).attr('data-id'), 'order_no':$(odr).attr('data-no'), 'key':_Data.key};
 	
 	app.open('all.appraise.html', data);
 });

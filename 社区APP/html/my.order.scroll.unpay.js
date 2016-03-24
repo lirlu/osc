@@ -53,10 +53,13 @@ mui.init({
 });
 
 mui.plusReady(function() {
-	setTimeout(function () {
-		mui('#refreshContainer').pullRefresh().pullupLoading();
-	},1000);
+	setTimeout(reinit,1000);
 });
+
+function reinit () {
+	$('#pnl-order').empty();
+	mui('#refreshContainer').pullRefresh().pullupLoading();
+}
 
 template.helper('price', function (v) {
 	return v / 100;
@@ -67,3 +70,102 @@ template.helper('image', function (v) {
 template.helper('time', function (v) {
 	return moment(new Date(parseInt(v, 10))).format('YYYY-MM-DD h:mm:ss');
 });
+
+// 重新支付订单
+$('body').delegate('.product-order .btn-odr-repay', 'tap', function () {
+	var dom = this, odr = $(dom).closest('.product-order');
+	plus.nativeUI.showWaiting();
+	$.ajax({
+		'dataType' : 'json',
+		'type'     : 'post',
+		'url'      : app.url('mobile/order/pay'),
+		'data'     : {'order_id':$(odr).attr('data-id'), 'order_no':$(odr).attr('data-no'), 'key':_Data.key}
+	})
+	.fail(function (res) {
+		console.log('重新支付订单失败：' + JSON.stringify(res));
+		app.error('重新支付订单失败');
+		plus.nativeUI.closeWaiting();
+	})
+	.done(function (res) {
+		console.log('重新支付订单：' + JSON.stringify(res));
+		plus.nativeUI.closeWaiting();
+		
+		
+		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
+		if (false == res.status) {app.error(res.msg); return;};
+		if (res.msg) { plus.nativeUI.toast(res.msg); };
+		
+		$(dom).siblings().prop('disabled', true);
+		$(dom).prop('disabled', true);
+	})
+	;
+});
+
+// 取消订单支付订单
+$('body').delegate('.product-order .btn-odr-cancel', 'tap', function () {
+	var dom = this, odr = $(dom).closest('.product-order');
+	plus.nativeUI.showWaiting();
+	$.ajax({
+		'dataType' : 'json',
+		'type'     : 'post',
+		'url'      : app.url('mobile/order/cancel'),
+		'data'     : {'order_id':$(odr).attr('data-id'), 'order_no':$(odr).attr('data-no'), 'key':_Data.key}
+	})
+	.fail(function (res) {
+		console.log('取消支付订单失败：' + JSON.stringify(res));
+		app.error('取消支付订单失败');
+		plus.nativeUI.closeWaiting();
+	})
+	.done(function (res) {
+		console.log('取消支付订单：' + JSON.stringify(res));
+		plus.nativeUI.closeWaiting();
+		
+		
+		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
+		if (false == res.status) {app.error(res.msg); return;};
+		if (res.msg) { plus.nativeUI.toast(res.msg); };
+		
+		$(dom).siblings().prop('disabled', true);
+		$(dom).prop('disabled', true);
+	})
+	;
+});
+
+// 确认订单(收到货物)
+$('body').delegate('.product-order .btn-odr-confirm', 'tap', function () {
+	var dom = this, odr = $(dom).closest('.product-order');
+	plus.nativeUI.showWaiting();
+	$.ajax({
+		'dataType' : 'json',
+		'type'     : 'post',
+		'url'      : app.url('mobile/order/take_deliver'),
+		'data'     : {'order_id':$(odr).attr('data-id'), 'order_no':$(odr).attr('data-no'), 'key':_Data.key}
+	})
+	.fail(function (res) {
+		console.log('取消支付订单失败：' + JSON.stringify(res));
+		app.error('取消支付订单失败');
+		plus.nativeUI.closeWaiting();
+	})
+	.done(function (res) {
+		console.log('取消支付订单：' + JSON.stringify(res));
+		plus.nativeUI.closeWaiting();
+		
+		
+		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
+		if (false == res.status) {app.error(res.msg); return;};
+		if (res.msg) { plus.nativeUI.toast(res.msg); };
+		
+		$(dom).siblings().prop('disabled', true);
+		$(dom).prop('disabled', true);
+	})
+	;
+});
+
+// 评论订单
+$('body').delegate('.product-order .btn-odr-comment', 'tap', function () {
+	var dom  = this, odr = $(dom).closest('.product-order');
+	var data = {'order_id':$(odr).attr('data-id'), 'order_no':$(odr).attr('data-no'), 'key':_Data.key};
+	
+	app.open('all.appraise.html', data);
+});
+

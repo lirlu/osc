@@ -30,7 +30,7 @@
 		<ul class="tuikuan product-order" data-id="{{item.order_id}}" data-no="{{item.order_no}}">
 			<li>
 				<div class="gjot">
-					<span>快送订单</span>
+					<span>快送订单{{item.order_id}}</span>
 					<!-- 0未支付 1已付款 2已发货  3已完成 4待评价 5已取消 -->
 					{{if '0' == item.status}}
 					<span class="col r_f">待支付</span>
@@ -79,16 +79,16 @@
 				<div class="frko">
 					<!-- 0带支付 1已付款 2已发货  3已完成 4待评价 5已取消 -->
 					{{if '0' == item.status}}
-					<button class="btnf activeo">立即付款</button>
-					<button class="btnf">取消订单</button>
+					<button class="btnf activeo btn-odr-repay">立即付款</button>
+					<button class="btnf btn-odr-cancel">取消订单</button>
 					{{else if '1' == item.status}}
-					<button class="btnf activeo">退款</button>
+					<button class="btnf activeo btn-odr-refund">退款</button>
 					{{else if '2' == item.status}}
-					<button class="btnf activeo">立即确认</button>
+					<button class="btnf activeo btn-odr-confirm">立即确认</button>
 					{{else if '3' == item.status}}
-					<button class="btnf activeo">立即评价</button>
+					<button class="btnf activeo btn-odr-comment">立即评价</button>
 					{{else if '4' == item.status}}
-					<button class="btnf activeo">立即评价</button>
+					<button class="btnf activeo btn-odr-comment">立即评价</button>
 					{{else}}
 					<!-- 无操作 |重新购买 -->
 					{{/if}}
