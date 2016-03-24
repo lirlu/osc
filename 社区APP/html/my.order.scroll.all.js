@@ -54,10 +54,13 @@ mui.init({
 });
 
 mui.plusReady(function() {
-	setTimeout(function () {
-		mui('#refreshContainer').pullRefresh().pullupLoading();
-	},1000);
+	setTimeout(reinit,1000);
 });
+
+function reinit () {
+	$('#pnl-order').empty();
+	mui('#refreshContainer').pullRefresh().pullupLoading();
+}
 
 template.helper('price', function (v) {
 	return v / 100;
