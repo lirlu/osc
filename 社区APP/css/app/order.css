@@ -1,6 +1,6 @@
-.header_div{box-sizing: border-box;width: 100%;height: 44px;line-height: 44px;background: #FFFFFF;border-top: 1px solid #E5E5E5;}
-.hh{width: 20%;text-align: center;float: left;}
-.active{color: #FD4C3C;border-bottom: 1px solid #FD4C3C;}
+.header_div{box-sizing: border-box;width: 100%;background: #FFFFFF;border-top: 1px solid #E5E5E5;}
+.hh{width: 20%;text-align: center;float: left; border-bottom: 1px solid #FFF;height: 44px;line-height: 44px;background-color: #FFF;}
+.active{color: #FD4C3C;border-bottom-color: #FD4C3C;}
 li:after{position: absolute;height: 1px;background: #EFEFF4;left: 0;bottom: 0;}
 ul.tuikuan{margin-top: 8px;}
 ul.tuikuan li:after{left: 0;}
