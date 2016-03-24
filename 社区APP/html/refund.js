@@ -114,5 +114,53 @@ function append (image) {
 	$('<img />').attr('src', image.path).attr('data-id', image.id).attr('data-name', image.img).appendTo(dom);
 }
 
+// 提交退款申请
+$('.btn-submit').on('tap', function () {
+	var view = plus.webview.currentWebview();
+	
+	var data = {
+		'key'       : app.store('key'),
+		'order_id'  : view.extras.order_id,
+		'order_no'  : view.extras.order_no,
+		'type'      : $('[name=refund-type]').val(),
+		'delivered' : $('[name=refund-delivered]').val(),
+		'reason'    : $('[name=refund-reason]').val(),
+		'number'    : $('[name=number]').val(),
+		'message'   : $('[name=message]').val(),
+		'images'    : [],
+	};
+	$('.image-evidence img').each(function (idx, item) {
+		data.images.push({
+			'id'   : $(item).attr('data-id'),
+			'name' : $(item).attr('data-name'),
+		});
+	});
+	
+	plus.nativeUI.showWaiting('正在提交...');
+	$.ajax({
+		'dataType' : 'json',
+		'type'     : 'post',
+		'url'      : app.url('mobile/order/refund_view'),
+		'data'     : data
+	})
+	.fail(function (res) {
+		console.log('提交退款失败：' + JSON.stringify(res));
+		app.error('提交退款失败');
+		plus.nativeUI.closeWaiting();
+	})
+	.done(function (res) {
+		console.log('提交退款结果：' + JSON.stringify(res));
+		plus.nativeUI.closeWaiting();
+		
+		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
+		if (false == res.status) {app.error(res.msg); return;};
+		if (res.msg) { plus.nativeUI.toast(res.msg); };
+		
+		//app.open('refund.succeed.html', view.extras);
+		setTimeout(function () { plus.webview.currentWebview().close(); }, 500);
+	})
+	;
+});
+
 
 
