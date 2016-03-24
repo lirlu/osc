@@ -58,6 +58,12 @@ mui.plusReady(function() {
 	},1000);
 });
 
+template.helper('price', function (v) {
+	return v / 100;
+});
 template.helper('image', function (v) {
 	return app.link.image + v;
+});
+template.helper('time', function (v) {
+	return moment(new Date(parseInt(v, 10))).format('YYYY-MM-DD h:mm:ss');
 });

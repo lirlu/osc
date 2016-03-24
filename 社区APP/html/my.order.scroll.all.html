@@ -62,13 +62,13 @@
 			</li>
 			<li>
 				<div class=" col1 dfv">
-					送达时间<span class="fcr">今天11:15-11:30</span>
+					送货时间<span class="fcr">{{item.time}}</span>
 				</div>
 			</li>
 			<li data-id="{{item.order_id}}" data-no="{{item.order_no}}">
 				<div class=" col1 dfv">
 					<span class="block">订单编号<span class="fcr">{{item.order_no}}</span></span>
-					<span class="block">下单时间<span class="fcr">{{item.create_time | time}}</span></span>
+					<span class="block">下单时间<span class="fcr">{{item.create_time}}</span></span>
 					<span class="block">商品金额<span class="fcr">￥：{{item.total_price}}</span></span>
 					{{if '0' == item.status}}
 					<span class="block col2">未付款的订单将在15分钟后失效</span>
