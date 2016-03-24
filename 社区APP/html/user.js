@@ -30,8 +30,8 @@ function refresh () {
 		app.store('user', res);
 		//plus.nativeUI.closeWaiting();
 		
-		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
-		if (false == res.status) {app.error(res.msg); return;};
+		if (res.error && res.error.msg) { app.error(res.error.msg); localStorage.removeItem('key'); return; }
+		if (false == res.status) {app.error(res.msg); localStorage.removeItem('key'); return;};
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
 		
 		var src = res.user_info.img ? (app.link.image + res.user_info.img) : '../img/iconfont-morentouxiang.png';

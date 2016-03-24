@@ -27,7 +27,7 @@
 		<div class="data-empty-line"></div>
 		{{/if}}
 		{{each list as item}}
-		<ul class="tuikuan">
+		<ul class="tuikuan product-order" data-id="{{item.order_id}}" data-no="{{item.order_no}}">
 			<li>
 				<div class="gjot">
 					<span>快送订单</span>
@@ -65,7 +65,7 @@
 					送货时间<span class="fcr">{{item.time}}</span>
 				</div>
 			</li>
-			<li data-id="{{item.order_id}}" data-no="{{item.order_no}}">
+			<li>
 				<div class=" col1 dfv">
 					<span class="block">订单编号<span class="fcr">{{item.order_no}}</span></span>
 					<span class="block">下单时间<span class="fcr">{{item.create_time}}</span></span>
