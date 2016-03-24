@@ -87,7 +87,7 @@ function upload (image) {
 	var data = view.extras;
 	
 	var key = app.store('key');
-	plus.nativeUI.showWaiting('正在上传...');
+	plus.nativeUI.showWaiting('正在处理...');
 	function _cb (result, status) {
 		var res = result.responseText;
 		plus.nativeUI.closeWaiting();
@@ -95,7 +95,7 @@ function upload (image) {
 		
 		// 上传完成
 		if ( status == 200 ) { 
-			plus.nativeUI.toast('上传文件成功：' + res);
+			//plus.nativeUI.toast('上传文件成功');
 			append(image);
 		} else {
 			plus.nativeUI.toast('上传图片失败');
