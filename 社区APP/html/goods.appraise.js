@@ -16,6 +16,7 @@ $('.score .back_img').on('tap', function(){
 
 // 提交评论
 $('.btn-submit').on('tap', function () {
+	var dom = this;
 	var view = plus.webview.currentWebview();
 	var data = {
 		'key'      : app.store('key'),
@@ -27,6 +28,7 @@ $('.btn-submit').on('tap', function () {
 	
 	if (!data.content || data.content.length < 10) { plus.nativeUI.toast('评论内容至少写10个字'); return; }
 	
+	$(dom).prop('disabled', true);
 	plus.nativeUI.showWaiting('提交中...');
 	$.ajax({
 		'dataType' : 'json',
@@ -38,10 +40,12 @@ $('.btn-submit').on('tap', function () {
 		console.log('提交商品评论失败：' + JSON.stringify(res));
 		app.error('提交商品评论失败');
 		plus.nativeUI.closeWaiting();
+		$(dom).prop('disabled', false);
 	})
 	.done(function (res) {
 		console.log('商品评论结果：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
+		$(dom).prop('disabled', false);
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
 		if (false == res.status) {app.error(res.msg); return;};
