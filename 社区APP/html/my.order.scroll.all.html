@@ -31,37 +31,67 @@
 			<li>
 				<div class="gjot">
 					<span>快送订单</span>
-					<span class="col r_f">退款关闭</span>
+					<!-- 0未支付 1已付款 2已发货  3已完成 4待评价 5已取消 -->
+					{{if '0' == item.status}}
+					<span class="col r_f">待支付</span>
+					{{else if '1' == item.status}}
+					<span class="col r_f">待发货</span>
+					{{else if '2' == item.status}}
+					<span class="col r_f">已发货</span>
+					{{else if '3' == item.status}}
+					<span class="col r_f">已完成</span>
+					{{else if '4' == item.status}}
+					<span class="col r_f">待评价</span>
+					{{else}}
+					<!-- 无操作 |重新购买 -->
+					{{/if}}
 				</div>
 			</li>
 			<li>
+				{{each item.goods_list as product}}
 				<div class="fefk">
 					<div class="l_f l_img">
 						<img src="../img/goods1.png" />
 					</div>	
 					<div class="nick1">
-						米饭（含打包盒0.5元）<span class="r_f col1">X1</span>
-						<p>￥3</p>
+						米饭（含打包盒0.5元）<span class="r_f col1">x{{product.num}}</span>
+						<p>￥{{product.price | price}}</p>
 					</div>
 				</div>
+				{{/each}}
 			</li>
 			<li>
 				<div class=" col1 dfv">
 					送达时间<span class="fcr">今天11:15-11:30</span>
 				</div>
 			</li>
-			<li>
+			<li data-id="{{item.order_id}}" data-no="{{item.order_no}}">
 				<div class=" col1 dfv">
-					<span class="block">订单编号<span class="fcr">201511049305905</span></span>
-					<span class="block">下单时间<span class="fcr">今天11:15-11:30</span></span>
-					<span class="block">商品金额<span class="fcr">￥：3</span></span>
+					<span class="block">订单编号<span class="fcr">{{item.order_no}}</span></span>
+					<span class="block">下单时间<span class="fcr">{{item.create_time | time}}</span></span>
+					<span class="block">商品金额<span class="fcr">￥：{{item.total_price}}</span></span>
+					{{if '0' == item.status}}
 					<span class="block col2">未付款的订单将在15分钟后失效</span>
+					{{/if}}
 				</div>
 			</li>
 			<li>
 				<div class="frko">
+					<!-- 0带支付 1已付款 2已发货  3已完成 4待评价 5已取消 -->
+					{{if '0' == item.status}}
 					<button class="btnf activeo">立即付款</button>
 					<button class="btnf">取消订单</button>
+					{{else if '1' == item.status}}
+					<button class="btnf activeo">退款</button>
+					{{else if '2' == item.status}}
+					<button class="btnf activeo">立即确认</button>
+					{{else if '3' == item.status}}
+					<button class="btnf activeo">立即评价</button>
+					{{else if '4' == item.status}}
+					<button class="btnf activeo">立即评价</button>
+					{{else}}
+					<!-- 无操作 |重新购买 -->
+					{{/if}}
 				</div>
 			</li>
 		</ul>
@@ -73,6 +103,7 @@
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
 	<script type="text/javascript" src="../js/template.js"></script>
 	<script type="text/javascript" src="../js/app.js"></script>
+	<script type="text/javascript" src="../js/moment.js"></script>
 	<script type="text/javascript" src="my.order.scroll.all.js"></script>
 </body>
 </html>

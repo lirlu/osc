@@ -33,6 +33,7 @@ function next (cb) {
 
 function funcPullupRefresh () {
 	next(function (res) {
+		console.log(JSON.stringify(res.list[0]));
 		var noMore = _Data.page * _Data.limit >= (res.total||1);
 		$('#pnl-order').append(template('tpl-order', res));
 		
@@ -58,6 +59,14 @@ mui.plusReady(function() {
 	},1000);
 });
 
+template.helper('price', function (v) {
+	return v / 100;
+});
 template.helper('image', function (v) {
 	return app.link.image + v;
 });
+template.helper('time', function (v) {
+	return moment(new Date(parseInt(v, 10))).format('YYYY-MM-DD h:mm:ss');
+});
+
+

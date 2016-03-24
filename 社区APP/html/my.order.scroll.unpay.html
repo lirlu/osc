@@ -31,7 +31,20 @@
 			<li>
 				<div class="gjot">
 					<span>快送订单</span>
-					<span class="col r_f">退款关闭</span>
+					<!-- 0未支付 1已付款 2已发货  3已完成 4待评价 5已取消 -->
+					{{if '0' == item.status}}
+					<span class="col r_f">待支付</span>
+					{{else if '1' == item.status}}
+					<span class="col r_f">已付款</span>
+					{{else if '2' == item.status}}
+					<span class="col r_f">已发货</span>
+					{{else if '3' == item.status}}
+					<span class="col r_f">已完成</span>
+					{{else if '4' == item.status}}
+					<span class="col r_f">待评价</span>
+					{{else}}
+					<!-- 无操作 |重新购买 -->
+					{{/if}}
 				</div>
 			</li>
 			<li>
@@ -60,8 +73,21 @@
 			</li>
 			<li>
 				<div class="frko">
+					<!-- 0带支付 1已付款 2已发货  3已完成 4待评价 5已取消 -->
+					{{if '0' == item.status}}
 					<button class="btnf activeo">立即付款</button>
 					<button class="btnf">取消订单</button>
+					{{else if '1' == item.status}}
+					<button class="btnf activeo">退款</button>
+					{{else if '2' == item.status}}
+					<button class="btnf activeo">立即确认</button>
+					{{else if '3' == item.status}}
+					<button class="btnf activeo">立即评价</button>
+					{{else if '4' == item.status}}
+					<button class="btnf activeo">立即评价</button>
+					{{else}}
+					<!-- 无操作 |重新购买 -->
+					{{/if}}
 				</div>
 			</li>
 		</ul>

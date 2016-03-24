@@ -1,11 +1,6 @@
 mui.init({
 	subpages: [
 		{
-			url    : 'my.order.scroll.all.html',
-			id     : 'my.order.scroll.all.html',
-			styles : {top: '90px'}
-		},
-		{
 			url    : 'my.order.scroll.unpay.html',
 			id     : 'my.order.scroll.unpay.html',
 			styles : {top: '90px'}
@@ -23,6 +18,11 @@ mui.init({
 		{
 			url    : 'my.order.scroll.delivered.html',
 			id     : 'my.order.scroll.delivered.html',
+			styles : {top: '90px'}
+		},
+		{
+			url    : 'my.order.scroll.all.html',
+			id     : 'my.order.scroll.all.html',
 			styles : {top: '90px'}
 		},
 	]
