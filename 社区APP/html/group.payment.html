@@ -13,6 +13,7 @@
 		button{border: none;background: #FD4C3C;color: #FFF;width: 94%;margin-left: 3%;padding: 10px 0; margin-bottom: 20px; margin-top: 30px;}
 		img{width: 30px;margin: 10px 0;}
 		li:after {background-color: transparent;}
+		.payway input[type=radio] {top: 8px;}
     </style>
 </head>
 <body>
@@ -33,19 +34,7 @@
 				<a class="total">￥0</a>
 			</li>
 		</ul>
-		<ul>
-			<li>
-				<label>选择支付方式</label>
-				<label></label>
-			</li>
-			<li>
-				<img src="pay.png" />
-				<i></i>
-			</li>
-			<li>
-				<img src="pay2.png" />
-				<i></i>
-			</li>
+		<ul class="payway">
 		</ul>
 	</div>
 	<button type="button" class="btn-submit" disabled="disabled">确认支付</button>

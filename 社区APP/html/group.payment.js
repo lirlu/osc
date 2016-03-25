@@ -1,7 +1,25 @@
+// wxpay  微信
+// alipay 支付宝
+// cash   货到付款
+var payment = {'channels':{}};
+
 mui.init();
 
 mui.plusReady(function () {
 	var view = plus.webview.currentWebview();
+	
+    // 获取支付通道
+    plus.payment.getChannels(function (channels) {
+		for (var i in channels) {
+			var channel = channels[i];
+			payment.channels[channel.id] = channel;
+			console.log(JSON.stringify(channel))
+			$('<li><img src="../img/'+channel.id+'.png" /><div class="mui-input-row mui-radio"><label>'+channel.description+'</label><input name="radio1" type="radio"></div></li>').appendTo($('.payway'));
+		}
+		$('.payway input[type=radio]:first').prop('checked', true);
+    }, function (e) {
+        alert("获取支付通道失败：" + e.message);
+    });
 	
 	plus.nativeUI.showWaiting('加载中...');
 	$.ajax({
