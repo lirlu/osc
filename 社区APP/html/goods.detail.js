@@ -1,3 +1,5 @@
+var _Data = {};
+
 mui.init();
 $('ul#pnl-related').delegate('li', 'tap', function () {
 	var data = {
@@ -11,10 +13,35 @@ $('ul#pnl-related').delegate('li', 'tap', function () {
 // 收藏按钮
 $('body').delegate('#stars', 'tap', function() {
 	if (!app.store('key')) {
-		app.open('log.html');
-	} else {
-		app.open('goods.detail.html');
-	};
+		app.open('log.html'); return;
+	}
+	
+	// 收藏
+	plus.nativeUI.showWaiting();
+	$.ajax({
+		'dataType' : 'json',
+		'type'     : 'post',
+		'url'      : app.url('mobile/goods/collection'),
+		'data'     : {
+			'key'      : app.store('key'),
+			'shop_id'  : _Data.shop_id,
+			'goods_id' : _Data.goods_id,
+		}
+	})
+	.fail(function (res) {
+		console.log('收藏失败：' + JSON.stringify(res));
+		app.error('收藏失败');
+		plus.nativeUI.closeWaiting();
+	})
+	.done(function (res) {
+		//console.log('收藏结果：' + JSON.stringify(res));
+		plus.nativeUI.closeWaiting();
+		
+		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
+		if (false == res.status) {app.error(res.msg); return;};
+		if (res.msg) { plus.nativeUI.toast(res.msg); };
+	})
+	;
 });
 // 加入购物车
 $('#pnl-product').delegate('.add-to-cart', 'tap', function() {
@@ -35,6 +62,7 @@ $('.content').delegate('.view-comment', 'tap', function() {
 });
 // 重新初始化页面
 function init (data) {
+	_Data = data;
 	plus.nativeUI.showWaiting('请等待...');
 	
 	// 商品详情
