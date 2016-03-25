@@ -55,7 +55,7 @@
 			</li>
 			<li>
 				{{each item.goods_list as product}}
-				<div class="fefk">
+				<div class="fefk product" data-product={{product.goods_id}} data-shop={{product.shop_id}}>
 					<div class="l_f l_img">
 						<img src="{{product.img | image}}" />
 					</div>	

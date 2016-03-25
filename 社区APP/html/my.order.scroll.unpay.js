@@ -177,3 +177,15 @@ $('body').delegate('.product-order .btn-odr-comment', 'tap', function () {
 	app.open('goods.appraise.html', data);
 });
 
+// 查看商品详情
+$('body').delegate('.product img', 'tap', function () {
+	var dom = $(this).closest('.product');
+	
+	var data = {
+		'shop_id'  : $(dom).attr('data-shop'), 
+		'goods_id' : $(dom).attr('data-product'),
+		'name'     : '',
+	};
+	app.open('goods.detail.html', data);
+});
+
