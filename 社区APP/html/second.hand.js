@@ -14,6 +14,8 @@ $('.classify>ul>li').on('tap', function () {
 	_Data.page     = 0;
 	_Data.category = $(dom).attr('data-id');
 	mui('#refreshContainer').pullRefresh().pullupLoading();
+	
+	$('.classify').slideToggle('fast');
 });
 
 function next (cb) {
@@ -73,3 +75,10 @@ mui.plusReady(function() {
 template.helper('image', function (v) {
 	return app.link.image + v;
 });
+
+// 点击查看转让商品的详细信息
+$('#pnl-product').delegate('.product', 'tap', function () {
+	var dom = this;
+	app.open('second.hand.detail.html', {'id':$(dom).attr('data-id')});
+});
+

@@ -1,81 +1,119 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	<title>二手市场</title>
-	<link rel="stylesheet" href="../css/mui.min.css" />
-	<link rel="stylesheet" href="../css/common.css" />
-	<link rel="stylesheet" href="../css/app/second.hand.css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>社区二手</title>
+    <link rel="stylesheet" href="../css/mui.min.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <style>
+    	li:after {background: transparent;}
+    	header.bar {border-bottom: 1px solid #EEEEEE; position: fixed;}
+    	header img {width: 30px; float: right;}
+    	.content {}
+    	.classify {padding: 10px; position: fixed; z-index: 99; top: 44px;background-color: #fff; display: none;}
+    	.classify>span {width: 100%; height: 30px; display: block;clear: both;}
+    	.classify>ul {clear: both; display: inline-table;}
+    	.classify>ul>li {border: none;width: 25%;font-size: .75em; float: left; display: block; padding: 3px 3px;}
+    	.classify>ul>li.active {color: #FD4C3C;}
+    	.classify>ul>li.active>div>i {
+    		width: 12px;
+    		height: 12px;
+    		background-image: url('../img/iconfont-checked.png');
+    		position: absolute;
+    		bottom: 8px;
+    		right: 8px;
+    		background-size: 12px 12px;
+    	}
+    	.classify>ul>li>div {width: 100%;border: 1px solid #CCC; text-align: center;padding: 5px 0; border-radius: 5px;}
+    	
+    	.product {padding-top: 10px; padding-bottom: 5px; border-top: 1px solid #CCCCCC;}
+    	#pnl-product .product:first-child {border-top: none;}
+    	.product .author-thumb img {width: 90%; text-align: center; vertical-align: middle; margin-top: 10px; margin-left: 5px;}
+    	.product .author {font-size: 1em; color: #FD4C3C;}
+    	.product .locate {font-size: 0.75em; color: #CCC;}
+    	.product .locate .mui-pull-right {font-size: 0.75em; color: #CCCCCC; margin-right: 10px;}
+    	.product .caption {font-size: 0.9em;}
+    	.product .thumb img {width: 90%;}
+    </style>
 </head>
 <body>
 	<!--头部-->
 	<header class="bar">
-		<a class="left mui-action-back mui-icon mui-icon-arrowleft"></a>
-
+		<a class="left mui-icon mui-action-back mui-icon-arrowleft"></a>
 		<h1 class="title">二手市场</h1>
+		<img src="../img/iconfont-search.png" />
 	</header>
 	<div class="content">
-		<div class="contol">
-			<div class="appraise1 activet">本社区</div>
-			<span></span>
-			<div class="appraise1">全部分类</div>
+		<div class="classify">
+			<span>分类</span>
+			<ul>
+				<li data-id="1" class="active"><div>全部<i></i></div></li>
+				<li data-id="2"><div>租房<i></i></div></li>
+				<li data-id="3"><div>手机<i></i></div></li>
+				<li data-id="4"><div>数码产品<i></i></div></li>
+				<li data-id="5"><div>家电<i></i></div></li>
+				<li data-id="6"><div>家具<i></i></div></li>
+				<li data-id="7"><div>母婴玩具<i></i></div></li>
+				<li data-id="8"><div>服装箱包<i></i></div></li>
+				<li data-id="9"><div>美容保健<i></i></div></li>
+				<li data-id="10"><div>艺术收藏<i></i></div></li>
+				<li data-id="11"><div>图片音像<i></i></div></li>
+				<li data-id="12"><div>文体户外<i></i></div></li>
+				<li data-id="13"><div>办公设备<i></i></div></li>
+				<li data-id="14"><div>二手摩托<i></i></div></li>
+				<li data-id="15"><div>自行车<i></i></div></li>
+				<li data-id="16"><div>其他<i></i></div></li>
+			</ul>
 		</div>
-		<section class="section" id="listLocal"></section>
 
+		<div id="refreshContainer" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<!--数据列表-->
+				<ul class="mui-table-view mui-table-view-chevron" id="pnl-product">
+				</ul>
+			</div>
+		</div>
 	</div>
-	<script type="text/html" id="listLocalTemp">
-
-		{{each seller_list as value}}
-		<div class="shop" address='shop.detail.html'>
-			<div class="shop-l">
-				<img src="http://192.168.2.15/attachs/{{value.logo}}" />
+	<!-- 二手商品模板 开始 -->
+	<script type="text/html" id="tpl-product">
+		{{each seller_list as item}}
+		<li class="product" data-id="">
+			<div class="mui-row">
+				<div class="mui-col-xs-3 author-thumb">
+					<img src="../img/ad-2.png" />
+				</div>
+				<div class="mui-col-xs-9">
+					<div class="author">发布人</div>
+					<div class="locate">
+						交大东园<span class="mui-pull-right">>50m</span>
+					</div>
+					<div class="caption">交大东园</div>
+					<div class="thumb mui-row">
+						<div class="mui-col-xs-3">
+							<img src="../img/activity3.png" />
+						</div>
+						<div class="mui-col-xs-3">
+							<img src="../img/activity3.png" />
+						</div>
+						<div class="mui-col-xs-3">
+							<img src="../img/activity3.png" />
+						</div>
+						<div class="mui-col-xs-3">
+							<img src="../img/activity3.png" />
+						</div>
+					</div>
+				</div>
 			</div>
-			<div class="shop-r">
-				{{value.shop_name}}
-				<p>{{value.business_time}}</p>
-				<p lng="{{value.lng}}" lat="{{value.lat}}" class="loction"></p>
-			</div>
-		</div>
+		</li>
 		{{/each}}
 	</script>
-	<script type="text/html" id="listSortTemp">
-		<div class="all-div">
-			{{each cate_info as value i}}
-
-			<div class="right-div" data-name="{{value.cate_id}}">
-				<ul class="namme">
-
-					{{each value.cate_list as value }}
-					<li data-name='{{value.cate_id}}'>{{value.cate_name}}</li>
-					{{/each}}
-				</ul>
-			</div>
-
-			<div class="left-div" data-str="{{value.cate_id}}">
-				<ul>
-					<li>{{value.cate_name}}</li>
-				</ul>
-			</div>
-			{{/each}}
-		</div>
-	</script>
-	<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-	<script src="../js/template.js" type="text/javascript" charset="utf-8"></script>
-	<script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
-	<script src="../js/data.js" type="text/javascript" charset="utf-8"></script>
-	<script type="text/javascript">
-		shequ.listMap.shopMap();
-		//-------------------------本社区-------------------------------
-		shequ.DataList.ShopData(self.port, {
-			page: 1
-		}, 'listLocalTemp', '#listLocal', function() {
-			shequ.DomArr.Disfn();
-		});
-		//执行
-		shequ.DomArr.ShopTab(self.port, {
-			page: 1
-		});
-	</script>
+	<!-- 二手商品模板 结束 -->
+	
+	<script type="text/javascript" src="../js/mui.min.js" ></script>
+	<script type="text/javascript" src="../js/jquery.min.js" ></script>
+	<script type="text/javascript" src="../js/template.js" ></script>
+	<script type="text/javascript" src="../js/app.js" ></script>
+	<script type="text/javascript" src="second.hand.js" ></script>
 </body>
 </html>
