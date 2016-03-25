@@ -5,7 +5,7 @@ function next (cb) {
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
-		'url'      : app.url('mobile/goods/appraise'),
+		'url'      : app.url('mobile/goods/evaluate_list'),
 		'data'     : mui.extend({}, _Data, {'page':_Data.page+1}),
 	})
 	.fail(function (res) {
@@ -14,8 +14,7 @@ function next (cb) {
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		//console.log('商品评论：' + JSON.stringify(res));
-		plus.nativeUI.toast('已成功加入购物车');
+		console.log('商品评论：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
@@ -29,6 +28,10 @@ function next (cb) {
 }
 
 mui.plusReady(function () {
+	var view = plus.webview.currentWebview();
+	_Data.shop_id  = view.extras.shop_id;
+	_Data.goods_id = view.extras.goods_id;
+	
 	next(function (res) {
 		$('#pnl-appraise').append(template('tpl-appraise', res));
 		
