@@ -8,6 +8,12 @@ mui.init();
 mui.plusReady(function () {
 	var view = plus.webview.currentWebview();
 	
+	if (!app.store('key')) {
+		plus.nativeUI.toast('请先登录！');
+		app.open('html/log.html');
+		return;
+	}
+	
     // 获取支付通道
     plus.payment.getChannels(function (channels) {
 		for (var i in channels) {

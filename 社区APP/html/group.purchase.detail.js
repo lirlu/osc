@@ -41,6 +41,12 @@ $('.btn-submit').on('tap', function () {
 	var dom  = this;
 	var view = plus.webview.currentWebview();
 	
+	if (!app.store('key')) {
+		plus.nativeUI.toast('请先登录！');
+		app.open('log.html');
+		return;
+	}
+	
 	$(dom).prop('disabled', true);
 	app.open('group.payment.html', view.extras);
 });
