@@ -1,7 +1,10 @@
 var _Data = {'key':app.store('key'), 'page':0, 'limit':20, 'category':'1'};
 
-$('header img').on('tap', function () {
+$('header img.btn-category').on('tap', function () {
 	$('.classify').slideToggle('fast');
+});
+$('header img.btn-publish').on('tap', function () {
+	app.open('second.hand.publish.html');
 });
 
 // 选择不同的分类
