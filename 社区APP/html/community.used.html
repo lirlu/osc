@@ -7,37 +7,54 @@
     <link rel="stylesheet" href="../css/mui.min.css" />
     <link rel="stylesheet" href="../css/common.css" />
     <style>
-    	header.bar {border-bottom: 1px solid #EEEEEE;}
-    	.content {background-color: #fff;}
-    	.classify {padding: 10px;}
+    	header.bar {border-bottom: 1px solid #EEEEEE; position: fixed;}
+    	header img {width: 30px; float: right;}
+    	.content {}
+    	.classify {padding: 10px; position: fixed; top: 44px;background-color: #fff; display: nones;}
     	.classify>span {width: 100%; height: 30px; display: block;clear: both;}
-    	.classify>ul>li {border: none;width: 25%; padding: 3px 6px;}
+    	.classify>ul {clear: both; display: inline-table;}
+    	.classify>ul>li {border: none;width: 25%;font-size: .75em; float: left; display: block; padding: 3px 3px;}
+    	.classify>ul>li.active {color: #FD4C3C;}
+    	.classify>ul>li.active>div>i {
+    		width: 12px;
+    		height: 12px;
+    		background-image: url('../img/iconfont-checked.png');
+    		position: absolute;
+    		bottom: 8px;
+    		right: 8px;
+    		background-size: 12px 12px;
+    	}
     	.classify>ul>li:after {background: transparent;}
+    	.classify>ul>li>div {width: 100%;border: 1px solid #CCC; text-align: center;padding: 5px 0; border-radius: 5px;}
     </style>
 </head>
 <body>
 	<!--头部-->
 	<header class="bar">
 		<a class="left mui-icon mui-action-back mui-icon-arrowleft"></a>
-		<h1 class="title">编辑地址</h1>
+		<h1 class="title">二手市场</h1>
+		<img src="../img/iconfont-search.png" />
 	</header>
-	
 	<div class="content">
 		<div class="classify">
 			<span>分类</span>
 			<ul>
-				<li>手机</li>
-				<li>手机</li>
-				<li>手机</li>
-				<li>手机</li>
-				<li>手机</li>
-				<li>手机</li>
-				<li>手机</li>
-				<li>手机</li>
-				<li>手机</li>
-				<li>手机</li>
-				<li>手机</li>
-				<li>手机</li>
+				<li class="active"><div>全部<i></i></div></li>
+				<li><div>租房<i></i></div></li>
+				<li><div>手机<i></i></div></li>
+				<li><div>数码产品<i></i></div></li>
+				<li><div>家电<i></i></div></li>
+				<li><div>家具<i></i></div></li>
+				<li><div>母婴玩具<i></i></div></li>
+				<li><div>服装箱包<i></i></div></li>
+				<li><div>美容保健<i></i></div></li>
+				<li><div>艺术收藏<i></i></div></li>
+				<li><div>图片音像<i></i></div></li>
+				<li><div>文体户外<i></i></div></li>
+				<li><div>办公设备<i></i></div></li>
+				<li><div>二手摩托<i></i></div></li>
+				<li><div>自行车<i></i></div></li>
+				<li><div>其他<i></i></div></li>
 			</ul>
 		</div>
 	</div>
