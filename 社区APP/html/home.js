@@ -1,6 +1,17 @@
-$('body').delegate("[address]", 'tap', function() {
-	app.open($(this).attr('address'));
+// 普通页面跳转
+$('body').delegate("[data-url]", 'tap', function() {
+	app.open($(this).attr('data-url'));
 });
+// 跳转到需要登录才能操作的页面
+$('body').delegate('[data-private]', 'tap', function () {
+	if (!app.store('key')) {
+		plus.nativeUI.toast('请先登录！');
+		app.open('log.html');
+		return;
+	}
+	app.open($(this).attr('data-private'));
+});
+// 跳转到外部页面
 $('body').delegate('[data-outer]', 'tap', function () {
 	app.open('outer.html', {'url':$(this).attr('data-outer')});
 });
