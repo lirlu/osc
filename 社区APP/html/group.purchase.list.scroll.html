@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="../css/mui.min.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <title>所有团购-详细列表</title>
+    <style>
+    	.divimg{width: 100%;margin: 0;padding: 0;}
+    	.divimg img{width: 100%;}
+    	ul{list-style: none;margin: 0;padding: 0 !important;font-size: 13px;color: #999;}
+    	ul li{width: 50%;margin-bottom: 5px; border: 1px solid #CCCCCC; display: block; float: left; margin-left: 0;margin-right: 0; padding: 0; padding-top: 10px; text-align: center;background-color: #fff;}
+    	ul li {
+    		border-left: none;
+    	}
+    	ul li span{display: block;width: 100%;text-align: left; padding-left: 10px; padding-right: 10px;}
+    	ul li label{width: 100%;text-align: right; padding-left: 10px; padding-right: 10px;}
+    	ul li img{height:80px; margin-left: auto;margin-right: auto;}
+    	.progressBar{width: 96%;height:10px;background: #DDD;margin-left: 2%;border-radius: 5px;display: flex;}
+    	.progressBar div{width: 50%;background: #FD4C3C;border-bottom-left-radius: 5px;border-top-left-radius: 5px;}
+    	#pnl-product { padding-top: 10; padding-bottom: 10px; margin-top: 0;}
+    	#refreshContainer {background-color: #fff;}
+    </style>
+</head>
+<body>
+	<div class="divimg">
+		<img src="../img/group.purchase.banner.png" />
+	</div>
+	<div id="refreshContainer" class="mui-content mui-scroll-wrapper">
+		<div class="mui-scroll">
+			<!--数据列表-->
+			<ul class="mui-table-view mui-table-view-chevron" id="pnl-product">
+			</ul>
+		</div>
+	</div>
+	
+	<!-- 评价内容模板 开始 -->
+	<script type="text/html" id="tpl-product">
+		{{each list as item}}
+		<li class="product" data-id="{{item.tuan_id}}">
+			<img src="{{item.photo | image}}" />
+			<span>价值：￥{{item.tuan_price | price}}</span>
+			<div class="progressBar">
+				<div style="width: {{item.sold_num * 100 / item.num}}%;"></div>
+			</div>
+			<label>{{item.sold_num}}人已参加</label>
+		</li>
+		{{/each}}
+	</script>
+	<!-- 评价内容模板 结束 -->
+	
+	<script type="text/javascript" src="../js/mui.min.js" ></script>
+	<script type="text/javascript" src="../js/jquery.min.js" ></script>
+	<script type="text/javascript" src="../js/template.js" ></script>
+	<script type="text/javascript" src="../js/app.js" ></script>
+	<script type="text/javascript" src="group.purchase.list.scroll.js" ></script>
+</body>
+</html>
