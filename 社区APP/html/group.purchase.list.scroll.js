@@ -9,7 +9,7 @@ template.helper('price', function (v) {
 });
 
 function next (cb) {
-	plus.nativeUI.showWaiting('加载中...');
+	//plus.nativeUI.showWaiting('加载中...');
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
@@ -19,11 +19,12 @@ function next (cb) {
 	.fail(function (res) {
 		console.log('加载团购商品失败：' + JSON.stringify(res));
 		app.error('加载团购商品失败');
-		plus.nativeUI.closeWaiting();
+		//plus.nativeUI.closeWaiting();
+		mui('#refreshContainer').pullRefresh().endPullupToRefresh();
 	})
 	.done(function (res) {
 		console.log('加载团购商品：' + JSON.stringify(res));
-		plus.nativeUI.closeWaiting();
+		//plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
 		if (false == res.status) {app.error(res.msg); return;};
