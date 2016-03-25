@@ -51,7 +51,6 @@ mui.init({
 
 mui.plusReady(function() {
 	setTimeout(function () {
-		console.log('sadfasdf');
 		mui('#refreshContainer').pullRefresh().pullupLoading();
 	},1000);
 });
