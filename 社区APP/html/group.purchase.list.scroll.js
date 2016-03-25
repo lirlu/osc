@@ -62,6 +62,11 @@ mui.plusReady(function() {
 	}, 1000);
 });
 
+// 查看团购商品详情
+$('body').delegate('.product', 'tap', function () {
+	app.open('group.purchase.detail.html', {'id':$(this).attr('data-id')});
+});
+
 
 
 
