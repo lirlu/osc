@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="../css/mui.min.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <title>所有团购</title>
+    <style>
+    	.divimg{width: 100%;margin: 0;padding: 0;}
+    	.divimg img{width: 100%;}
+    	ul{list-style: none;margin: 0;padding: 0;display:flex;justify-content: space-around;flex-wrap:wrap;margin-top: 5px;font-size: 13px;color: #999;}
+    	ul li{outline: 1px solid #DCDCDC;width: 50%;background: #FFF;display: flex;flex-direction: column;align-items: center;justify-content: center;}
+    	ul li span{display: block;width: 100%;text-align: left; padding-left: 10px; padding-right: 10px;}
+    	ul li label{display: block;width: 100%;text-align: right; padding-left: 10px; padding-right: 10px;}
+    	ul li img{width: 35%;margin: 10px auto;}
+    	.progressBar{width: 96%;height:10px;background: #DDD;margin-left: 2%;border-radius: 5px;display: flex;}
+    	.progressBar div{width: 50%;background: #FD4C3C;border-bottom-left-radius: 5px;border-top-left-radius: 5px;}
+    </style>
+</head>
+<body>
+	<!--头部-->
+	<header class="bar">
+		<a class="left mui-action-back mui-icon mui-icon-arrowleft"></a>
+		<h1 class="title">团购专区</h1>
+	</header>
+	
+	<div class="divimg">
+		<img src="../img/group.purchase.banner.png" />
+	</div>
+	<ul id="pnl-product">
+		<li>
+			<img src="1.png" />
+			<span>价值：￥4500</span>
+			<div class="progressBar">
+				<div></div>
+			</div>
+			<label>2012人已参加</label>
+		</li>
+		<li>
+			<img src="1.png" />
+			<span>价值：￥4500</span>
+			<div class="progressBar">
+				<div></div>
+			</div>
+			<label>2012人已参加</label>
+		</li>
+		<li>
+			<img src="1.png" />
+			<span>价值：￥4500</span>
+			<div class="progressBar">
+				<div></div>
+			</div>
+			<label>2012人已参加</label>
+		</li>
+		<li>
+			<img src="1.png" />
+			<span>价值：￥4500</span>
+			<div class="progressBar">
+				<div></div>
+			</div>
+			<label>2012人已参加</label>
+		</li>
+		<li>
+			<img src="1.png" />
+			<span>价值：￥4500</span>
+			<div class="progressBar">
+				<div></div>
+			</div>
+			<label>2012人已参加</label>
+		</li>
+		<li>
+			<img src="1.png" />
+			<span>价值：￥4500</span>
+			<div class="progressBar">
+				<div></div>
+			</div>
+			<label>2012人已参加</label>
+		</li>
+	</ul>
+	<!-- 评价内容模板 开始 -->
+	<script type="text/html" id="tpl-product">
+		{{each list as item}}
+		<li>
+			<img src="1.png" />
+			<span>价值：￥4500</span>
+			<div class="progressBar">
+				<div></div>
+			</div>
+			<label>2012人已参加</label>
+		</li>
+		{{/each}}
+	</script>
+	<!-- 评价内容模板 结束 -->
+	
+	<script type="text/javascript" src="../js/mui.min.js" ></script>
+	<script type="text/javascript" src="../js/jquery.min.js" ></script>
+	<script type="text/javascript" src="../js/app.js" ></script>
+	
+</body>
+</html>
