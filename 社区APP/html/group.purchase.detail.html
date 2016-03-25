@@ -7,48 +7,62 @@
     <link rel="stylesheet" href="../css/common.css" />
     <title>团购商品详情</title>
     <style>
-    	.divimg{width: 70%;;margin:25px 15% 25px;background: #FFF;display: flex;justify-content: center;align-items: center;padding: 20px;outline: 1px solid #DCDCDC;}
-    	.divimg img{width: 50%;}
-    	button{width: 94%;margin-left: 3%;border: none;background:#FD4C3C;color: #FFF;}
+    	.divimg{width: 70%;;margin:25px 15% 25px;background: #FFF;display: flex;justify-content: center;align-items: center;padding: 5px;outline: 1px solid #DCDCDC;}
+    	.divimg img{width: 100%;}
+    	button{width: 94%;margin-left: 3%; padding: 10px 0; margin-bottom: 20px; border: none;background:#FD4C3C;color: #FFF;}
     	ul{list-style: none;margin: 0;padding: 0;font-size: 12px;color: #666;padding: 10px 15px;}
     	ul li{display: flex;justify-content: space-between;}
+    	.pad-h {padding-left: 10px; padding-right: 10px;}
+    	span.primary, div.primary {color: #FD4C3C;}
+    	div.time {font-size: 0.75em; color: #BBBBBB;}
+    	div.empty-line {height: 50px; display: block;width: 100%;}
+    	div.desc {font-size: 0.9em; padding-top: 10px;padding-bottom: 10px;}
+    	div.white {background-color: #fff;}
+    	div.caption {width: 100%;display: block; font-size: 0.9em; margin-top: 20px; margin-bottom: 5px;}
+    	div.pad-t {padding-top: 10px;}
+    	div.pad-b {padding-bottom: 10px;}
     </style>
 </head>
 <body>
 	<!--头部-->
 	<header class="bar">
 		<a class="left mui-action-back mui-icon mui-icon-arrowleft"></a>
-		<h1 class="title">团购专区</h1>
+		<h1 class="title">团购商品详情</h1>
 	</header>
 	
-	<div class="content">
-		<div class="divimg">
-			<img src="1.png" />
-		</div>
-		<ul>
-			<li>
-				<label>品牌</label>
-				<label>CPU核心数:四核</label>
-			</li>
-			<li>
-				<label>CPU频率：2.2GHz</label>
-				<label>主屏尺寸：7.9英寸</label>
-			</li>
-			<li>
-				<label>标配电池（mAh）：6700mAh</label>
-				<label>机身内存：16GB </label>
-			</li>
-			<li>
-				<label>操作系统：Android</label>
-			</li>
-			<li>
-				<label>CPU（处理器）型号：Nvidia Tegra K1 ARM</label>
-			</li>
-			<li>
-				<label>Cortex</label>
-			</li>
-		</ul>
+	<div class="content" id="pnl-product">
 	</div>
+	<!-- 评价内容模板 开始 -->
+	<script type="text/html" id="tpl-product">
+		<div class="divimg">
+			<img src="{{tuan_view.photo | image}}" />
+		</div>
+		<div class="pad-h white pad-t">{{tuan_view.title}}</div>
+		<div class="pad-h mui-text-right white">
+			<small>售价：</small>
+			<del>￥{{tuan_view.price | price}}</del>&nbsp;&nbsp;
+			<span class="primary">￥{{tuan_view.tuan_price | price}}</span>
+		</div>
+		<div class="pad-h time white">
+			团购开始时间：{{tuan_view.bg_date}}
+		</div>
+		<div class="pad-h time white">
+			团购结束时间：{{tuan_view.end_date}}
+		</div>
+		<div class="pad-h time mui-text-right white pad-b">
+			参与人数：<span class="primary">{{tuan_view.sold_num}} / {{tuan_view.num}}</span>
+		</div>
+		<div class="caption pad-h">购物需知</div>
+		<div class="pad-h desc white">
+			{{tuan_view.intro}}
+		</div>
+		<div class="caption pad-h">商品详情</div>
+		<div class="pad-h desc white">
+			{{=tuan_view.details}}
+		</div>
+		<div class="empty-line"></div>
+	</script>
+	<!-- 评价内容模板 结束 -->
 	<button type="button" class="btn-submit" disabled="disabled">立即参加</button>
 	
 	<script type="text/javascript" src="../js/mui.min.js" ></script>

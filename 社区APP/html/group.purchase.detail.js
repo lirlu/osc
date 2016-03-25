@@ -14,8 +14,8 @@ mui.plusReady(function () {
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
-		'url'      : app.url('mobile/order/evaluate'),
-		'data'     : {'key':app.store('key'), 'id':view.extras.id}
+		'url'      : app.url('mobile/GroupPurchase/goods_view'),
+		'data'     : {'key':app.store('key'), 'tuan_id':view.extras.id}
 	})
 	.fail(function (res) {
 		console.log('加载商品信息失败：' + JSON.stringify(res));
@@ -29,6 +29,19 @@ mui.plusReady(function () {
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
 		if (false == res.status) { app.error(res.msg); return; };
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
+		
+		$('#pnl-product').append(template('tpl-product', res));
+		
+		$('.btn-submit').prop('disabled', false);
 	})
 	;
 });
+
+$('.btn-submit').on('tap', function () {
+	var dom  = this;
+	var view = plus.webview.currentWebview();
+	
+	$(dom).prop('disabled', true);
+	app.open('group.payment.html', view.extras);
+});
+
