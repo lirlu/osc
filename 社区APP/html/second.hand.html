@@ -98,18 +98,11 @@
 					</div>
 					<div class="caption">{{item.content}}</div>
 					<div class="thumb mui-row">
+						{{each item.img as thunb}}
 						<div class="mui-col-xs-3">
-							<img src="../img/activity3.png" />
+							<img src="{{thunb.img | image}}" />
 						</div>
-						<div class="mui-col-xs-3">
-							<img src="../img/activity3.png" />
-						</div>
-						<div class="mui-col-xs-3">
-							<img src="../img/activity3.png" />
-						</div>
-						<div class="mui-col-xs-3">
-							<img src="../img/activity3.png" />
-						</div>
+						{{/each}}
 					</div>
 				</div>
 			</div>
