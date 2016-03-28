@@ -52,8 +52,8 @@ mui.init({
 
 function reinit (data) {
 	data = data || {};
-	_Data.page   = 0;
-	_Data.cat_id = data.category || '';
+	_Data.page    = 0;
+	_Data.cate_id = data.category || '';
 	
 	$('#pnl-shop').empty();
 	mui('#refreshContainer').pullRefresh().pullupLoading();

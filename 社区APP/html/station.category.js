@@ -45,6 +45,10 @@ $('body').delegate('[data-secondary-category]', 'tap', function () {
 	$('[data-secondary-category]').removeClass('active');
 	$(dom).addClass('active');
 	
+	// 切换TAB页回本社区
+	var js = '$(\'[data-page="station.shop.scroll.html"]\').addClass("activet").siblings().removeClass("activet");'
+	plus.webview.getWebviewById('station.html').evalJS(js);
+	// 重新加载数据
 	var view = plus.webview.getWebviewById('station.shop.scroll.html');
 	view.evalJS('reinit({category:"'+(id||'')+'"})');
 	view.show();
