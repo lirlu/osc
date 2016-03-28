@@ -39,4 +39,9 @@ template.helper('price', function (v) {
 	return v / 100;
 });
 
+// 联系卖家
+$('body').delegate('[data-call]', 'tap', function () {
+	plus.device.dial($(this).attr('data-call'), true);
+});
+
 
