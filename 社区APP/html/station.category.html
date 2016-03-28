@@ -23,23 +23,6 @@
 		<div id="pnl-shop"></div>
 	</div>
 	
-	<!-- 店铺模板 开始 -->
-	<script type="text/html" id="tpl-shop">
-		{{each seller_list as value}}
-		<div class="shop" address='shop.detail.html'>
-			<div class="shop-l">
-				<img src="{{value.logo | image}}" />
-			</div>
-			<div class="shop-r">
-				{{value.shop_name}}
-				<p>{{value.business_time}}</p>
-				<p lng="{{value.lng}}" lat="{{value.lat}}" class="loction"></p>
-			</div>
-		</div>
-		{{/each}}
-	</script>
-	<!-- 店铺模板 开始 -->
-	
 	<!-- 分类模板 开始 -->
 	<script type="text/html" id="tpl-category">
 		<div class="all-div">

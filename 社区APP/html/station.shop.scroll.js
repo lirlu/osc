@@ -2,6 +2,7 @@ var _Data = {'lat':'', 'lng':'', 'key':app.store('key'), 'page':0, 'limit':20, '
 mui.init();
 
 function next (cb) {
+	console.log('查询数据：' + JSON.stringify(_Data));
 	//plus.nativeUI.showWaiting('加载中...');
 	$.ajax({
 		'dataType' : 'json',
@@ -51,8 +52,8 @@ mui.init({
 
 function reinit (data) {
 	data = data || {};
-	_Data.page     = 0;
-	_Data.category = data.category || '';
+	_Data.page   = 0;
+	_Data.cat_id = data.category || '';
 	
 	$('#pnl-shop').empty();
 	mui('#refreshContainer').pullRefresh().pullupLoading();
