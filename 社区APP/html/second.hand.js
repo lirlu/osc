@@ -73,7 +73,7 @@ mui.plusReady(function() {
 	plus.geolocation.getCurrentPosition(
 		function (res) {
 			_Data.lng = res.coords.longitude;
-			_Data.lng = res.coords.latitude;
+			_Data.lat = res.coords.latitude;
 			
 			mui('#refreshContainer').pullRefresh().pullupLoading();
 		}, 

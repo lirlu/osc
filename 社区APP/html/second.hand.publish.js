@@ -8,6 +8,16 @@ mui.plusReady(function () {
 		plus.webview.currentWebview().close();
 		return;
 	}
+	
+	plus.geolocation.getCurrentPosition(
+		function (res) {
+			_Data.lng = res.coords.longitude;
+			_Data.lat = res.coords.latitude;
+		}, 
+		function () {
+		}, 
+		{ provider : 'baidu' }
+	);
 });
 
 // 上传图片
@@ -97,6 +107,7 @@ function append (image) {
 
 // 提交退款申请
 $('.btn-submit').on('tap', function () {
+	var dom  = this;
 	var view = plus.webview.currentWebview();
 	
 	var data = {
@@ -129,6 +140,7 @@ $('.btn-submit').on('tap', function () {
 	
 	console.log('发布数据：' + JSON.stringify(data));
 	plus.nativeUI.showWaiting('正在提交...');
+	$(dom).prop('disabled', true);
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
@@ -139,10 +151,12 @@ $('.btn-submit').on('tap', function () {
 		console.log('发布失败：' + JSON.stringify(res));
 		app.error('发布失败');
 		plus.nativeUI.closeWaiting();
+		$(dom).prop('disabled', false);
 	})
 	.done(function (res) {
 		console.log('发布结果：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
+		$(dom).prop('disabled', false);
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
 		if (false == res.status) {app.error(res.msg); return;};
