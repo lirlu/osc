@@ -14,45 +14,47 @@
 	<a class="left mui-action-back mui-icon mui-icon-arrowleft"></a>
 		<h1 class="title">转让</h1>
 	</header>
-	<div class="content">
+	<div class="content" id="pnl-information">
+	</div>
+	<script type="text/html" id="tpl-information">
 		<div class="acti acti">
 			<div class="portrait">
-				<img src="../img/touxiang.png" />
+				<img src="{{userinfo.img | image}}" />
 			</div>
 			<div class="portrait1">
-				<span class="col">左手倒影</span>
-				<p>发布时间2015-12-23</p>
+				<span class="col">{{userinfo.nickname}}</span>
+				<p>发布时间{{goods_view.create_time}}</p>
 			</div>
 		</div>
 		<section>
 			<ul>
 				<li>
-					<span class="block">达芙妮鱼嘴鞋</span>
-					<span><span class="col">￥90.00</span><del>￥198.00</del></span>
+					<span class="block">{{goods_view.name}}</span>
+					<span><span class="col">￥{{goods_view.price}}</span><del>￥{{goods_view.money}}</del></span>
 				</li>
 				<li>
 					<span>商品图片</span>
 					<div class="tupian">
-						<div class="tupian1"><img src="../img/second-hand-1.png"></div>
-						<div class="tupian1"><img src="../img/second-hand-2.png"></div>
-						<div class="tupian1"><img src="../img/second-hand-3.png"></div>
+						{{each goods_view.img as item}}
+						<div class="tupian1"><img src="{{item | image}}"></div>
+						{{/each}}
 					</div>
 				</li>
 				<li>
 					<span class="block col1">简介</span>
 					<span>
-						买了之后本人因工作原因一直没法穿，一次都没有穿过，还是全新的，尺码39，专柜正品哟
+						{{goods_view.content}}
 					</span>
 				</li>
 				<li>
-					<span class="col1">地点：</span><span>交大东园</span>
+					<span class="col1">地点：</span><span>{{goods_view.addr}}</span>
 				</li>
 			</ul>
 		</section>
 		<div class="bottom">
 			<button class="tbn">咨询详情</button>
 		</div>
-	</div>
+	</script>
 	
 	<script type="text/javascript" src="../js/mui.min.js"></script>
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
