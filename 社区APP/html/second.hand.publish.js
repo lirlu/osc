@@ -2,6 +2,14 @@ var _Data = {'lat':'', 'lng':''};
 mui.init();
 
 
+mui.plusReady(function () {
+	if (!app.store('key')) {
+		plus.nativeUI.toast('请先登录后再发布');
+		plus.webview.currentWebview().close();
+		return;
+	}
+});
+
 // 上传图片
 $('.mui-icon-plusempty').on('tap', function () {
 	var btns = [{title:"拍照" }, {title: "从手机相册选择"}];
@@ -110,8 +118,8 @@ $('.btn-submit').on('tap', function () {
 			'name' : $(item).attr('data-name'),
 		});
 	});
-	if (!data.content || data.content.length > 10) { alert('商品描述至少输入10个字'); return; }
-	if (!data.name    || data.content.name   > 3)  { alert('商品描述至少输入3个字'); return; }
+	if (!data.content || data.content.length < 10) { alert('商品描述至少输入10个字'); return; }
+	if (!data.name    || data.content.name   < 3)  { alert('商品描述至少输入3个字'); return; }
 	if (!data.category) { alert('请选择产品分类'); return; }
 	if (!data.phone)    { alert('请输入联系电话'); return; }
 	if (!data.money)    { alert('请输入原价'); return; }
