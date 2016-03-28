@@ -22,7 +22,7 @@
 				<img src="{{userinfo.img | image}}" />
 			</div>
 			<div class="portrait1">
-				<span class="col">{{userinfo.nickname}}</span>
+				<span class="col">{{userinfo.nickname || userinfo.account}}</span>
 				<p>发布时间{{goods_view.create_time}}</p>
 			</div>
 		</div>
@@ -36,7 +36,7 @@
 					<span>商品图片</span>
 					<div class="tupian">
 						{{each goods_view.img as item}}
-						<div class="tupian1"><img src="{{item | image}}"></div>
+						<div class="tupian1"><img src="{{item.img | image}}"></div> 
 						{{/each}}
 					</div>
 				</li>

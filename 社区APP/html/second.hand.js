@@ -85,7 +85,7 @@ mui.plusReady(function() {
 });
 
 template.helper('image', function (v) {
-	return app.link.image + v;
+	return v ? (app.link.image + v) : '../img/iconfont-morentouxiang.png';
 });
 
 // 点击查看转让商品的详细信息
