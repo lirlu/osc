@@ -1,4 +1,4 @@
-var _Data = {'key':app.store('key'), 'page':0, 'limit':20, 'category':'1'};
+var _Data = {'key':app.store('key'), 'page':0, 'limit':20, 'category':'1', 'lat':'', 'lng':''};
 
 $('header img.btn-category').on('tap', function () {
 	$('.classify').slideToggle('fast');
@@ -70,9 +70,18 @@ mui.init({
 });
 
 mui.plusReady(function() {
-	setTimeout(function () {
-		mui('#refreshContainer').pullRefresh().pullupLoading();
-	},1000);
+	plus.geolocation.getCurrentPosition(
+		function (res) {
+			_Data.lng = res.coords.longitude;
+			_Data.lng = res.coords.latitude;
+			
+			mui('#refreshContainer').pullRefresh().pullupLoading();
+		}, 
+		function () {
+			mui('#refreshContainer').pullRefresh().pullupLoading();
+		}, 
+		{ provider : 'baidu' }
+	);
 });
 
 template.helper('image', function (v) {
