@@ -43,6 +43,17 @@
 	<!-- 分类模板 开始 -->
 	<script type="text/html" id="tpl-category">
 		<div class="all-div">
+			<div class="left-div">
+				<ul>
+					<li data-primary-category="all">全部</li>
+				</ul>
+			</div>
+			<div class="right-div" data-parent="all">
+				<ul>
+					<li data-secondary-category="">全部</li>
+				</ul>
+			</div>
+			
 			{{each cate_info as value}}
 			<div class="left-div">
 				<ul>
@@ -50,9 +61,9 @@
 				</ul>
 			</div>
 			<div class="right-div" data-parent="{{value.cate_id}}">
-				<ul class="namme">
+				<ul>
 					{{each value.cate_list as value }}
-					<li data-secondary-category='{{value.cate_id}}'>{{value.cate_name}}</li>
+					<li data-secondary-category="{{value.cate_id}}">{{value.cate_name}}</li>
 					{{/each}}
 				</ul>
 			</div>

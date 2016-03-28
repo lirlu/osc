@@ -36,6 +36,8 @@ $('body').delegate('[data-primary-category]', 'tap', function () {
 	
 	$('[data-parent]').removeClass('active');
 	$('[data-parent='+id+']').addClass('active');
+	
+	if (!id) {$('[data-parent='+id+'] li').trigger('tap');}
 });
 // 点击小分类
 $('body').delegate('[data-secondary-category]', 'tap', function () {
@@ -44,9 +46,11 @@ $('body').delegate('[data-secondary-category]', 'tap', function () {
 	$(dom).addClass('active');
 	
 	var view = plus.webview.getWebviewById('station.shop.scroll.html');
-	view.evalJS('reinit({category:'+id+'})');
+	view.evalJS('reinit({category:"'+(id||'')+'"})');
 	view.show();
 });
+
+
 
 
 

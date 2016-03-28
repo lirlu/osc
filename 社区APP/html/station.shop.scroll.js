@@ -50,10 +50,9 @@ mui.init({
 });
 
 function reinit (data) {
-	_Data.page = 0;
-	if (data.category) {
-		_Data.category = data.category;
-	}
+	data = data || {};
+	_Data.page     = 0;
+	_Data.category = data.category || '';
 	
 	$('#pnl-shop').empty();
 	mui('#refreshContainer').pullRefresh().pullupLoading();
