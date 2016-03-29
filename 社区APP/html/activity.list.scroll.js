@@ -56,6 +56,7 @@ mui.plusReady(function() {
 });
 
 function reinit () {
+	_Data.page = 0;
 	$('#pnl-activity').empty();
 	mui('#refreshContainer').pullRefresh().pullupLoading();
 }

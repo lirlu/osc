@@ -25,7 +25,6 @@ function next (cb) {
 		
 		_Data.page++;
 		cb && cb(res);
-		$('#tpl-order').append(template('tpl-order', res));
 	})
 	;
 }
