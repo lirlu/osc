@@ -37,6 +37,11 @@ $('body').delegate('[data-primary-category]', 'tap', function () {
 	$('[data-parent]').removeClass('active');
 	$('[data-parent='+id+']').addClass('active');
 	
+	// 没有二级分类刷新为第一级分类
+	if ($('[data-parent='+id+'] [data-secondary-category]').length == 0) {
+		category (id); return;
+	}
+	
 	if (!id) {$('[data-parent='+id+'] li').trigger('tap');}
 });
 // 点击小分类
@@ -45,6 +50,9 @@ $('body').delegate('[data-secondary-category]', 'tap', function () {
 	$('[data-secondary-category]').removeClass('active');
 	$(dom).addClass('active');
 	
+	category (id);
+});
+function category (id) {
 	// 切换TAB页回本社区
 	var js = '$(\'[data-page="wash.clothes.shop.scroll.html"]\').addClass("activet").siblings().removeClass("activet");'
 	plus.webview.getWebviewById('wash.clothes.html').evalJS(js);
@@ -52,7 +60,7 @@ $('body').delegate('[data-secondary-category]', 'tap', function () {
 	var view = plus.webview.getWebviewById('wash.clothes.shop.scroll.html');
 	view.evalJS('reinit({category:"'+(id||'')+'"})');
 	view.show();
-});
+};
 
 
 

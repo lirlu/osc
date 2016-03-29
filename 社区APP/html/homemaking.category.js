@@ -1,12 +1,12 @@
 var _Data = {'lat':'', 'lng':'', 'key':app.store('key'), 'page':0, 'limit':20, 'category':''};
 mui.init();
 	
-	console.log('获取水站分类：' + app.url('mobile/cateseller/water_seller_cate'));
+	console.log('获取水站分类：' + app.url('mobile/cateseller/housekeeping_seller_cate'));
 	//plus.nativeUI.showWaiting('加载中...');
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
-		'url'      : app.url('mobile/cateseller/water_seller_cate'),
+		'url'      : app.url('mobile/cateseller/housekeeping_seller_cate'),
 		'data'     : mui.extend({}, _Data, {'page':_Data.page})
 	})
 	.fail(function (res) {
@@ -54,10 +54,10 @@ $('body').delegate('[data-secondary-category]', 'tap', function () {
 });
 function category (id) {
 	// 切换TAB页回本社区
-	var js = '$(\'[data-page="station.shop.scroll.html"]\').addClass("activet").siblings().removeClass("activet");'
-	plus.webview.getWebviewById('station.html').evalJS(js);
+	var js = '$(\'[data-page="homemaking.shop.scroll.html"]\').addClass("activet").siblings().removeClass("activet");'
+	plus.webview.getWebviewById('homemaking.html').evalJS(js);
 	// 重新加载数据
-	var view = plus.webview.getWebviewById('station.shop.scroll.html');
+	var view = plus.webview.getWebviewById('homemaking.shop.scroll.html');
 	view.evalJS('reinit({category:"'+(id||'')+'"})');
 	view.show();
 };
