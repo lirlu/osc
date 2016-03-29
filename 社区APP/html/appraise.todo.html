@@ -22,7 +22,7 @@
 	<script type="text/html" id="tpl-todo">		
 		{{each list as order}}
 		<div class="contol2 item">
-			<ul class="apprase2 order" data-order="{{list.order_id}}">
+			<ul class="apprase2 order" data-id="{{order.order_id}}" data-no="{{order.order_no}}">
 				{{each order.goods_info as product}}
 				<li>
 					<div class="first-div">
