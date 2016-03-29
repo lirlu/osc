@@ -32,7 +32,12 @@ function next (cb) {
 function funcPullupRefresh () {
 	next(function (res) {
 		var noMore = _Data.page * _Data.limit >= (res.total||1);
-		$('#pnl-shop').append(template('tpl-shop', res));
+		
+		if (_Data.page == 1) {
+			$('#pnl-shop').html(template('tpl-shop', res));
+		} else {
+			$('#pnl-shop').append(template('tpl-shop', res));
+		}
 		
 		mui('#refreshContainer').pullRefresh().endPullupToRefresh(noMore);//参数为true代表没有更多数据了。
 	});
@@ -55,7 +60,7 @@ function reinit (data) {
 	_Data.page    = 0;
 	_Data.cate_id = data.category || '';
 	
-	$('#pnl-shop').empty();
+	//$('#pnl-shop').empty();
 	mui('#refreshContainer').pullRefresh().pullupLoading();
 }
 
