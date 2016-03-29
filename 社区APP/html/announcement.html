@@ -1,92 +1,85 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>公告</title>
-		<link rel="stylesheet" href="../css/mui.min.css" />
-		<link rel="stylesheet" href="../css/common.css" />
-		<link rel="stylesheet" href="../css/app/announcement.css" />
-		<script src="../js/mui.min.js"></script>
-	</head>
-	<body>
-		<!--头部-->
-		<header class="bar">
-			<a class="left mui-icon mui-action-back mui-icon-arrowleft">
-
-			</a>
-			<h1 class="title">公告</h1>
-		</header>
-		<div class="content">
-			<ul>
-				<li>
-					<span class="block">小区公告：入室盗窃案件</span>
-					<p><span class="quxiao">已取消</span><span class="julitwo">2015-12-23</span>10:50<span class="r_float">2回复</span></p>
-				</li>
-				<li>
-					<span class="gongao">公告</span>
-					<span class="neirong">
-						昨天本小区6座、8座各发生一起入室盗窃案
-						件，犯罪分子是利用白天上班家中无人的时间使
-						用技术手段开锁入室盗窃。据初步侦查，犯罪分
-						子有可能是租住在被盗的楼座内的出租房内，请
-						各座居民群众平日注意留意发现可疑人员，及时
-						提供线索。5座、6座的视频门禁因为有不法分子
-						恶意损坏，本警务室已经多次维修，请居民群众
-						注意发现恶意损坏门禁系统及故意用重物将门挡
-						住，使铁门无法正常关闭的现象并及时举报！
-					</span>
-					<span class="neirong">
-      					小区是大家生活的家园，所有的居民群众都
-						有责任和义务共同维护小区的安全！
-					</span>
-					<p class="admin">贡献者：李明</p>
-				</li>
-				<li>
-					<div class="admin1">
-						<div class="admin2">
-							<img src="../img/touxiang.png">
-						</div>
-						<div class="admin3">
-							<span class="col">only</span>
-							<span class="col1">交大东园</span>
-							<span class="gongao shenf">共同维护小区的安全共同维护小区的安全共同维护小区的安全</span>
-							<p>2015-12-23<span class="julitwo">17:37</span></p>
-						</div>
-						<div class="admin4">
-							<span class="col1 gongao">1楼</span>
-							<span class="hufi">
-								<span><img src="../img/huifu.png"></span>
-								<span>回复</span>
-							</span>
-						</div>
-					</div>
-					<li>
-					<div class="admin1">
-						<div class="admin2">
-							<img src="../img/touxiang.png">
-						</div>
-						<div class="admin3">
-							<span class="col">only</span>
-							<span class="col1">交大东园</span>
-							<span class="gongao shenf">共同维护小区的安全共同维护小区的安全共同维护小区的安全</span>
-							<p>2015-12-23<span class="julitwo">17:37</span></p>
-						</div>
-						<div class="admin4">
-							<span class="col1 gongao">2楼</span>
-							<span class="hufi">
-								<span><img src="../img/huifu.png"></span>
-								<span>回复</span>
-							</span>
-						</div>
-					</div>
-				</li>
-			</ul>
-			<form class="form">
-				<div class="input-div">
-					<input type="text" placeholder="输入回复" />
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>公告</title>
+	<link rel="stylesheet" href="../css/mui.min.css" />
+	<link rel="stylesheet" href="../css/common.css" />
+	<link rel="stylesheet" href="../css/app/announcement.css" />
+</head>
+<body>
+	<!--头部-->
+	<header class="bar">
+		<a class="left mui-icon mui-action-back mui-icon-arrowleft"></a>
+		<h1 class="title">公告</h1>
+	</header>
+	<div class="content">
+		<ul id="pnl-notice">
+		</ul>
+		<ul id="pnl-comment">
+		</ul>
+		<form class="form">
+			<div class="input-div">
+				<input type="text" placeholder="输入回复" />
+			</div>
+		</form>
+	</div>
+	<!-- 公告详情模板 开始 -->
+	<script type="text/html" id="tpl-notice">
+		<li>
+			<span class="block">{{notice_view.title}}</span>
+			<p>
+				<span class="quxiao mui-hidden">已取消</span>
+				<span class="julitwo">{{notice_view.add_time}}</span>
+				<span class="r_float">2回复</span>
+			</p>
+		</li>
+		<li>
+			<span class="gongao">公告</span>
+			<span class="neirong">
+				{{#notice_view.content}}
+			</span>
+			<span class="neirong">
+				小区是大家生活的家园，所有的居民群众都
+				有责任和义务共同维护小区的安全！
+			</span>
+			<p class="admin">贡献者：李明</p>
+		</li>
+	</script>
+	<!-- 公告详情模板 结束 -->
+	
+	<!-- 评论列表 开始 -->
+	<script type="text/html" id="tpl-comment">
+		{{each comment as item}}
+		<li>
+			<div class="admin1">
+				<div class="admin2">
+					<img src="../img/touxiang.png">
 				</div>
-			</form>
-		</div>
-	</body>
+				<div class="admin3">
+					<span class="col">only</span>
+					<span class="col1">交大东园</span>
+					<span class="gongao shenf">共同维护小区的安全共同维护小区的安全共同维护小区的安全</span>
+					<p>2015-12-23<span class="julitwo">17:37</span></p>
+				</div>
+				<div class="admin4">
+					<span class="col1 gongao">2楼</span>
+					<span class="hufi">
+						<span><img src="../img/huifu.png"></span>
+						<span>回复</span>
+					</span>
+				</div>
+			</div>
+		</li>
+		{{/each}}
+	</script>
+	<!-- 评论列表 结束 -->	
+	
+	<script type="text/javascript" src="../js/mui.min.js" ></script>
+	<script type="text/javascript" src="../js/jquery.min.js" ></script>
+	<script type="text/javascript" src="../js/template.js" ></script>
+	<script type="text/javascript" src="../js/app.js" ></script>
+	<script type="text/javascript" src="announcement.js" ></script>
+</body>
 </html>
