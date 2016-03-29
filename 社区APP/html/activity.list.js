@@ -7,3 +7,8 @@ mui.init({
 		},
 	]
 });
+
+// 点击发布按钮
+$('.btn-publish').on('tap', function () {
+	app.open('activity.publish.html');
+});

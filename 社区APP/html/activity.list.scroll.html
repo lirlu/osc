@@ -13,31 +13,41 @@
 </head>
 <body>
 	<div class="content">
-		<div class="acti">
-			<div class="portrait">
-				<img src="../img/touxiang.png" />
-			</div>
-			<div class="portrait1">
-				左手倒影
-				<span class="address">交大东园</span>
-				<p>发布时间2015-12-23</p>
-			</div>
-		</div>
-		<ul>
-			<li>一起来打羽毛球吧</li>
-		</ul>
-		<div class="actity">
-			<div class="activity-img">
-				<img src="../img/activity1.png" />
-			</div>
-			<div class="activity-img">
-				<img src="../img/activity2.png" />
-			</div>
-			<div class="activity-img">
-				<img src="../img/activity3.png" />
+		<!--全部-->
+		<div id="refreshContainer" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<!--数据列表-->
+				<section class="mui-table-view mui-table-view-chevron" id="pnl-activity"></section>
 			</div>
 		</div>
 	</div>
+	
+	<script type="text/html" id="tpl-activity">
+		{{each list as item}}
+		<div class="activity" data-id="{{item.id}}">
+			<div class="acti">
+				<div class="portrait">
+					<img src="{{item.img | image}}" />
+				</div>
+				<div class="portrait1">
+					{{item.user_id}}
+					<span class="address">{{item.addr}}</span>
+					<p>发布时间 {{item.add_time}}</p>
+				</div>
+			</div>
+			<ul>
+				<li>{{item.title}}</li>
+			</ul>
+			<div class="actity">
+				{{each item.img as thumb index}}
+				<div class="activity-img">
+					<img src="{{thumb | image}}" />
+				</div>
+				{{/each}}
+			</div>
+		</div>
+		{{/each}}
+	</script>
 	
 	<script type="text/javascript" src="../js/mui.min.js"></script>
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
