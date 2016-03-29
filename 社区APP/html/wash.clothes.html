@@ -1,87 +1,30 @@
 <!DOCTYPE html>
 <html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>干洗水洗</title>
+	<link rel="stylesheet" href="../css/mui.min.css" />
+	<link rel="stylesheet" href="../css/common.css" />
+	<link rel="stylesheet" href="../css/app/collect.css" />
+</head>
 
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>干洗水洗</title>
-		<link rel="stylesheet" href="../css/mui.min.css" />
-		<link rel="stylesheet" href="../css/common.css" />
-		<link rel="stylesheet" href="../css/app/collect.css" />
-
-	</head>
-
-	<body>
-		<!--头部-->
-		<header class="bar">
-			<a class="left mui-action-back mui-icon mui-icon-arrowleft">
-
-			</a>
-			<h1 class="title">干洗水洗</h1>
-		</header>
-		<div class="content">
-			<div class="contol">
-				<div class="appraise1 activet">本社区</div>
-				<span></span>
-				<div class="appraise1">全部分类</div>
-			</div>
-			<section class="section" id="listLocal"></section>
-
+<body>
+	<!--头部-->
+	<header class="bar">
+		<a class="left mui-action-back mui-icon mui-icon-arrowleft"></a>
+		<h1 class="title">干洗水洗</h1>
+	</header>
+	<div class="content">
+		<div class="contol">
+			<div class="appraise1 activet" data-page="wash.clothes.shop.scroll.html">本社区</div>
+			<span></span>
+			<div class="appraise1" data-page="wash.clothes.category.html">全部分类</div>
 		</div>
-		<script type="text/html" id="listLocalTemp">
-
-			{{each seller_list as value}}
-			<div class="shop" address='shop.detail.html'>
-				<div class="shop-l">
-					<img src="http://192.168.2.15/attachs/{{value.logo}}" />
-				</div>
-				<div class="shop-r">
-					{{value.shop_name}}
-					<p>{{value.business_time}}</p>
-					<p lng="{{value.lng}}" lat="{{value.lat}}" class="loction"></p>
-				</div>
-			</div>
-			{{/each}}
-		</script>
-		<script type="text/html" id="listSortTemp">
-			<div class="all-div">
-				{{each cate_info as value i}}
-
-				<div class="right-div" data-name="{{value.cate_id}}">
-					<ul class="namme">
-
-						{{each value.cate_list as value }}
-						<li data-name='{{value.cate_id}}'>{{value.cate_name}}</li>
-						{{/each}}
-					</ul>
-				</div>
-
-				<div class="left-div" data-str="{{value.cate_id}}">
-					<ul>
-						<li>{{value.cate_name}}</li>
-					</ul>
-				</div>
-				{{/each}}
-			</div>
-		</script>
-		<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../js/template.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../js/data.js" type="text/javascript" charset="utf-8"></script>
-		<script type="text/javascript">
-			shequ.listMap.shopMap();
-			//-------------------------本社区-------------------------------
-			shequ.DataList.ShopData('mobile/index/gs_seller/', {
-				page: 1
-			}, 'listLocalTemp', '#listLocal', function() {
-				shequ.DomArr.Disfn();
-			});
-			//执行
-			shequ.DomArr.ShopTab('mobile/index/gs_seller/', {
-				page: 1
-			},'mobile/cateseller/gs_seller_cate/');
-			
-		</script>
-	</body>
-
+	</div>
+	
+	<script type="text/javascript" src="../js/mui.min.js" ></script>
+	<script type="text/javascript" src="../js/jquery.min.js" ></script>
+	<script type="text/javascript" src="wash.clothes.js" ></script>
+</body>
 </html>
