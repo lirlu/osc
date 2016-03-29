@@ -55,7 +55,7 @@
 			<p>
 				<span class="quxiao mui-hidden">已取消</span>
 				<span class="julitwo">{{notice_view.add_time}}</span>
-				<span class="r_float">2 回复</span>
+				<span class="r_float btn-cmt-notice">{{total}} 回复</span>
 			</p>
 		</li>
 		<li>
@@ -68,27 +68,27 @@
 				小区是大家生活的家园，所有的居民群众都
 				有责任和义务共同维护小区的安全！
 			</span>
-			<p class="admin">贡献者：李明</p>
+			<p class="admin">贡献者：{{userinfo.nickname || userinfo.account}}</p>
 		</li>
 	</script>
 	<!-- 公告详情模板 结束 -->
 	
 	<!-- 评论列表 开始 -->
 	<script type="text/html" id="tpl-comment">
-		{{each comment as item}}
+		{{each noticeinfo as item}}
 		<li>
 			<div class="admin1">
 				<div class="admin2">
-					<img src="../img/touxiang.png">
+					<img src="{{item.user.img | avatar}}">
 				</div>
 				<div class="admin3">
-					<span class="col">only</span>
-					<span class="col1">交大东园</span>
-					<span class="gongao shenf">共同维护小区的安全共同维护小区的安全共同维护小区的安全</span>
-					<p>2015-12-23<span class="julitwo">17:37</span></p>
+					<span class="col">{{item.user.nickname || item.user.account}}</span>
+					<span class="col1 mui-hidden">评论地置</span>
+					<span class="gongao shenf">{{item.content}}</span>
+					<p>{{item.add_time}}</p>
 				</div>
-				<div class="admin4">
-					<span class="col1 gongao">2楼</span>
+				<div class="admin4 mui-hidden">
+					<span class="col1 gongao">1楼</span>
 					<span class="hufi">
 						<span><img src="../img/huifu.png"></span>
 						<span>回复</span>

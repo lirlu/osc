@@ -38,18 +38,20 @@ function init () {
 $('.btn-submit').on('tap', function () {
 	var dom = this;
 	
+	if (!$('#text').val() || $('#text').val().length < 5) {alert('评论至少输入5个字');return;}
+	
 	plus.nativeUI.showWaiting('加载中...');
 	$(dom).prop('disabled', true);
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
-		'url'      : app.url('mobile/Property/notice_view'),
+		'url'      : app.url('mobile/Property/comment_add'),
 		'data'     : {
 			'key'        : app.store('key'), 
 			'comment_id' : $('#omment').val(),
 			'uid'        : $('#uid').val(),
 			'content'    : $('#text').val(),
-			'notice_id'  : _Data.id, 
+			'notice'     : _Data.id, 
 		}
 	})
 	.fail(function (res) {
@@ -68,10 +70,18 @@ $('.btn-submit').on('tap', function () {
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
 		
 		$('#omment, #text').val('');
-		
 		$('#text').attr('placeholder', '评论公告');
 	})
 	;
+});
+
+$('body').delegate('.btn-cmt-notice', 'tap', function () {
+	$('#omment, #text').val('');
+	$('#text').attr('placeholder', '评论公告');
+});
+
+template.helper('avatar', function (v) {
+	return v ? (app.link.image + v) : '../img/iconfont-morentouxiang.png';
 });
 
 
