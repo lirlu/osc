@@ -63,6 +63,18 @@ template.helper('image', function (v) {
 	return app.link.image + v;
 });
 
+template.helper('rank', function (v) {
+	v = parseInt(v, 10);
+	var html = '';
+	for (var i = 0; i < v; i++) {
+		html += '<img src="../img/honxin.png" />';
+	}
+	for (var i = v; i < 5; i++) {
+		html += '<img src="../img/huixin.png" />';
+	}
+	return html;
+});
+
 // 评论订单
 $('body').delegate('.product-order .btn-odr-comment', 'tap', function () {
 	var dom  = this, odr = $(dom).closest('.product-order');

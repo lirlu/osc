@@ -14,94 +14,30 @@
 	<div id="refreshContainer" class="mui-content mui-scroll-wrapper">
 		<div class="mui-scroll">
 			<!--数据列表-->
-			<section class="mui-table-view mui-table-view-chevron" id="pnl-order">
-		<div class="contol2 item">
-			<ul class="apprase2">
-				<li>
-					<div class="first-div">
-						<img src="../img/coffee.png" />
-					</div>
-					<div class="second-div">
-						蓝山风味速溶三合一咖啡粉
-						<p>未评价</p>
-						<span class="btn">评价</span>
-					</div>
-				</li>
-				<li>
-					<div class="first-div">
-						<img src="../img/coffee.png" />
-					</div>
-					<div class="second-div">
-						蓝山风味速溶三合一咖啡粉
-						<p>未评价</p>
-						<span class="btn">评价</span>
-					</div>
-				</li>
-			</ul>
-		</div>
-			</section>
+			<section class="mui-table-view mui-table-view-chevron" id="pnl-order"></section>
 		</div>
 	</div>
 	
-	<!-- 已评价模板 开始 -->
-	<script type="text/html" id="tpl-done">
-		<div class="contol1 item">
-			<ul class="apprase1">
-				<li>
-					<span class="block">蓝山风味速溶三合一咖啡粉</span>
-					<span class="block col1">东西很好，味道也很好，给个好评！</span>
-					<span class="block">
-						<img src="../img/honxin.png" />
-						<img src="../img/honxin.png" />
-						<img src="../img/honxin.png" />
-						<img src="../img/huixin.png" />
-						<img src="../img/huixin.png" />
-					</span>
-					<span><p>已评价2015-12-24 17:27</p></span>
-				</li>
-				<li>
-					<span class="block">蓝山风味速溶三合一咖啡粉</span>
-					<span class="block col1">东西很好，味道也很好，给个好评！</span>
-					<span class="block">
-						<img src="../img/honxin.png" />
-						<img src="../img/honxin.png" />
-						<img src="../img/honxin.png" />
-						<img src="../img/huixin.png" />
-						<img src="../img/huixin.png" />
-					</span>
-					<span><p>已评价2015-12-24 17:27</p></span>
-				</li>
-			</ul>
-		</div>
-	</script>
-	<!-- 已评价模板 结束 -->
-	
 	<!-- 未评价模板 开始 -->
-	<script type="text/html" id="tpl-todo">
+	<script type="text/html" id="tpl-todo">		
+		{{each list as order}}
 		<div class="contol2 item">
-			<ul class="apprase2">
+			<ul class="apprase2 order" data-order="{{list.order_id}}">
+				{{each order.goods_info as product}}
 				<li>
 					<div class="first-div">
-						<img src="../img/coffee.png" />
+						<img src="{{product.img | image}}" />
 					</div>
 					<div class="second-div">
-						蓝山风味速溶三合一咖啡粉
+						{{product.title}}
 						<p>未评价</p>
-						<span class="btn">评价</span>
+						<span class="btn btn-odr-comment">评价</span>
 					</div>
 				</li>
-				<li>
-					<div class="first-div">
-						<img src="../img/coffee.png" />
-					</div>
-					<div class="second-div">
-						蓝山风味速溶三合一咖啡粉
-						<p>未评价</p>
-						<span class="btn">评价</span>
-					</div>
-				</li>
+				{{/each}}
 			</ul>
 		</div>
+		{{/each}}
 	</script>
 	<!-- 未评价模板 结束 -->
 	
