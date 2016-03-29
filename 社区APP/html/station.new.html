@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>附近水站</title>
+	<link rel="stylesheet" href="../css/mui.min.css" />
+	<link rel="stylesheet" href="../css/common.css" />
+	<link rel="stylesheet" href="../css/app/collect.css" />
+	<style>
+		.point,
+		.price del,
+		.price span,
+		.price i {
+			color: #e5023e;
+		}
+		.mui-control-content {
+			background-color: white;
+			min-height: 215px;
+		}
+		.mui-control-content .mui-loading {
+			margin-top: 50px;
+		}
+		.btn-to-cart {
+			background-color: #E2032A;
+		}
+		header.mui-bar {
+			position: fixed;
+		}
+		#pnl-product {
+			margin-top: 50px;
+		}
+		.shop {height: 105px;}
+		/** 分类内容 */
+		.all-div{margin: 0;}
+		.all-div li {height: 40px;line-height: 40px;padding-left: 10px;padding-right: -10px;}
+		.all-div li:after {left: 0;}
+		.all-div li.active {background-color: #FFF;color: #FD6D62;display: block;}
+		.all-div .left-div {width: 30%;background-color: #F7F7F8;}
+		.all-div .right-div {width: 70%;background-color: #FFF;display: none;top: 0;position: absolute;right: 0;}
+		.all-div .right-div.active {display: block;}
+	</style>
+</head>
+
+<body>
+	<!--头部-->
+	<header class="bar">
+		<a class="left mui-action-back mui-icon mui-icon-arrowleft"></a>
+		<h1 class="title">附近水站</h1>
+	</header>
+	
+		<!-- 商品图片说明和评论 开始 -->
+		<div class="mui-slider product-prop content">
+			<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+				<a class="mui-control-item" href="#pnl-local">本社区</a>
+				<a class="mui-control-item" href="#pnl-category">全部分类</a>
+			</div>
+			<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-6"></div>
+			<div class="mui-slider-group">
+				<div id="pnl-local" class="mui-slider-item mui-control-content pad-h pad-v mui-active">
+					<div id="refreshContainer" class="mui-content mui-scroll-wrapper">
+						<div class="mui-scroll">
+							<!--数据列表-->
+							<section class="mui-table-view mui-table-view-chevron" id="pnl-shop">
+							</section>
+						</div>
+					</div>
+				</div>
+				<div id="pnl-category" class="mui-slider-item mui-control-content pad-h pad-v mui-row">
+				</div>
+			</div>
+		</div>
+		<!-- 商品图片说明和评论 结束 -->
+		
+	
+	<!-- 店铺模板 开始 -->
+	<script type="text/html" id="tpl-shop">
+		{{each seller_list as value}}
+		<div class="shop" address='shop.detail.html'>
+			<div class="shop-l">
+				<img src="{{value.logo | image}}" />
+			</div>
+			<div class="shop-r">
+				{{value.shop_name}}
+				<p>{{value.business_time}}</p>
+				<p lng="{{value.lng}}" lat="{{value.lat}}" class="loction"></p>
+			</div>
+			<div class="pad-sm-line"></div>
+		</div>
+		{{/each}}
+	</script>
+	<!-- 店铺模板 开始 -->
+	<!-- 分类模板 开始 -->
+	<script type="text/html" id="tpl-category">
+		<div class="all-div">
+			<div class="left-div">
+				<ul>
+					<li data-primary-category="all">全部</li>
+				</ul>
+			</div>
+			<div class="right-div" data-parent="all">
+				<ul>
+					<li data-secondary-category="">全部</li>
+				</ul>
+			</div>
+			
+			{{each cate_info as value}}
+			<div class="left-div">
+				<ul>
+					<li data-primary-category="{{value.cate_id}}">{{value.cate_name}}</li>
+				</ul>
+			</div>
+			<div class="right-div" data-parent="{{value.cate_id}}">
+				<ul>
+					{{each value.cate_list as value }}
+					<li data-secondary-category="{{value.cate_id}}">{{value.cate_name}}</li>
+					{{/each}}
+				</ul>
+			</div>
+			{{/each}}
+		</div>
+	</script>
+	<!-- 分类模板 结束 -->
+	
+	<script type="text/javascript" src="../js/mui.min.js" ></script>
+	<script type="text/javascript" src="../js/jquery.min.js" ></script>
+	<script type="text/javascript" src="../js/template.js" ></script>
+	<script type="text/javascript" src="../js/app.js" ></script>
+	<script type="text/javascript" src="station.js" ></script>
+</body>
+</html>
