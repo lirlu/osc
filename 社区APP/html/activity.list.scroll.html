@@ -41,7 +41,7 @@
 				<li>{{item.title}}</li>
 			</ul>
 			<div class="actity">
-				{{each item.img as thumb index}}
+				{{each item.img.split(',') as thumb index}}
 				<div class="activity-img">
 					<img src="{{thumb | image}}" />
 				</div>

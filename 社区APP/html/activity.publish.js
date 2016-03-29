@@ -87,6 +87,8 @@ function append (image) {
 // 移除上传图片
 $('.image-evidence').delegate('.mui-icon', 'tap', function () {
 	var dom = this;
+		
+	$(dom).closest('div').remove();
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
@@ -103,8 +105,6 @@ $('.image-evidence').delegate('.mui-icon', 'tap', function () {
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
 		if (false == res.status) {app.error(res.msg); return;};
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
-		
-		$(dom).closest('div').remove();
 	})
 	;
 });
@@ -130,12 +130,12 @@ $('.btn-submit').on('tap', function () {
 			'name' : $(item).attr('data-name'),
 		});
 	});
-	if (!data.content || data.content.length < 10) { alert('活动内容至少输入10个字'); return; }
 	if (!data.title   || data.content.title  < 3)  { alert('活动标题至少输入3个字'); return; }
-	if (!data.addr)     { alert('请输入活动地点'); return; }
 	if (!data.act_day)  { alert('请输入活动日期'); return; }
 	if (!data.act_time) { alert('请输入活动开始时间'); return; }
+	if (!data.addr)     { alert('请输入活动地点'); return; }
 	if (data.img.length == 0)     { alert('请至少上传一张产品图片'); return; }
+	if (!data.content || data.content.length < 10) { alert('活动内容至少输入10个字'); return; }
 	
 	console.log('发布数据：' + JSON.stringify(data));
 	plus.nativeUI.showWaiting('正在提交...');
@@ -162,6 +162,7 @@ $('.btn-submit').on('tap', function () {
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
 		
 		//app.open('refund.succeed.html', view.extras);
+		plus.webview.getWebviewById('activity.list.scroll.html').evalJS('reinit()');
 		setTimeout(function () { plus.webview.currentWebview().close(); }, 500);
 	})
 	;
