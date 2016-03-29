@@ -7,6 +7,26 @@
 	<link rel="stylesheet" href="../css/mui.min.css" />
 	<link rel="stylesheet" href="../css/common.css" />
 	<link rel="stylesheet" href="../css/app/announcement.css" />
+	<style>
+		.input-row {
+			margin-top: 50px;
+			width: 100%;
+		}
+		.input-row>input {
+			width: 70%;
+			float: left;
+			border-radius: 0;
+			height: 40px;
+			line-height: 40px;
+		}
+		.input-row>button {
+			width: 30%;
+			float: left;
+			border-radius: 0;
+			margin-top: 1px;
+			height: 38px;
+		}
+	</style>
 </head>
 <body>
 	<!--头部-->
@@ -19,11 +39,14 @@
 		</ul>
 		<ul id="pnl-comment">
 		</ul>
-		<form class="form">
-			<div class="input-div">
-				<input type="text" placeholder="输入回复" />
-			</div>
-		</form>
+
+		<div class="input-row">
+			<input type="hidden" id="comment" placeholder="评论ID">
+			<input type="hidden" id="uid" placeholder="被评论人">
+				
+			<input type="text" id="text" placeholder="输入回复">
+			<button type="button" class="mui-btn mui-btn-danger mui-btn-outlined btn-submit">评论</button>
+		</div>
 	</div>
 	<!-- 公告详情模板 开始 -->
 	<script type="text/html" id="tpl-notice">
@@ -32,7 +55,7 @@
 			<p>
 				<span class="quxiao mui-hidden">已取消</span>
 				<span class="julitwo">{{notice_view.add_time}}</span>
-				<span class="r_float">2回复</span>
+				<span class="r_float">2 回复</span>
 			</p>
 		</li>
 		<li>
