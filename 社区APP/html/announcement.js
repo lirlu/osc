@@ -68,6 +68,8 @@ $('.btn-submit').on('tap', function () {
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
 		
 		$('#omment, #text').val('');
+		
+		$('#text').attr('placeholder', '评论公告');
 	})
 	;
 });
