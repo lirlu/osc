@@ -69,6 +69,8 @@ $('.btn-submit').on('tap', function () {
 		if (false == res.status) {app.error(res.msg); return;};
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
 		
+		
+		$('#pnl-comment').prepend(template('tpl-comment', {'noticeinfo':[res.info]}));
 		$('#omment, #text').val('');
 		$('#text').attr('placeholder', '评论公告');
 	})
