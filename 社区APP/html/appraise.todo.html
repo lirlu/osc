@@ -24,7 +24,7 @@
 		<div class="contol2 item">
 			<ul class="apprase2 order" data-id="{{order.order_id}}" data-no="{{order.order_no}}">
 				{{each order.goods_info as product}}
-				<li>
+				<li class="product" data-shop="{{product.shop_id}}" data-product="{{product.goods_id}}">
 					<div class="first-div">
 						<img src="{{product.img | image}}" />
 					</div>
