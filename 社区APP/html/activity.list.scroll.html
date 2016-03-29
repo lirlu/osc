@@ -9,6 +9,8 @@
 	<link rel="stylesheet" href="../css/app/activity.css" />
 	<style>
 		.content {padding-top: 0;margin-top: 0;}
+		.clearfix { clear: both; }
+		.gap { width: 100%; height: 10px; display: block; clear: both; background-color: #EFEFEF; }
 	</style>
 </head>
 <body>
@@ -27,10 +29,10 @@
 		<div class="activity" data-id="{{item.id}}">
 			<div class="acti">
 				<div class="portrait">
-					<img src="{{item.img | image}}" />
+					<img src="{{item.userinfo.img | avatar}}" />
 				</div>
 				<div class="portrait1">
-					{{item.user_id}}
+					{{item.userinfo.nickname || item.userinfo.account}}
 					<span class="address">{{item.addr}}</span>
 					<p>发布时间 {{item.add_time}}</p>
 				</div>
@@ -46,6 +48,7 @@
 				{{/each}}
 			</div>
 		</div>
+		<div class="gap"></div>
 		{{/each}}
 	</script>
 	

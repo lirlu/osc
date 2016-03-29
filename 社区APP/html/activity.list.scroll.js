@@ -60,6 +60,9 @@ function reinit () {
 	mui('#refreshContainer').pullRefresh().pullupLoading();
 }
 
+template.helper('avatar', function (v) {
+	return v ? (app.link.image + v) : '../img/iconfont-morentouxiang.png';
+});
 template.helper('image', function (v) {
 	return app.link.image + v;
 });
