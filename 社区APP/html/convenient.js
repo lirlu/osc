@@ -40,7 +40,7 @@ $('.btn-publish').on('tap', function () {
 	if (!app.store('key')) {
 		plus.nativeUI.toast('发布拼车信息需要先登录');
 	} else {
-		app.open('publish.owner.html');
+		app.open('announce.html');
 	}
 });
 
