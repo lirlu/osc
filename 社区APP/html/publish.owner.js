@@ -30,3 +30,8 @@ mui.plusReady(function () {
 template.helper('image', function (v) {
 	return v ? (app.link.image + v) : '../img/iconfont-morentouxiang.png';
 });
+
+$('body').delegate('.btn-call', 'tap', function () {
+	plus.device.dial($(this).text(), true);
+});
+

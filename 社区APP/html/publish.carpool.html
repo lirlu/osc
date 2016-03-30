@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	<title>车主发布</title>
+	<title>发布拼车信息</title>
 	<link rel="stylesheet" type="text/css" href="../css/mui.min.css" />
 	<link rel="stylesheet" href="../css/common.css" />
 	<link rel="stylesheet" href="../css/app/publish.css" />
@@ -13,7 +13,7 @@
 	<!--头部-->
 	<header class="bar">
 		<a class="left mui-action-back mui-icon mui-icon-arrowleft"></a>
-		<h1 class="title">车主发布</h1>
+		<h1 class="title">发布拼车信息</h1>
 	</header>
 	<div class="content" id="pnl-publish">
 		<div class="acti">
@@ -52,7 +52,7 @@
 		<section>
 			<ul>
 				<li>标题内容：{{pengche_view.content}}</li>
-				<li>联系电话：<span class="btn-call">{{pengche_view.account}}</span></li>
+				<li>联系电话：{{pengche_view.account}}</li>
 				<li>出发地址：{{pengche_view.set_addr}}</li>
 				<li>到达地址：{{pengche_view.addr}}</li>
 				<li>可带人数：{{pengche_view.num}}</li>
@@ -66,6 +66,6 @@
 	<script type="text/javascript" src="../js/jquery.min.js" ></script>
 	<script type="text/javascript" src="../js/template.js" ></script>
 	<script type="text/javascript" src="../js/app.js" ></script>
-	<script type="text/javascript" src="publish.owner.js" ></script>
+	<script type="text/javascript" src="publish.carpool.js" ></script>
 </body>
 </html>
