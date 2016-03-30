@@ -26,162 +26,21 @@
 	
 	<!-- 我的帖子模板 开始 -->
 	<script type="text/html" id="tpl-used">
-		<div class="block">
-			<div class="top">
-				<div class="l-img">
-					<img src="../img/touxiang.png" />
-				</div>
-				<div class="r-nick">
-					<span class="col">左手倒影</span>
-					<p>发布时间2015-12-23<span class="fjr">12:06</span></p>
-				</div>
+		{{each list as item}}
+		<div class="shop">
+			<div class="shop-l">
+				<img src="../img/shop.png" />
 			</div>
-			<ul>
-				<li>
-					对于怪物猎人OL武器做好没有了这个是什么情况
-				</li>
-			</ul>
-			<div class="top">
-				<div class="l-img">
-					<img src="../img/touxiang.png" />
-				</div>
-				<div class="r-nick">
-					<span class="col">左手倒影</span>
-					<p>发布时间2015-12-23<span class="fjr">12:06</span></p>
-				</div>
+			<div class="shop-r">
+				{{item.name}}
+				<p>
+					{{item.business_time}}
+					<span class="xian">|</span>
+					月售 {{item.sale_num}} 单</p>
+				<p>距离{{item.juli}}m</p>
 			</div>
-			<ul>
-				<li>
-					对于怪物猎人OL武器做好没有了这个是什么情况
-				</li>
-			</ul>
-			<div class="top">
-				<div class="l-img">
-					<img src="../img/touxiang.png" />
-				</div>
-				<div class="r-nick">
-					<span class="col">左手倒影</span>
-					<p>发布时间2015-12-23<span class="fjr">12:06</span></p>
-				</div>
-			</div>
-			<ul>
-				<li>
-					对于怪物猎人OL武器做好没有了这个是什么情况
-				</li>
-			</ul>
-			<div class="top">
-				<div class="l-img">
-					<img src="../img/touxiang.png" />
-				</div>
-				<div class="r-nick">
-					<span class="col">左手倒影</span>
-					<p>发布时间2015-12-23<span class="fjr">12:06</span></p>
-				</div>
-			</div>
-			<ul>
-				<li>
-					对于怪物猎人OL武器做好没有了这个是什么情况
-				</li>
-			</ul>
-			<div class="top">
-				<div class="l-img">
-					<img src="../img/touxiang.png" />
-				</div>
-				<div class="r-nick">
-					<span class="col">左手倒影</span>
-					<p>发布时间2015-12-23<span class="fjr">12:06</span></p>
-				</div>
-			</div>
-			<ul>
-				<li>
-					对于怪物猎人OL武器做好没有了这个是什么情况
-				</li>
-			</ul>
-			<div class="top">
-				<div class="l-img">
-					<img src="../img/touxiang.png" />
-				</div>
-				<div class="r-nick">
-					<span class="col">左手倒影</span>
-					<p>发布时间2015-12-23<span class="fjr">12:06</span></p>
-				</div>
-			</div>
-			<ul>
-				<li>
-					对于怪物猎人OL武器做好没有了这个是什么情况
-				</li>
-			</ul>
-			<div class="top">
-				<div class="l-img">
-					<img src="../img/touxiang.png" />
-				</div>
-				<div class="r-nick">
-					<span class="col">左手倒影</span>
-					<p>发布时间2015-12-23<span class="fjr">12:06</span></p>
-				</div>
-			</div>
-			<ul>
-				<li>
-					对于怪物猎人OL武器做好没有了这个是什么情况
-				</li>
-			</ul>
-			<div class="top">
-				<div class="l-img">
-					<img src="../img/touxiang.png" />
-				</div>
-				<div class="r-nick">
-					<span class="col">左手倒影</span>
-					<p>发布时间2015-12-23<span class="fjr">12:06</span></p>
-				</div>
-			</div>
-			<ul>
-				<li>
-					对于怪物猎人OL武器做好没有了这个是什么情况
-				</li>
-			</ul>
-			<div class="top">
-				<div class="l-img">
-					<img src="../img/touxiang.png" />
-				</div>
-				<div class="r-nick">
-					<span class="col">左手倒影</span>
-					<p>发布时间2015-12-23<span class="fjr">12:06</span></p>
-				</div>
-			</div>
-			<ul>
-				<li>
-					对于怪物猎人OL武器做好没有了这个是什么情况
-				</li>
-			</ul>
-			<div class="top">
-				<div class="l-img">
-					<img src="../img/touxiang.png" />
-				</div>
-				<div class="r-nick">
-					<span class="col">左手倒影</span>
-					<p>发布时间2015-12-23<span class="fjr">12:06</span></p>
-				</div>
-			</div>
-			<ul>
-				<li>
-					对于怪物猎人OL武器做好没有了这个是什么情况
-				</li>
-			</ul>
-			<div class="top">
-				<div class="l-img">
-					<img src="../img/touxiang.png" />
-				</div>
-				<div class="r-nick">
-					<span class="col">左手倒影</span>
-					<p>发布时间2015-12-23<span class="fjr">12:06</span></p>
-				</div>
-			</div>
-			<ul>
-				<li>
-					对于怪物猎人OL武器做好没有了这个是什么情况
-				</li>
-			</ul>
 		</div>
+		{{/each}}
 	</script>
 	<!-- 我的帖子模板 结束 -->
 	

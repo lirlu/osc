@@ -6,7 +6,7 @@ function next (cb) {
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
-		'url'      : app.url('mobile/userinfo/old_list'),
+		'url'      : app.url('mobile/userinfo/shop_collection_list'),
 		'data'     : mui.extend({}, _Data, {'page':_Data.page})
 	})
 	.fail(function (res) {
@@ -54,7 +54,7 @@ mui.init({
 	}
 });
 
-function reinit (data) {
+function init (data) {
 	data = data || {};
 	_Data.page    = 0;
 	_Data.cate_id = data.category || '';
@@ -69,10 +69,10 @@ mui.plusReady(function () {
 			_Data.lng = res.coords.longitude;
 			_Data.lat = res.coords.latitude;
 			
-			reinit ();
+			init ();
 		}, 
 		function () {
-			reinit ();
+			init ();
 		}, 
 		{ provider : 'baidu' }
 	);
