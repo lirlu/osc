@@ -32,7 +32,7 @@
 	<!-- 我的二手模板 开始 -->
 	<script type="text/html" id="tpl-product">
 		{{each list as product}}
-		<div class="mui-row product" data-id="{{product.goods_id}}">
+		<div class="mui-row product" data-product="{{product.goods_id}}" data-shop="{{product.shop_id}}">
 			<div class="mui-col-xs-3">
 				<img src="{{product.photo | image}}" />
 			</div>

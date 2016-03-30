@@ -78,6 +78,18 @@ template.helper('price', function (v) {
 	return v / 100;
 });
 
+// 跳转到商品详情
+$('body').delegate('.product', 'tap', function () {
+	var dom = $(this).closest('.product');
+	
+	var data = {
+		'shop_id'  : $(dom).attr('data-shop'), 
+		'goods_id' : $(dom).attr('data-product'),
+		'name'     : '',
+	};
+	app.open('goods.detail.html', data);
+})
+
 
 
 
