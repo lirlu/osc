@@ -68,10 +68,10 @@ mui.plusReady(function () {
 			_Data.lng = res.coords.longitude;
 			_Data.lat = res.coords.latitude;
 			
-			reinit ();
+			init ();
 		}, 
 		function () {
-			reinit ();
+			init ();
 		}, 
 		{ provider : 'baidu' }
 	);

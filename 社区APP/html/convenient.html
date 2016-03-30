@@ -9,6 +9,10 @@
 	<link rel="stylesheet" href="../css/app/convenient.css" />
 	<link rel="stylesheet" href="../css/app/collect.css" />
 	<style>
+    	header a {height: 44px;line-height: 44px;}
+    	header {text-align: center;}
+    	header img {width: 30px; margin-left: 10px; margin-right: 10px; z-index: 99;}
+    	
 		ul.type { z-index: 999; position: fixed; width: 100%;}
 		ul.type li { padding: 0; color: #000 !important; }
 		ul.type li .mui-input-row { width: 130px; margin-left: auto; margin-right: auto;}
@@ -22,8 +26,12 @@
 	<!--头部-->
 	<header class="bar">
 		<a class="left mui-action-back mui-icon mui-icon-arrowleft"></a>
-		<h1 class="title">便捷中心</h1>
-		<a class="right mui-icon mui-icon-compose btn-show-type"></a>
+		<a class="page">便捷中心</a>
+		<div class="mui-pull-right">
+			<img class="btn-publish" src="../img/details-3.png" />
+			<img class="btn-category btn-show-type" src="../img/iconfont-search.png" />
+			<!--<a class="right mui-icon mui-icon-compose btn-show-type"></a>-->
+		</div>
 	</header>
 	
 	<div class="content">
@@ -38,6 +46,7 @@
 
 	<script type="text/javascript" src="../js/mui.min.js"></script>
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/app.js" ></script>
 	<script type="text/javascript" src="convenient.js"></script>
 </body>
 </html>
