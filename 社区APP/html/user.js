@@ -75,7 +75,7 @@ function refresh () {
 	})
 	.done(function (res) {
 		console.log('取得用户信息：' + JSON.stringify(res));
-		app.store('user', res);
+		app.store('user', res.user_info);
 		//plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); localStorage.removeItem('key'); return; }

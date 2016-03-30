@@ -115,7 +115,7 @@ $('.btn-submit').on('tap', function () {
 		'type'     : 'post',
 		'url'      : app.url('mobile/userinfo/head_portrait_update'),
 		'data'     : {
-			'key'    : key, 
+			'key'    : key,
 			'avatar' : $('.touxia>img').attr('data-name', image.name),
 			'sex'    : $('.sex.active').attr('data-sex'),
 			'name'   : $('#name').val(),
@@ -143,6 +143,14 @@ $('.btn-submit').on('tap', function () {
 		}, 500);
 	})
 	;
+});
+
+mui.plusReady(function () {
+	var user = app.store('user');
+	$('.touxia>img').attr('src', user.img || '../img/iconfont-morentouxiang.png'),
+	//$('.sex.active').attr('data-sex');
+	$('#name').val(user.nickname);
+	$('#mobile').val(user.account);
 });
 
 
