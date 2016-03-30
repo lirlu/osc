@@ -12,3 +12,8 @@ $('.btn-logout').on('tap', function () {
 		plus.webview.currentWebview().close();
 	}, 500);
 });
+
+// 普通页面跳转
+$('body').delegate("[data-url]", 'tap', function() {
+	app.open($(this).attr('data-url'));
+});
