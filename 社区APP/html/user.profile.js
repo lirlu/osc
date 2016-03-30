@@ -102,7 +102,8 @@ $('.btn-ok').on('tap', function (e) {
 	upload(data);
 });
 $('.container-cropper-holder img').cropper({
-	aspectRatio: 1,
+	aspectRatio : 1,
+	viewMode    : 3,
 });
 
 // 提交用户信息
