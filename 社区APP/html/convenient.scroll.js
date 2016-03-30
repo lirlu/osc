@@ -72,7 +72,7 @@ template.helper('image', function (v) {
 
 function toggleCarpoolType () {
 	// 显示拼车类型选择
-	$('ul.type').removeClass('mui-hidden');
+	$('ul.type').toggleClass('mui-hidden');
 }
 
 // 选择本社区
