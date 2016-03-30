@@ -27,12 +27,12 @@
 	<!-- 我的帖子模板 开始 -->
 	<script type="text/html" id="tpl-used">
 		{{each list as item}}
-		<div class="shop">
+		<div class="shop" data-id="shop_id">
 			<div class="shop-l">
-				<img src="../img/shop.png" />
+				<img src="{{item.logo | image}}" />
 			</div>
 			<div class="shop-r">
-				{{item.shop_name"}}
+				{{item.shop_name}}
 				<p>
 					{{item.business_time}}
 					<span class="xian">|</span>

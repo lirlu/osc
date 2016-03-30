@@ -88,6 +88,15 @@ template.helper('price', function (v) {
 	return v / 100;
 });
 
+// 跳转到店铺详情
+$('body').delegate('.shop', 'tap', function () {
+	var data = {
+		'shop_id'   : $(this).attr('data-id')
+	};
+	
+	app.open('shop.detail1.html', data)
+})
+
 
 
 
