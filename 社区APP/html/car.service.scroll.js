@@ -83,5 +83,13 @@ template.helper('image', function (v) {
 	return v ? (app.link.image + v) : '../img/iconfont-morentouxiang.png';
 });
 
+// 查看商家详情
+$('body').delegate('.shop', 'tap', function () {
+	var data = {
+		'shop_id'   : $(this).attr('data-shop')
+	};
+	app.open('shop.detail1.html', data);
+});
+
 
 
