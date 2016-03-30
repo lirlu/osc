@@ -17,3 +17,11 @@ $('.btn-logout').on('tap', function () {
 $('body').delegate("[data-url]", 'tap', function() {
 	app.open($(this).attr('data-url'));
 });
+
+$('.btn-clear-cache').on('tap', function () {
+	plus.nativeUI.showWaiting();
+	setTimeout(function () {
+		plus.nativeUI.closeWaiting();
+		plus.nativeUI.toast('缓存清除成功');
+	}, 2000);
+});
