@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>汽车服务-全部</title>
+	<link rel="stylesheet" href="../css/mui.min.css" />
+	<link rel="stylesheet" href="../css/common.css" />
+	<style>
+		.content {padding: 0;}
+		.all-div{margin: 0;}
+		.all-div li {height: 40px;line-height: 40px;padding-left: 10px;padding-right: -10px;}
+		.all-div li:after {left: 0;}
+		.all-div li.active {background-color: #FFF;color: #FD6D62;display: block;}
+		.all-div .left-div {width: 30%;background-color: #F7F7F8;}
+		.all-div .right-div {width: 70%;background-color: #FFF;display: none;top: 0;position: absolute;right: 0;}
+		.all-div .right-div.active {display: block;}
+	</style>
+</head>
+
+<body>
+	<div class="content">
+		<div id="pnl-shop"></div>
+	</div>
+	
+	<!-- 分类模板 开始 -->
+	<script type="text/html" id="tpl-category">
+		<div class="all-div">
+			<div class="left-div">
+				<ul>
+					<li data-primary-category="">全部</li>
+				</ul>
+			</div>
+			
+			{{each cate_info as value}}
+			<div class="left-div">
+				<ul>
+					<li data-primary-category="{{value.cate_id}}">{{value.cate_name}}</li>
+				</ul>
+			</div>
+			<div class="right-div" data-parent="{{value.cate_id}}">
+				<ul>
+					{{each value.cate_list as value }}
+					<li data-secondary-category="{{value.cate_id}}">{{value.cate_name}}</li>
+					{{/each}}
+				</ul>
+			</div>
+			{{/each}}
+		</div>
+	</script>
+	<!-- 分类模板 结束 -->
+	
+	<script type="text/javascript" src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/template.js"></script>
+	<script type="text/javascript" src="../js/app.js"></script>
+	<script type="text/javascript" src="car.service.category.js"></script>
+</body>
+</html>
