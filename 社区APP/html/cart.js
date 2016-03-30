@@ -80,7 +80,8 @@ cart.total = function () {
 }
 
 mui.plusReady(function () {
-	cart.refresh();
+	//cart.refresh();
+	//自动登录后由user.html主动刷新购物车
 });
 template.helper('image', function (v) {
 	return app.link.image + v;

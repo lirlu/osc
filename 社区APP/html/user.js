@@ -20,14 +20,14 @@ function autologin () {
 		return;
 	}
 	var user = app.store('user').user_info;
-	console.log(JSON.stringify(user));
-	
+
+	//console.log('自动登录：' + app.url('mobile/user/user_login'));
 	//plus.nativeUI.showWaiting();
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
-		'url'      : app.url('mobile/userinfo/index'),
-		'data'     : {'account':user.account, 'password':user.password}
+		'url'      : app.url('mobile/user/user_login'),
+		'data'     : {'mobile':user.account, 'password':user.password}
 	})
 	.fail(function (res) {
 		console.log('自动登录失败：' + JSON.stringify(res));
@@ -46,6 +46,8 @@ function autologin () {
 		
 		$('.touxiang').empty().append($('<img />').attr('src', src));
 		$('.username').empty().append(res.user_info.nickname || res.user_info.account || '');
+		
+		plus.webview.getWebviewById('cart.html').evalJS('cart.refresh()');
 	})
 	;
 }
