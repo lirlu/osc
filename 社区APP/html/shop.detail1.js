@@ -5,6 +5,25 @@ template.helper('image', function (v) {
 template.helper('price', function (v) {
 	return v / 100;
 });
+$('.btn-like').on('tap', function () {
+	var view = plus.webview.currentWebview();
+	if (!app.store('key')) { plus.nativeUI.toast('只有登录后才能收藏商家'); return;}
+	
+	plus.nativeUI.toast('收藏商家成功');
+	$.ajax({
+		'dataType' : 'json',
+		'type'     : 'post',
+		'url'      : app.url('mobile/userinfo/shop_collection'),
+		'data'     : {'key':app.store('key'), 'shop_id':view.extras.shop_id}
+	})
+	.fail(function (res) {
+		console.log('收藏商家失败：' + JSON.stringify(res));
+		app.error('收藏商家失败');
+	})
+	.done(function (res) {
+	})
+	;
+});
 // 页面跳转
 $('#pnl-product').delegate(".goods", 'tap', function() {
 	var view = plus.webview.currentWebview();
