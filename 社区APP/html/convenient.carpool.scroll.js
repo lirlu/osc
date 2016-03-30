@@ -1,7 +1,6 @@
 var _Data = {'tab':'', 'page':0, 'limit':15, 'key':app.store('key'), 'cate_id':'', 'lat':'', 'lng':'', 'type':''}
 // 查询拼车服务
 function next (cb) {
-	console.log(JSON.stringify(_Data));
 	plus.nativeUI.showWaiting();
 	$.ajax({
 		'dataType' : 'json',
