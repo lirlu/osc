@@ -19,7 +19,7 @@ function autologin () {
 		$('.username').empty().append('<a data-url="log.html">未登录</a>');
 		return;
 	}
-	var user = app.store('user').user_info;
+	var user = app.store('user');
 
 	//console.log('自动登录：' + app.url('mobile/user/user_login'));
 	//plus.nativeUI.showWaiting();

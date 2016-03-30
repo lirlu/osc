@@ -15,7 +15,7 @@ $(window).resize(function() {
 mui.plusReady(function () {
 	var user = app.store('user');
 
-	$('.account').text(user.user_info.account);
+	$('.account').text(user.account);
 	
     // 获取支付通道
     plus.payment.getChannels(function (channels) {
@@ -30,7 +30,7 @@ $('.btn-submit').on('tap', function () {
 	var user = app.store('user');
 	var data = {
 		'key'     : app.store('key'),
-		'account' : user.user_info.account,
+		'account' : user.account,
 		'money'   : $('#money').val(),
 		'payway'  : $('[name="radio"]:checked').val(),
 	}
