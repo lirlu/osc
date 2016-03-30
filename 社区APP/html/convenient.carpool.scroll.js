@@ -1,14 +1,12 @@
-var data = {'tab':'', 'page':0, 'limit':15, 'key':app.store('key'), 'cate_id':'', 'lat':'', 'lng':'', 'type':''}
+var _Data = {'tab':'', 'page':0, 'limit':15, 'key':app.store('key'), 'cate_id':'', 'lat':'', 'lng':'', 'type':''}
 // 本社区
 function next (cb) {
-	console.log('请求数据：' + JSON.stringify(data));
-	var url = 'carpool' == data.tab ? 'mobile/index/pingche' : 'mobile/index/convenient_seller';
 	plus.nativeUI.showWaiting();
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
-		'url'      : app.url(url),
-		'data'     : data
+		'url'      : app.url('mobile/index/pingche'),
+		'data'     : mui.extend({}, _Data, {'page':_Data.page+1})
 	})
 	.fail(function (res) {
 		console.log('获取本社区数据失败：' + JSON.stringify(res));
@@ -23,7 +21,7 @@ function next (cb) {
 		if (false == res.status) {app.error(res.msg); return;};
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
 		
-		data.page++;
+		_Data.page++;
 		cb && cb(res);
 	})
 	;
@@ -31,12 +29,12 @@ function next (cb) {
 
 function funcPullupRefresh () {
 	next(function (res) {
-		var noMore = data.page * data.limit >= (res.total||1);
+		var noMore = _Data.page * _Data.limit >= (res.total||1);
 		
-		if ('carpool' == data.tab) {
-			$('#pnl-shop').append(template('tpl-carpool', res));// 拼车数据
+		if (_Data.page == 1) {
+			$('#pnl-shop').html(template('tpl-carpool', res));
 		} else {
-			$('#pnl-shop').append(template('tpl-shop', res));// 本小区数据
+			$('#pnl-shop').append(template('tpl-carpool', res));
 		}
 		
 		mui('#refreshContainer').pullRefresh().endPullupToRefresh(noMore);//参数为true代表没有更多数据了。
@@ -55,15 +53,28 @@ mui.init({
 	}
 });
 
-mui.plusReady(function() {
-	app.locate(function(res) {
-		data.lat = res.coords.latitude;
-		data.lng = res.coords.longitude;
-		
-		mui('#refreshContainer').pullRefresh().pullupLoading();
-	}, {
-		provider: 'baidu'
-	});
+function init (data) {
+	data = data || {};
+	_Data.page    = 0;
+	_Data.cate_id = data.category || '';
+	
+	//$('#pnl-shop').empty();
+	mui('#refreshContainer').pullRefresh().pullupLoading();
+}
+
+mui.plusReady(function () {
+	plus.geolocation.getCurrentPosition(
+		function (res) {
+			_Data.lng = res.coords.longitude;
+			_Data.lat = res.coords.latitude;
+			
+			reinit ();
+		}, 
+		function () {
+			reinit ();
+		}, 
+		{ provider : 'baidu' }
+	);
 });
 
 template.helper('image', function (v) {

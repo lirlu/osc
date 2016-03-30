@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	<title>便捷中心</title>
+	<title>便捷中心-拼车服务</title>
 	<link rel="stylesheet" href="../css/mui.min.css" />
 	<link rel="stylesheet" href="../css/common.css" />
 	<link rel="stylesheet" href="../css/app/convenient.css" />
@@ -29,34 +29,6 @@
 
 <body>
 	<div class="content">
-		<div class="contol">
-			<div class="appraise1 activet  btn-local-shop" data-type="local">本社区</div>
-			<span></span>
-			<div class="appraise1 btn-take-ride" data-type="carpool">拼车服务</div>
-			<span></span>
-			<div class="appraise1 btn-all-category" data-type="local">全部分类</div>
-		</div>
-		<ul class="mui-table-view mui-text-center type mui-hidden">
-			<li class="mui-table-view-cell">请选择</li>
-			<li class="mui-table-view-cell">
-				<div class="mui-input-row mui-radio">
-					<label>全部</label>
-					<input type="radio" name="type" value="0" >
-				</div>
-			</li>
-			<li class="mui-table-view-cell">
-				<div class="mui-input-row mui-radio">
-					<label>车主</label>
-					<input type="radio" name="type" value="1" >
-				</div>
-			</li>
-			<li class="mui-table-view-cell">
-				<div class="mui-input-row mui-radio">
-					<label>乘客</label>
-					<input type="radio" name="type" value="2" >
-				</div>
-			</li>
-		</ul>
 		<div id="refreshContainer" class="mui-content mui-scroll-wrapper">
 			<div class="mui-scroll">
 				<!--数据列表-->
@@ -67,27 +39,8 @@
 		</div>
 	</div>
 	
-	<!-- 店铺模板 开始 -->
-	<script type="text/html" id="tpl-shop">
-		<div class="shop-empty-line" style="margin-top: 50px;"></div>
-		{{each seller_list as value}}
-		<div class="shop" shop_id="{{value.shop_id}}">
-			<div class="shop-l">
-				<img src="{{value.logo | image}}"/>
-			</div>
-			<div class="shop-r">
-				{{value.shop_name}}
-				<p>{{value.business_time}}</p>
-				<p lng="{{value.lng}}" lat="{{value.lat}}" class="loction"></p>
-			</div>
-		</div>
-		{{/each}}
-	</script>
-	<!-- 店铺模板 结束 -->
-	
 	<!-- 拼车模板 开始 -->
 	<script type="text/html" id="tpl-carpool">
-		<div class="shop-empty-line" style="margin-top: 50px;"></div>
 		{{each list as item}}
 		<div class="carpool" data-id="{{item.id}}" data-type="{{'1'==item.type ? 'owner' : 'passenger'}}">
 			<div class="mui-row">
@@ -107,32 +60,10 @@
 	</script>
 	<!-- 拼车模板 结束 -->
 	
-	
-	<!-- 分类模板 开始 -->
-	<script type="text/html" id="tpl-category">
-		<div class="all-div" style="min-height: 700px;">
-			{{each cate_info as value i}}
-			<div class="right-div" data-name="{{value.cate_id}}">
-				<ul class="namme">
-					{{each value.cate_list as value }}
-					<li data-name='{{value.cate_id}}'>{{value.cate_name}}</li>
-					{{/each}}
-				</ul>
-			</div>
-			<div class="left-div" data-str="{{value.cate_id}}">
-				<ul>
-					<li>{{value.cate_name}}</li>
-				</ul>
-			</div>
-			{{/each}}
-		</div>
-	</script>
-	<!-- 分类模板 结束 -->
-	
 	<script type="text/javascript" src="../js/mui.min.js"></script>
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
 	<script type="text/javascript" src="../js/template.js"></script>
 	<script type="text/javascript" src="../js/app.js"></script>
-	<script type="text/javascript" src="convenient.scroll.js"></script>
+	<script type="text/javascript" src="convenient.carpool.scroll.js"></script>
 </body>
 </html>

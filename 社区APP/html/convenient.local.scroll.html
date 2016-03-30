@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>便捷中心-本社区</title>
+	<link rel="stylesheet" href="../css/mui.min.css" />
+	<link rel="stylesheet" href="../css/common.css" />
+	<link rel="stylesheet" href="../css/app/convenient.css" />
+	<link rel="stylesheet" href="../css/app/collect.css" />
+	<style>
+		.content {
+			padding-top: 0;
+		}
+		.carpool .mui-col-xs-9,
+		.carpool .mui-col-xs-3 {padding-left: 10px; padding-right: 10px;}
+		.carpool,.carpool>div { width: 100%; display: block; }
+		.carpool .note { padding: 8px !important; padding-top: 0; min-height: 25px; border-top: 1px solid #CCCCCC;}
+		.carpool img { width: 100%; height: 100%; }
+		.carpool .name { color: #FD4C3C; font-weight: 700; font-size: 1.2em; margin-top: 10px; margin-bottom: 10px; }
+		.carpool .type { position: absolute; right: 20px; top: 20px; color: #BBBBBB; }
+		.empty-line { width: 100%; height: 8px; background-color: #EFEFEF; display: block;}
+		ul.type { z-index: 999; position: fixed; width: 100%;}
+		ul.type li { padding: 0; color: #000 !important; }
+		ul.type li .mui-input-row { width: 130px; margin-left: auto; margin-right: auto;}
+		ul.type li input { top: 8px !important; }
+	</style>
+</head>
+
+<body>
+	<div class="content">
+		<div id="refreshContainer" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<!--数据列表-->
+				<section class="mui-table-view mui-table-view-chevron" id="pnl-shop">
+				</section>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 店铺模板 开始 -->
+	<script type="text/html" id="tpl-shop">
+		{{each seller_list as value}}
+		<div class="shop" shop_id="{{value.shop_id}}">
+			<div class="shop-l">
+				<img src="{{value.logo | image}}"/>
+			</div>
+			<div class="shop-r">
+				{{value.shop_name}}
+				<p>{{value.business_time}}</p>
+				<p lng="{{value.lng}}" lat="{{value.lat}}" class="loction"></p>
+			</div>
+		</div>
+		{{/each}}
+	</script>
+	<!-- 店铺模板 结束 -->
+	
+	<script type="text/javascript" src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/template.js"></script>
+	<script type="text/javascript" src="../js/app.js"></script>
+	<script type="text/javascript" src="convenient.local.scroll.js"></script>
+</body>
+</html>
