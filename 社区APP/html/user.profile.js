@@ -62,6 +62,7 @@ function cutter (image) {
 }
 function upload (image) {
 	//console.log('上传数据' + JSON.stringify(image));
+	$('.touxia>img').attr('data-name', '');
 	plus.nativeUI.showWaiting('正在处理...');
 	function _cb (result, status) {
 		var res = result.responseText;
@@ -76,14 +77,15 @@ function upload (image) {
 			plus.nativeUI.toast('上传图片失败');
 		}
 	}
-	var task = plus.uploader.createUpload(app.url('mobile/userinfo/head_portrait_update'), { method:"POST",blocksize:204800,priority:100 }, _cb);
+	var task = plus.uploader.createUpload(app.url('mobile/userinfo/upload'), { method:"POST",blocksize:204800,priority:100 }, _cb);
 	task.addFile(image.path, {key:"testdoc"});
 	task.addData('key', app.store('key'));
 	task.addData('thumb', image);
 	task.start();
 }
 function append (image) {
-	console.log(JSON.stringify(image));
+	//console.log(JSON.stringify(image));
+	$('.touxia>img').attr('data-name', image.name).attr('src', app.link.image + image.name);
 }
 // 取消编辑头像
 $('.btn-no').on('tap', function (e) {
@@ -102,3 +104,46 @@ $('.btn-ok').on('tap', function (e) {
 $('.container-cropper-holder img').cropper({
 	aspectRatio: 1,
 });
+
+// 提交用户信息
+$('.btn-submit').on('tap', function () {
+	var dom = this;
+	plus.nativeUI.showWaiting();
+	$(dom).prop('disabled', true);
+	$.ajax({
+		'dataType' : 'json',
+		'type'     : 'post',
+		'url'      : app.url('mobile/userinfo/head_portrait_update'),
+		'data'     : {
+			'key'    : key, 
+			'avatar' : $('.touxia>img').attr('data-name', image.name),
+			'sex'    : $('.sex.active').attr('data-sex'),
+			'name'   : $('#name').val(),
+			'mobile' : $('#mobile').val(),
+		}
+	})
+	.fail(function (res) {
+		console.log('保存用户信息失败：' + JSON.stringify(res));
+		app.error('保存用户信息失败');
+		plus.nativeUI.closeWaiting();
+		$(dom).prop('disabled', false);
+	})
+	.done(function (res) {
+		console.log('保存用户信息：' + JSON.stringify(res));
+		plus.nativeUI.closeWaiting();
+		$(dom).prop('disabled', false);
+		
+		if (res.error && res.error.msg) { app.error(res.error.msg); localStorage.removeItem('key'); return; }
+		if (false == res.status) {app.error(res.msg); localStorage.removeItem('key'); return;};
+		if (res.msg) { plus.nativeUI.toast(res.msg); };
+		
+		plus.webview.getWebviewById('user.html').evalJS('refresh()');
+		setTimeout(function () {
+			plus.webview.currentWebview().close();
+		}, 500);
+	})
+	;
+});
+
+
+
