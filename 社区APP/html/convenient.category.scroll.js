@@ -24,8 +24,6 @@ mui.plusReady(function () {
 		
 		$('#pnl-category').html(template('tpl-category', res));
 		$('[data-primary-category]:first').trigger('tap');
-		
-		console.log($('[data-primary-category]').length);
 	})
 	;
 });
