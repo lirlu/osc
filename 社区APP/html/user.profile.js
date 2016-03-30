@@ -115,8 +115,8 @@ $('.btn-submit').on('tap', function () {
 		'type'     : 'post',
 		'url'      : app.url('mobile/userinfo/head_portrait_update'),
 		'data'     : {
-			'key'    : key,
-			'avatar' : $('.touxia>img').attr('data-name', image.name),
+			'key'    : app.store('key'),
+			'avatar' : $('.touxia>img').attr('data-name'),
 			'sex'    : $('.sex.active').attr('data-sex'),
 			'name'   : $('#name').val(),
 			'mobile' : $('#mobile').val(),
