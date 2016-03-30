@@ -22,6 +22,7 @@
 		.empty-line { width: 100%; height: 8px; background-color: #EFEFEF; display: block;}
 		ul.type { z-index: 999; position: fixed; width: 100%;}
 		ul.type li { padding: 0; color: #000 !important; }
+		ul.type li:first-child { height: 40px; line-height: 40px;}
 		ul.type li .mui-input-row { width: 130px; margin-left: auto; margin-right: auto;}
 		ul.type li input { top: 8px !important; }
 	</style>
@@ -29,6 +30,28 @@
 
 <body>
 	<div class="content">
+		<ul class="mui-table-view mui-text-center type mui-hidden">
+			<li class="mui-table-view-cell">请选择</li>
+			<li class="mui-table-view-cell">
+				<div class="mui-input-row mui-radio">
+					<label>全部</label>
+					<input type="radio" name="type" value="0" >
+				</div>
+			</li>
+			<li class="mui-table-view-cell">
+				<div class="mui-input-row mui-radio">
+					<label>车主</label>
+					<input type="radio" name="type" value="1" >
+				</div>
+			</li>
+			<li class="mui-table-view-cell">
+				<div class="mui-input-row mui-radio">
+					<label>乘客</label>
+					<input type="radio" name="type" value="2" >
+				</div>
+			</li>
+		</ul>
+		
 		<div id="refreshContainer" class="mui-content mui-scroll-wrapper">
 			<div class="mui-scroll">
 				<!--数据列表-->

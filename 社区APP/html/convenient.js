@@ -24,3 +24,15 @@ $('[data-page]').on('tap', function () {
 	var page = $(this).attr('data-page');
 	plus.webview.getWebviewById(page).show();
 });
+
+$('.btn-show-type').on('tap', function () {
+	// 显示拼车类型选择
+	var view = plus.webview.getWebviewById('convenient.carpool.scroll.html');
+	var tab = $('[data-page="convenient.carpool.scroll.html"]');
+	if (!$(tab).hasClass('activet')) {
+		$('[data-page="convenient.carpool.scroll.html"]').trigger('tap');
+	}
+	
+	view.evalJS("toggleCarpoolType()");
+});
+

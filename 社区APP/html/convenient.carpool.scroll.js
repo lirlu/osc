@@ -1,6 +1,7 @@
 var _Data = {'tab':'', 'page':0, 'limit':15, 'key':app.store('key'), 'cate_id':'', 'lat':'', 'lng':'', 'type':''}
-// 本社区
+// 查询拼车服务
 function next (cb) {
+	console.log(JSON.stringify(_Data));
 	plus.nativeUI.showWaiting();
 	$.ajax({
 		'dataType' : 'json',
@@ -86,73 +87,12 @@ function toggleCarpoolType () {
 	$('ul.type').toggleClass('mui-hidden');
 }
 
-// 选择本社区
-$('.btn-local-shop').on('tap', function () {
-	$('#pnl-shop').empty(); data.page = 0;
-	mui('#refreshContainer').pullRefresh().pullupLoading();
-});
-
 // 选择拼车服务
 $('.btn-take-ride').on('tap', function () {
 	$('#pnl-shop').empty(); data.page = 0;
 	mui('#refreshContainer').pullRefresh().pullupLoading();
 });
 
-// 选择全部分类
-$('.btn-all-category').on('tap', function () {
-	$('#pnl-shop').empty(); data.page = 0;
-	
-	plus.nativeUI.showWaiting();
-	$.ajax({
-		'dataType' : 'json',
-		'type'     : 'post',
-		'url'      : app.url('mobile/cateseller/convenient_seller_cate'),
-		'data'     : {'key':data.key}
-	})
-	.fail(function (res) {
-		console.log('获取全部分类失败：' + JSON.stringify(res));
-		app.error('获取全部分类失败');
-		plus.nativeUI.closeWaiting();
-	})
-	.done(function (res) {
-		console.log('获取全部分类：' + JSON.stringify(res));
-		plus.nativeUI.closeWaiting();
-		
-		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
-		if (false == res.status) {app.error(res.msg); return;};
-		if (res.msg) { plus.nativeUI.toast(res.msg); };
-		
-		$('#pnl-shop').append(template('tpl-category', res));
-		
-		//分类第一项显示
-		$('.right-div .namme').hide();
-		$('.right-div ul').eq(0).show();
-		$('.left-div:first').find('li').addClass('active1').css('background', '#eee');
-	})
-	;
-});
-
-// 点击商家列表
-$('#pnl-shop').delegate('.shop', 'tap', function() {
-	var data = {
-		'shop_id'   : $(this).attr('shop_id'),
-		'shop_name' : $(this).attr('shop_name'),
-		'addr'      : $(this).attr('addr'),
-		'tel'       : $(this).attr('tel'),
-	};
-	app.open('shop.detail1.html', data);
-});
-
-// 点击商家列表
-$('#pnl-shop').delegate('.shop', 'tap', function() {
-	var data = {
-		'shop_id'   : $(this).attr('shop_id'),
-		'shop_name' : $(this).attr('shop_name'),
-		'addr'      : $(this).attr('addr'),
-		'tel'       : $(this).attr('tel'),
-	};
-	app.open('shop.detail1.html', data);
-});
 // 点击拼车信息
 $('#pnl-shop').delegate('.carpool', 'tap', function() {
 	var data = {
@@ -167,31 +107,10 @@ $('#pnl-shop').delegate('.carpool', 'tap', function() {
 	}
 });
 
-$('.contol .appraise1').on('tap', function () {
-	data.tab = $(this).attr('data-type');
-	$(this).removeClass('activet').addClass('activet').siblings().removeClass('activet');
-});
-
-//点击一级列表
-$('body').delegate('.left-div', 'tap', function() {
-	$(this).find('li').addClass('active1').css('background', '#eee');
-	$(this).siblings().find('li').removeClass('active1').css('background', '');
-
-	$('[data-name=' + $(this).attr('data-str') + ']').find('ul').css('display', 'block');
-	$('[data-name=' + $(this).attr('data-str') + ']').siblings('.right-div').find('ul').css('display', 'none');
-});
-
-//点击二级列表
-$('body').delegate('.right-div li', 'tap', function() {
-
-	$(this).addClass('active1').siblings('li').removeClass('active1');
-	$('div.appraise1').eq(0).addClass('activet').siblings().removeClass('activet');
-	
-	data.page    = 1;
-	data.cate_id = $(this).attr('data-name');
-	
-	$('#pnl-shop').empty();
-	mui('#refreshContainer').pullRefresh().pullupLoading();
+$('ul.type input[type=radio]').on('change', function () {
+	toggleCarpoolType();
+	_Data.type = $('ul.type input[type=radio]:checked').val();
+	init();
 });
 
 
