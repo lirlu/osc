@@ -1,109 +1,33 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>我的收藏</title>
-		<link rel="stylesheet" type="text/css" href="../css/mui.min.css" />
-		<link rel="stylesheet" href="../css/common.css" />
-		<link rel="stylesheet" href="../css/app/collect.css" />
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>我的收藏</title>
+	<link rel="stylesheet" href="../css/mui.min.css" />
+	<link rel="stylesheet" href="../css/common.css" />
+	<link rel="stylesheet" href="../css/app/collect.css" />
+<style>
+	.content{border: 1px solid #000;}
+</style>
+</head>
 
-	</head>
-	<body>
-		<!--头部-->
-		<header class="bar">
-			<a class="left mui-action-back mui-icon mui-icon-arrowleft"></a>
-			<h1 class="title">我的收藏</h1>
-		</header>
-		<div class="content">
-			<div class="contol">
-				<div class="appraise1 active">商家</div>
-				<span></span>
-				<div class="appraise1">帖子</div>
-			</div>
-			<section class="section" style="margin-top: 44px;">
-				<div class="shop">
-					<div class="shop-l">
-						<img src="../img/shop.png" />
-					</div>
-					<div class="shop-r">
-						红旗连锁超市
-						<p>06:30-20:30
-							<span class="xian">|</span>
-							月售300单</p>
-						<p>距离100m</p>
-					</div>
-				</div>
-				<div class="shop">
-					<div class="shop-l">
-						<img src="../img/shop.png" />
-					</div>
-					<div class="shop-r">
-						红旗连锁超市
-						<p>06:30-20:30
-							<span class="xian">|</span>
-							月售300单</p>
-						<p>距离100m</p>
-					</div>
-				</div>
-				<div class="shop">
-					<div class="shop-l">
-						<img src="../img/shop.png" />
-					</div>
-					<div class="shop-r">
-						红旗连锁超市
-						<p>06:30-20:30
-							<span class="xian">|</span>
-							月售300单</p>
-						<p>距离100m</p>
-					</div>
-				</div>
-			</section>
-			<section class="section" style="margin-top: 44px;display: none;">
-				<div class="block">
-					<div class="top">
-						<div class="l-img">
-							<img src="../img/touxiang.png" />
-						</div>
-						<div class="r-nick">
-							<span class="col">左手倒影</span>
-							<p>发布时间2015-12-23<span class="fjr">12:06</span></p>
-						</div>
-					</div>
-					<ul>
-						<li>
-							对于怪物猎人OL武器做好没有了这个是什么情况
-						</li>
-					</ul>
-					<div class="top">
-						<div class="l-img">
-							<img src="../img/touxiang.png" />
-						</div>
-						<div class="r-nick">
-							<span class="col">左手倒影</span>
-							<p>发布时间2015-12-23<span class="fjr">12:06</span></p>
-						</div>
-					</div>
-					<ul>
-						<li>
-							对于怪物猎人OL武器做好没有了这个是什么情况
-						</li>
-					</ul>
-				</div>
-			</section>
+<body>
+	<!--头部-->
+	<header class="bar">
+		<a class="left mui-action-back mui-icon mui-icon-arrowleft"></a>
+		<h1 class="title">我的收藏</h1>
+	</header>
+	<div class="content">
+		<div class="contol">
+			<div class="appraise1 activet" data-page="my.collect.shop.html">商家</div>
+			<span></span>
+			<div class="appraise1" data-page="my.collect.product.html">商品</div>
 		</div>
-	</body>
+	</div>
+	
+	<script type="text/javascript" src="../js/mui.min.js" ></script>
 	<script type="text/javascript" src="../js/jquery.min.js" ></script>
-	<script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
-	<script>
-		$(function(){
-			$('.contol .appraise1').click(function(){
-				if(!$(this).hasClass('active')){
-					$(this).addClass('active');
-					$('section').hide().eq($(this).index()/2).show();
-					$(this).siblings().removeClass('active');
-				}
-			});
-		});
-	</script>
+	<script type="text/javascript" src="my.collect.js" ></script>
+</body>
 </html>
