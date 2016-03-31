@@ -19,7 +19,6 @@ $('body').delegate('[data-outer]', 'tap', function () {
 // 刷新城市
 function init () {
 	var city = app.store('city');
-	console.log(localStorage.getItem('city'));
 	if (city) {
 		$('header .left span').text(city.text);
 		return;

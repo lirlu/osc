@@ -15,5 +15,5 @@ $('body').delegate('.second-city>li, .hot_city', 'tap', function () {
 	app.store('city', {'value':$(this).attr('data-id'), 'text':$(this).text()});
 	
 	plus.webview.getWebviewById('home.html').evalJS('init()');
-	setTimeout(function () { plus.webview.currentWebview().close(); }, 500);
+	setTimeout(function () { plus.webview.currentWebview().close(); }, 100);
 });
