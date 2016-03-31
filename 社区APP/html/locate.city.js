@@ -11,7 +11,7 @@ mui.plusReady(function () {
 	);
 });
 
-$('body').delegate('.second-city>li, .hot_city', 'tap', function () {
+$('body').delegate('.second-city>li, .hot_city, .city.located', 'tap', function () {
 	app.store('city', {'value':$(this).attr('data-id'), 'text':$(this).text()});
 	
 	plus.webview.getWebviewById('home.html').evalJS('init()');

@@ -19,6 +19,9 @@ mui.back = function() {
 
 //创建子页面，首个选项卡页面显示，其它均隐藏；
 mui.plusReady(function() {
+	if (!plus.storage.getItem('installed')) {
+		app.open('html/guide.html');
+	}
 
 	function child (link, data, style) {
 		return plus.webview.create(link, link.replace(/^html\//g,''), style || {top:'0px', bottom:'45px'}, data || {});

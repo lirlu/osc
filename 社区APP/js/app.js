@@ -2,9 +2,9 @@ var app = window.lirlu = {};
 app.esced = new Date();
 app.pages = [];
 app.link = {
-	'server' : 'http://192.168.2.56/index.php?s=/',
-	'image'  : 'http://192.168.2.56/attachs/',
-	'share'  : 'http://192.168.2.56/wx/index.html'
+	'server' : 'http://shequ.lirlu.com/index.php?s=/',
+	'image'  : 'http://shequ.lirlu.com/attachs/',
+	'share'  : 'http://shequ.lirlu.com/wx/index.html'
 }
 // 检测网络连接是否正常
 app.isNetwordReady = function () {
