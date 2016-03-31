@@ -42,3 +42,10 @@ $('.btn-submit').on('tap', function () {
 	})
 	;
 });
+
+$('[name=type]').on('change', function () {
+	var type = $(this).val();
+	$('[name=num').prev().text('1'==type ? '可带几人' : '同行几人');
+});
+
+
