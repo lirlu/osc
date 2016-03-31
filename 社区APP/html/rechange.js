@@ -39,12 +39,27 @@ $('.btn-submit').on('tap', function () {
 	}
 	var channel = payment.channels[data.payway];
 	if (!channel) { plus.nativeUI.toast('你的手机没有此支付通道，请选择其他支付方式'); return; }
+	
+	
+var ALIPAYSERVER='http://demo.dcloud.net.cn/helloh5/payment/alipay.php?total=';
+var WXPAYSERVER='http://demo.dcloud.net.cn/helloh5/payment/wxpay.php?total=';
+	// 从服务器请求支付订单
+	var PAYSERVER='';
+    if(data.payway=='alipay'){
+        PAYSERVER=ALIPAYSERVER;
+    }else if(data.payway=='wxpay'){
+        PAYSERVER=WXPAYSERVER;
+    }else{
+        plus.nativeUI.alert("不支持此支付通道！",null,"捐赠");
+        return;
+    }
+    
 	// 从服务器请求支付订单
 	plus.nativeUI.showWaiting('正在提交充值订单...');
 	$.ajax({
-		'dataType' : 'json',
+		//'dataType' : 'json',
 		'type'     : 'post',
-		'url'      : app.url('mobile/userinfo/chongzhi'),
+		'url'      : ALIPAYSERVER,
 		'data'     : data
 	})
 	.fail(function (res) {
@@ -53,6 +68,7 @@ $('.btn-submit').on('tap', function () {
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
+		res = {'error':{}, url:res};
 		console.log('提交充值订单结果：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		

@@ -13,45 +13,34 @@
 </head>
 <body>
 	<div class="content">
-		<section class="section">
-			<div class="shop">
-				<div class="shop-l">
-					<img src="../img/shop.png" />
-				</div>
-				<div class="shop-r">
-					中百超市（为民店）
-					<p>06:30-20:30
-						<span class="xian">|</span> 月售300单
-					</p>
-					<p>距离100m</p>
-				</div>
+		<!--全部-->
+		<div id="refreshContainer" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<!--数据列表-->
+				<section class="mui-table-view mui-table-view-chevron" id="pnl-shop"></section>
 			</div>
-			<div class="shop">
-				<div class="shop-l">
-					<img src="../img/shop.png" />
-				</div>
-				<div class="shop-r">
-					中百超市（为民店）
-					<p>06:30-20:30
-						<span class="xian">|</span> 月售300单
-					</p>
-					<p>距离100m</p>
-				</div>
-			</div>
-			<div class="shop">
-				<div class="shop-l">
-					<img src="../img/shop.png" />
-				</div>
-				<div class="shop-r">
-					中百超市（为民店）
-					<p>06:30-20:30
-						<span class="xian">|</span> 月售300单
-					</p>
-					<p>距离100m</p>
-				</div>
-			</div>
-		</section>
+		</div>
 	</div>
+	
+	<!-- 店铺模板 开始 -->
+	<script type="text/html" id="tpl-shop">
+		{{each list as shop}}
+		<div class="shop">
+			<div class="shop-l">
+				<img src="{{shop.img | image}}" />
+			</div>
+			<div class="shop-r">
+				中百超市（为民店）
+				<p>06:30-20:30
+					<span class="xian">|</span> 月售300单
+				</p>
+				<p>距离100m</p>
+			</div>
+		</div>
+		{{/each}}
+	</script>
+	<!-- 店铺模板 开始 -->
+	
 	
 	<script type="text/javascript" src="../js/mui.min.js" ></script>
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
