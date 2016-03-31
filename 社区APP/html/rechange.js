@@ -37,6 +37,8 @@ $('.btn-submit').on('tap', function () {
 		'money'   : $('#money').val(),
 		'payway'  : $('[name="radio"]:checked').val(),
 	}
+	if (!data.money) { plus.nativeUI.toast('请输入充值金额'); return; }
+	if (!/^\d+$/g.test(data.money)) { plus.nativeUI.toast('充值金额为数字'); return; }
 	var channel = payment.channels[data.payway];
 	if (!channel) { plus.nativeUI.toast('你的手机没有此支付通道，请选择其他支付方式'); return; }
 	// 从服务器请求支付订单
