@@ -16,12 +16,22 @@ $('body').delegate('[data-outer]', 'tap', function () {
 	app.open('outer.html', {'url':$(this).attr('data-outer')});
 });
 
-mui.plusReady(function () {
+// 刷新城市
+function init () {
+	var city = app.store('city');
+	console.log(localStorage.getItem('city'));
+	if (city) {
+		$('header .left span').text(city.text);
+		return;
+	}
+	
 	app.locate(function (res) {
 		var addr = res.address;
 		$('header .left span').text(addr.city || addr.province);
 	});
-});
+}
+
+mui.plusReady(init);
 
 // 用户签到
 $('.btn-sigin').on('tap', function () {
