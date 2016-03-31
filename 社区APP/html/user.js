@@ -37,6 +37,8 @@ function autologin () {
 	.done(function (res) {
 		console.log('自动登录：' + JSON.stringify(res));
 		//plus.nativeUI.closeWaiting();
+		// 更新session的key值
+		app.store('key', res.key);
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); localStorage.removeItem('key'); return; }
 		if (false == res.status) {app.error(res.msg); localStorage.removeItem('key'); return;};
