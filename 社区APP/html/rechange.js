@@ -19,7 +19,6 @@ mui.plusReady(function () {
 	
     // 获取支付通道
     plus.payment.getChannels(function (channels) {
-		payment.channels = channels;
 		for (var i in channels) {
 			var channel = channels[i];
 			payment.channels[channel.id] = channel;

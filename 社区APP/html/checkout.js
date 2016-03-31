@@ -1,7 +1,7 @@
 // wxpay  微信
 // alipay 支付宝
 // cash   货到付款
-var payment = {'channels':[]};
+var payment = {'channels':{}};
 
 mui.init();
 
@@ -15,7 +15,10 @@ template.helper('price', function (v) {
 mui.plusReady(function () {
     // 获取支付通道
     plus.payment.getChannels(function (channels) {
-		payment.channels = channels;
+		for (var i in channels) {
+			var channel = channels[i];
+			payment.channels[channel.id] = channel;
+		}
 		
 		$('#pnl-payway').prepend(template('tpl-payway', {data:channels}));
     }, function (e) {
@@ -152,15 +155,11 @@ $('.btn-submit').on('tap', function () {
 	if (!data.address) { alert('请选择收货地址'); return; }
 	if (data.invoice && !data.title) { alert('请填写发票抬头'); return; }
 	
-	// 获取支付通道
-	var channel;
-	for (var i in payment.channels) {
-		if (data.payway == payment.channels[i]) {
-			channel = payment.channels[i];
-			break;
-		}
-	}
+	var channel = payment.channels[data.payway];
+	//if (!channel) { plus.nativeUI.toast('你的手机没有此支付通道，请选择其他支付方式'); return; }
 	
+	
+	console.log('参数：'+JSON.stringify(data));
 	// 从服务器请求支付订单
 	plus.nativeUI.showWaiting('正在提交订单...');
 	$.ajax({
@@ -183,6 +182,7 @@ $('.btn-submit').on('tap', function () {
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
 		if (!res.error) { plus.nativeUI.toast('提交失败...'); return; }
 		if ('cash' == data.payway) { success(res.orderNo); return; }
+		if (!res.url) { plus.nativeUI.toast('服务器返回数据出错'); return; }
 		
 		plus.payment.request(channel, res.url, function (result) {
             plus.nativeUI.alert("支付成功！", function () { success(res.orderNo); });
