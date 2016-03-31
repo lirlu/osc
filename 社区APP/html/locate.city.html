@@ -4,9 +4,12 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<title>定位</title>
-	<link rel="stylesheet" type="text/css" href="../css/mui.min.css" />
+	<link rel="stylesheet" href="../css/mui.min.css" />
 	<link rel="stylesheet" href="../css/common.css" />
 	<link rel="stylesheet" href="../css/app/search.css" />
+	<style>
+		.second-city li {padding-left: 40px;}
+	</style>
 </head>
 
 <body>
@@ -24,7 +27,7 @@
 			</div>
 		</form>
 		<div class="p_city">
-			当前定位城市<span class="city">成都</span>
+			当前定位城市<span class="city located">北京</span>
 		</div>
 		<div class="dies">
 			热门城市
@@ -40,23 +43,27 @@
 			<div class="hot_city">成都</div>
 			<div class="hot_city">重庆</div>
 		</div>
-		<div class="dies">
-			A
-		</div>
-		<ul>
-			<li>鞍山</li>
-			<li>鞍山</li>
-		</ul>
-		<div class="dies">
-			B
-		</div>
-		<ul>
-			<li>北京</li>
-			<li>北京</li>
-			<li>北京</li>
-		</ul>
 	</div>
+	<!-- 城市列表模板 开始 -->
+	<script type="text/html" id="tpl-city">
+		{{each list as pro}}
+		<div class="dies">
+			{{pro.text}}
+		</div>
+		<ul class="second-city">
+			{{each pro.children as city}}
+			<li data-id="{{city.value}}">{{city.text}}</li>
+			{{/each}}
+		</ul>
+		{{/each}}
+	</script>
+	<!-- 城市列表模板 结束 -->
 
+	<script type="text/javascript" src="../js/mui.min.js" ></script>
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/template.js" ></script>
+	<script type="text/javascript" src="../js/app.js" ></script>
+	<script type="text/javascript" src="../js/city.data-3.js" ></script>
+	<script type="text/javascript" src="locate.city.js" ></script>
 </body>
 </html>

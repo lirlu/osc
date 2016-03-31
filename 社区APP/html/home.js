@@ -19,7 +19,7 @@ $('body').delegate('[data-outer]', 'tap', function () {
 mui.plusReady(function () {
 	app.locate(function (res) {
 		var addr = res.address;
-		$('header .left span').text(addr.street || addr.district || addr.city || addr.province);
+		$('header .left span').text(addr.city || addr.province);
 	});
 });
 
