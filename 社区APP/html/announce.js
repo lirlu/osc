@@ -14,8 +14,20 @@ $('.btn-submit').on('tap', function () {
 		'set_addr'  : $('[name="from"]').val(), // 出发地址
 		'mobile'    : $('[name="mobile"').val(),// 联系方式
 	}
+	function toast (text) {
+		plus.nativeUI.toast(text);
+	}
+	if (!data.day)      { toast('请输入出发日期'); return; }
+	if (!data.time)     { toast('请输入出发时间'); return; }
+	if (!data.num)      { toast('请输入人数');    return; }
+	if (!data.set_addr) { toast('请输入出发地址'); return; }
+	if (!data.addr)     { toast('请输入目的地');  return; }
+	if (!data.mobile)   { toast('请输入联系方式'); return; }
+	if (!data.content)  { toast('请输入标题内容'); return; }
+	if (!data.type)     { toast('请选择发布类型'); return; }
 	
 	plus.nativeUI.showWaiting('正在提交...');
+	$(dom).prop('disabled', true);
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
@@ -26,10 +38,12 @@ $('.btn-submit').on('tap', function () {
 		console.log('发布拼车失败：' + JSON.stringify(res));
 		app.error('发布拼车失败');
 		plus.nativeUI.closeWaiting();
+		$(dom).prop('disabled', false);
 	})
 	.done(function (res) {
 		console.log('发布拼车：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
+		$(dom).prop('disabled', false);
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
 		if (false == res.status) {app.error(res.msg); return;};
