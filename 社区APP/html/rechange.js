@@ -1,7 +1,7 @@
 // wxpay  微信
 // alipay 支付宝
 // cash   货到付款
-var payment = {'channels':[]};
+var payment = {'channels':{}};
 
 mui.init();
 
@@ -20,6 +20,10 @@ mui.plusReady(function () {
     // 获取支付通道
     plus.payment.getChannels(function (channels) {
 		payment.channels = channels;
+		for (var i in channels) {
+			var channel = channels[i];
+			payment.channels[channel.id] = channel;
+		}
     }, function (e) {
         alert("获取支付通道失败：" + e.message);
     });
@@ -34,6 +38,8 @@ $('.btn-submit').on('tap', function () {
 		'money'   : $('#money').val(),
 		'payway'  : $('[name="radio"]:checked').val(),
 	}
+	var channel = payment.channels[data.payway];
+	if (!channel) { plus.nativeUI.toast('你的手机没有此支付通道，请选择其他支付方式'); return; }
 	// 从服务器请求支付订单
 	plus.nativeUI.showWaiting('正在提交充值订单...');
 	$.ajax({
