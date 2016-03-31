@@ -63,6 +63,8 @@ $('.btn-submit').on('tap', function () {
 		if (!res.error) { plus.nativeUI.toast('提交失败...'); return; }
 		//if ('cash' == data.payway) { success(res.orderNo); return; }
 		
+		if (!res.url) { plus.nativeUI.toast('服务器返回数据出错'); return; }
+		
 		plus.payment.request(channel, res.url, function (result) {
             plus.nativeUI.alert("支付成功！", function () { success(res.orderNo); });
         }, function(error) {
