@@ -29,7 +29,7 @@ $('#code').on('tap', function () {
 		'dataType' : 'json',
 		'type'     : 'post',
 		'url'      : app.url('mobile/user/verification'),
-		'data'     : { 'tel':$('#tel').val() }
+		'data'     : { 'mobile':$('#tel').val() }
 	})
 	.fail(function (res) {
 		console.log('发送验证码失败：' + JSON.stringify(res));
@@ -58,7 +58,7 @@ $('#checkbox').on('tap', function () {
 $('#submit').on('tap', function () {
 	var data = {
 		mobile    : $('#tel').val(),
-		code      : $('#code').val(),
+		code      : $('#code1').val(),
 		password1 : $('#password1').val(),
 		password2 : $('#password2').val(),
 	};
@@ -87,23 +87,27 @@ $('#submit').on('tap', function () {
 	
 	$.ajax({
 		'dataType' : 'json',
-		'type'     : 'get',
-		'url'      : app.url('mobile/user/verification'),
-		'data'     : { 'tel':$('#tel').val() }
+		'type'     : 'post',
+		'url'      : app.url('mobile/user/register'),
+		'data'     : data
 	})
 	.fail(function (res) {
-		console.log('发送验证码失败：' + JSON.stringify(res));
-		app.error('发送验证码失败');
+		console.log('注册失败：' + JSON.stringify(res));
+		app.error('注册失败');
 		clearInterval(_iid);
 	})
 	.done(function (res) {
-		console.log('发送验证码结果：' + JSON.stringify(res));
+		console.log('注册结果：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
 		if (false == res.status) {app.error(res.msg); return;};
-		
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
+		
+		if (1 == res.status) {
+			app.open('log.html');
+			setTimeout(function () {plus.webview.currentWebview().close();}, 500);
+		}
 	})
 	;
 });
