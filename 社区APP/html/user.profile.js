@@ -74,6 +74,7 @@ function upload (image) {
 			//plus.nativeUI.toast('上传文件成功');
 			append({'path':image.path, 'id':res.id, 'name':res.img});
 		} else {
+			console.log('上传头像失败：' + result.responseText);
 			plus.nativeUI.toast('上传图片失败');
 		}
 	}
@@ -108,20 +109,25 @@ $('.container-cropper-holder img').cropper({
 
 // 提交用户信息
 $('.btn-submit').on('tap', function () {
-	var dom = this;
+	var dom  = this;
+	var data = {
+		'key'      : app.store('key'),
+		'avatar'   : $('.touxia>img').attr('data-name'),
+		'sex'      : $('.sex.active').attr('data-sex'),
+		'nickname' : $('#name').val(),
+		'mobile'   : $('#mobile').val(),
+	};
+	if (!data.nickname) { plus.nativeUI.toast('请填写昵称'); return; }
+	if (!data.mobile) { plus.nativeUI.toast('请填写手机号'); return; }
+	
+	console.log('修改用户信息：' + JSON.stringify(data));
 	plus.nativeUI.showWaiting();
 	$(dom).prop('disabled', true);
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
 		'url'      : app.url('mobile/userinfo/head_portrait_update'),
-		'data'     : {
-			'key'    : app.store('key'),
-			'avatar' : $('.touxia>img').attr('data-name'),
-			'sex'    : $('.sex.active').attr('data-sex'),
-			'name'   : $('#name').val(),
-			'mobile' : $('#mobile').val(),
-		}
+		'data'     : data
 	})
 	.fail(function (res) {
 		console.log('保存用户信息失败：' + JSON.stringify(res));
@@ -134,9 +140,11 @@ $('.btn-submit').on('tap', function () {
 		plus.nativeUI.closeWaiting();
 		$(dom).prop('disabled', false);
 		
+		document.activeElement.blur();
 		if (res.error && res.error.msg) { app.error(res.error.msg); localStorage.removeItem('key'); return; }
 		if (false == res.status) {app.error(res.msg); localStorage.removeItem('key'); return;};
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
+		
 		
 		plus.webview.getWebviewById('user.html').evalJS('refresh()');
 		setTimeout(function () {
