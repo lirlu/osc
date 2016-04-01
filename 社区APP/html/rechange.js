@@ -20,7 +20,7 @@ $('#after-pay .btn-repay').on('tap', function () {
 function pay_by_web (url) {
 	mask.show();
 	$('#after-pay').addClass('active');
-	//app.open('outer.html', {'url':url});
+	app.open('outer.html', {'url':url});
 }
 
 $(window).resize(function() {
