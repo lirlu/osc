@@ -112,7 +112,7 @@ $('.btn-submit').on('tap', function () {
 	var dom  = this;
 	var data = {
 		'key'      : app.store('key'),
-		'avatar'   : $('.touxia>img').attr('data-name'),
+		'img'      : $('.touxia>img').attr('data-name'),
 		'sex'      : $('.sex.active').attr('data-sex'),
 		'nickname' : $('#name').val(),
 		'mobile'   : $('#mobile').val(),
@@ -156,10 +156,10 @@ $('.btn-submit').on('tap', function () {
 
 mui.plusReady(function () {
 	var user = app.store('user');
-	$('.touxia>img').attr('src', user.img || '../img/iconfont-morentouxiang.png'),
+	$('.touxia>img').attr('src', user.img ? (app.link.image + user.img) : '../img/iconfont-morentouxiang.png'),
 	//$('.sex.active').attr('data-sex');
 	$('#name').val(user.nickname);
-	$('#mobile').val(user.account);
+	$('#mobile').val(user.mobile);
 });
 
 
