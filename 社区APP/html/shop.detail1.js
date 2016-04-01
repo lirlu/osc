@@ -90,8 +90,6 @@ function product (cb) {
 	var data = view.extras;
 	plus.nativeUI.showWaiting('请等待...');
 	
-	console.log('获取商超的商品数据：' + app.url('mobile/goods/goods_list'));
-	console.log(JSON.stringify({'page':page++, 'shop_id':data.shop_id, 'cate_id':cate_id}));
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'get',
@@ -99,7 +97,7 @@ function product (cb) {
 		'data'     : {'page':page++, 'shop_id':data.shop_id, 'cate_id':cate_id}
 	})
 	.fail(function (res) {
-		//console.log('获取商超的商品数据失败：' + JSON.stringify(res));
+		console.log('获取商超的商品数据失败：' + JSON.stringify(res));
 		app.error('获取商超的商品数据失败');
 		plus.nativeUI.closeWaiting();
 		page--;
@@ -107,7 +105,7 @@ function product (cb) {
 		//mui('#refreshContainer').pullRefresh().endPullupToRefresh();
 	})
 	.done(function (res) {
-		console.log('商品数据：' + JSON.stringify(res));
+		//console.log('商品数据：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		cb && cb(res);
@@ -123,6 +121,8 @@ mui.plusReady(function () {
 	$('#shop_name').text(data.shop_name);
 	
 	product(function (res) {
+		$('#shop_name').attr('data-lng', res.seller_view.lng).attr('data-lat', res.seller_view.lat);
+		
 		// 商家信息
 		$('#pnl-duty-info').html(template('tpl-duty-info', res));
 		
@@ -135,7 +135,12 @@ mui.plusReady(function () {
 });
 
 $('body').delegate('.btn-shop-location', 'tap', function () {
-	app.open('shop.location.html', {'name':$('#shop_name').text()});
+	var data = {
+		'name' : $('#shop_name').text(),
+		'lng'  : $('#shop_name').attr('data-lng'),
+		'lat'  : $('#shop_name').attr('data-lat'),
+	}
+	app.open('shop.location.html', data);
 });
 // 给商家打电话
 $('body').delegate('.btn-call-seller', 'tap', function () {

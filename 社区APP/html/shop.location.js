@@ -3,7 +3,7 @@ mui.plusReady(function () {
 	
 	$('#shop-name').text(view.extras.name);
 	
-	locate(116.331398, 39.897445);
+	locate(view.extras.lng, view.extras.lat);
 });
 
 function locate (lng, lat) {
