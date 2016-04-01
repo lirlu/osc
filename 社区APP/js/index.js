@@ -19,22 +19,29 @@ mui.back = function() {
 
 //创建子页面，首个选项卡页面显示，其它均隐藏；
 mui.plusReady(function() {
+	var view = plus.webview.currentWebview();
+	
 	if (!plus.storage.getItem('installed')) {
+		//显示启动导航
 		app.open('html/guide.html');
+		//延迟的原因：优先打开启动导航页面，避免资源争夺
+		setTimeout(init, 500);
+	} else {
+		init();
 	}
-
+});
+function init () {
 	function child (link, data, style) {
 		return plus.webview.create(link, link.replace(/^html\//g,''), style || {top:'0px', bottom:'45px'}, data || {});
 	}
-	
 	var view = plus.webview.currentWebview();
-
+	plus.navigator.closeSplashscreen();
+	plus.navigator.setFullscreen(false);
 	view.append(child('html/user.html'));
 	view.append(child('html/cart.html'));
 	view.append(child('html/home.html'));
-	
 	setTimeout(function() { plus.nativeUI.closeWaiting(); }, 200);
-});
+}
 
 function trigger (name) {
 	$('[data-url="'+name+'"]').trigger('tap');
