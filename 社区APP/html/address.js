@@ -72,6 +72,7 @@ mui.plusReady(function () {
 			$('[name=addr]').val(res.addr_info.addr);
 			
 			$('.btn-area .deji').text(area(res.addr_info.provice, res.addr_info.city, res.addr_info.state));
+			$('.btn-area .deji').removeClass('active').addClass('active');
 		})
 		;
 		
@@ -125,6 +126,8 @@ $('.btn-area').on('tap', function(event) {
 		$('[name=provice]').val((items[0] || {}).value);
 		$('[name=city]').val((items[1]    || {}).value);
 		$('[name=state]').val((items[2]   || {}).value);
+		
+		$('.btn-area .deji').removeClass('active').addClass('active');
 		//返回 false 可以阻止选择框的关闭
 		//return false;
 	});
