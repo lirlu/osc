@@ -5,6 +5,24 @@ var payment = {'channels':{}};
 
 mui.init();
 
+var mask = mui.createMask();
+$('.mui-icon-closeempty').on('tap', function () {
+	$('#after-pay').removeClass('active');
+	mask.close();
+});
+$('#after-pay .btn-finish').on('tap', function () {
+	plus.webview.currentWebview().close();
+});
+$('#after-pay .btn-repay').on('tap', function () {
+	$('#after-pay').removeClass('active');
+	mask.close();
+});
+function pay_by_web (url) {
+	mask.show();
+	$('#after-pay').addClass('active');
+	app.open('outer.html', {'url':url});
+}
+
 template.helper('image', function (v) {
 	return app.link.image + v;
 });
@@ -183,6 +201,7 @@ $('.btn-submit').on('tap', function () {
 		if (!res.error) { plus.nativeUI.toast('提交失败...'); return; }
 		if ('cash' == data.payway) { success(res.orderNo); return; }
 		if (!res.url) { plus.nativeUI.toast('服务器返回数据出错'); return; }
+		if (res.redirect_link) { pay_by_web(res.redirect_link); return; }
 		
 		plus.payment.request(channel, res.url, function (result) {
             plus.nativeUI.alert("支付成功！", function () { success(res.orderNo); });

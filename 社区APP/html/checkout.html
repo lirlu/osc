@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="../css/common.css" />
 	<link rel="stylesheet" href="../css/app/cart.css" />
 	<link rel="stylesheet" href="../css/mui.picker.min.css" />
+	<link rel="stylesheet" href="../css/app/pay.by.web.css" />
 	<style>
 		.pro-row {
 			height: 30px;
@@ -92,6 +93,25 @@
 		<section id="pnl-product"></section>
 		<div class="bottom">
 			<button class="tbn btn-submit">确认下单</button>
+		</div>
+		<div id="after-pay">
+			<div class="panel">
+				<span class="mui-icon mui-icon-closeempty mui-hidden"></span>
+				<div class="mui-row">
+					请你在打开的页面确认支付
+				</div>
+				<div class="mui-row">
+					支付完成后请根据你支付的情况点击下面的按钮
+				</div>
+				<div class="mui-row">
+					<div class="mui-col-xs-6 mui-text-center">
+						<button type="button" class="mui-btn mui-btn-outlined mui-btn-danger btn-finish">已完成支付</button>
+					</div>
+					<div class="mui-col-xs-6 mui-text-center">
+						<button type="button" class="mui-btn mui-btn-outlined btn-repay">重新支付</button>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<!-- 购物车模板 开始 -->
