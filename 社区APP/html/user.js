@@ -15,7 +15,7 @@ mui.plusReady(autologin);
 
 function autologin () {
 	if (!app.store('key')) {
-		$('.touxiang').empty().append('<a data-url="log.html"><img src="../img/touxiang.png" /></a>');
+		$('.touxiang').empty().append('<a data-url="log.html"><img src="../img/iconfont-morentouxiang.png" /></a>');
 		$('.username').empty().append('<a data-url="log.html">未登录</a>');
 		return;
 	}
@@ -58,7 +58,7 @@ function refresh () {
 	var key = app.store('key');
 	
 	if (!key) {
-		$('.touxiang').empty().append('<a data-url="log.html"><img src="../img/touxiang.png" /></a>');
+		$('.touxiang').empty().append('<a data-url="log.html"><img src="../img/iconfont-morentouxiang.png" /></a>');
 		$('.username').empty().append('<a data-url="log.html">未登录</a>');
 		return;
 	}
