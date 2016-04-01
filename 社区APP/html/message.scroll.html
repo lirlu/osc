@@ -22,9 +22,9 @@
 	</div>
 	
 	<script type="text/html" id="tpl-message">
-		{{each data as message}}
-		<li class="message" data-id="{{message.id}}">【通知】最后10个小时，不强就没有了!
-			<p>2015-12-24</p>
+		{{each list as message}}
+		<li class="message" data-id="{{message.id}}">{{message.title}}
+			<p>{{message.add_time}}</p>
 			<i></i>
 		</li>
 		{{/each}}

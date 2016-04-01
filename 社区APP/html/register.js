@@ -105,7 +105,10 @@ $('#submit').on('tap', function () {
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
 		
 		if (1 == res.status) {
-			app.open('log.html');
+			
+			var js = "$('#tel').val('"+data.mobile+"');"
+			try { plus.webview.getWebviewById('log.html').evalJS(js) } catch (e) {}
+			//setTimeout(function () {app.open('log.html', {'mobile':data.mobile});}, 200);
 			setTimeout(function () {plus.webview.currentWebview().close();}, 500);
 		}
 	})

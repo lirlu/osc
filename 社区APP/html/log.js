@@ -53,3 +53,11 @@ $('body').delegate('#logoin button', 'tap', function() {
 	})
 	;
 });
+
+mui.plusReady(function () {
+	var view = plus.webview.currentWebview();
+	if (view.extras.mobile) {
+		$('#tel').val(view.extras.mobile);
+	}
+});
+
