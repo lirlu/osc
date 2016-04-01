@@ -7,7 +7,7 @@ function next (cb) {
 		'dataType' : 'json',
 		'type'     : 'post',
 		'url'      : app.url('mobile/order/order_list'),
-		'data'     : _Data
+		'data'     : mui.extend({}, _Data, {'page':_Data.page+1})
 	})
 	.fail(function (res) {
 		console.log('取得订单数据失败：' + JSON.stringify(res));
