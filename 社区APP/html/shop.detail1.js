@@ -134,6 +134,11 @@ mui.plusReady(function () {
 	});
 });
 
+// 给商家打电话
+$('body').delegate('.btn-call-seller', 'tap', function () {
+	plus.device.dial($(this).text());
+});
+
 
 
 
