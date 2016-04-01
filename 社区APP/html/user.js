@@ -62,7 +62,7 @@ function refresh () {
 		$('.username').empty().append('<a data-url="log.html">未登录</a>');
 		return;
 	}
-	
+	console.log('自动登录：' + key);
 	//plus.nativeUI.showWaiting();
 	$.ajax({
 		'dataType' : 'json',
