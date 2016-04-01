@@ -1,5 +1,6 @@
 // 0带支付 1已付款 2已发货  3已完成 4待评价 5已取消
 var _Data = {'page':0, 'limit':15, 'type':'1', 'key':app.store('key')};
+var payment = {'channels':{}};
 
 function next (cb) {
 	plus.nativeUI.showWaiting();
@@ -52,6 +53,16 @@ mui.init({
 });
 
 mui.plusReady(function() {
+    // 获取支付通道
+    plus.payment.getChannels(function (channels) {
+		for (var i in channels) {
+			var channel = channels[i];
+			payment.channels[channel.id] = channel;
+		}
+    }, function (e) {
+        alert("获取支付通道失败：" + e.message);
+    });
+    
 	setTimeout(reinit,1000);
 });
 
@@ -73,6 +84,9 @@ template.helper('time', function (v) {
 // 重新支付订单
 $('body').delegate('.product-order .btn-odr-repay', 'tap', function () {
 	var dom = this, odr = $(dom).closest('.product-order');
+	var channel = payment.channels[$(odr).attr('data-way')];
+	
+	if (!channel) { alert('你的手机没有此支付渠道'); return; }
 	plus.nativeUI.showWaiting();
 	$.ajax({
 		'dataType' : 'json',
@@ -89,16 +103,31 @@ $('body').delegate('.product-order .btn-odr-repay', 'tap', function () {
 		console.log('重新支付订单：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
-		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
 		if (false == res.status) {app.error(res.msg); return;};
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
+		if (!res.error) { plus.nativeUI.toast('提交失败...'); return; }
+		//if ('cash' == data.payway) { success(res.orderNo); return; }
+		if (!res.url) { plus.nativeUI.toast('服务器返回数据出错'); return; }
+		if (res.redirect_link) { pay_by_web(res.redirect_link); return; }
 		
-		$(dom).siblings().prop('disabled', true);
-		$(dom).prop('disabled', true);
+		plus.payment.request(channel, res.url, function (result) {
+			$(dom).siblings().prop('disabled', true);
+			$(dom).prop('disabled', true);
+			
+            plus.nativeUI.alert("支付成功！", function () { success(res.orderNo); });
+            
+        }, function(error) {
+        	console.log(JSON.stringify(error));
+            plus.nativeUI.alert("支付失败：" + error.message);
+        });
 	})
 	;
 });
+
+// 支付成功，跳转到提示页面
+function success (iOrderNo) {
+};
 
 // 取消订单支付订单
 $('body').delegate('.product-order .btn-odr-cancel', 'tap', function () {
