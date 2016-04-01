@@ -134,6 +134,9 @@ mui.plusReady(function () {
 	});
 });
 
+$('body').delegate('.btn-shop-location', 'tap', function () {
+	app.open('shop.location.html', {'name':$('#shop_name').text()});
+});
 // 给商家打电话
 $('body').delegate('.btn-call-seller', 'tap', function () {
 	plus.device.dial($(this).text());
