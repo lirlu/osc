@@ -1,7 +1,7 @@
 .banner li:after{height: 0;}
 ul.col-xs-1:after{height: 0;}
 ul.col-xs-1 {display: inline-block;width: 100%;background: #FFFFFF;white-space: nowrap;position: relative;clear:both;border-top: 1px solid #efefef;}
-.col-xs-1 li{width: 25%;float: left;position: relative;text-align: center;padding: 8px 0;overflow: hidden;background: #FFFFFF;min-height: 1px;height: 70px;}
+.col-xs-1 li{width: 25%;float: left;position: relative;text-align: center;padding: 8px 0;overflow: hidden;background: #FFFFFF;min-height: 1px;height: 75px;}
 .col-xs-1 li:after{height: 0;}
 .col-xs-1 li:nth-child(4n){border-right: 0;}
 .col-xs-1 img{width: 40px;}
