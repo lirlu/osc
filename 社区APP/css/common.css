@@ -68,6 +68,12 @@ p{font-size: 14px;margin: 0;color: #9d9d9d;}
 	padding-right: 10px;
 }
 
+#refreshContainer {width: 100%;}
+
+.gap-header { width: 100%; height: 45px; display: block; }
+.pad-header { margin-top: 45px; }
+.clearfix-pad { padding-top: 5px; padding-bottom: 5px; width: 100%; display: block; background-color: #EFEFEF; clear: both;}
+
 .bdr {border: 1px solid #000000;}
 .red {background-color: red;}
 
