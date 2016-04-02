@@ -1,0 +1,35 @@
+
+#after-pay {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 999;
+	display: none;
+}
+#after-pay.active {
+	display: block;
+}
+#after-pay>.panel {
+	color: #000;
+	width: 250px;
+	height: 200px;
+	padding: 10px;
+	display: block;
+	margin: 60px auto;
+	background-color: #FFF;
+	border-radius: 10px;
+}
+#after-pay .mui-icon-closeempty {
+	float: right;
+	padding: 10px;
+	margin-top: -10px;
+	margin-right: -10px;
+}
+#after-pay>.panel>.mui-row {
+	margin-top: 10px;
+}
+#after-pay>.panel>.mui-row:last-child {
+	margin-top: 50px;
+}
