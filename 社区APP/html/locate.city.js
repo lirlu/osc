@@ -12,7 +12,19 @@ mui.plusReady(function () {
 });
 
 $('body').delegate('.second-city>li, .hot_city, .city.located', 'tap', function () {
-	app.store('city', {'value':$(this).attr('data-id'), 'text':$(this).text()});
+	var data = {'value':$(this).attr('data-id'), 'text':$(this).text()};
+	app.store('city', data);
+	$.ajax({
+		'dataType' : 'json',
+		'type'     : 'post',
+		'url'      : app.url('mobile/index/city'),
+		'data'     : data
+	})
+	.fail(function (res) {
+	})
+	.done(function (res) {
+	})
+	;
 	
 	plus.webview.getWebviewById('home.html').evalJS('init()');
 	setTimeout(function () { plus.webview.currentWebview().close(); }, 100);
