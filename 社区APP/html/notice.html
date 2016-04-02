@@ -17,15 +17,15 @@
 		<a class="left mui-action-back mui-icon mui-icon-arrowleft"></a>
 		<h1 class="title">小区公告</h1>
 	</header>
-	<div class="content">
-		<!--全部-->
-		<div id="refreshContainer" class="mui-content mui-scroll-wrapper">
-			<div class="mui-scroll">
-				<!--数据列表-->
-				<ul class="mui-table-view mui-table-view-chevron" id="pnl-notice"></ul>
-			</div>
+	<!--全部-->
+	<div id="refreshContainer" class="mui-content mui-scroll-wrapper">
+		<div class="mui-scroll">
+			<!--数据列表-->
+			<ul class="mui-table-view mui-table-view-chevron pad-header" id="pnl-notice">
+			</ul>
 		</div>
 	</div>
+	
 	<!-- 订单模板 开始 -->
 	<script type="text/html" id="tpl-notice">
 		{{each list as item}}
