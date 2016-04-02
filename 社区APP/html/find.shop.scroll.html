@@ -22,8 +22,8 @@
 	
 	<!-- 店铺模板 开始 -->
 	<script type="text/html" id="tpl-shop">
-		{{each list as item}}
-		<div class="shop">
+		{{each list as item idx}}
+		<div class="{{if '2'==item.type}}shop{{else}}product{{/if}}" data-id="{{item.id}}" data-title="{{item.title}}">
 			<div class="shop-l">
 				<img src="{{item.photo | image}}" />
 			</div>
@@ -32,13 +32,14 @@
 				<p>
 					&nbsp;
 					{{if '2' == item.type}}
-					{{item.time}}
-					<span class="xian">|</span> 月售 {{item.num}} 单
+					{{item.business_time}}
+					<span class="xian">|</span> 月售 {{item.sale}} 单
 					{{/if}}
 				</p>
 				<p>距离 {{item.juli}} m</p>
 			</div>
 		</div>
+		<div class="clearfix-pad"></div>
 		{{/each}}
 	</script>
 	<!-- 店铺模板 开始 -->

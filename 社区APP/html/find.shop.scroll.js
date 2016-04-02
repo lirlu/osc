@@ -80,3 +80,21 @@ template.helper('avatar', function (v) {
 template.helper('image', function (v) {
 	return app.link.image + v;
 });
+
+
+// 点击商家列表
+$('body').delegate('.shop', 'tap', function() {
+	var data = {
+		'shop_id'   : $(this).attr('data-id'),
+		'shop_name' : $(this).attr('data-title'),
+	};
+	app.open('shop.detail1.html', data);
+});
+// 点击商品
+$('body').delegate(".product", 'tap', function() {
+	var data = {
+		'goods_id' : $(this).attr('data-id'),
+		'name'     : $(this).attr('data-title'),
+	};
+	app.open('goods.detail.html', data);
+});
