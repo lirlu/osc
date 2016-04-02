@@ -26,7 +26,7 @@
 	<!-- 店铺模板 开始 -->
 	<script type="text/html" id="tpl-shop">
 		{{each seller_list as value}}
-		<div class="shop" address='shop.detail.html'>
+		<div class="shop" data-id="{{value.shop_id}}" data-name="{{value.shop_name}}">
 			<div class="shop-l">
 				<img src="{{value.logo | image}}" />
 			</div>
