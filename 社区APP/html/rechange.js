@@ -88,7 +88,8 @@ $('.btn-submit').on('tap', function () {
             plus.nativeUI.alert("支付成功！", function () { success(res.orderNo); });
         }, function(error) {
         	console.log(JSON.stringify(error));
-            plus.nativeUI.alert("支付失败：" + error.message);
+        	plus.nativeUI.alert("支付失败");
+            //plus.nativeUI.alert("支付失败：" + error.message);
         });
 	})
 	;

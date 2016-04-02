@@ -119,7 +119,8 @@ $('body').delegate('.product-order .btn-odr-repay', 'tap', function () {
             
         }, function(error) {
         	console.log(JSON.stringify(error));
-            plus.nativeUI.alert("支付失败：" + error.message);
+        	plus.nativeUI.alert("支付失败");
+            //plus.nativeUI.alert("支付失败：" + error.message);
         });
 	})
 	;
