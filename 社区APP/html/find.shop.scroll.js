@@ -5,7 +5,7 @@ function next (cb) {
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
-		'url'      : app.url('mobile/index/search'),
+		'url'      : app.url('mobile/goods/search'),
 		'data'     : _Data
 	})
 	.fail(function (res) {

@@ -22,17 +22,21 @@
 	
 	<!-- 店铺模板 开始 -->
 	<script type="text/html" id="tpl-shop">
-		{{each list as shop}}
+		{{each list as item}}
 		<div class="shop">
 			<div class="shop-l">
-				<img src="{{shop.img | image}}" />
+				<img src="{{item.photo | image}}" />
 			</div>
 			<div class="shop-r">
-				中百超市（为民店）
-				<p>06:30-20:30
-					<span class="xian">|</span> 月售300单
+				{{item.title}}
+				<p>
+					&nbsp;
+					{{if '2' == item.type}}
+					{{item.time}}
+					<span class="xian">|</span> 月售 {{item.num}} 单
+					{{/if}}
 				</p>
-				<p>距离100m</p>
+				<p>距离 {{item.juli}} m</p>
 			</div>
 		</div>
 		{{/each}}
