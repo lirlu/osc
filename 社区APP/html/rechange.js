@@ -83,6 +83,7 @@ $('.btn-submit').on('tap', function () {
 		//if ('cash' == data.payway) { success(res.orderNo); return; }
 		if (!res.url) { plus.nativeUI.toast('服务器返回数据出错'); return; }
 		if (res.redirect_link) { pay_by_web(res.redirect_link); return; }
+		try { res.url = res.url.trim(); } catch (e) {}
 		
 		plus.payment.request(channel, res.url, function (result) {
             plus.nativeUI.alert("支付成功！", function () { success(res.orderNo); });
