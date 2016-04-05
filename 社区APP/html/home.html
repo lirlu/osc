@@ -7,6 +7,20 @@
     <link rel="stylesheet" href="../css/mui.min.css" />
     <link rel="stylesheet" href="../css/common.css" />
     <link rel="stylesheet" href="../css/app/home.css" />
+    <style>
+    	#pnl-banner img {
+    		height: 200px;
+    		max-width: 100%;
+    	}
+    	#pnl-gallery img {
+    		height: 130px;
+    		max-width: 100%;
+    	}
+    	#pnl-thumb img {
+    		max-height: 100px;
+    		max-width: 100%;
+    	}
+    </style>
 </head>
 <body>
     <!--头部-->
@@ -111,7 +125,14 @@
         <!--便民功能-->
         <section>
             <div class="contain">便民功能</div>
-            <div class="bianming"><img src="../img/bianminggongneng.png" /></div>
+            <div class="mui-slider bianming">
+                <div class="mui-slider-group" id="pnl-gallery">
+                    <div class="mui-slider-item">
+                        <a href="javascript:;"><img src="../img/bianminggongneng.png" /></a>
+                    </div>
+                </div>
+            </div>
+            
             <ul class="bian">
                 <li class="btn-sigin"><img src="../img/sign-in.png"></li>
                 <li data-outer="http://wx.weather.com.cn/mweather/101010100.shtml#1"><img src="../img/weather.png"></li>

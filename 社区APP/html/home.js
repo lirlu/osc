@@ -36,6 +36,7 @@ function init () {
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
 		
 		$('#pnl-banner').html(template('tpl-banner', res));
+		$('#pnl-gallery').html(template('tpl-banner', res));
 		$('#pnl-thumb').html(template('tpl-thumb', res));
 	})
 	;
