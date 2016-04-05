@@ -14,6 +14,8 @@ mui.plusReady(function () {
 $('body').delegate('.second-city>li, .hot_city, .city.located', 'tap', function () {
 	var data = {'value':$(this).attr('data-id'), 'text':$(this).text()};
 	app.store('city', data);
+	plus.webview.getWebviewById('home.html').evalJS('init()');
+	
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
@@ -26,6 +28,5 @@ $('body').delegate('.second-city>li, .hot_city, .city.located', 'tap', function 
 	})
 	;
 	
-	plus.webview.getWebviewById('home.html').evalJS('init()');
 	setTimeout(function () { plus.webview.currentWebview().close(); }, 100);
 });

@@ -42,15 +42,15 @@
         <!--轮播图-->
         <section>
             <div class="mui-slider">
-                <div class="mui-slider-group .mui-slider-loop">
+                <div class="mui-slider-group .mui-slider-loop" id="pnl-slider">
                     <div class="mui-slider-item">
-                        <a href="#"><img src="../img/banner01.png" /></a>
+                        <a href="javascript:;"><img src="../img/banner01.png" /></a>
                     </div>
                     <div class="mui-slider-item">
-                        <a href="#"><img src="../img/banner02.png" /></a>
+                        <a href="javascript:;"><img src="../img/banner02.png" /></a>
                     </div>
                     <div class="mui-slider-item">
-                        <a href="#"><img src="../img/banner03.png" /></a>
+                        <a href="javascript:;"><img src="../img/banner03.png" /></a>
                     </div>
                 </div>
             </div>
@@ -129,6 +129,16 @@
             </ul>
         </section>
     </div>
+    
+    <!-- 轮播图片模板 开始 -->
+    <script type="text/html" id="tpl-slider">
+    	{{each list as item}}
+        <div class="mui-slider-item">
+            <a href="javascript:;"><img src="{{item.img | image}}" /></a>
+        </div>
+        {{/each}}
+    </script>
+    <!-- 轮播图片模板 结束 -->
     
     <script type="text/javascript" src="../js/jquery.min.js"></script>
     <script type="text/javascript" src="../js/mui.min.js"></script>

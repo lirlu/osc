@@ -28,6 +28,24 @@ function init () {
 		var addr = res.address;
 		$('header .left span').text(addr.city || addr.province);
 	});
+	
+	// 取得轮播图数据和推荐商家商品数据
+	$.ajax({
+		'dataType' : 'json',
+		'type'     : 'post',
+		'url'      : app.url('mobile/index/banner'),
+		'data'     : {}
+	})
+	.fail(function (res) {
+	})
+	.done(function (res) {
+		console.log('首页数据：' + JSON.stringify(res));
+		
+		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
+		if (false == res.status) {app.error(res.msg); return;};
+		if (res.msg) { plus.nativeUI.toast(res.msg); };
+	})
+	;
 }
 
 mui.plusReady(init);
@@ -56,6 +74,17 @@ $('.btn-sigin').on('tap', function () {
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
 		if (false == res.status) {app.error(res.msg); return;};
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
+		
+		$('#pnl-slider').html(template('tpl-slider', res));
 	})
 	;
+});
+
+$('#pnl-slider').delegate('.mui-slider-item', 'tap', function () {
+	var dom = this;
+	
+});
+
+template.helper('image', function (v) {
+	return app.link.image + v;
 });
