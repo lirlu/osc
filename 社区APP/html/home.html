@@ -133,7 +133,7 @@
     <!-- 轮播图片模板 开始 -->
     <script type="text/html" id="tpl-slider">
     	{{each list as item}}
-        <div class="mui-slider-item">
+        <div class="mui-slider-item {{if '2' == item.type}}shop{{else}}product{{/if}}" data-id="{{item.sid}}" data-title="{{item.title}}">
             <a href="javascript:;"><img src="{{item.img | image}}" /></a>
         </div>
         {{/each}}

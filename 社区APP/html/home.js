@@ -17,7 +17,28 @@ $('body').delegate('[data-outer]', 'tap', function () {
 });
 
 // 刷新城市
-function init () {
+function init () {	
+	// 取得轮播图数据和推荐商家商品数据
+	$.ajax({
+		'dataType' : 'json',
+		'type'     : 'post',
+		'url'      : app.url('mobile/index/banner'),
+		'data'     : {}
+	})
+	.fail(function (res) {
+		console.log('取得轮播图失败：' + JSON.stringify(res));
+	})
+	.done(function (res) {
+		console.log('首页数据：' + JSON.stringify(res));
+		
+		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
+		if (false == res.status) {app.error(res.msg); return;};
+		if (res.msg) { plus.nativeUI.toast(res.msg); };
+		
+		$('#pnl-slider').html(template('tpl-slider', res));
+	})
+	;
+	
 	var city = app.store('city');
 	if (city) {
 		$('header .left span').text(city.text);
@@ -28,24 +49,6 @@ function init () {
 		var addr = res.address;
 		$('header .left span').text(addr.city || addr.province);
 	});
-	
-	// 取得轮播图数据和推荐商家商品数据
-	$.ajax({
-		'dataType' : 'json',
-		'type'     : 'post',
-		'url'      : app.url('mobile/index/banner'),
-		'data'     : {}
-	})
-	.fail(function (res) {
-	})
-	.done(function (res) {
-		console.log('首页数据：' + JSON.stringify(res));
-		
-		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
-		if (false == res.status) {app.error(res.msg); return;};
-		if (res.msg) { plus.nativeUI.toast(res.msg); };
-	})
-	;
 }
 
 mui.plusReady(init);
@@ -70,19 +73,33 @@ $('.btn-sigin').on('tap', function () {
 		console.log('签到结果：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
-		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
 		if (false == res.status) {app.error(res.msg); return;};
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
-		
-		$('#pnl-slider').html(template('tpl-slider', res));
 	})
 	;
 });
 
-$('#pnl-slider').delegate('.mui-slider-item', 'tap', function () {
+// 点击进入商家
+$('#pnl-slider').delegate('.shop', 'tap', function () {
 	var dom = this;
-	
+	var data = {
+		'id'    : $(dom).attr('data-id'),
+		'title' : $(dom).attr('data-title') || ' ',
+	};
+	if (!data.id || '0' == data.id) { return; }
+	app.open('shop.detail1.html', data);
+});
+// 点击进入商品
+$('#pnl-slider').delegate('.product', 'tap', function () {
+	var dom = this;
+	var data = {
+		'shop_id'  : '', 
+		'goods_id' : $(dom).attr('data-id'),
+		'name'     : $(dom).attr('data-title') || ' ',
+	};
+	if (!data.goods_id || '0' == data.goods_id) { return; }
+	app.open('goods.detail.html', data);
 });
 
 template.helper('image', function (v) {
