@@ -22,7 +22,7 @@ mui.plusReady(function () {
 		$('.business_time').append($('<span></span>').text(data.business_time || ''));
 		$('.addr').append($('<span></span>').text(data.addr || ''));
 		$('.tel').append($('<span></span>').text(data.tel || ''));
-		$('.desc').append($('<span></span>').text(data.details || ''));
+		$('.desc').append($('<span></span>').html(data.details || ''));
 	})
 	;
 });
