@@ -90,7 +90,7 @@ $('#pnl-slider, #pnl-gallery, #pnl-thumb').delegate('.shop', 'tap', function () 
 		'title' : $(dom).attr('data-title') || ' ',
 	};
 	if (!data.id || '0' == data.id) { return; }
-	app.open('shop.detail1.html', data);
+	app.open('shop.information.html', data);
 });
 // 点击进入商品
 $('#pnl-slider, #pnl-gallery, #pnl-thumb').delegate('.product', 'tap', function () {
