@@ -1,11 +1,10 @@
 mui.plusReady(function () {
 	var view = plus.webview.currentWebview();
-	
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'get',
 		'url'      : app.url('mobile/viewseller/seller_view'),
-		'data'     : {'shop_id':view.extras.id}
+		'data'     : {'shop_id':(view.extras.id || view.extras.shop_id)}
 	})
 	.fail(function (res) {
 		console.log('取得商家详情失败：' + JSON.stringify(res));

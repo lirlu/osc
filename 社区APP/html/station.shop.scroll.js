@@ -84,6 +84,15 @@ template.helper('image', function (v) {
 });
 
 
+// 点击商家列表
+$('body').delegate('.shop', 'tap', function() {
+	var data = {
+		'shop_id'   : $(this).attr('data-shop'),
+		'shop_name' : $(this).attr('data-name'),
+	};
+	app.open('shop.information.html', data);
+});
+
 
 
 

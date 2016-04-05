@@ -1,7 +1,7 @@
 var _Data = {'lat':'', 'lng':'', 'key':app.store('key'), 'page':0, 'limit':20, 'category':''};
 mui.init();
 	
-	console.log('获取水站分类：' + app.url('mobile/cateseller/housekeeping_seller_cate'));
+	console.log('获取家政服务分类：' + app.url('mobile/cateseller/housekeeping_seller_cate'));
 	//plus.nativeUI.showWaiting('加载中...');
 	$.ajax({
 		'dataType' : 'json',
@@ -10,12 +10,12 @@ mui.init();
 		'data'     : mui.extend({}, _Data, {'page':_Data.page})
 	})
 	.fail(function (res) {
-		console.log('取得水站商家分类失败：' + JSON.stringify(res));
-		app.error('取得水站商家分类失败');
+		console.log('获取家政服务分类失败：' + JSON.stringify(res));
+		app.error('获取家政服务分类失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('水站分类：' + JSON.stringify(res));
+		console.log('家政服务分类：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }

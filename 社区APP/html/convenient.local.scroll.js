@@ -91,7 +91,7 @@ $('#pnl-shop').delegate('.shop', 'tap', function() {
 		'addr'      : $(this).attr('addr'),
 		'tel'       : $(this).attr('tel'),
 	};
-	app.open('shop.detail1.html', data);
+	app.open('shop.information.html', data);
 });
 
 

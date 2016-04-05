@@ -11,12 +11,12 @@ function next (cb) {
 		'data'     : mui.extend({}, _Data, {'page':_Data.page})
 	})
 	.fail(function (res) {
-		console.log('取得水站商家失败：' + JSON.stringify(res));
-		app.error('取得水站商家失败');
+		console.log('取得家政服务商家失败：' + JSON.stringify(res));
+		app.error('取得家政服务商家失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('水站商家：' + JSON.stringify(res));
+		console.log('家政服务商家：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
@@ -83,7 +83,16 @@ template.helper('image', function (v) {
 	return v ? (app.link.image + v) : '../img/iconfont-morentouxiang.png';
 });
 
-
+// 点击商家列表
+$('#pnl-shop').delegate('.shop', 'tap', function() {
+	var data = {
+		'shop_id'   : $(this).attr('data-shop'),
+		'shop_name' : $(this).attr('shop_name'),
+		'addr'      : $(this).attr('addr'),
+		'tel'       : $(this).attr('tel'),
+	};
+	app.open('shop.information.html', data);
+});
 
 
 

@@ -88,7 +88,7 @@ $('body').delegate('.shop', 'tap', function () {
 	var data = {
 		'shop_id'   : $(this).attr('data-shop')
 	};
-	app.open('shop.detail1.html', data);
+	app.open('shop.information.html', data);
 });
 
 
