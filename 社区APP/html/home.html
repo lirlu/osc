@@ -42,7 +42,7 @@
         <!--轮播图-->
         <section>
             <div class="mui-slider">
-                <div class="mui-slider-group .mui-slider-loop" id="pnl-slider">
+                <div class="mui-slider-group .mui-slider-loop" id="pnl-banner">
                     <div class="mui-slider-item">
                         <a href="javascript:;"><img src="../img/banner01.png" /></a>
                     </div>
@@ -121,7 +121,7 @@
         <!--便民服务-->
         <section>
             <div class="contain">便民服务</div>
-            <ul class="ad">
+            <ul class="ad" id="pnl-thumb">
                 <li class="top"><img src="../img/ad-1.png"></li>
                 <li class="top"><img src="../img/ad-2.png"></li>
                 <li><img src="../img/ad-3.png"></li>
@@ -131,14 +131,25 @@
     </div>
     
     <!-- 轮播图片模板 开始 -->
-    <script type="text/html" id="tpl-slider">
-    	{{each list as item}}
+    <script type="text/html" id="tpl-banner">
+    	{{each banner as item}}
         <div class="mui-slider-item {{if '2' == item.type}}shop{{else}}product{{/if}}" data-id="{{item.sid}}" data-title="{{item.title}}">
             <a href="javascript:;"><img src="{{item.img | image}}" /></a>
         </div>
         {{/each}}
     </script>
     <!-- 轮播图片模板 结束 -->
+    
+    <!-- 便民服务模板 开始 -->
+    <script type="text/html" id="tpl-thumb">
+    	{{each thumb as item idx}}
+        <li class="{{if idx < 3}}top{{/if}} {{if '2' == item.type}}shop{{else}}product{{/if}}" data-id="{{item.sid}}" data-title="{{item.title}}">
+        	<img src="{{item.img | image}}">
+        	
+        </li>
+        {{/each}}
+    </script>
+    <!-- 便民服务模板 结束 -->
     
     <script type="text/javascript" src="../js/jquery.min.js"></script>
     <script type="text/javascript" src="../js/mui.min.js"></script>

@@ -35,7 +35,8 @@ function init () {
 		if (false == res.status) {app.error(res.msg); return;};
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
 		
-		$('#pnl-slider').html(template('tpl-slider', res));
+		$('#pnl-banner').html(template('tpl-banner', res));
+		$('#pnl-thumb').html(template('tpl-thumb', res));
 	})
 	;
 	
@@ -81,7 +82,7 @@ $('.btn-sigin').on('tap', function () {
 });
 
 // 点击进入商家
-$('#pnl-slider').delegate('.shop', 'tap', function () {
+$('#pnl-slider, #pnl-gallery, #pnl-thumb').delegate('.shop', 'tap', function () {
 	var dom = this;
 	var data = {
 		'id'    : $(dom).attr('data-id'),
@@ -91,7 +92,7 @@ $('#pnl-slider').delegate('.shop', 'tap', function () {
 	app.open('shop.detail1.html', data);
 });
 // 点击进入商品
-$('#pnl-slider').delegate('.product', 'tap', function () {
+$('#pnl-slider, #pnl-gallery, #pnl-thumb').delegate('.product', 'tap', function () {
 	var dom = this;
 	var data = {
 		'shop_id'  : '', 
