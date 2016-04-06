@@ -1,6 +1,7 @@
 var _Data = {'lat':'', 'lng':'', 'key':app.store('key'), 'page':0, 'limit':20, 'category':''};
 mui.init();
 	
+mui.plusReady(function () {
 	console.log('获取水站分类：' + app.url('mobile/cateseller/water_seller_cate'));
 	//plus.nativeUI.showWaiting('加载中...');
 	$.ajax({
@@ -26,6 +27,7 @@ mui.init();
 		$('[data-primary-category]:first').trigger('tap');
 	})
 	;
+});
 	
 // 点击大分类
 $('body').delegate('[data-primary-category]', 'tap', function () {
