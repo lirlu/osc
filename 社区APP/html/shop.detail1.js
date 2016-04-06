@@ -1,4 +1,4 @@
-var page = 0, cate_id = '';
+var _Data = {'shop_id':'', 'page':0, 'cate_id':'', 'limit':9999};
 template.helper('image', function (v) {
 	return app.link.image + v;
 });
@@ -42,11 +42,12 @@ $('.content').delegate(' .startime', 'tap', function() {
 });
 
 //点击一级列表
-$('body').delegate('.left-div li', 'tap', function() {
+$('body').delegate('#pnl-category li', 'tap', function() {
 
 	$(this).addClass('active1').css('background', '#eee').siblings().removeClass('active1').css('background', '');
 	// 查看分类下的商品数据
-	page = 0, cate_id = $(this).attr('data-name');
+	_Data.page = 0;
+	_Data.cate_id = $(this).attr('data-name');
 	
 	$('#pnl-product').empty();
 	product(function (res) {
@@ -72,7 +73,6 @@ function category (cb) {
 		console.log('获取商品分类数据失败：' + JSON.stringify(res));
 		app.error('获取商品分类数据失败');
 		plus.nativeUI.closeWaiting();
-		page--;
 		//mui('#refreshContainer').pullRefresh().endPullupToRefresh();
 		//mui('#refreshContainer').pullRefresh().endPullupToRefresh();
 	})
@@ -90,17 +90,17 @@ function product (cb) {
 	var data = view.extras;
 	plus.nativeUI.showWaiting('请等待...');
 	
+	//console.log('查询商品列表参数：' + JSON.stringify(mui.extend({}, _Data, {'page':_Data.page+1})));
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'get',
 		'url'      : app.url('mobile/goods/goods_list'),
-		'data'     : {'page':page++, 'shop_id':data.shop_id, 'cate_id':cate_id}
+		'data'     : mui.extend({}, _Data, {'page':_Data.page+1})
 	})
 	.fail(function (res) {
 		console.log('获取商超的商品数据失败：' + JSON.stringify(res));
 		app.error('获取商超的商品数据失败');
 		plus.nativeUI.closeWaiting();
-		page--;
 		//mui('#refreshContainer').pullRefresh().endPullupToRefresh();
 		//mui('#refreshContainer').pullRefresh().endPullupToRefresh();
 	})
@@ -108,6 +108,7 @@ function product (cb) {
 		//console.log('商品数据：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
+		_Data.page++;
 		cb && cb(res);
 	})
 	;
@@ -116,6 +117,7 @@ function product (cb) {
 mui.plusReady(function () {
 	var view = plus.webview.currentWebview();
 	var data = view.extras;
+	_Data.shop_id = data.shop_id;
 	
 	// 商家信息
 	$('#shop_name').text(data.shop_name);
