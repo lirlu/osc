@@ -8,7 +8,21 @@
 		<link rel="stylesheet" type="text/css" href="../css/mui.min.css" />
 		<link rel="stylesheet" href="../css/common.css" />
 		<link rel="stylesheet" href="../css/app/collect.css" />
-		<style>.startime1{height: auto; padding-bottom: 6px;}</style>
+		<style>
+			.startime1{height: auto; padding-bottom: 6px;}
+			.content { height: 100%; }
+			.row-detail { height: 100%; }
+			#pnl-duty-info {z-index: 100;}
+			.mui-scroll-wrapper {z-index: 50;}
+			#pnl-product {padding-bottom: 50px;}
+			.dblock {display: block; width: 100%;height: 20px;}
+			#pnl-product li {
+				width: 100%;
+				height: auto;
+				padding-left: 10px;
+			}
+			#pnl-product li:after { left: 0; }
+		</style>
 	</head>
 
 	<body>
@@ -24,18 +38,19 @@
 		<div class="content">
 			<section class="shops" id="pnl-duty-info">
 			</section>
-			<section class="shops" style="z-index: 1;">
-				<div class="all-div">
-					<div class="left-div">
-						<ul id="pnl-category">
-						</ul>
-					</div>
-					<div class="right-div fril">
-						<ul id="pnl-product">
-						</ul>
+			<div class="mui-row row-detail">
+				<div class="mui-col-xs-4">
+					<ul id="pnl-category"></ul>
+				</div>
+				<div class="mui-col-xs-8" style="height: 100%;">
+					<div class="mui-scroll-wrapper">
+						<div class="mui-scroll">
+							<ul id="pnl-product">
+							</ul>
+						</div>
 					</div>
 				</div>
-			</section>
+			</div>
 		</div>
 	</body>
 	<script type="text/html" id="tpl-duty-info">
@@ -45,7 +60,7 @@
 			<span class="juli">{{seller_view.business_time}}</span>
 			<b></b>
 		</div>
-		<div class="startime1" style="z-index: 2;position: absolute;">
+		<div class="startime1" style="z-index: 99;position: absolute;">
 			<div class="shoper">
 				<img src="../img/iconfont-location.png" />
 				<span>商家地址</span>
@@ -66,15 +81,15 @@
 	</script>
 	<script type="text/html" id="tpl-product">
 		{{each goods_list as value}}
-		<div class="right-div goods" address='goods.detail.html' title="{{value.title}}" goods_id="{{value.goods_id}}">
+		<li class="goods" address='goods.detail.html' title="{{value.title}}" goods_id="{{value.goods_id}}">
 			<div class="li-left"><img src="{{value.photo | image}}"></div>
 			<div class="li-right" style="padding-left: 5px;">
-				<span class="dblock">{{value.title}}</span>
-				<span class="dblock size">{{value.unit}}</span>
+				<span class="dblock name">{{value.title}}</span>
+				<span class="dblock size">{{value.unit}} &nbsp;</span>
 				<span class="dblock col size">￥{{value.mall_price | price}}</span>
 			</div>
 			<i></i>
-		</div>
+		</li>
 		{{/each}}
 	</script>
 	
