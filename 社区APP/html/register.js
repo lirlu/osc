@@ -75,7 +75,7 @@ $('#submit').on('tap', function () {
 	} else if (data.password1 == '') {
 		alert('密码输入不能为空'); return;
 		
-	} else if (!/^\w\d{5,}$/.test(data.password1)) {
+	} else if (!/^[\w\d]{5,}$/.test(data.password1)) {
 		alert('密码输入不能小于六位数'); return;
 		
 	} else if (data.password2 != data.password1) {
