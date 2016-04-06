@@ -10,15 +10,7 @@
 </head>
 
 <body>
-	<!--头部-->
-	<div class="content" style="padding-top: 0; padding-bottom: 0;">
-		<div class="contol">
-			<div class="appraise1 btn-local-shop">本社区</div>
-			<span></span>
-			<div class="appraise1 btn-all-category">全部分类</div>
-		</div>
-	</div>
-	<div id="refreshContainer" class="mui-content mui-scroll-wrapper">
+	<div id="refreshContainer" class="mui-content mui-scroll-wrapper" style="height: 100%;">
 		<div class="mui-scroll">
 			<!--数据列表-->
 			<ul class="mui-table-view mui-table-view-chevron" id="pnl-shop"></ul>
@@ -26,7 +18,6 @@
 	</div>
 	
 	<script type="text/html" id="tpl-shop">
-		<div class="shop-empty-line" style="margin-top: 50px;"></div>
 		{{each seller_list as value}}
 		<div class="shop" shop_id="{{value.shop_id}}">
 			<div class="shop-l">

@@ -1,14 +1,14 @@
-var data = {'type':'', 'page':0, 'limit':15, 'key':app.store('key'), 'cate_id':'', 'lat':'', 'lng':''}
+var _Data = {'type':'', 'page':0, 'limit':15, 'key':app.store('key'), 'cate_id':'', 'lat':'', 'lng':''}
 // 本社区
 function next (cb) {
-	console.log('请求数据：' + JSON.stringify(data));
+	console.log('请求数据：' + JSON.stringify(_Data));
 	
 	plus.nativeUI.showWaiting();
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
 		'url'      : app.url('mobile/index/union_seller'),
-		'data'     : data
+		'data'     : mui.extend({}, _Data, {'page':_Data.page+1})
 	})
 	.fail(function (res) {
 		console.log('获取联盟商家列表失败：' + JSON.stringify(res));
@@ -30,7 +30,7 @@ function next (cb) {
 
 function funcPullupRefresh () {
 	next(function (res) {
-		var noMore = data.page * data.limit >= (res.total||1);
+		var noMore = _Data.page * _Data.limit >= (res.total||1);
 		$('#pnl-shop').append(template('tpl-shop', res));
 		mui('#refreshContainer').pullRefresh().endPullupToRefresh(noMore);//参数为true代表没有更多数据了。
 	});
@@ -50,14 +50,23 @@ mui.init({
 
 mui.plusReady(function() {
 	app.locate(function(res) {
-		data.lat = res.coords.latitude;
-		data.lng = res.coords.longitude;
+		_Data.lat = res.coords.latitude;
+		_Data.lng = res.coords.longitude;
 		
 		mui('#refreshContainer').pullRefresh().pullupLoading();
 	}, {
 		provider: 'baidu'
 	});
 });
+
+function init (data) {
+	data = data || {};
+	_Data.page    = 0;
+	_Data.cate_id = data.category || '';
+	
+	$('#pnl-shop').html('');
+	mui('#refreshContainer').pullRefresh().pullupLoading();
+}
 
 template.helper('image', function (v) {
 	return app.link.image + v;
@@ -78,7 +87,7 @@ $('.btn-all-category').on('tap', function () {
 		'dataType' : 'json',
 		'type'     : 'post',
 		'url'      : app.url('mobile/cateseller/union_seller_cate'),
-		'data'     : {'key':data.key}
+		'data'     : {'key':_Data.key}
 	})
 	.fail(function (res) {
 		console.log('获取全部分类失败：' + JSON.stringify(res));
