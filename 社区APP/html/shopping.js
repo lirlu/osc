@@ -29,7 +29,7 @@ function search (cb) {
 function funcPullUp () {
 	search(function (res) {
 		if (200 != res.code) { plus.nativeUI.toast('请求数据失败'); return; }
-		var noMore = _Data.page * _Data.limit >= (res.total||1);
+		var noMore = _Data.page * _Data.limit >= (res.sellerCount||1);
 		
 		$('#pnl-nearby-store').prepend(template('tpl-nearby-store', res));
 		// 参数为true表示没有更多的数据了
