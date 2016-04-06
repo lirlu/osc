@@ -1,18 +1,12 @@
-var page = 0;
+var _Data = {'type':'', 'page':0, 'limit':20, 'key':app.store('key'), 'cate_id':'', 'lat':'', 'lng':''}
 function search (cb) {
 	plus.nativeUI.showWaiting("等待中...");
-	//console.log('定位数据：' + app.store('LocationAddress'));
-	var addr = app.store('LocationAddress') || {coords:{}};
 	console.log('请求附近商超数据：' + app.url('mobile/supermarketseller/superseller'));
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'get',
 		'url'      : app.url('mobile/supermarketseller/superseller'),
-		'data'     : {
-			page : page++,
-			lat  : addr.coords.latitude,
-			lng  : addr.coords.longitude
-		}
+		'data'     : mui.extend({}, _Data, {'page':_Data.page+1})
 	})
 	.fail(function (res) {
 		console.log('加载附近商超失败：' + JSON.stringify(res));
@@ -26,6 +20,7 @@ function search (cb) {
 		console.log('附近商超：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
+		_Data.page++;
 		cb && cb(res);
 	})
 	;
@@ -34,11 +29,11 @@ function search (cb) {
 function funcPullUp () {
 	search(function (res) {
 		if (200 != res.code) { plus.nativeUI.toast('请求数据失败'); return; }
+		var noMore = _Data.page * _Data.limit >= (res.total||1);
 		
 		$('#pnl-nearby-store').prepend(template('tpl-nearby-store', res));
 		// 参数为true表示没有更多的数据了
-		mui('#refreshContainer').pullRefresh().endPullupToRefresh(false);
-		//mui('#refreshContainer').pullRefresh().disablePullupToRefresh();
+		mui('#refreshContainer').pullRefresh().endPullupToRefresh(noMore);//参数为true代表没有更多数据了。
 	});
 }
 function funcPullDown () {
@@ -81,12 +76,13 @@ $('#pnl-nearby-store').delegate('.shop', 'tap', function() {
 
 
 mui.plusReady(function () {
-	// 加载附近商超
-	// plus.geolocation.getCurrentPosition(function(res) {});
-	app.locate(function (pos) {
-		setTimeout(function () {
-			mui('#refreshContainer').pullRefresh().pulldownLoading();
-		}, 1000);
+	app.locate(function(res) {
+		_Data.lat = res.coords.latitude;
+		_Data.lng = res.coords.longitude;
+		
+		mui('#refreshContainer').pullRefresh().pullupLoading();
+	}, {
+		provider: 'baidu'
 	});
 });
 template.helper('image', function (v) {

@@ -3,16 +3,18 @@ mui.plusReady(function () {
 	
 	plus.geolocation.getCurrentPosition(
 		function (res) {
-			$('.located.city').text(res.address.city);
+			$('.located.city').data('locate', res).text(res.address.city);
 		}, 
 		function () {
+			plus.nativeUI.toast('定位失败，请确认你已同意使用定位服务');
 		}, 
 		{ provider : 'baidu' }
 	);
 });
 
 $('body').delegate('.second-city>li, .hot_city, .city.located', 'tap', function () {
-	var data = {'value':$(this).attr('data-id'), 'text':$(this).text()};
+	var auto = $(this).data('locate');
+	var data = {'value':$(this).attr('data-id'), 'text':$(this).text(), 'auto':auto};
 	app.store('city', data);
 	plus.webview.getWebviewById('home.html').evalJS('init()');
 	
