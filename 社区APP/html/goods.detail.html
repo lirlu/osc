@@ -21,6 +21,9 @@
 		.hong_star {
 			background-image: url(../img/honxin.png);
 		}
+		.btn-book-product {
+			margin-left: 10px;
+		}
 	</style>
 </head>
 
@@ -63,9 +66,11 @@
 				{{if goods_info.goods_type==1}}
 				<button class="add-to-cart">加入购物车</button>
 				{{else if goods_info.goods_type==2}}
-				<a id="button" href="tel:{{goods_info.tel}}">立即预约</a> {{else}}
+				<a id="button" href="tel:{{goods_info.tel}}">立即预约</a>
+				{{else}}
 				<button class="add-to-cart">加入购物车</button>
-				<a id="button" href="tel:{{goods_info.tel}}">立即预约</a> {{/if}}
+				<button class="btn-call-seller" data-tel="{{goods_info.tel}}">立即预约</button>
+				{{/if}}
 			</div>
 		</div>
 

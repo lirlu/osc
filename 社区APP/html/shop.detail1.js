@@ -147,7 +147,7 @@ $('body').delegate('.btn-shop-location', 'tap', function () {
 });
 // 给商家打电话
 $('body').delegate('.btn-call-seller', 'tap', function () {
-	plus.device.dial($(this).text());
+	plus.device.dial($(this).text(), true);
 });
 
 
