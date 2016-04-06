@@ -3,18 +3,18 @@ mui.plusReady(function () {
 	
 	$('#shop-name').text(view.extras.name);
 	
-	locate(view.extras.lng, view.extras.lat);
+	locate(view.extras.addr, view.extras.lng, view.extras.lat);
 });
 
-function locate (lng, lat) {
+function locate (addr, lng, lat) {
 	// 百度地图API功能
 	var map = new BMap.Map("allmap");
 	var point = new BMap.Point(lng, lat);
-	map.centerAndZoom(point,12);
+	map.centerAndZoom(point, 12);
 	// 创建地址解析器实例
 	var myGeo = new BMap.Geocoder();
 	// 将地址解析结果显示在地图上,并调整地图视野
-	myGeo.getPoint("北京市海淀区上地10街", function(point){
+	myGeo.getPoint(addr, function(point){
 		if (point) {
 			map.centerAndZoom(point, 16);
 			map.addOverlay(new BMap.Marker(point));
@@ -22,5 +22,5 @@ function locate (lng, lat) {
 			alert("您选择地址没有解析到结果!");
 		}
 	}, "北京市");
-	console.log('end');
+	console.log('lng：'+lng + '    lat：' + lat);
 }

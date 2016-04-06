@@ -141,6 +141,7 @@ mui.plusReady(function () {
 
 $('body').delegate('.btn-shop-location', 'tap', function () {
 	var data = {
+		'addr' : $(this).text(),
 		'name' : $('#shop_name').text(),
 		'lng'  : $('#shop_name').attr('data-lng'),
 		'lat'  : $('#shop_name').attr('data-lat'),
