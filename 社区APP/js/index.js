@@ -23,7 +23,7 @@ mui.plusReady(function() {
 	
 	if (!plus.storage.getItem('installed')) {
 		//显示启动导航
-		app.open('html/guide.html');
+		app.open('html/guide.html', {'top':'0px','bottom':'0px'});
 		//延迟的原因：优先打开启动导航页面，避免资源争夺
 		setTimeout(init, 500);
 	} else {
