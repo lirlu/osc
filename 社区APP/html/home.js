@@ -17,7 +17,7 @@ $('body').delegate('[data-outer]', 'tap', function () {
 });
 
 // 刷新城市
-function init () {	
+function init (city) {
 	// 取得轮播图数据和推荐商家商品数据
 	$.ajax({
 		'dataType' : 'json',
@@ -41,15 +41,13 @@ function init () {
 	})
 	;
 	
-	var city = app.store('city');
 	if (city) {
 		$('header .left span').text(city.text);
 		return;
 	}
-	
 	app.locate(function (res) {
 		var addr = res.address;
-		$('header .left span').text(addr.city || addr.province);
+		$('header .left span').text(addr.street || addr.district || addr.city || addr.province);
 	});
 }
 

@@ -16,7 +16,7 @@ $('body').delegate('.second-city>li, .hot_city, .city.located', 'tap', function 
 	var auto = $(this).data('locate');
 	var data = {'value':$(this).attr('data-id'), 'text':$(this).text(), 'auto':auto};
 	app.store('city', data);
-	plus.webview.getWebviewById('home.html').evalJS('init()');
+	plus.webview.getWebviewById('home.html').evalJS('init('+JSON.stringify(data)+')');
 	
 	$.ajax({
 		'dataType' : 'json',
