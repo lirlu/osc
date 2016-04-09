@@ -25,7 +25,7 @@
 	<!-- 我的帖子模板 开始 -->
 	<script type="text/html" id="tpl-used">
 		{{each list as item}}
-		<div class="shop" data-id="shop_id">
+		<div class="shop" data-id="{{item.shop_id}}">
 			<div class="shop-l">
 				<img src="{{item.logo | image}}" />
 			</div>
