@@ -1,12 +1,4 @@
 mui.plusReady(function () {
-	var now = new Date();
-	$('.now-day').text(now.getMonth() + 1 + '月' + now.getDate() + '日');
-	$('.now-year').html(now.getYear() + '<p>今日</p>')
-	
-	var days = new Date(now.getYear(), now.getMonth() + 1, 0).getDate();
-	var from = new Date(now.getYear(), now.getMonth(), 1).getDay();
-	var i = 0;
-	
 	plus.nativeUI.showWaiting();
 	$.ajax({
 		'dataType' : 'json',
@@ -26,18 +18,43 @@ mui.plusReady(function () {
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
 		if (false == res.status) {app.error(res.msg); return;};
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
+		
+		draw(res);
 	})
 	;
-	console.log(now.getMonth() + 1);
-	console.log(new Date(now.getYear(), now.getMonth() + 1, 0).getMonth());
-	console.log(days)
+});
+
+function draw (data) {
+	var now = new Date();
+	$('.now-day').text((now.getMonth() + 1) + '月' + now.getDate() + '日');
+	$('.now-year').html(now.getYear() + '<p>今日</p>')
+	
+	var days = new Date(now.getYear(), now.getMonth() + 1, 0).getDate();
+	var from = new Date(now.getYear(), now.getMonth(), 1).getDay();
+	var i = 0;
+	
+	$('.total_day').text(data.day || '0');
+	$('.total_money').text(data.integral || '0');
+	$('.last_day').text(days - data.day);
+	
+	var log = {};
+	for (var idx in data.log) {
+		log['T'+ parseInt(data.log[idx].day, 10)] = data.log[idx];
+	}
+	console.log(JSON.stringify(log));
 	$('.calendar table>tbody td').each(function (idx, dom) {
 		if (idx >= from && i < days) {
-			$(dom).html('<span>'+ (++i) +'</span>');
-			if (i == now.getDate()) { $(dom).addClass('checked round'); }
+			++i;
+			var span = $('<span></span>').text(i).attr('data-num', i);
+			
+			if (log['T'+i]) { $(dom).addClass('checked'); console.log('add'+i) }
+			if (i == now.getDate()) { $(dom).addClass('round'); }
+			if (log['T'+i] && i == now.getDate()) { $(dom).addClass('setted'); }
+			
+			$(dom).empty().append(span);
 		}
 	});
-});
+}
 
 
 // 用户签到

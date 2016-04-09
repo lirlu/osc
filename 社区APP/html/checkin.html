@@ -26,13 +26,19 @@
 		}
 		.calendar table td.checked {
 			color: #FD4C3C;
+			font-weight: bold;
 		}
 		.calendar table td.round span {
-			background-color: #FD4C3C;
-			color: #FFFFFF;
 			border: 1px solid #FD4C3C;
 			border-radius: 50%;
 		}
+		.calendar table td.setted span {
+			background-color: #FD4C3C;
+			color: #FFFFFF;
+		}
+		.fjo { font-size: 0.8em; height: 30px; }
+		.float1 { width: 31%; }
+		.float2 { width: 25%; }
 	</style>
 </head>
 
@@ -47,19 +53,19 @@
 			<div class="float1">
 				<div class="fjo">
 					<div class="f_l">总签到天数</div>
-					<div class="number f_l col3">4</div>
+					<div class="number f_l col3 total_day">0</div>
 				</div>
 			</div>
 			<div class="float">
 				<div class="fjo">
 					<div class="f_l">签到得到的米币</div>
-					<div class="number f_l col4">80</div>
+					<div class="number f_l col4 total_money">0</div>
 				</div>
 			</div>
 			<div class="float2">
 				<div class="fjo">
 					<div class="f_l">未签到天数</div>
-					<div class="number f_l col5">22</div>
+					<div class="number f_l col5 last_day">0</div>
 				</div>
 			</div>
 		</div>
