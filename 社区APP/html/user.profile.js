@@ -156,8 +156,9 @@ $('.btn-submit').on('tap', function () {
 
 mui.plusReady(function () {
 	var user = app.store('user');
+	
 	$('.touxia>img').attr('src', user.img ? (app.link.image + user.img) : '../img/iconfont-morentouxiang.png'),
-	//$('.sex.active').attr('data-sex');
+	$('.sex[data-sex='+(user.sex || 'female')+']').addClass('active');
 	$('#name').val(user.nickname);
 	$('#mobile').val(user.mobile);
 });
