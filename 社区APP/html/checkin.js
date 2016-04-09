@@ -47,7 +47,7 @@ function draw (data) {
 			++i;
 			var span = $('<span></span>').text(i).attr('data-num', i);
 			
-			if (log['T'+i]) { $(dom).addClass('checked'); console.log('add'+i) }
+			if (log['T'+i]) { $(dom).addClass('checked'); }
 			if (i == now.getDate()) { $(dom).addClass('round'); }
 			if (log['T'+i] && i == now.getDate()) { $(dom).addClass('setted'); }
 			
