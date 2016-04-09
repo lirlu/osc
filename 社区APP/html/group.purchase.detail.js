@@ -47,7 +47,6 @@ $('.btn-submit').on('tap', function () {
 		return;
 	}
 	
-	$(dom).prop('disabled', true);
 	app.open('group.payment.html', view.extras);
 });
 

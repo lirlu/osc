@@ -83,10 +83,12 @@ $('.btn-submit').on('tap', function () {
 		console.log('提交订单失败：' + JSON.stringify(res));
 		app.error('提交订单失败');
 		plus.nativeUI.closeWaiting();
+		$(dom).prop('disabled', false);
 	})
 	.done(function (res) {
 		console.log('提交订单结果：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
+		$(dom).prop('disabled', false);
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
 		if (false == res.status) {app.error(res.msg); return;};
@@ -97,7 +99,7 @@ $('.btn-submit').on('tap', function () {
             plus.nativeUI.alert("支付成功！", function () { success(res.orderNo); });
         }, function(error) {
         	console.log(JSON.stringify(error));
-            plus.nativeUI.alert("支付失败：" + error.message);
+            plus.nativeUI.alert("支付失败");
         });
 	})
 	;
