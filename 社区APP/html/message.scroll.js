@@ -60,3 +60,9 @@ function init () {
 	$('#pnl-message').empty();
 	mui('#refreshContainer').pullRefresh().pullupLoading();
 }
+
+$('body').delegate('.message', 'tap', function () {
+	app.open('message.detail.html', {'id':$(this).attr('data-id')});
+});
+
+
