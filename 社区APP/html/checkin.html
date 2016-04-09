@@ -6,6 +6,7 @@
 	<title>今日签到</title>
 	<link rel="stylesheet" type="text/css" href="../css/mui.min.css" />
 	<link rel="stylesheet" href="../css/common.css" />
+	<link rel="stylesheet" href="../css/iconfont.css" />
 	<link rel="stylesheet" href="../css/app/set.css" />
 	<style>
 		.calendar table {
@@ -35,6 +36,23 @@
 		.calendar table td.setted span {
 			background-color: #FD4C3C;
 			color: #FFFFFF;
+		}
+		.calendar table td.setted:after {
+			font-family:"iconfont" !important;
+			font-size:16px;
+			font-style:normal;
+			-webkit-font-smoothing: antialiased;
+			-webkit-text-stroke-width: 0.2px;
+			-moz-osx-font-smoothing: grayscale;
+  
+			content: '\e617';
+			width: 10px;
+			height: 10px;
+			position: absolute;
+			line-height: normal;
+			margin-top: -20px;
+			color: #FFFFFF;
+			
 		}
 		.fjo { font-size: 0.8em; height: 30px; }
 		.float1 { width: 31%; }
