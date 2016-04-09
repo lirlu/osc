@@ -1,55 +1,115 @@
 <!DOCTYPE html>
 <html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>今日签到</title>
+	<link rel="stylesheet" type="text/css" href="../css/mui.min.css" />
+	<link rel="stylesheet" href="../css/common.css" />
+	<link rel="stylesheet" href="../css/app/set.css" />
+	<style>
+		.calendar table {
+			background-color: #FFF;
+			width: 100%;
+			text-align: center;
+		}
+		.calendar table>thead {
+			border-bottom: 2px solid #FD4C3C;
+		}
+		.calendar table td span {
+			height: 45px;
+			line-height: 45px;
+			display: block;
+		}
+		.calendar table td.checked {
+			color: #FD4C3C;
+		}
+		.calendar table td.round span {
+			background-color: #FD4C3C;
+			color: #FFFFFF;
+			border: 1px solid #FD4C3C;
+			border-radius: 50%;
+		}
+	</style>
+</head>
 
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>今日签到</title>
-		<link rel="stylesheet" type="text/css" href="../css/mui.min.css" />
-		<link rel="stylesheet" href="../css/common.css" />
-		<link rel="stylesheet" href="../css/app/set.css" />
-		<script type="text/javascript" src="../js/jquery.min.js"></script>
-		<script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
-	</head>
-
-	<body>
-		<!--头部-->
-		<header class="bar">
-			<a class="left mui-action-back mui-icon mui-icon-arrowleft"></a>
-			<h1 class="title">今日签到</h1>
-		</header>
-		<div class="content">
-			<div class="frfr">
-				<div class="float1">
-					<div class="fjo">
-						<div class="f_l">总签到天数</div>
-						<div class="number f_l col3">4</div>
-					</div>
-				</div>
-				<div class="float">
-					<div class="fjo">
-						<div class="f_l">签到得到的米币</div>
-						<div class="number f_l col4">80</div>
-					</div>
-				</div>
-				<div class="float2">
-					<div class="fjo">
-						<div class="f_l">未签到天数</div>
-						<div class="number f_l col5">22</div>
-					</div>
+<body>
+	<!--头部-->
+	<header class="bar">
+		<a class="left mui-action-back mui-icon mui-icon-arrowleft"></a>
+		<h1 class="title">今日签到</h1>
+	</header>
+	<div class="content">
+		<div class="frfr">
+			<div class="float1">
+				<div class="fjo">
+					<div class="f_l">总签到天数</div>
+					<div class="number f_l col3">4</div>
 				</div>
 			</div>
-			<div class="lirj">
-				<div class="time1">12月26号</div>
-				<span class="xian1"></span>
-				<div class="frek">2015年
-					<p>今日</p>
+			<div class="float">
+				<div class="fjo">
+					<div class="f_l">签到得到的米币</div>
+					<div class="number f_l col4">80</div>
 				</div>
 			</div>
-			<div class="bottom">
-				<button class="tbn">立即签到</button>
+			<div class="float2">
+				<div class="fjo">
+					<div class="f_l">未签到天数</div>
+					<div class="number f_l col5">22</div>
+				</div>
 			</div>
 		</div>
-	</body>
-
+		<div class="lirj">
+			<div class="time1 now-day">*月*号</div>
+			<span class="xian1"></span>
+			<div class="frek now-year">*年
+				<p>今日</p>
+			</div>
+		</div>
+		
+		<div class="calendar">
+			<table>
+				<thead>
+					<tr>
+						<td>日</td>
+						<td>一</td>
+						<td>二</td>
+						<td>三</td>
+						<td>四</td>
+						<td>五</td>
+						<td>六</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td><td></td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td><td></td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td><td></td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td><td></td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td><td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		<div class="bottom">
+			<button class="tbn">立即签到</button>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="../js/mui.min.js" ></script>
+	<script type="text/javascript" src="../js/jquery.min.js" ></script>
+	<script type="text/javascript" src="../js/template.js" ></script>
+	<script type="text/javascript" src="../js/app.js" ></script>
+	<script type="text/javascript" src="checkin.js" ></script>
+</body>
 </html>
