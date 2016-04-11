@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="../css/iconfont.css" />
 	<link rel="stylesheet" href="../css/common.css" />
 	<link rel="stylesheet" href="../css/forum.css" />
+	<style>.pad-h { padding-left: 5px; padding-right: 5px; }</style>
 </head>
 <body>
 	<div id="refreshContainer" class="mui-content mui-scroll-wrapper">
@@ -24,16 +25,16 @@
 	
 	<!-- 帖子模板 开始 -->
 	<script type="text/html" id="tpl-article">
-		{{each cate_info as item}}
+		{{each forum_list as item}}
 		<div class="bigbox article" data-id="{{item.id}}">
 			<div class="mui-row userinfo">
 				<div class="mui-col-xs-4 mui-text-center">
-					<img class="" src="../img/1.png"/>
+					<img class="" src="{{item.avatar | avatar}}"/>
 				</div>
 				
-				<div class="mui-col-xs-8">
+				<div class="mui-col-xs-8 pad-h">
 					<label class="mui-block">敖文</label>
-					<time class="mui-block">1月3日 8:27</time>
+					<time class="mui-block">{{item.add_time}}</time>
 				</div>
 			</div>
 			<div class="mui-row mui-text-left">
@@ -42,22 +43,12 @@
 				</span>
 			</div>
 			
-			<div class="mui-row picture" style="font-size:0;">
+			<div class="mui-row picture" style="font-size:0; margin-bottom: 8px;">
+				{{each item.img as thumb}}
 				<div class="mui-col-xs-4">
-					<img src="../img/1.jpg" />
+					<img src="{{thumb | image}}" />
 				</div>
-				<div class="mui-col-xs-4">
-					<img src="../img/2.jpg" />
-				</div>
-				<div class="mui-col-xs-4">
-					<img src="../img/3.jpg" />
-				</div>
-				<div class="mui-col-xs-4">
-					<img src="../img/2.jpg" />
-				</div>
-				<div class="mui-col-xs-4">
-					<img src="../img/5.jpg" />
-				</div>
+				{{/each}}
 			</div>
 			<div class="mui-row mui-text-center message icon-op-row">
 				<div class="mui-col-xs-6 btn-comment">

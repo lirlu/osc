@@ -83,10 +83,6 @@ mui.plusReady(function () {
 	);
 });
 
-template.helper('image', function (v) {
-	return app.link.image + v;
-});
-
 // 点击查看帖子详情列表
 $('body').delegate('.article', 'tap', function() {
 	var data = {
@@ -108,5 +104,11 @@ $('body').delegate('.btn-like', 'tap', function() {
 	};
 });
 
+template.helper('image', function (v) {
+	return app.link.image + v;
+});
 
+template.helper('avatar', function (v) {
+	return v ? (app.link.image + v) : '../img/iconfont-morentouxiang.png';
+});
 

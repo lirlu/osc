@@ -50,14 +50,18 @@
 	<!-- 添加按钮模板 开始 -->
 	<script type="text/html" id="tpl-append">
 		<div class="mui-col-xs-4 image-item">
-			<a class="btn-add-image"><img src="../img/icon-btn-add.png" /></a>
+			<a class="btn-add-image">
+				<img src="../img/icon-btn-add.png" />
+			</a>
 		</div>
 	</script>
 	<!-- 添加按钮模板 结束 -->
 	<!-- 添加后的图片模板 开始 -->
 	<script type="text/html" id="tpl-imaged">
 		<div class="mui-col-xs-4 image-item">
-			<a class="btn-imaged"><img src="{{name | image}}" /></a>
+			<a class="btn-imaged" data-id="{{id}}" data-name="{{name}}">
+				<img src="{{name | image}}" />
+			</a>
 		</div>
 	</script>
 	<!-- 添加后的图片模板 结束 -->

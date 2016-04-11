@@ -34,13 +34,14 @@ $('.btn-submit').on('tap', function () {
 		'content' : $('[name=content]').val(),
 		'image'   : [],
 	};
-	$('.btn-imaged img').each(function (idx, imaged) {
+	$('.btn-imaged').each(function (idx, imaged) {
 		data.image.push({
 			'id'   : $(imaged).attr('data-id'),
 			'name' : $(imaged).attr('data-name'),
 		});
 	});
 	
+	console.log('帖子数据：' + JSON.stringify(data));
 	if (!data.title || data.title.length < 5)      { plus.nativeUI.toast('标题最少输入5个字'); return; }
 	if (!data.content || data.content.length < 10) { plus.nativeUI.toast('内容最少输入10个字'); return; }
 	
