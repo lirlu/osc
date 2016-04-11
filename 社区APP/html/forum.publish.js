@@ -49,7 +49,7 @@ $('.btn-submit').on('tap', function () {
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
-		'url'      : app.url('mobile/cart/cartadd'),
+		'url'      : app.url('mobile/forum/forum_add'),
 		'data'     : data
 	})
 	.fail(function (res) {

@@ -7,7 +7,7 @@ function next (cb) {
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
-		'url'      : app.url('mobile/index/housekeeping_seller'),
+		'url'      : app.url('mobile/forum/forum_list'),
 		'data'     : mui.extend({}, _Data, {'page':_Data.page+1})
 	})
 	.fail(function (res) {
