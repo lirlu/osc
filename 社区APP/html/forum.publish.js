@@ -29,7 +29,8 @@ $('.btn-submit').on('tap', function () {
 	var dom = this;
 	var data = {
 		'key'     : app.store('key'),
-		'name'    : $('[name=name]').val(),
+		'title'   : $('[name=name]').val(),
+		'cate_id' : '1',
 		'content' : $('[name=content]').val(),
 		'image'   : [],
 	};
@@ -39,6 +40,9 @@ $('.btn-submit').on('tap', function () {
 			'name' : $(imaged).attr('data-name'),
 		});
 	});
+	
+	if (!data.title || data.title.length < 5)      { plus.nativeUI.toast('标题最少输入5个字'); return; }
+	if (!data.content || data.content.length < 10) { plus.nativeUI.toast('内容最少输入10个字'); return; }
 	
 	plus.nativeUI.showWaiting('发布中...');
 	$(dom).prop('disabled', true);
@@ -116,7 +120,7 @@ function upload (image) {
 			plus.nativeUI.toast('上传图片失败');
 		}
 	}
-	var task = plus.uploader.createUpload(app.url('mobile/userinfo/upload'), { method:"POST",blocksize:204800,priority:100 }, _cb);
+	var task = plus.uploader.createUpload(app.url('mobile/forum/upload'), { method:"POST",blocksize:204800,priority:100 }, _cb);
 	task.addFile(image.path, {key:"testdoc"});
 	task.addData('key', app.store('key'));
 	task.addData('thumb', image);
