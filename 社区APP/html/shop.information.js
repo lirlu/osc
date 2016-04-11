@@ -28,8 +28,9 @@ mui.plusReady(function () {
 });
 
 // 点击电话联系商家
-$('body').delegate('.tel span', 'tap', function () {
-	var tel = $(this).text();
+$('body').delegate('.tel', 'tap', function () {
+	var tel = $(this).find('span').text();
+	if (!tel) { return; }
 	if (tel) { plus.device.dial(tel, true); }
 });
 
