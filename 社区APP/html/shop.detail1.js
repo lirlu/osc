@@ -21,6 +21,7 @@ $('.btn-like').on('tap', function () {
 		app.error('收藏商家失败');
 	})
 	.done(function (res) {
+		console.log('收藏结果：' + JSON.stringify(res));
 		$('.btn-like').attr('src', '../img/iconfont-liked.png');
 	})
 	;
