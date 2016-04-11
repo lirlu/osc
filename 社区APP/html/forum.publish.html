@@ -18,11 +18,11 @@
 	<div class="publish content">
 		<div class="">
 			<label>帖子标题</label>
-			<textarea placeholder="请输入帖子标题(最多20字符)" rows="1"></textarea>
+			<textarea placeholder="请输入帖子标题(最多20字符)" name="name" rows="1"></textarea>
 		</div>
 		<div class="">
 			<label>帖子内容</label>
-			<textarea placeholder="请输入帖子内容(最少10字符)" rows="5"></textarea>
+			<textarea placeholder="请输入帖子内容(最少10字符)" name="content" rows="5"></textarea>
 		</div>
 		<div class="addImg pnl-imaged mui-row">
 			<div class="mui-col-xs-4 image-item">
@@ -44,7 +44,7 @@
 				<a class="btn-add-image"><img src="../img/icon-btn-add.png" /></a>
 			</div>
 		</div>
-		<button>发布</button>
+		<button class="btn-submit">发布</button>
 	</div>
 	
 	<!-- 添加按钮模板 开始 -->
@@ -57,7 +57,7 @@
 	<!-- 添加后的图片模板 开始 -->
 	<script type="text/html" id="tpl-imaged">
 		<div class="mui-col-xs-4 image-item">
-			<a class="btn-add-image"><img src="{{name | image}}" /></a>
+			<a class="btn-imaged"><img src="{{name | image}}" /></a>
 		</div>
 	</script>
 	<!-- 添加后的图片模板 结束 -->

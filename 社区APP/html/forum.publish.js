@@ -1,4 +1,5 @@
 var _Data = {'dom':null};
+// 添加图片
 $('body').delegate('.btn-add-image', 'tap', function () {
 	var btns = [{title:"拍照" }, {title: "从手机相册选择"}];
 	_Data.dom = this;
@@ -23,6 +24,50 @@ $('body').delegate('.btn-add-image', 'tap', function () {
 	});
 });
 
+// 点击提交
+$('.btn-submit').on('tap', function () {
+	var dom = this;
+	var data = {
+		'key'     : app.store('key'),
+		'name'    : $('[name=name]').val(),
+		'content' : $('[name=content]').val(),
+		'image'   : [],
+	};
+	$('.btn-imaged img').each(function (idx, imaged) {
+		data.image.push({
+			'id'   : $(imaged).attr('data-id'),
+			'name' : $(imaged).attr('data-name'),
+		});
+	});
+	
+	plus.nativeUI.showWaiting('发布中...');
+	$(dom).prop('disabled', true);
+	$.ajax({
+		'dataType' : 'json',
+		'type'     : 'post',
+		'url'      : app.url('mobile/cart/cartadd'),
+		'data'     : data
+	})
+	.fail(function (res) {
+		console.log('发布帖子失败：' + JSON.stringify(res));
+		app.error('发布帖子失败');
+		plus.nativeUI.closeWaiting();
+		$(dom).prop('disabled', false);
+	})
+	.done(function (res) {
+		console.log('发布帖子：' + JSON.stringify(res));
+		plus.nativeUI.closeWaiting();
+		$(dom).prop('disabled', false);
+		
+		
+		if (res.error && res.error.msg) { plus.nativeUI.toast(res.error.msg); return; }
+		if (res.msg) { plus.nativeUI.toast(res.msg); }
+		
+		plus.webview.getWebviewById('forum.scroll.html').evalJS('forum.prepend('+JSON.stringify(data)+')');
+		setTimeout(function () { plus.webview.currentWebview().close(); }, 200);
+	})
+	;
+});
 
 function getFromCamera () {
 	var camera = plus.camera.getCamera();

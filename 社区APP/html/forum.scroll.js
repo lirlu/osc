@@ -34,14 +34,19 @@ function funcPullupRefresh () {
 		var noMore = _Data.page * _Data.limit >= (res.total||1);
 		
 		if (_Data.page == 1) {
-			$('#pnl-shop').html(template('tpl-shop', res));
+			$('#pnl-article').html(template('tpl-article', res));
 		} else {
-			$('#pnl-shop').append(template('tpl-shop', res));
+			$('#pnl-article').append(template('tpl-article', res));
 		}
 		
 		mui('#refreshContainer').pullRefresh().endPullupToRefresh(noMore);//参数为true代表没有更多数据了。
 	});
 }
+
+var forum = {};
+forum.prepend = function (data) {
+	
+};
 
 mui.init({
 	pullRefresh   : {
@@ -55,10 +60,9 @@ mui.init({
 	}
 });
 
-function reinit (data) {
+function init (data) {
 	data = data || {};
 	_Data.page    = 0;
-	_Data.cate_id = data.category || '';
 	
 	//$('#pnl-shop').empty();
 	mui('#refreshContainer').pullRefresh().pullupLoading();
@@ -70,10 +74,10 @@ mui.plusReady(function () {
 			_Data.lng = res.coords.longitude;
 			_Data.lat = res.coords.latitude;
 			
-			reinit ();
+			init ();
 		}, 
 		function () {
-			reinit ();
+			init ();
 		}, 
 		{ provider : 'baidu' }
 	);
