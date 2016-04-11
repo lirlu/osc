@@ -5,8 +5,11 @@ template.helper('image', function (v) {
 template.helper('price', function (v) {
 	return v / 100;
 });
-function like () {
-	var dom = this, view = plus.webview.currentWebview();
+$('.btn-like').on('tap', function () {
+	var view = plus.webview.currentWebview();
+	if (!app.store('key')) { plus.nativeUI.toast('只有登录后才能收藏商家'); return;}
+	
+	plus.nativeUI.toast('收藏商家成功');
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
@@ -15,19 +18,11 @@ function like () {
 	})
 	.fail(function (res) {
 		console.log('收藏商家失败：' + JSON.stringify(res));
-		//app.error('收藏商家失败');
+		app.error('收藏商家失败');
 	})
 	.done(function (res) {
-		$('.btn-like').attr('src', '../img/iconfont-liked.png');
 	})
 	;
-}
-$('.btn-like').on('tap', function () {
-	if (!app.store('key')) { plus.nativeUI.toast('只有登录后才能收藏商家'); return;}
-	
-	if (!isTest) { plus.nativeUI.toast('收藏商家成功'); };
-	
-	like();
 });
 // 页面跳转
 $('#pnl-product').delegate(".goods", 'tap', function() {
@@ -95,7 +90,6 @@ function product (cb) {
 	var data = view.extras;
 	plus.nativeUI.showWaiting('请等待...');
 	
-	like();
 	//console.log('查询商品列表参数：' + JSON.stringify(mui.extend({}, _Data, {'page':_Data.page+1})));
 	$.ajax({
 		'dataType' : 'json',
@@ -139,6 +133,10 @@ mui.plusReady(function () {
 		
 		// 右侧商品数据
 		$('#pnl-product').html(template('tpl-product', res));
+		
+		// 是否已经收藏
+		if (res.liked) { $('.btn-like').attr('src', '../img/iconfont-like.png'); }
+	
 		mui('.mui-scroll-wrapper').scroll({
 			deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
 		});

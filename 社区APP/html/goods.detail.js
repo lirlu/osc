@@ -97,6 +97,8 @@ function init (data) {
 		$('#pnl-product').empty().append(template('tpl-product', res));
 		// 也许你还喜欢
 		$('#pnl-related').empty().append(template('tpl-related', res));
+		
+		if (res.liked) { $('#stars .stars').addClass('hong_star'); }
 	})
 	;
 }
