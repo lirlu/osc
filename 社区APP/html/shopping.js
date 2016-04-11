@@ -76,14 +76,19 @@ $('#pnl-nearby-store').delegate('.shop', 'tap', function() {
 
 
 mui.plusReady(function () {
-	app.locate(function(res) {
-		_Data.lat = res.coords.latitude;
-		_Data.lng = res.coords.longitude;
-		
-		mui('#refreshContainer').pullRefresh().pullupLoading();
-	}, {
-		provider: 'baidu'
-	});
+	plus.geolocation.getCurrentPosition(
+		function (res) {
+			_Data.lat = res.coords.latitude;
+			_Data.lng = res.coords.longitude;
+			
+			mui('#refreshContainer').pullRefresh().pullupLoading();
+		}, 
+		function () {
+			plus.nativeUI.toast('定位失败');
+			mui('#refreshContainer').pullRefresh().pullupLoading();
+		}, 
+		{ provider : 'baidu' }
+	);
 });
 template.helper('image', function (v) {
 	return app.link.image + v;
