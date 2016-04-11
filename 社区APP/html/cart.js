@@ -15,10 +15,11 @@ cart.add = function (item) {
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		//console.log('添加商品到购物车结果：' + JSON.stringify(res));
-		plus.nativeUI.toast('已成功加入购物车');
+		console.log('添加商品到购物车结果：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
+		if (res.error && res.error.msg) { plus.nativeUI.toast(res.error.msg); return; };
+		if (res.msg) { plus.nativeUI.toast(res.msg); } else { plus.nativeUI.toast('已成功加入购物车'); }
 		cart.refresh();
 	})
 	;
