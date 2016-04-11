@@ -21,7 +21,7 @@ mui.plusReady(function () {
 		$('.shop_name').append($('<span></span>').text(data.shop_name || ''));
 		$('.business_time').append($('<span></span>').text(data.business_time || ''));
 		$('.addr').append($('<span></span>').text(data.addr || ''));
-		$('.tel').append($('<span></span>').text(data.tel || ''));
+		$('.tel').append($('<span></span>').text(data.tel || '')).append('<img src="../img/btn-call-seller.png" />');
 		$('.desc').append($('<span></span>').html(data.details || ''));
 	})
 	;
