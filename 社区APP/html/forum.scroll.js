@@ -8,15 +8,15 @@ function next (cb) {
 		'dataType' : 'json',
 		'type'     : 'post',
 		'url'      : app.url('mobile/index/housekeeping_seller'),
-		'data'     : mui.extend({}, _Data, {'page':_Data.page})
+		'data'     : mui.extend({}, _Data, {'page':_Data.page+1})
 	})
 	.fail(function (res) {
-		console.log('取得家政服务商家失败：' + JSON.stringify(res));
-		app.error('取得家政服务商家失败');
+		console.log('取得帖子数据失败：' + JSON.stringify(res));
+		app.error('取得帖子数据失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('家政服务商家：' + JSON.stringify(res));
+		console.log('帖子数据：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
@@ -84,7 +84,7 @@ mui.plusReady(function () {
 });
 
 template.helper('image', function (v) {
-	return v ? (app.link.image + v) : '../img/iconfont-morentouxiang.png';
+	return app.link.image + v;
 });
 
 // 点击查看帖子详情列表
