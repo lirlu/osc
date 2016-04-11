@@ -5,11 +5,8 @@ template.helper('image', function (v) {
 template.helper('price', function (v) {
 	return v / 100;
 });
-$('.btn-like').on('tap', function () {
-	var view = plus.webview.currentWebview();
-	if (!app.store('key')) { plus.nativeUI.toast('只有登录后才能收藏商家'); return;}
-	
-	plus.nativeUI.toast('收藏商家成功');
+function like () {
+	var dom = this, view = plus.webview.currentWebview();
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
@@ -18,11 +15,19 @@ $('.btn-like').on('tap', function () {
 	})
 	.fail(function (res) {
 		console.log('收藏商家失败：' + JSON.stringify(res));
-		app.error('收藏商家失败');
+		//app.error('收藏商家失败');
 	})
 	.done(function (res) {
+		$('.btn-like').attr('src', '../img/iconfont-liked.png');
 	})
 	;
+}
+$('.btn-like').on('tap', function () {
+	if (!app.store('key')) { plus.nativeUI.toast('只有登录后才能收藏商家'); return;}
+	
+	if (!isTest) { plus.nativeUI.toast('收藏商家成功'); };
+	
+	like();
 });
 // 页面跳转
 $('#pnl-product').delegate(".goods", 'tap', function() {
@@ -90,6 +95,7 @@ function product (cb) {
 	var data = view.extras;
 	plus.nativeUI.showWaiting('请等待...');
 	
+	like();
 	//console.log('查询商品列表参数：' + JSON.stringify(mui.extend({}, _Data, {'page':_Data.page+1})));
 	$.ajax({
 		'dataType' : 'json',
