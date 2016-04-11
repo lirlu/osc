@@ -26,6 +26,7 @@
 		.btn-book-product {
 			margin-left: 10px;
 		}
+		.empty-line { width: 100%; height: 10px; display: block; background-color: #DDDDDD;}
 	</style>
 </head>
 
@@ -75,7 +76,16 @@
 				{{/if}}
 			</div>
 		</div>
-
+		<br />
+		<div>商品详情</div>
+		<div>
+			{{#goods_info.details}}
+		</div>
+		<br />
+		<div>购买需知</div>
+		<div>
+			{{#goods_info.instructions}}
+		</div>
 	</script>
 	<!--//渲染也许你还喜欢-->
 	<script type="text/html" id="tpl-related">
