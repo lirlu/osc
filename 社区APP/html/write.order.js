@@ -85,7 +85,7 @@ mui.plusReady(function () {
 		if (false == res.status) {app.error(res.msg); return;};
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
 		
-		doSetAddress(res.addr_view);
+		if (res.addr_view) { doSetAddress(res.addr_view); }
 		$('#pnl-product').append(template('tpl-product', {data:[res.info]}));
 		$('.btn-submit').prop('disabled', false);
 	})

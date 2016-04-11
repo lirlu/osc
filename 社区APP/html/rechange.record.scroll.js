@@ -21,7 +21,6 @@ function next (cb) {
 		if (false == res.status) { app.error(res.msg); return;}
 		
 		_Data.page++;
-		
 		cb && cb(res);
 	})
 	;
