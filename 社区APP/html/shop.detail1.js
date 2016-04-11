@@ -21,6 +21,7 @@ $('.btn-like').on('tap', function () {
 		app.error('收藏商家失败');
 	})
 	.done(function (res) {
+		$('.btn-like').attr('src', '../img/iconfont-liked.png');
 	})
 	;
 });
@@ -135,7 +136,7 @@ mui.plusReady(function () {
 		$('#pnl-product').html(template('tpl-product', res));
 		
 		// 是否已经收藏
-		if (res.liked) { $('.btn-like').attr('src', '../img/iconfont-liked.png'); }
+		if (res.seller_view.is_collection) { $('.btn-like').attr('src', '../img/iconfont-liked.png'); }
 	
 		mui('.mui-scroll-wrapper').scroll({
 			deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
