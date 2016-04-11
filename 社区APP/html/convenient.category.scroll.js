@@ -7,7 +7,7 @@ mui.plusReady(function () {
 		'dataType' : 'json',
 		'type'     : 'post',
 		'url'      : app.url('mobile/cateseller/convenient_seller_cate'),
-		'data'     : mui.extend({}, _Data, {'page':_Data.page})
+		'data'     : mui.extend({}, _Data, {'page':_Data.page+1})
 	})
 	.fail(function (res) {
 		console.log('取得全部分类失败：' + JSON.stringify(res));

@@ -8,7 +8,7 @@ function next (cb) {
 		'dataType' : 'json',
 		'type'     : 'post',
 		'url'      : app.url('mobile/index/automobile_seller'),
-		'data'     : mui.extend({}, _Data, {'page':_Data.page})
+		'data'     : mui.extend({}, _Data, {'page':_Data.page+1})
 	})
 	.fail(function (res) {
 		console.log('取得本社区失败：' + JSON.stringify(res));

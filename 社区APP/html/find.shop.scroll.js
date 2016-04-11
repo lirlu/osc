@@ -6,7 +6,7 @@ function next (cb) {
 		'dataType' : 'json',
 		'type'     : 'post',
 		'url'      : app.url('mobile/goods/search'),
-		'data'     : _Data
+		'data'     : mui.extend({}, _Data, {'page':_Data.page+1})
 	})
 	.fail(function (res) {
 		console.log('按条件搜索商家失败：' + JSON.stringify(res));

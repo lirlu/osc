@@ -1,4 +1,4 @@
-var _Data = {page:0, limit:10};
+var _Data = {'key':app.store('key'), page:0, limit:10};
 
 function next (cb) {
 	var key = app.store('key');
@@ -7,7 +7,7 @@ function next (cb) {
 		'dataType' : 'json',
 		'type'     : 'post',
 		'url'      : app.url('mobile/userinfo/chongzhi_log'),
-		'data'     : {'key':key, 'page':_Data.page+1}
+		'data'     : mui.extend({}, _Data, {'page':_Data.page+1})
 	})
 	.fail(function (res) {
 		console.log('刷新充值纪录失败：' + JSON.stringify(res));

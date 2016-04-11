@@ -8,7 +8,7 @@ mui.plusReady(function () {
 		'dataType' : 'json',
 		'type'     : 'post',
 		'url'      : app.url('mobile/cateseller/union_seller_cate'),
-		'data'     : mui.extend({}, _Data, {'page':_Data.page})
+		'data'     : mui.extend({}, _Data, {'page':_Data.page+1})
 	})
 	.fail(function (res) {
 		console.log('取得联盟商家分类失败：' + JSON.stringify(res));

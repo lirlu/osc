@@ -6,7 +6,7 @@ function next (cb) {
 		'dataType' : 'json',
 		'type'     : 'post',
 		'url'      : app.url('mobile/userinfo/xiaoxin'),
-		'data'     : _Data
+		'data'     : mui.extend({}, _Data, {'page':_Data.page+1})
 	})
 	.fail(function (res) {
 		console.log('取得消息列表失败：' + JSON.stringify(res));
