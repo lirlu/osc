@@ -48,6 +48,7 @@ cart.refresh = function () {
 		$('#pnl-cart').empty().append(template('tpl-cart', res));
 	})
 	;
+	cart.total();
 }
 // 计算选中商品总价值
 cart.total = function () {
