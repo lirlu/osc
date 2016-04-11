@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>帖子详情</title>
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<link rel="stylesheet" href="../css/common.css" />
+		<link rel="stylesheet" href="../css/forum.css" />
+	</head>
+
+	<body>
+		<header>
+			<div class="title-left">
+				<i class="iconfont icon-fanhui"></i>
+			</div>
+			<div class="title-center">
+				<label>社区论坛</label>
+			</div>
+		</header>
+		<div class="content">
+			<div class="banner" style="margin: 0;padding: 0;line-height: 0;font-size: 0;">
+				<img src="../images/1.png" />
+			</div>
+			<!--說說 結束-->
+			<div class="mui-row bigbox">
+				<div class="userinfo">
+					<div class="mui-inline" align="center">
+						<img class="" src="../images/1.png"/>
+					</div>
+					
+					<div class="mui-col-xs-6 mui-inline">
+						<label class="mui-block">敖文</label>
+						<time class="mui-block">1月3日 8:27</time>
+					</div>
+				</div>
+				<div class="mui-text-left">
+					<span class="mui-col-xs-12">的所有网络及性能优化知识。全书以性能优化为主线，从TCP、UDP和TLS协议讲起，解释了如何针对这几种协议和基础设施来优化应用。然后深入探讨了无线和移动网络的工作机制。最后，揭示了HTTP协议的底层细节，同时详细介绍了HTTP 2.0</span>
+				</div>
+				
+				<div class="mui-col-xs-12 picture" style="font-size:0;">
+					<div class="mui-col-xs-4">
+						<img src="../images/1.jpg" />
+					</div>
+					<div class="mui-col-xs-4">
+						<img src="../images/2.jpg" />
+					</div>
+					<div class="mui-col-xs-4">
+						<img src="../images/3.jpg" />
+					</div>
+					<div class="mui-col-xs-4">
+						<img src="../images/2.jpg" />
+					</div>
+					<div class="mui-col-xs-4">
+						<img src="../images/5.jpg" />
+					</div>
+				</div>
+				<div class="mui-text-center message">
+					<div class="mui-col-xs-6 mui-inline">
+						<i class="iconfont icon-xiaoxi"></i>
+					</div>
+					<div class="mui-col-xs-6 mui-inline">
+						<i class="iconfont icon-aixin32pt"></i>
+					</div>
+				</div>
+			</div>
+			<!--說說 結束-->
+			
+			<!--评论 开始-->
+			<div class="mui-row bigbox-2">
+				<div class="userinfo">
+					<div class="mui-inline" align="center">
+						<img class="" src="../images/1.png"/>
+					</div>
+					
+					<div class="mui-col-xs-6 mui-inline">
+						<label class="mui-block">敖文</label>
+						<time class="mui-block">1月3日 8:27</time>
+					</div>
+					
+					<label class="louceng">1楼</label>
+					
+				</div>
+				<div class="mui-text-left">
+					<span class="mui-col-xs-12">好好吃的样子，我也要学学</span>
+				</div>
+				<div class="shijian">
+					<time>2015-12-20</time>
+					<label>回复</label>
+				</div>
+			</div>
+			<!--评论 结束-->
+		</div>
+	</body>
+	
+	<script type="text/javascript" src="../js/mui.min.js" ></script>
+	<script type="text/javascript" src="../js/jquery.min.js" ></script>
+	<script type="text/javascript" src="../js/template.js" ></script>
+	<script type="text/javascript" src="../js/app.js" ></script>
+	
+	<script type="text/javascript" charset="UTF-8">
+		mui.init();
+		
+		$(".icon-aixin32pt").on("tap",function(){
+			
+			$(this).removeClass("icon-aixin32pt")
+			$(this).addClass("icon-aixin-copy").css({"color":"#E94D3E"})
+		})
+		
+		
+		$("img").on("click",function(){
+			$(".picture").css({
+				"":"",
+				"":"",
+				"":"",
+				"":"",
+				})
+		})
+	</script>
+</html>
