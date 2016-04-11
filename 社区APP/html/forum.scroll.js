@@ -83,15 +83,25 @@ template.helper('image', function (v) {
 	return v ? (app.link.image + v) : '../img/iconfont-morentouxiang.png';
 });
 
-// 点击商家列表
-$('#pnl-shop').delegate('.shop', 'tap', function() {
+// 点击查看帖子详情列表
+$('body').delegate('.article', 'tap', function() {
 	var data = {
-		'shop_id'   : $(this).attr('data-shop'),
-		'shop_name' : $(this).attr('shop_name'),
-		'addr'      : $(this).attr('addr'),
-		'tel'       : $(this).attr('tel'),
+		'id'   : $(this).attr('data-id'),
 	};
-	app.open('shop.information.html', data);
+	app.open('forum.article.html', data);
+});
+// 评论帖子
+$('body').delegate('.btn-comment', 'tap', function() {
+	var data = {
+		'id'   : $(this).attr('data-id'),
+	};
+	app.open('forum.comment.html', data);
+});
+// 收藏帖子
+$('body').delegate('.btn-like', 'tap', function() {
+	var data = {
+		'id'   : $(this).attr('data-id'),
+	};
 });
 
 

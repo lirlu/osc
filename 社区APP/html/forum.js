@@ -7,3 +7,7 @@ mui.init({
 		},
 	]
 });
+// 发布帖子
+$('body').delegate('.btn-publish', 'tap', function() {
+	app.open('forum.publish.html');
+});

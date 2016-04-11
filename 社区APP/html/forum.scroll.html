@@ -93,6 +93,55 @@
 				</div>
 			</div>
 			<div class="mui-row mui-text-center message icon-op-row">
+				<div class="mui-col-xs-6 btn-comment">
+					<img src="../img/icon-1460345102236.png" />
+				</div>
+				<div class="mui-col-xs-6 btn-like">
+					<img src="../img/icon-1460345089582.png" />
+				</div>
+			</div>
+		</div>
+		<!--說說 結束-->
+	</div>
+	
+	<!-- 店铺模板 开始 -->
+	<script type="text/html" id="tpl-shop">
+		{{each seller_list as item}}
+		<div class="mui-row bigbox article" data-id="{{item.id}}">
+			<div class="mui-row userinfo">
+				<div class="mui-col-xs-4 mui-text-center">
+					<img class="" src="../img/1.png"/>
+				</div>
+				
+				<div class="mui-col-xs-8">
+					<label class="mui-block">敖文</label>
+					<time class="mui-block">1月3日 8:27</time>
+				</div>
+			</div>
+			<div class="mui-text-left">
+				<span class="mui-col-xs-12">
+					{{#item.content}}
+				</span>
+			</div>
+			
+			<div class="mui-col-xs-12 picture" style="font-size:0;">
+				<div class="mui-col-xs-4">
+					<img src="../img/1.jpg" />
+				</div>
+				<div class="mui-col-xs-4">
+					<img src="../img/2.jpg" />
+				</div>
+				<div class="mui-col-xs-4">
+					<img src="../img/3.jpg" />
+				</div>
+				<div class="mui-col-xs-4">
+					<img src="../img/2.jpg" />
+				</div>
+				<div class="mui-col-xs-4">
+					<img src="../img/5.jpg" />
+				</div>
+			</div>
+			<div class="mui-row mui-text-center message icon-op-row">
 				<div class="mui-col-xs-6">
 					<img src="../img/icon-1460345102236.png" />
 				</div>
@@ -101,12 +150,14 @@
 				</div>
 			</div>
 		</div>
-		<!--說說 結束-->
-	</div>
+		{{/each}}
+	</script>
+	<!-- 店铺模板 开始 -->
+	
+	<script type="text/javascript" src="../js/mui.min.js" ></script>
+	<script type="text/javascript" src="../js/jquery.min.js" ></script>
+	<script type="text/javascript" src="../js/template.js" ></script>
+	<script type="text/javascript" src="../js/app.js" ></script>
+	<script type="text/javascript" src="forum.scroll.js" ></script>
 </body>
-<script src="../js/mui.min.js"></script>
-<script type="text/javascript" src="../js/jquery-1.9.1.min.js" ></script>
-<script type="text/javascript" charset="UTF-8">
-	mui.init();
-</script>
 </html>
