@@ -32,7 +32,8 @@ mui.plusReady(function () {
 		
 		$('#pnl-product').append(template('tpl-product', res));
 		
-		$('.btn-submit').prop('disabled', false);
+		// 未开始或已过期
+		if (!res.tuan_view.expired) { $('.btn-submit').prop('disabled', false); }
 	})
 	;
 });
