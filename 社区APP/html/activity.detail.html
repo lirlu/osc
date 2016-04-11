@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>活动详情</title>
+	<link rel="stylesheet" href="../css/mui.min.css" />
+	<link rel="stylesheet" href="../css/common.css" />
+	<link rel="stylesheet" href="../css/app/activity.css" />
+	<style>
+		input[type=text] {
+			padding-left: 0;
+		}
+		.pad-h { padding-left: 18px; padding-right: 18px; }
+		.pad-sm { padding: 5px; display: block; }
+		div.white {background-color: #fff;}
+		.image-evidence {
+			margin-top: 10px;
+			min-height: 100px;
+			display: block;
+			background-color: #FFFFFF;
+		}
+		.image-evidence img {
+			padding: 10px;
+			width: 100%;
+			height: auto;
+		}
+		.image-evidence .mui-icon {
+			width: 25px;
+			height: 25px;
+			font-weight: bold;
+			position: absolute;
+			top: 0px;
+			right: 0px;
+		}
+	</style>
+</head>
+
+<body>
+	<!--头部-->
+	<header class="bar">
+		<a class="left mui-action-back mui-icon mui-icon-arrowleft"></a>
+		<h1 class="title">活动</h1>
+	</header>
+	<div class="content">
+	</div>
+	<!-- 活动详情模板 开始 -->
+	<script type="text/html" id="tpl-activity">
+		<div class="activity" data-id="{{info.id}}">
+			<div class="acti">
+				<div class="portrait">
+					<img src="{{user_info.img | avatar}}" />
+				</div>
+				<div class="portrait1">
+					{{user_info.nickname || user_info.account}}
+					<p>发布时间 {{info.add_time}}</p>
+				</div>
+			</div>
+			<ul>
+				<li>{{info.title}}</li>
+			</ul>
+			
+			<div class="pad-sm"></div>
+			<div class="mui-row image-evidence">
+				{{each info.img as thumb index}}
+				<div class="mui-col-xs-4"><img src="{{thumb | image}}" /></div>
+				{{/each}}
+			</div>
+			
+			<div class="pad-sm"></div>
+			<div class="mui-row mui-text-right">
+				<div class="mui-col-xs-12 pad-h">
+					<p>参与地点：{{info.addr}}</p>
+				</div>
+			</div>
+			<div class="mui-row mui-text-right">
+				<div class="mui-col-xs-12 pad-h">
+					<p>开始时间：{{info.start_time}}</p>
+				</div>
+			</div>
+		</div>
+	</script>
+	<!-- 活动详情模板 结束 -->
+	
+	<script type="text/javascript" src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/template.js"></script>
+	<script type="text/javascript" src="../js/app.js"></script>
+	<script type="text/javascript" src="activity.detail.js"></script>
+</body>
+</html>

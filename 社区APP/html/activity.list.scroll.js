@@ -61,6 +61,11 @@ function reinit () {
 	mui('#refreshContainer').pullRefresh().pullupLoading();
 }
 
+// 查看活动详情
+$('body').delegate('.activity', 'tap', function () {
+	app.open('activity.detail.html', {'id':$(this).attr('data-id')});
+});
+
 template.helper('avatar', function (v) {
 	return v ? (app.link.image + v) : '../img/iconfont-morentouxiang.png';
 });
