@@ -40,6 +40,8 @@ $('body').delegate('#stars', 'tap', function() {
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
 		if (false == res.status) {app.error(res.msg); return;};
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
+		
+		$('#stars .stars').addClass('hong_star');
 	})
 	;
 });
@@ -98,7 +100,7 @@ function init (data) {
 		// 也许你还喜欢
 		$('#pnl-related').empty().append(template('tpl-related', res));
 		
-		if (res.liked) { $('#stars .stars').addClass('hong_star'); }
+		if (res.goods_info.is_collection) { $('#stars .stars').addClass('hong_star'); }
 	})
 	;
 }
