@@ -62,7 +62,7 @@ $('.btn-submit').on('tap', function () {
 	// 从服务器请求支付订单
 	plus.nativeUI.showWaiting('正在提交充值订单...');
 	$.ajax({
-		//'dataType' : 'json',
+		'dataType' : 'json',
 		'type'     : 'post',
 		'url'      : app.url('mobile/userinfo/chongzhi'),
 		'data'     : data
@@ -73,8 +73,6 @@ $('.btn-submit').on('tap', function () {
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log(res);
-		res = {error:{}, url:res};
 		console.log('提交充值订单结果：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
