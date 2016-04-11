@@ -24,7 +24,7 @@
 	
 	<!-- 帖子模板 开始 -->
 	<script type="text/html" id="tpl-article">
-		{{each seller_list as item}}
+		{{each cate_info as item}}
 		<div class="bigbox article" data-id="{{item.id}}">
 			<div class="mui-row userinfo">
 				<div class="mui-col-xs-4 mui-text-center">
@@ -60,10 +60,10 @@
 				</div>
 			</div>
 			<div class="mui-row mui-text-center message icon-op-row">
-				<div class="mui-col-xs-6">
+				<div class="mui-col-xs-6 btn-comment">
 					<img src="../img/icon-1460345102236.png" />
 				</div>
-				<div class="mui-col-xs-6">
+				<div class="mui-col-xs-6 btn-like">
 					<img src="../img/icon-1460345089582.png" />
 				</div>
 			</div>

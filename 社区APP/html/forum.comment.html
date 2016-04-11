@@ -11,44 +11,26 @@
 	<style>
 		.title-right button{border: 1px solid #a8a8a8;padding:0 5px;font-size: 12px;margin-top: 5px;}
 		textarea{margin: 0;border: none;outline: none;font-size: 14px;color: #333;}
-		.content div{color: red;font-size: 12px;margin: 5px 3px 0 5px;display: none;
-		}
+		.content div{color: red;font-size: 12px;margin: 5px 3px 0 5px;display: none;}
+		.btn-op {line-height: 45px; font-size: 1.2em; padding:0 10px;}
 	</style>
 </head>
 <body>
-	<header>
-		<div class="title-left">
-			<i class="iconfont icon-fanhui"></i>
-		</div>
-		<div class="title-center">
-			<label>评论</label>
-		</div>
-		<div class="title-right">
-			<button>完成</button>
-		</div>
+	<!--头部-->
+	<header class="bar">
+		<a class="left mui-action-back mui-icon mui-icon-arrowleft"></a>
+		<h1 class="title">评论</h1>
+		<a class="mui-pull-right btn-submit">完成</a>
 	</header>
+	<br />
 	<div class="content">
-		<textarea name="" rows="10" cols="10" placeholder="写评论..."></textarea>
+		<textarea name="note" rows="10" cols="10" placeholder="写评论..."></textarea>
 		<div>* 提醒：字数过多，请删减</div>
 	</div>
 	<script type="text/javascript" src="../js/mui.min.js" ></script>
 	<script type="text/javascript" src="../js/jquery.min.js" ></script>
 	<script type="text/javascript" src="../js/template.js" ></script>
 	<script type="text/javascript" src="../js/app.js" ></script>
-	<script type="text/javascript" charset="UTF-8">
-		mui.init();
-		$("textarea").on("blur",function(){
-			var b = $("textarea").val().length;
-			if(b <= 299){
-				$(".content div").hide();
-				//==》控制按钮为可用
-				//$(".content div").removeAttr("disabled");//将按钮可用
-			}else{
-				$(".content div").show();
-				//==》 控制按钮为禁用：  
-				//$(".content div").attr({"disabled":"disabled"});
-			}
-		})
-	</script>
+	<script type="text/javascript" src="forum.comment.js" ></script>
 </body>
 </html>
