@@ -46,7 +46,7 @@ function init (city) {
 		return;
 	}
 	app.locate(function (res) {
-		var addr = res.address;
+		var addr = res.address || {};
 		$('header .left span').text(addr.street || addr.district || addr.city || addr.province);
 	});
 }

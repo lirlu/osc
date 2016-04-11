@@ -254,3 +254,10 @@ header {
 .icon-op-row>div.mui-col-xs-12 {
 	padding-bottom: 0;
 }
+
+.image-item {
+	text-align: center;
+}
+.image-item img {
+	height: 100px;
+}
