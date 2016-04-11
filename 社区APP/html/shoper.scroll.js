@@ -23,6 +23,7 @@ function next (cb) {
 		if (false == res.status) {app.error(res.msg); return;};
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
 		
+		_Data.page++;
 		cb && cb(res);
 	})
 	;
