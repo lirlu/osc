@@ -45,7 +45,11 @@
 					<!-- 1:上架中 -->
 					{{if '1' == product.status}}
 					<button type="button" class="mui-btn mui-btn-danger mui-btn-outlined btn-sold mui-pull-right" style="margin-top: -10px;">
-						已转让
+						转让中，下架
+					</button>
+					{{else}}
+					<button type="button" class="mui-btn mui-btn-outlined btn-sell mui-pull-right" style="margin-top: -10px;">
+						已售出，上架
 					</button>
 					{{/if}}
 				</div>
