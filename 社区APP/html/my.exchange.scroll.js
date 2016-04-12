@@ -97,7 +97,7 @@ $('body').delegate('.go-product', 'tap', function() {
 		'goods_id' : $(dom).attr('data-product'),
 		'shop_id'  : $(dom).attr('data-shop'),
 	};
-	app.open('goods.detail.html', data);
+	//app.open('goods.detail.html', data);
 });
 
 template.helper('image', function (v) {
