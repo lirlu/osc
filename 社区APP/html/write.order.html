@@ -55,7 +55,7 @@
 	<!-- 兑换商品信息 开始 -->
 	<script type="text/html" id="tpl-product">
 		{{each data as item}}
-		<div class="clasify product" data-shop="{{item.shop_id}}" data-product="{{item.goods_id}}">
+		<div class="clasify product" data-shop="{{item.shop_id}}" data-product="{{item.goods_id}}" data-max="{{item.limit_num || '1'}}">
 			<div class="l-div">
 				<img src="{{item.face_pic | image}}" />
 			</div>

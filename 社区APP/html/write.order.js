@@ -1,9 +1,12 @@
 // 数量加减
 $('#pnl-product').delegate('.float-r .add', 'tap', function(){
+	var max = $(this).closest('.product').attr('data-max') * 1;
 	var num = $(this).siblings('.number').text();
-	if(num < 9){
+	if(num < max){
 		num++;
 		num = $(this).siblings('.number').text(num);
+	} else {
+		plus.nativeUI.toast('一次兑换最多只能兑 '+max+' 份');
 	}
 });
 $('#pnl-product').delegate('.float-r .distance', 'tap', function(){
