@@ -15,7 +15,7 @@
 		<a class="left mui-icon mui-action-back mui-icon-arrowleft"></a>
 		<h1 class="title">全部评价</h1>
 	</header>
-	<div class="content">
+	<div class="content" style="padding-top: 0;">
 		<ul id="pnl-appraise"></ul>
 	</div>
 	
@@ -25,12 +25,12 @@
 		{{each list as item}}
 		<li>
 			<div class="nickname">
-				<img src="../img/touxiang.png" />
-				<span>左右倒影</span>
+				<img src="{{item.img | avatar}}" />
+				<span>{{item.nickname || item.account || ' '}}</span>
 			</div>
 			<div class="appraise">
-				店已经收藏了很久了，不过第一次下手。应该说是还不错。第二次来买了，货比我想象中要好！老板人表扬下。
-				<p>2015-12-22 口味：巧克力味</p>
+				<p>{{item.content}}</p>
+				<p>{{item.add_time}}</p>
 			</div>
 		</li>
 		{{/each}}

@@ -2,6 +2,7 @@ var _Data = {'key':app.store('key'), 'page':0, 'limit':9999, 'shop_id':'', 'good
 mui.init();
 
 function next (cb) {
+	console.log('查看评论：' + JSON.stringify(_Data));
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
@@ -39,6 +40,9 @@ mui.plusReady(function () {
 		//mui('#refreshContainer').pullRefresh().endPullupToRefresh(noMore);//参数为true代表没有更多数据了。
 	});
 });
-	
-	
+
+template.helper('avatar', function (v) {
+	return v ? (app.link.image + v) : '../img/iconfont-morentouxiang.png';
+});
+
 
