@@ -26,7 +26,7 @@
 	<!-- 我的二手模板 开始 -->
 	<script type="text/html" id="tpl-used">
 		{{each list as product}}
-		<div class="block">
+		<div class="block product" data-id="{{product.id}}">
 			<div class="top">
 				<div class="l-img">
 					<img src="{{product.userinfo.img | avatar}}" />
@@ -40,7 +40,15 @@
 				<div class="nickname" style="white-space:nowrap;overflow: hidden;display: inline-block;">
 					{{product.name}}
 				</div>
-				<div class="col nickname">￥{{product.price}}<del>￥{{product.money}}</del></div>
+				<div class="col nickname" style="padding-right: 10px;">
+					￥{{product.price}}<del>￥{{product.money}}</del>
+					<!-- 1:上架中 -->
+					{{if '1' == product.status}}
+					<button type="button" class="mui-btn mui-btn-danger mui-btn-outlined btn-sold mui-pull-right" style="margin-top: -10px;">
+						已转让
+					</button>
+					{{/if}}
+				</div>
 			</div>
 		</div>
 		{{/each}}

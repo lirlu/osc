@@ -101,6 +101,35 @@ template.helper('avatar', function (v) {
 	return v ? (app.link.image + v) : '../img/iconfont-morentouxiang.png';
 });
 
+$('body').delegate('.btn-sold', 'tap', function () {
+	var dom = this;
+	plus.nativeUI.showWaiting('正在提交...');
+	$(dom).prop('disabled', true);
+	$.ajax({
+		'dataType' : 'json',
+		'type'     : 'post',
+		'url'      : app.url('mobile/userinfo/old_sold'),
+		'data'     : {'key':app.store('key'), 'id':$(dom).closest('.product').attr('data-id')}
+	})
+	.fail(function (res) {
+		console.log('更转让信息失败：' + JSON.stringify(res));
+		app.error('更转让信息失败');
+		plus.nativeUI.closeWaiting();
+		$(dom).prop('disabled', false);
+	})
+	.done(function (res) {
+		console.log('更新转让信息：' + JSON.stringify(res));
+		plus.nativeUI.closeWaiting();
+		
+		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
+		if (false == res.status) {app.error(res.msg); return;};
+		if (res.msg) { plus.nativeUI.toast(res.msg); };
+		
+		$(dom).remove();
+	})
+	;
+});
+
 
 
 
