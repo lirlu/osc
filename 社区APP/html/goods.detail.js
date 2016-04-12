@@ -104,6 +104,10 @@ function init (data) {
 	})
 	;
 }
+// 快速回到首页
+$('.btn-home').on('tap', function () {
+	app.home();
+});
 mui.plusReady(function () {
 	var view = plus.webview.currentWebview();
 	
