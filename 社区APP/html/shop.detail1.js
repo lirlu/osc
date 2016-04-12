@@ -9,7 +9,7 @@ $('.btn-like').on('tap', function () {
 	var view = plus.webview.currentWebview();
 	if (!app.store('key')) { plus.nativeUI.toast('只有登录后才能收藏商家'); return;}
 	
-	plus.nativeUI.toast('收藏商家成功');
+	plus.nativeUI.showWaiting();
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
@@ -19,9 +19,13 @@ $('.btn-like').on('tap', function () {
 	.fail(function (res) {
 		console.log('收藏商家失败：' + JSON.stringify(res));
 		app.error('收藏商家失败');
+		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
 		console.log('收藏结果：' + JSON.stringify(res));
+		plus.nativeUI.closeWaiting();
+		if (res.msg) { plus.nativeUI.toast(res.msg); }
+		
 		if (res.liked) {
 			$('.btn-like').attr('src', '../img/iconfont-liked.png');
 		} else {
