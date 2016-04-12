@@ -90,53 +90,14 @@ mui.plusReady(function () {
 	setTimeout(init, 200);
 });
 
-// 点击查看帖子详情列表
-$('body').delegate('.article', 'tap', function() {
-	var data = {
-		'id'   : $(this).attr('data-id'),
-	};
-	app.open('forum.article.html', data);
-});
-// 评论帖子
-$('body').delegate('.btn-comment', 'tap', function() {
-	var data = {
-		'id'   : $(this).attr('data-id'),
-	};
-	app.open('forum.comment.html', data);
-});
 // 收藏帖子
-$('body').delegate('.btn-like', 'tap', function() {
-	var dom = this;
+$('body').delegate('.go-product', 'tap', function() {
+	var dom = $(this).closest('.product');
 	var data = {
-		'key'  : app.store('key'),
-		'id'   : $(this).attr('data-id'),
+		'goods_id' : $(dom).attr('data-product'),
+		'shop_id'  : $(dom).attr('data-shop'),
 	};
-	
-	if ($(dom).hasClass('liked')) { plus.nativeUI.toast('你已经收藏过了'); return; }
-	
-	plus.nativeUI.showWaiting();
-	$.ajax({
-		'dataType' : 'json',
-		'type'     : 'post',
-		'url'      : app.url('mobile/forum/forum_collection'),
-		'data'     : data
-	})
-	.fail(function (res) {
-		console.log('收藏失败：' + JSON.stringify(res));
-		app.error('收藏失败');
-		plus.nativeUI.closeWaiting();
-	})
-	.done(function (res) {
-		console.log('收藏成功：' + JSON.stringify(res));
-		plus.nativeUI.closeWaiting();
-		
-		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
-		if (false == res.status) {app.error(res.msg); return;};
-		if (res.msg) { plus.nativeUI.toast(res.msg); };
-		
-		$(dom).addClass('liked');
-	})
-	;
+	app.open('goods.detail.html', data);
 });
 
 template.helper('image', function (v) {
