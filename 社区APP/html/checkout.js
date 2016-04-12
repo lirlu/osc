@@ -38,7 +38,7 @@ mui.plusReady(function () {
 			payment.channels[channel.id] = channel;
 		}
 		
-		$('#pnl-payway').prepend(template('tpl-payway', {data:channels}));
+		//$('#pnl-payway').prepend(template('tpl-payway', {data:channels}));
     }, function (e) {
         alert("获取支付通道失败：" + e.message);
     });
@@ -198,6 +198,13 @@ $('.btn-submit').on('tap', function () {
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
 		if (false == res.status) {app.error(res.msg); return;};
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
+		
+		// 订单创建成功，去支付页面
+		if ('cash' == data.payway) { success(res.order_id); return; }
+		app.open('checkout.payway.html', {'id':res.order_id, 'way':$('[name=payway]:checked').val()});
+		setTimeout(function () { plus.webview.currentWebview().close(); }, 200);
+		
+		/*
 		if (!res.error) { plus.nativeUI.toast('提交失败...'); return; }
 		if ('cash' == data.payway) { success(res.orderNo); return; }
 		if (!res.url) { plus.nativeUI.toast('服务器返回数据出错'); return; }
@@ -210,13 +217,14 @@ $('.btn-submit').on('tap', function () {
         	plus.nativeUI.alert("支付失败");
             //plus.nativeUI.alert("支付失败：" + error.message);
         });
+        */
 	})
 	;
 });
 
 // 支付成功，跳转到提示页面
 function success (iOrderNo) {
-	app.open('checkout.success.html', {'id':iOrderNo});
+	app.open('checkout.success.html', {'id':iOrderNo, 'way':$('[name=payway]:checked').val()});
 	setTimeout(function () {
 		plus.webview.currentWebview().close();
 	}, 500);

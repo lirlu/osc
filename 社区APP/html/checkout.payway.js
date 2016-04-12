@@ -11,9 +11,8 @@ $('.btn-submit').on('tap', function () {
 	var view = plus.webview.currentWebview();
 	var key  = app.store('key');
 	
-	var channel = payment.channels[data.payway];
+	var channel = payment.channels[$('input[name=payway]:checked').val()];
 	//if (!channel) { plus.nativeUI.toast('你的手机没有此支付通道，请选择其他支付方式'); return; }
-	
 	
 	console.log('参数：'+JSON.stringify(data));
 	// 从服务器请求支付订单
@@ -37,12 +36,12 @@ $('.btn-submit').on('tap', function () {
 		if (false == res.status) {app.error(res.msg); return;};
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
 		if (!res.error) { plus.nativeUI.toast('提交失败...'); return; }
-		if ('cash' == data.payway) { success(res.orderNo); return; }
+		//if ('cash' == data.payway) { success(_Data.iOrderId); return; }
 		if (!res.url) { plus.nativeUI.toast('服务器返回数据出错'); return; }
-		if (res.redirect_link) { pay_by_web(res.redirect_link); return; }
+		//if (res.redirect_link) { pay_by_web(res.redirect_link); return; }
 		
 		plus.payment.request(channel, res.url, function (result) {
-            plus.nativeUI.alert("支付成功！", function () { success(res.orderNo); });
+            plus.nativeUI.alert("支付成功！", function () { success(_Data.iOrderId); });
         }, function(error) {
         	console.log(JSON.stringify(error));
         	plus.nativeUI.alert("支付失败");
@@ -51,5 +50,17 @@ $('.btn-submit').on('tap', function () {
 	})
 	;
 });
+
+// 支付成功，跳转到提示页面
+function success (iOrderNo) {
+	var data = {'id':iOrderNo, 'payway':$('input[name=payway]:checked').val()}
+	app.open('checkout.success.html', data);
+	setTimeout(function () {
+		plus.webview.currentWebview().close();
+	}, 500);
+	setTimeout(function () {
+		plus.webview.getWebviewById('cart.html').evalJS('cart.refresh()');
+	}, 800);
+};
 
 })(mui, $)
