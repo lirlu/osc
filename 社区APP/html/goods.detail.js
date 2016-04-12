@@ -41,7 +41,11 @@ $('body').delegate('#stars', 'tap', function() {
 		if (false == res.status) {app.error(res.msg); return;};
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
 		
-		$('#stars .stars').addClass('hong_star');
+		if (res.liked) {
+			$('#stars .stars').addClass('hong_star');
+		} else {
+			$('#stars .stars').removeClass('hong_star');
+		}
 	})
 	;
 });

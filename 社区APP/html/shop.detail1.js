@@ -22,7 +22,11 @@ $('.btn-like').on('tap', function () {
 	})
 	.done(function (res) {
 		console.log('收藏结果：' + JSON.stringify(res));
-		$('.btn-like').attr('src', '../img/iconfont-liked.png');
+		if (res.liked) {
+			$('.btn-like').attr('src', '../img/iconfont-liked.png');
+		} else {
+			$('.btn-like').attr('src', '../img/iconfont-like.png');
+		}
 	})
 	;
 });
