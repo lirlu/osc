@@ -74,6 +74,15 @@ app.tpl = function (dom, tpl, data) {
 app.url = function (link) {
 	return app.link.server + link;
 }
+app.home = function () {
+	var preload = ['HBuilder', 'cart.html', 'user.html', 'home.html'];
+	var pages = plus.webview.all();
+	for (var i in pages) {
+		try {
+			if (preload.indexOf(pages[i].id) < 0) { pages[i].close(); console.log(pages[i].id); }
+		} catch (e) { console.log(e) }
+	}
+}
 /**
  * 预加载页面
  * @param {Object} link

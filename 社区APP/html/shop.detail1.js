@@ -158,6 +158,11 @@ $('body').delegate('.btn-shop-location', 'tap', function () {
 $('body').delegate('.btn-call-seller', 'tap', function () {
 	plus.device.dial($(this).text(), true);
 });
+// 快速回到首页
+$('.btn-home').on('tap', function () {
+	app.home();
+});
+
 
 
 
