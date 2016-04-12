@@ -11,6 +11,11 @@
 		.content {padding: 0;}
 		.shop {height: 105px;}
 		.content {padding-bottom: 50px;}
+		.pad-v {padding-left: 10px; padding-right: 10px;}
+		.article {
+			padding-bottom: 5px;
+			border-bottom: 1px solid #DDDDDD;
+		}
 	</style>
 </head>
 
@@ -36,9 +41,11 @@
 					<p>发布时间：{{item.add_time}}</p>
 				</div>
 			</div>
-			<ul>
-				<li>{{#item.content}}</li>
-			</ul>
+			<div class="mui-row">
+				<div class="mui-col-xs-12">
+					<span class="mui-col-xs-12 pad-v">{{#item.content}}</span>
+				</div>
+			</div>
 		</div>
 		{{/each}}
 	</script>
