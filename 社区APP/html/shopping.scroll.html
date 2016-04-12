@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>附近商超</title>
+	<link rel="stylesheet" href="../css/mui.min.css" />
+	<link rel="stylesheet" href="../css/common.css" />
+	<link rel="stylesheet" href="../css/app/collect.css" />
+	<style>
+		.content {height: 100%;padding-top: 0px;}
+	</style>
+</head>
+
+<body>
+	<div id="refreshContainer" class="content mui-content mui-scroll-wrapper">
+		<div class="mui-scroll">
+			<!--数据列表-->
+			<ul class="mui-table-view mui-table-view-chevron" id="pnl-nearby-store" style="margin-top:0 ;"></ul>
+		</div>
+	</div>
+
+	<script type="text/html" id="tpl-nearby-store">
+		{{each seller_list as value}}
+		<div class="shop" shop_id="{{value.shop_id}}" shop_name="{{value.shop_name}}" addr="{{value.addr}}" tel="{{value.tel}}">
+			<div class="shop-l">
+				<img src="{{value.logo | image}}" />
+			</div>
+			<div class="shop-r">
+				{{value.shop_name}}
+				<p>{{value.business_time}}</p>
+				<p class="loction">{{value.distance/1000}}</p>
+			</div>
+		</div>
+		{{/each}}
+	</script>
+
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/mui.min.js"></script>
+    <script type="text/javascript" src="../js/template.js"></script>
+    <script type="text/javascript" src="../js/app.js"></script>
+    <script type="text/javascript" src="shopping.scroll.js"></script>
+</body>
+</html>

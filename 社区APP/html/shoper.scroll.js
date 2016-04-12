@@ -31,7 +31,7 @@ function next (cb) {
 
 function funcPulldownRefresh () {
 	_Data.page = 0;
-	//console.log('重新刷新页面' + JSON.stringify(_Data));
+	console.log('重新刷新页面' + JSON.stringify(_Data));
 	$('#pnl-shop').empty();
 	plus.nativeUI.showWaiting('正在刷新...');
 	
