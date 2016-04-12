@@ -75,7 +75,7 @@
 					<span class="block">下单时间<span class="fcr">{{item.create_time}}</span></span>
 					<span class="block">商品金额<span class="fcr">￥：{{item.total_price}}</span></span>
 					{{if '0' == item.status}}
-					<span class="block col2">未付款的订单将在15分钟后失效</span>
+					<span class="block col2 mui-hidden">未付款的订单将在15分钟后失效</span>
 					{{/if}}
 				</div>
 			</li>
