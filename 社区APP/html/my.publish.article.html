@@ -25,36 +25,22 @@
 	
 	<!-- 我的帖子模板 开始 -->
 	<script type="text/html" id="tpl-used">
-		<div class="block">
+		{{each forum_list as item}}
+		<div class="block article" data-id="{{item.id}}">
 			<div class="top">
 				<div class="l-img">
-					<img src="../img/touxiang.png" />
+					<img src="{{item.avatar | avatar}}" />
 				</div>
 				<div class="r-nick">
-					<span class="col">左手倒影</span>
-					<p>发布时间2015-12-23<span class="fjr">12:06</span></p>
+					<span class="col">{{item.nickname || item.account || item.user_id}}</span>
+					<p>发布时间：{{item.add_time}}</p>
 				</div>
 			</div>
 			<ul>
-				<li>
-					对于怪物猎人OL武器做好没有了这个是什么情况
-				</li>
-			</ul>
-			<div class="top">
-				<div class="l-img">
-					<img src="../img/touxiang.png" />
-				</div>
-				<div class="r-nick">
-					<span class="col">左手倒影</span>
-					<p>发布时间2015-12-23<span class="fjr">12:06</span></p>
-				</div>
-			</div>
-			<ul>
-				<li>
-					对于怪物猎人OL武器做好没有了这个是什么情况
-				</li>
+				<li>{{#item.content}}</li>
 			</ul>
 		</div>
+		{{/each}}
 	</script>
 	<!-- 我的帖子模板 结束 -->
 	

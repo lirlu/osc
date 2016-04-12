@@ -7,16 +7,17 @@ function next (cb) {
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
-		'url'      : app.url('mobile/userinfo/old_list'),
+		'url'      : app.url('mobile/forum/forum_list'),
 		'data'     : mui.extend({}, _Data, {'page':_Data.page+1})
 	})
 	.fail(function (res) {
-		console.log('取得我的二手失败：' + JSON.stringify(res));
-		app.error('取得我的二手失败');
+		console.log('取得我的帖子失败：' + JSON.stringify(res));
+		app.error('取得我的帖子失败');
 		plus.nativeUI.closeWaiting();
+		mui('#refreshContainer').pullRefresh().endPullupToRefresh();
 	})
 	.done(function (res) {
-		console.log('我的二手：' + JSON.stringify(res));
+		console.log('我的帖子：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
@@ -55,7 +56,7 @@ mui.init({
 	}
 });
 
-function reinit (data) {
+function init (data) {
 	data = data || {};
 	_Data.page    = 0;
 	_Data.cate_id = data.category || '';
@@ -65,18 +66,11 @@ function reinit (data) {
 }
 
 mui.plusReady(function () {
-	plus.geolocation.getCurrentPosition(
-		function (res) {
-			_Data.lng = res.coords.longitude;
-			_Data.lat = res.coords.latitude;
-			
-			reinit ();
-		}, 
-		function () {
-			reinit ();
-		}, 
-		{ provider : 'baidu' }
-	);
+	setTimeout(init, 300);
+});
+
+template.helper('image', function (v) {
+	return app.link.image + v;
 });
 
 template.helper('avatar', function (v) {
