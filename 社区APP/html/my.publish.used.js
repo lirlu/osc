@@ -101,8 +101,12 @@ template.helper('avatar', function (v) {
 	return v ? (app.link.image + v) : '../img/iconfont-morentouxiang.png';
 });
 
-$('body').delegate('.btn-sold', 'tap', function () {
-	var dom = this;
+$('body').delegate('.product', 'tap', function () {
+	app.open('second.hand.detail.html', {'id':$(this).attr('data-id')});
+});
+
+$('body').delegate('.btn-sold', 'tap', function (e) {
+	var dom = this; e.stopPropagation();
 	plus.nativeUI.showWaiting('正在提交...');
 	$(dom).prop('disabled', true);
 	$.ajax({
@@ -130,8 +134,8 @@ $('body').delegate('.btn-sold', 'tap', function () {
 	;
 });
 
-$('body').delegate('.btn-sell', 'tap', function () {
-	var dom = this;
+$('body').delegate('.btn-sell', 'tap', function (e) {
+	var dom = this; e.stopPropagation();
 	plus.nativeUI.showWaiting('正在提交...');
 	$(dom).prop('disabled', true);
 	$.ajax({
