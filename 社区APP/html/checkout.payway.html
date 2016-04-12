@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>支付</title>
+	<link rel="stylesheet" href="../css/mui.min.css" />
+	<link rel="stylesheet" href="../css/common.css" />
+	<style>
+		.payway { background-color: #FFFFFF; padding-top: 15px; padding-bottom: 5px; border-bottom: 1px solid #CCC; }
+		.payway img { width: 70%; }
+		.payway>.mui-col-xs-3 { text-align: center; }
+		.payway .mui-input-row.mui-radio { top: -20px; }
+		.pay-label { padding: 20px; display: block; }
+	</style>
+</head>
+<body>
+	<!--头部-->
+	<header class="bar">
+		<a class="left mui-action-back mui-icon mui-icon-arrowleft"></a>
+		<h1 class="title">支付</h1>
+	</header>
+	
+	<div class="content">
+		<span class="pay-label">选择支付支付</span>
+		<div class="mui-row payway">
+			<div class="mui-col-xs-3">
+				<img src="../img/wxpay.png" />
+			</div>
+			<div class="mui-col-xs-9">
+				<span>微信支付</span>
+				<p>推荐安装微信5.0以上版本的使用</p>
+				<div class="mui-input-row mui-radio">
+					<label> </label>
+					<input name="payway" type="radio" checked="checked">
+				</div>
+			</div>
+		</div>
+		<div class="mui-row payway">
+			<div class="mui-col-xs-3">
+				<img src="../img/alipay.png" />
+			</div>
+			<div class="mui-col-xs-9">
+				<span>支付宝</span>
+				<p>推荐安装支付宝5.0以上版本的使用</p>
+				<div class="mui-input-row mui-radio">
+					<label> </label>
+					<input name="payway" type="radio">
+				</div>
+			</div>
+		</div>
+		<div class="mui-row payway">
+			<div class="mui-col-xs-3">
+				<img src="../img/cash.png" />
+			</div>
+			<div class="mui-col-xs-9">
+				<span>货到付款</span>
+				<p>&nbsp;</p>
+				<div class="mui-input-row mui-radio">
+					<label> </label>
+					<input name="payway" type="radio">
+				</div>
+			</div>
+		</div>
+		
+		<div class="bottom">
+			<button class="tbn btn-submit">支付</button>
+		</div>
+	</div>
+    <script type="text/javascript" src="../js/mui.min.js" ></script>
+    <script type="text/javascript" src="../js/jquery.min.js" ></script>
+    <script type="text/javascript" src="../js/template.js" ></script>
+    <script type="text/javascript" src="../js/app.js" ></script>
+    <script type="text/javascript" src="checkout.payway.js" ></script>
+</body>
+</html>
+
+
+
+
+
+
+
