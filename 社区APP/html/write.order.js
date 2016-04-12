@@ -139,6 +139,13 @@ $('.btn-submit').on('tap', function () {
 });
 
 function success (res) {
+	try {
+		plus.webview.getWebviewById('store.html').evalJS('doSilenceRefresh()');
+	} catch (e) {}
+	try {
+		plus.webview.getWebviewById('purse.html').evalJS('refresh()');
+	} catch (e) {}
+	
 	plus.webview.currentWebview().close();
 }
 

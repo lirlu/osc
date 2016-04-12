@@ -2,6 +2,26 @@
 template.helper('image', function (v) {
 	return app.link.image + v;
 });
+
+function doSilenceRefresh () {
+	$.ajax({
+		'dataType' : 'json',
+		'type'     : 'post',
+		'url'      : app.url('mobile/userinfo/index'),
+		'data'     : {'key':app.store('key')}
+	})
+	.fail(function (res) {
+	})
+	.done(function (res) {
+		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
+		if (false == res.status) {app.error(res.msg); return;};
+		if (res.msg) { plus.nativeUI.toast(res.msg); };
+		
+		$('.integral .num').text(res.user_info.integral);
+	})
+	;
+}
+
 mui.plusReady(function () {
 	var key = app.store('key');
 	$.ajax({
