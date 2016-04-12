@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>我的团购</title>
+	
+	<link rel="stylesheet" href="../css/mui.min.css" />
+	<link rel="stylesheet" href="../css/iconfont.css" />
+	<link rel="stylesheet" href="../css/common.css" />
+	<link rel="stylesheet" href="../css/forum.css" />
+	<style>
+		.pad-h { padding-left: 5px; padding-right: 5px; }
+		.product { padding: 10px; border-top: 1px solid #CCCCCC;}
+		.product img { min-height: 60px; width: 100%; }
+		.product .text-gray { color: #808080; }
+		.product .line { min-height: 30px; }
+	</style>
+</head>
+<body>
+	<div id="refreshContainer" class="mui-content mui-scroll-wrapper">
+		<div class="mui-scroll">
+			<!--数据列表-->
+			<div class="mui-table-view mui-table-view-chevron" id="pnl-article">
+			</div>
+		</div>
+	</div>
+	
+	<!-- 帖子模板 开始 -->
+	<script type="text/html" id="tpl-article">
+		{{each list as item}}
+		<div class="product" data-product="{{item.goods_id}}" data-shop="{{item.shop_id}}">
+			<div class="mui-row go-product">
+				<div class="mui-col-xs-3 mui-text-center">
+					<img src="{{item.face_pic | image}}" />
+				</div>
+				<div class="mui-col-xs-9 pad-h">
+					<div class="line">
+						{{item.title}}
+						<span class="mui-pull-right">x{{item.num || '0'}}</span>
+					</div>
+					<p class="line">￥{{item.integral || '0'}}</p>
+				</div>
+			</div>
+			<div class="mui-row mui-hidden">
+				<div class="mui-col-xs-3 text-gray">订单编号</div>
+				<div class="mui-col-xs-9">{{item.exchange_id}}</div>
+			</div>
+			<div class="mui-row">
+				<div class="mui-col-xs-3 text-gray">团购时间</div>
+				<div class="mui-col-xs-9">{{item.create_time}}</div>
+			</div>
+			<div class="mui-row">
+				<div class="mui-col-xs-3 text-gray">消费金额</div>
+				<div class="mui-col-xs-9">{{item.money || '0'}}</div>
+			</div>
+			<div class="mui-row mui-hidden">
+				<div class="mui-col-xs-3 text-gray">配送地址</div>
+				<div class="mui-col-xs-9">{{$area item.addrinfo.provice item.addrinfo.city item.addrinfo.state}}</div>
+			</div>
+		</div>
+		{{/each}}
+	</script>
+	<!-- 帖子模板 开始 -->
+	
+	<script type="text/javascript" src="../js/mui.min.js" ></script>
+	<script type="text/javascript" src="../js/jquery.min.js" ></script>
+	<script type="text/javascript" src="../js/template.js" ></script>
+	<script type="text/javascript" src="../js/app.js" ></script>
+	<script type="text/javascript" src="../js/city.data-3.js" ></script>
+	<script type="text/javascript" src="my.teambuy.scroll.js" ></script>
+</body>
+</html>
