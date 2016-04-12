@@ -37,6 +37,7 @@ function funcPullUp () {
 	});
 }
 function funcPullDown () {
+	_Data.page = 0;
 	$('#pnl-nearby-store').empty();
 	search(function (res) {
 		if (200 != res.code) { plus.nativeUI.toast('请求数据失败'); return; }
