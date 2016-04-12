@@ -66,7 +66,7 @@ $('body').delegate('.btn-call-seller', 'tap', function () {
 // 查看评价
 $('.content').delegate('.view-comment', 'tap', function() {
 	//app.open('goods.appraise.html');
-	app.open('all.appraise.html', _Data);
+	app.open('product.comment.html', _Data);
 });
 // 重新初始化页面
 function init (data) {

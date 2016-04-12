@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>我的团购</title>
+	
+	<link rel="stylesheet" href="../css/mui.min.css" />
+	<link rel="stylesheet" href="../css/iconfont.css" />
+	<link rel="stylesheet" href="../css/common.css" />
+	<link rel="stylesheet" href="../css/app/appraise.css" />
+	<style>
+		.note {border-top: 1px solid #CCCCCC;}
+	</style>
+</head>
+<body>
+	<div id="refreshContainer" class="mui-content mui-scroll-wrapper">
+		<div class="mui-scroll">
+			<!--数据列表-->
+			<div class="mui-table-view mui-table-view-chevron" id="pnl-appraise">
+			</div>
+		</div>
+	</div>
+	
+	<!-- 评价内容模板 开始 -->
+	<script type="text/html" id="tpl-appraise">
+		{{each list as item}}
+		<li class="note">
+			<div class="nickname">
+				<img src="{{item.img | avatar}}" />
+				<span>{{item.nickname || item.account || ' '}}</span>
+			</div>
+			<div class="appraise">
+				<p>{{item.content}}</p>
+				<p>{{item.add_time}}</p>
+			</div>
+		</li>
+		{{/each}}
+	</script>
+	<!-- 评价内容模板 结束 -->
+	
+	<script type="text/javascript" src="../js/mui.min.js" ></script>
+	<script type="text/javascript" src="../js/jquery.min.js" ></script>
+	<script type="text/javascript" src="../js/template.js" ></script>
+	<script type="text/javascript" src="../js/app.js" ></script>
+	<script type="text/javascript" src="product.comment.scroll.js" ></script>
+</body>
+</html>
