@@ -101,46 +101,7 @@ template.helper('time', function (v) {
 // 重新支付订单
 $('body').delegate('.product-order .btn-odr-repay', 'tap', function () {
 	var dom = this, odr = $(dom).closest('.product-order');
-	var channel = payment.channels[$(odr).attr('data-way')];
-	
-	if (!channel) { alert('你的手机没有此支付渠道'); return; }
-	plus.nativeUI.showWaiting();
-	$.ajax({
-		'dataType' : 'json',
-		'type'     : 'post',
-		'url'      : app.url('mobile/order/pay'),
-		'data'     : {'order_id':$(odr).attr('data-id'), 'order_no':$(odr).attr('data-no'), 'key':_Data.key}
-	})
-	.fail(function (res) {
-		console.log('重新支付订单失败：' + JSON.stringify(res));
-		app.error('重新支付订单失败');
-		plus.nativeUI.closeWaiting();
-	})
-	.done(function (res) {
-		console.log('重新支付订单：' + JSON.stringify(res));
-		plus.nativeUI.closeWaiting();
-		
-		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
-		if (false == res.status) {app.error(res.msg); return;};
-		if (res.msg) { plus.nativeUI.toast(res.msg); };
-		if (!res.error) { plus.nativeUI.toast('提交失败...'); return; }
-		//if ('cash' == data.payway) { success(res.orderNo); return; }
-		if (!res.url) { plus.nativeUI.toast('服务器返回数据出错'); return; }
-		if (res.redirect_link) { pay_by_web(res.redirect_link); return; }
-		
-		plus.payment.request(channel, res.url, function (result) {
-			$(dom).siblings().prop('disabled', true);
-			$(dom).prop('disabled', true);
-			
-            plus.nativeUI.alert("支付成功！", function () { success(res.orderNo); });
-            
-        }, function(error) {
-        	console.log(JSON.stringify(error));
-        	plus.nativeUI.alert("支付失败");
-            //plus.nativeUI.alert("支付失败：" + error.message);
-        });
-	})
-	;
+	app.open('checkout.payway.html', {'iOrderId':$(odr).attr('data-id')});
 });
 
 // 支付成功，跳转到提示页面
