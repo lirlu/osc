@@ -102,22 +102,23 @@ mui.plusReady(function () {
 });
 
 // 点击查看帖子详情列表
-$('body').delegate('.article', 'tap', function() {
+$('body').delegate('.article', 'tap', function(e) {
 	var data = {
 		'id'   : $(this).attr('data-id'),
 	};
 	app.open('forum.article.html', data);
 });
 // 评论帖子
-$('body').delegate('.btn-comment', 'tap', function() {
+$('body').delegate('.btn-comment', 'tap', function(e) {
+	var dom = this; e.stopPropagation();
 	var data = {
 		'id'   : $(this).attr('data-id'),
 	};
 	app.open('forum.comment.html', data);
 });
 // 收藏帖子
-$('body').delegate('.btn-like', 'tap', function() {
-	var dom = this;
+$('body').delegate('.btn-like', 'tap', function(e) {
+	var dom = this; e.stopPropagation();
 	var data = {
 		'key'  : app.store('key'),
 		'id'   : $(this).attr('data-id'),
