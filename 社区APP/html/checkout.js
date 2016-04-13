@@ -73,6 +73,8 @@ function refresh () {
 		plus.nativeUI.closeWaiting();
 		
 		$('#pnl-product').append(template('tpl-product', res));
+		
+		doSetAddress(res.addr_info);
 	})
 	;
 }
@@ -83,6 +85,7 @@ $('section.address li').on('tap', function () {
 function doSetAddress (item) {
 	console.log('选择收货地址：' + JSON.stringify(item));
 	
+	if (!item) { return; }
 	$('section.address li input').val(item.id);
 	$('section.address li span.human').text(item.name + ' ' + item.tel);
 	$('section.address li span.addr').text(area(item.provice, item.city, item.state) +' '+ item.addr);
