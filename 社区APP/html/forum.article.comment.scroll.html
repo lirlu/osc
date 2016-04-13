@@ -16,6 +16,7 @@
 			max-height: 40px;
 			width: auto;
 		}
+		.at { color: #FD4C3C; }
 	</style>
 </head>
 <body>
@@ -85,7 +86,12 @@
 				
 			</div>
 			<div class="mui-text-left">
-				<span class="mui-col-xs-12">{{item.content}}</span>
+				<span class="mui-col-xs-12">
+					{{each item.uname as at}}
+					<span class="at">@{{at.nickname || at.account}}</span>
+					{{/each}}
+					{{item.content}}
+				</span>
 			</div>
 			<div class="shijian">
 				<time>{{item.add_time}}</time>
