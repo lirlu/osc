@@ -1,9 +1,9 @@
 (function (mui, $) {
-var _Data = {'iOrderId':'', 'key':app.store('key')};
+var _Data = {'iOrderId':'', 'order_id':'', 'key':app.store('key')};
 
 mui.plusReady(function () {
 	var view = plus.webview.currentWebview();
-	_Data.iOrderId = view.extras.iOrderId;
+	_Data.iOrderId = _Data.order_id = view.extras.iOrderId;
 	// 从服务器请求订单详情
 	console.log(JSON.stringify({'key':app.store('key'), 'order_id':_Data.iOrderId}));
 	plus.nativeUI.showWaiting();
@@ -33,14 +33,14 @@ mui.plusReady(function () {
 function pay (channel) {
 	var view = plus.webview.currentWebview();
 	
-	console.log('参数：'+JSON.stringify(data));
+	console.log('参数：'+JSON.stringify(_Data));
 	// 从服务器请求支付订单
 	plus.nativeUI.showWaiting('正在提交订单...');
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
 		'url'      : app.url('mobile/order/pay'),
-		'data'     : _Data
+		'data'     : mui.extend({}, _Data, {'pay_type':channel.id})
 	})
 	.fail(function (res) {
 		console.log('订单提交支付失败：' + JSON.stringify(res));
@@ -51,12 +51,12 @@ function pay (channel) {
 		console.log('提交支付：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
+		if (!res || !res.url) { plus.nativeUI.toast('服务器返回数据出错'); return; }
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
 		if (false == res.status) {app.error(res.msg); return;};
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
 		if (!res.error) { plus.nativeUI.toast('提交失败...'); return; }
 		//if ('cash' == data.payway) { success(_Data.iOrderId); return; }
-		if (!res.url) { plus.nativeUI.toast('服务器返回数据出错'); return; }
 		//if (res.redirect_link) { pay_by_web(res.redirect_link); return; }
 		
 		plus.payment.request(channel, res.url, function (result) {
@@ -80,7 +80,7 @@ $('.btn-submit').on('tap', function () {
 			if (payway == channel.id) { pay(channel); break; }
 		}
     }, function (e) {
-        alert("获取支付服务失败：" + e.message);
+        alert("获取支付服务失败");
     });
 });
 
