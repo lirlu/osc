@@ -38,6 +38,8 @@ function init (city) {
 		$('#pnl-banner').html(template('tpl-banner', res));
 		$('#pnl-gallery').html(template('tpl-gallery', res));
 		$('#pnl-thumb').html(template('tpl-thumb', res));
+		
+		mui('.mui-slider').slider({interval:5000});
 	})
 	;
 	

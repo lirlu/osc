@@ -62,7 +62,7 @@
         <!--轮播图-->
         <section>
             <div class="mui-slider">
-                <div class="mui-slider-group .mui-slider-loop" id="pnl-banner">
+                <div class="mui-slider-group mui-slider-loop" id="pnl-banner">
                     <div class="mui-slider-item">
                         <a href="javascript:;"><img src="../img/banner01.png" /></a>
                     </div>
@@ -159,11 +159,17 @@
     
     <!-- 轮播图片模板 开始 -->
     <script type="text/html" id="tpl-banner">
+        <div class="mui-slider-item mui-slider-item-duplicate {{if '2' == banner[banner.length-1].type}}shop{{else}}product{{/if}}" data-id="{{banner[banner.length-1].sid}}" data-title="{{banner[banner.length-1].title}}">
+            <a href="javascript:;"><img src="{{banner[banner.length-1].img | image}}" /></a>
+        </div>
     	{{each banner as item}}
         <div class="mui-slider-item {{if '2' == item.type}}shop{{else}}product{{/if}}" data-id="{{item.sid}}" data-title="{{item.title}}">
             <a href="javascript:;"><img src="{{item.img | image}}" /></a>
         </div>
         {{/each}}
+        <div class="mui-slider-item mui-slider-item-duplicate {{if '2' == banner[0].type}}shop{{else}}product{{/if}}" data-id="{{banner[0].sid}}" data-title="{{banner[0].title}}">
+            <a href="javascript:;"><img src="{{banner[0].img | image}}" /></a>
+        </div>
     </script>
     <!-- 轮播图片模板 结束 -->
     
