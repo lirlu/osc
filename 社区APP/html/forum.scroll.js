@@ -112,7 +112,7 @@ $('body').delegate('.article', 'tap', function(e) {
 $('body').delegate('.btn-comment', 'tap', function(e) {
 	var dom = this; e.stopPropagation();
 	var data = {
-		'id'   : $(this).attr('data-id'),
+		'id'   : $(this).closest('.article').attr('data-id'),
 	};
 	app.open('forum.comment.html', data);
 });
