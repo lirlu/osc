@@ -48,6 +48,34 @@ $('.btn-submit').on('tap', function () {
 		return;
 	}
 	
-	app.open('group.payment.html', view.extras);
+	plus.nativeUI.showWaiting();
+	$.ajax({
+		'dataType' : 'json',
+		'type'     : 'post',
+		'url'      : app.url('mobile/GroupPurchase/goods_view'),
+		'data'     : {'key':app.store('key'), 'tuan_id':view.extras.id, 'payway':'online'}
+	})
+	.fail(function (res) {
+		console.log('加载商品信息失败：' + JSON.stringify(res));
+		app.error('加载商品信息失败');
+		plus.nativeUI.closeWaiting();
+	})
+	.done(function (res) {
+		console.log('商品信息：' + JSON.stringify(res));
+		plus.nativeUI.closeWaiting();
+		
+		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
+		if (false == res.status) { app.error(res.msg); return; };
+		if (res.msg) { plus.nativeUI.toast(res.msg); };
+		
+		var data = {
+			'iOrderId' : res.order_id,
+			'iOrderNo' : res.order_no,
+			'payway'   : 'online',
+			'paygroup' : 'teambuy',
+		};
+		app.open('checkout.payway.html', data)
+	})
+	;
 });
 
