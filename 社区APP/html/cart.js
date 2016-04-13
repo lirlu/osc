@@ -76,7 +76,7 @@ cart.total = function () {
 	.done(function (res) {
 		console.log('选中商品总价值：' + JSON.stringify(res));
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
-		$('span.total').text('￥' + res.money);
+		$('span.total').text('￥' + (res.money||'0'));
 	})
 	;
 }
