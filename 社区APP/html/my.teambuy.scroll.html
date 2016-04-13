@@ -32,7 +32,7 @@
 		<div class="product" data-product="{{item.goods_id}}" data-shop="{{item.shop_id}}">
 			<div class="mui-row go-product">
 				<div class="mui-col-xs-3 mui-text-center">
-					<img src="{{item.face_pic | image}}" />
+					<img src="{{item.photo | image}}" />
 				</div>
 				<div class="mui-col-xs-9 pad-h">
 					<div class="line">
@@ -52,7 +52,7 @@
 			</div>
 			<div class="mui-row">
 				<div class="mui-col-xs-3 text-gray">消费金额</div>
-				<div class="mui-col-xs-9">{{item.money || '0'}}</div>
+				<div class="mui-col-xs-9">￥{{item.total_price || '0'}}</div>
 			</div>
 			<div class="mui-row mui-hidden">
 				<div class="mui-col-xs-3 text-gray">配送地址</div>
