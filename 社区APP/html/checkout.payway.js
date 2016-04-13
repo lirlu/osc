@@ -30,13 +30,8 @@ mui.plusReady(function () {
 	;
 });
 
-// 提交订单
-$('.btn-submit').on('tap', function () {
+function pay (channel) {
 	var view = plus.webview.currentWebview();
-	var key  = app.store('key');
-	
-	var channel = payment.channels[$('input[name=payway]:checked').val()];
-	//if (!channel) { plus.nativeUI.toast('你的手机没有此支付通道，请选择其他支付方式'); return; }
 	
 	console.log('参数：'+JSON.stringify(data));
 	// 从服务器请求支付订单
@@ -44,8 +39,8 @@ $('.btn-submit').on('tap', function () {
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
-		'url'      : app.url('mobile/order/order_add'),
-		'data'     : data
+		'url'      : app.url('mobile/order/pay'),
+		'data'     : _Data
 	})
 	.fail(function (res) {
 		console.log('订单提交支付失败：' + JSON.stringify(res));
@@ -73,6 +68,20 @@ $('.btn-submit').on('tap', function () {
         });
 	})
 	;
+}
+
+// 提交订单
+$('.btn-submit').on('tap', function () {
+	var channel = null, payway = $('input[name=payway]:checked').val();
+	//if (!channel) { plus.nativeUI.toast('你的手机没有此支付通道，请选择其他支付方式'); return; }    // 获取支付通道
+    plus.payment.getChannels(function (channels) {
+		for (var i in channels) {
+			var channel = channels[i];
+			if (payway == channel.id) { pay(channel); break; }
+		}
+    }, function (e) {
+        alert("获取支付服务失败：" + e.message);
+    });
 });
 
 // 支付成功，跳转到提示页面
