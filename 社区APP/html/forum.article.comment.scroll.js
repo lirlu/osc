@@ -106,6 +106,11 @@ function init () {
 		
 		$('#pnl-image').html(template('tpl-image', res.forum_view));
 		
+		
+		if (res.forum_view.liked) {
+			$('.btn-like').addClass('liked').find('img').attr('src', '../img/icon.forum.liked.png');
+		}
+		
 		setTimeout(function () { mui('#refreshContainer').pullRefresh().pullupLoading(); }, 200);
 	})
 	;
