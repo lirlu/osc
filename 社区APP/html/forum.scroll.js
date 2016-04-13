@@ -121,16 +121,16 @@ $('body').delegate('.btn-like', 'tap', function(e) {
 	var dom = this; e.stopPropagation();
 	var data = {
 		'key'  : app.store('key'),
-		'id'   : $(this).attr('data-id'),
+		'id'   : $(this).closest('.article').attr('data-id'),
 	};
 	
-	if ($(dom).hasClass('liked')) { plus.nativeUI.toast('你已经收藏过了'); return; }
+	//if ($(dom).hasClass('liked')) { plus.nativeUI.toast('你已经收藏过了'); return; }
 	
 	plus.nativeUI.showWaiting();
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
-		'url'      : app.url('mobile/forum/forum_collection'),
+		'url'      : app.url('mobile/forum/collection'),
 		'data'     : data
 	})
 	.fail(function (res) {
@@ -146,7 +146,11 @@ $('body').delegate('.btn-like', 'tap', function(e) {
 		if (false == res.status) {app.error(res.msg); return;};
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
 		
-		$(dom).addClass('liked');
+		if ($(dom).hasClass('liked')) {
+			$(dom).removeClass('liked').find('img').attr('src', '../img/icon.forum.like.png');
+		} else {
+			$(dom).addClass('liked').find('img').attr('src', '../img/icon.forum.liked.png');
+		}
 	})
 	;
 });
