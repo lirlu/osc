@@ -29,7 +29,7 @@
 	<!-- 帖子模板 开始 -->
 	<script type="text/html" id="tpl-article">
 		{{each list as item}}
-		<div class="product" data-product="{{item.goods_id}}" data-shop="{{item.shop_id}}">
+		<div class="product" data-product="{{item.goods_id}}" data-shop="{{item.shop_id}}" data-id="{{item.order_id}}">
 			<div class="mui-row go-product">
 				<div class="mui-col-xs-3 mui-text-center">
 					<img src="{{item.photo | image}}" />
@@ -57,6 +57,17 @@
 			<div class="mui-row mui-hidden">
 				<div class="mui-col-xs-3 text-gray">配送地址</div>
 				<div class="mui-col-xs-9">{{$area item.addrinfo.provice item.addrinfo.city item.addrinfo.state}}</div>
+			</div>
+			<div class="mui-row">
+				<div class="mui-col-xs-12 mui-text-right">
+					{{if '1' == item.status}}
+					<button type="button" class="mui-btn mui-btn-outlined">已支付</button>
+					{{else if '0' == item.status}}
+					<button type="button" class="mui-btn mui-btn-danger mui-btn-outlined btn-repay">去支付</button>
+					{{else}}
+					<button type="button" class="mui-btn mui-btn-outlined" disabled="disabled">&nbsp;</button>
+					{{/if}}
+				</div>
 			</div>
 		</div>
 		{{/each}}

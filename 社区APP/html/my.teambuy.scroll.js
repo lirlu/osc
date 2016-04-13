@@ -90,15 +90,19 @@ mui.plusReady(function () {
 	setTimeout(init, 200);
 });
 
-// 收藏帖子
-$('body').delegate('.go-product', 'tap', function() {
+// 重新支付
+$('body').delegate('.btn-repay', 'tap', function() {
 	var dom = $(this).closest('.product');
 	var data = {
-		'goods_id' : $(dom).attr('data-product'),
-		'shop_id'  : $(dom).attr('data-shop'),
+		'iOrderId' : $(dom).attr('data-id'),
+		'iOrderNo' : $(dom).attr('data-no'),
+		'payway'   : 'online',
+		'paygroup' : 'teambuy',
+		'callback' : 'init()',
 	};
-	//app.open('goods.detail.html', data);
+	app.open('checkout.payway.html', data);
 });
+
 
 template.helper('image', function (v) {
 	return app.link.image + v;
