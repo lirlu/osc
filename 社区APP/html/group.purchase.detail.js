@@ -52,7 +52,7 @@ $('.btn-submit').on('tap', function () {
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
-		'url'      : app.url('mobile/GroupPurchase/goods_view'),
+		'url'      : app.url('mobile/GroupPurchase/add_order'),
 		'data'     : {'key':app.store('key'), 'tuan_id':view.extras.id, 'payway':'online'}
 	})
 	.fail(function (res) {
