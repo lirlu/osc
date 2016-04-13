@@ -126,7 +126,18 @@ template.helper('image', function (v) {
 template.helper('avatar', function (v) {
 	return v ? (app.link.image + v) : '../img/iconfont-morentouxiang.png';
 });
-
+// 回复某人
+$('body').delegate('.btn-reply', 'tap', function (e) {
+	var dom = this; e.stopPropagation();
+	var data = {
+		'id'    : _Data.forum_id,
+		'uid'   : $(this).attr('data-uid'),
+	};
+	app.open('forum.comment.html', data);
+});
+function after_comment () {
+	setTimeout(funcPulldownRefresh, 500);
+}
 // 评论帖子
 $('body').delegate('.btn-comment', 'tap', function(e) {
 	var dom = this; e.stopPropagation();

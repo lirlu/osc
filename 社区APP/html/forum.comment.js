@@ -7,6 +7,7 @@ $('.btn-submit').on('tap', function () {
 		'key'      : app.store('key'),
 		'content'  : $('[name=note]').val(),
 		'forum_id' : view.extras.id,
+		'uid'      : view.extras.at,
 	}
 	plus.nativeUI.showWaiting('正在提交...');
 	$(dom).prop('disabled', true);
