@@ -95,7 +95,9 @@ template.helper('avatar', function (v) {
 	return v ? (app.link.image + v) : '../img/iconfont-morentouxiang.png';
 });
 
-
+$('body').delegate('.article', 'tap', function () {
+	app.open('forum.article.html', {'id':$(this).attr('data-id')});
+});
 
 
 
