@@ -106,7 +106,7 @@ function init () {
 		
 		$('#pnl-image').html(template('tpl-image', res.forum_view));
 		
-		mui('#refreshContainer').pullRefresh().pullupLoading();
+		setTimeout(function () { mui('#refreshContainer').pullRefresh().pullupLoading(); }, 200);
 	})
 	;
 }
