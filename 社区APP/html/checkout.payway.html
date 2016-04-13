@@ -12,6 +12,8 @@
 		.payway>.mui-col-xs-3 { text-align: center; }
 		.payway .mui-input-row.mui-radio { top: -20px; }
 		.pay-label { padding: 20px; display: block; }
+		.order-row {padding: 15px 5px; margin-top: 5px; background-color: #FFFFFF;}
+		.order-row .order-total {color: #FD4C3C;}
 	</style>
 </head>
 <body>
@@ -22,6 +24,12 @@
 	</header>
 	
 	<div class="content">
+		<div class="mui-row order-row">
+			<div class="mui-col-xs-12">
+				订单总额
+				<span class="mui-pull-right order-total"></span>
+			</div>
+		</div>
 		<span class="pay-label">选择支付支付</span>
 		<div class="mui-row payway">
 			<div class="mui-col-xs-3">
@@ -49,7 +57,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="mui-row payway">
+		<div class="mui-row payway mui-hidden">
 			<div class="mui-col-xs-3">
 				<img src="../img/cash.png" />
 			</div>

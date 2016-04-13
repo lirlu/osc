@@ -4,6 +4,30 @@ var _Data = {'iOrderId':'', 'key':app.store('key')};
 mui.plusReady(function () {
 	var view = plus.webview.currentWebview();
 	_Data.iOrderId = view.extras.iOrderId;
+	// 从服务器请求订单详情
+	console.log(JSON.stringify({'key':app.store('key'), 'order_id':_Data.iOrderId}));
+	plus.nativeUI.showWaiting();
+	$.ajax({
+		'dataType' : 'json',
+		'type'     : 'post',
+		'url'      : app.url('mobile/order/order_detail'),
+		'data'     : {'key':app.store('key'), 'order_id':_Data.iOrderId}
+	})
+	.fail(function (res) {
+		console.log('读取订单数据失败：' + JSON.stringify(res));
+		app.error('读取订单数据失败');
+		plus.nativeUI.closeWaiting();
+	})
+	.done(function (res) {
+		console.log('订单数据：' + JSON.stringify(res));
+		plus.nativeUI.closeWaiting();
+		
+		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
+		if (false == res.status) {app.error(res.msg); return;};
+		if (res.msg) { plus.nativeUI.toast(res.msg); };
+		$('.order-total').text('￥' + (res.total_price || '0'));
+	})
+	;
 });
 
 // 提交订单
