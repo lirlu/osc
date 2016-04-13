@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>帖子详情</title>
+	<link rel="stylesheet" href="../css/mui.min.css" />
+	<link rel="stylesheet" href="../css/iconfont.css" />
+	<link rel="stylesheet" href="../css/common.css" />
+	<link rel="stylesheet" href="../css/forum.css" />
+</head>
+<body>
+	<div id="refreshContainer" class="mui-content mui-scroll-wrapper content" style="padding-top: 1px;">
+		<div class="mui-scroll">
+			<!--說說 結束-->
+			<div class="mui-row bigbox">
+				<div class="userinfo">
+					<div class="mui-inline" align="center">
+						<img class="author-avatar" src="../img/1.png"/>
+					</div>
+					
+					<div class="mui-col-xs-6 mui-inline">
+						<label class="mui-block article-author"> </label>
+						<time class="mui-block article-time"> </time>
+					</div>
+				</div>
+				
+				<h4 class="article-title mui-text-center" style="color: #555555;margin-top: 20px;margin-bottom: 10px;"> </h4>
+				<div class="mui-text-left">
+					<div class="mui-col-xs-12 article-content"></div>
+				</div>
+				
+				<div class="mui-row picture" style="font-size:0;" id="pnl-image">
+				</div>
+				<div class="mui-text-center message">
+					<div class="mui-col-xs-6 mui-inline">
+						<i class="iconfont icon-xiaoxi"></i>
+					</div>
+					<div class="mui-col-xs-6 mui-inline">
+						<i class="iconfont icon-aixin32pt"></i>
+					</div>
+				</div>
+			</div>
+			<!--說說 結束-->
+			
+			<!--评论 开始-->
+			<div id="pnl-comment"></div>
+			<!--评论 结束-->
+		</div>
+	</div>
+	
+	<!-- 帖子图片模板 开始 -->
+	<script type="text/html" id="tpl-image">
+		{{each img as item}}
+		<div class="mui-col-xs-4">
+			<img src="{{item | image}}" />
+		</div>
+		{{/each}}
+	</script>
+	<!-- 帖子图片模板 结束 -->
+	
+	<!-- 帖子评论模板 开始 -->
+	<script type="text/html" id="tpl-comment">
+		{{each forum_comment_list as item}}
+		<div class="mui-row bigbox-2 comment" data-id="{{item.id}}">
+			<div class="userinfo">
+				<div class="mui-inline" align="center">
+					<img class="" src="{{item.avatar | avatar}}"/>
+				</div>
+				
+				<div class="mui-col-xs-6 mui-inline">
+					<label class="mui-block">{{item.nickname || item.account}}</label>
+				</div>
+				
+				<label class="louceng mui-hidden">1楼</label>
+				
+			</div>
+			<div class="mui-text-left">
+				<span class="mui-col-xs-12">{{item.content}}</span>
+			</div>
+			<div class="shijian">
+				<time>{{item.add_time}}</time>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<label>回复</label>
+			</div>
+		</div>
+		{{/each}}
+	</script>
+	<!-- 帖子评论模板 结束 -->
+
+	<script type="text/javascript" src="../js/mui.min.js" ></script>
+	<script type="text/javascript" src="../js/jquery.min.js" ></script>
+	<script type="text/javascript" src="../js/template.js" ></script>
+	<script type="text/javascript" src="../js/app.js" ></script>
+	<script type="text/javascript" src="forum.article.comment.scroll.js" ></script>
+</body>
+</html>
