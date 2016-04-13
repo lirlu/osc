@@ -155,6 +155,8 @@ $('body').delegate('.btn-like', 'tap', function(e) {
 	;
 });
 
+function after_comment () {}
+
 template.helper('image', function (v) {
 	return app.link.image + v;
 });
