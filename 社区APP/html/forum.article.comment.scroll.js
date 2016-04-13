@@ -122,3 +122,51 @@ template.helper('avatar', function (v) {
 	return v ? (app.link.image + v) : '../img/iconfont-morentouxiang.png';
 });
 
+// 评论帖子
+$('body').delegate('.btn-comment', 'tap', function(e) {
+	var dom = this; e.stopPropagation();
+	var data = {
+		'id'   : _Data.forum_id,
+	};
+	app.open('forum.comment.html', data);
+});
+// 收藏帖子
+$('body').delegate('.btn-like', 'tap', function(e) {
+	var dom = this; e.stopPropagation();
+	var data = {
+		'key'  : app.store('key'),
+		'id'   : _Data.forum_id,
+	};
+	
+	//if ($(dom).hasClass('liked')) { plus.nativeUI.toast('你已经收藏过了'); return; }
+	
+	plus.nativeUI.showWaiting();
+	$.ajax({
+		'dataType' : 'json',
+		'type'     : 'post',
+		'url'      : app.url('mobile/forum/collection'),
+		'data'     : data
+	})
+	.fail(function (res) {
+		console.log('收藏失败：' + JSON.stringify(res));
+		app.error('收藏失败');
+		plus.nativeUI.closeWaiting();
+	})
+	.done(function (res) {
+		console.log('收藏成功：' + JSON.stringify(res));
+		plus.nativeUI.closeWaiting();
+		
+		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
+		if (false == res.status) {app.error(res.msg); return;};
+		if (res.msg) { plus.nativeUI.toast(res.msg); };
+		
+		if ($(dom).hasClass('liked')) {
+			$(dom).removeClass('liked').find('img').attr('src', '../img/icon.forum.like.png');
+		} else {
+			$(dom).addClass('liked').find('img').attr('src', '../img/icon.forum.liked.png');
+		}
+	})
+	;
+});
+
+
