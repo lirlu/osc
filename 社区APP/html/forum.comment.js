@@ -4,26 +4,26 @@ mui.init();
 $('.btn-submit').on('tap', function () {
 	var dom = this, view = plus.webview.currentWebview();
 	var data = {
-		'key'     : app.store('key'),
-		'content' : $('[name=note]').val(),
-		'id'      : view.extras.id,
+		'key'      : app.store('key'),
+		'content'  : $('[name=note]').val(),
+		'forum_id' : view.extras.id,
 	}
 	plus.nativeUI.showWaiting('正在提交...');
 	$(dom).prop('disabled', true);
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
-		'url'      : app.url('mobile/cart/cartadd'),
+		'url'      : app.url('mobile/forum/forum_comment'),
 		'data'     : data
 	})
 	.fail(function (res) {
-		console.log('发布帖子失败：' + JSON.stringify(res));
-		app.error('发布帖子失败');
+		console.log('评论帖子失败：' + JSON.stringify(res));
+		app.error('评论帖子失败');
 		plus.nativeUI.closeWaiting();
 		$(dom).prop('disabled', false);
 	})
 	.done(function (res) {
-		console.log('发布帖子：' + JSON.stringify(res));
+		console.log('评论帖子：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		$(dom).prop('disabled', false);
 		
