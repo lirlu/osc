@@ -5,13 +5,16 @@ mui.plusReady(function () {
 	var view = plus.webview.currentWebview();
 	_Data.iOrderId = _Data.order_id = view.extras.iOrderId;
 	// 从服务器请求订单详情
-	console.log(JSON.stringify({'key':app.store('key'), 'order_id':_Data.iOrderId}));
+	var link = 'mobile/order/pay';
+	if ('teambuy' == view.extras.paygroup) { link = 'mobile/GroupPurchase/order_detail'; };
+	if ('order'   == view.extras.paygroup) { link = 'mobile/order/order_detail'; };
+	console.log(app.url(link));
 	plus.nativeUI.showWaiting();
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
-		'url'      : app.url('mobile/order/order_detail'),
-		'data'     : {'key':app.store('key'), 'order_id':_Data.iOrderId}
+		'url'      : app.url(link),
+		'data'     : _Data
 	})
 	.fail(function (res) {
 		console.log('读取订单数据失败：' + JSON.stringify(res));
@@ -33,13 +36,17 @@ mui.plusReady(function () {
 function pay (channel) {
 	var view = plus.webview.currentWebview();
 	
-	console.log('参数：'+JSON.stringify(_Data));
+	//console.log('参数：'+JSON.stringify(_Data));
+	var link = 'mobile/order/pay';
+	if ('teambuy' == view.extras.paygroup) { link = 'mobile/GroupPurchase/pay'; };
+	if ('order'   == view.extras.paygroup) { link = 'mobile/order/pay'; };
+	
 	// 从服务器请求支付订单
 	plus.nativeUI.showWaiting('正在提交订单...');
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
-		'url'      : app.url('mobile/order/pay'),
+		'url'      : app.url(link),
 		'data'     : mui.extend({}, _Data, {'pay_type':channel.id})
 	})
 	.fail(function (res) {
@@ -86,8 +93,14 @@ $('.btn-submit').on('tap', function () {
 
 // 支付成功，跳转到提示页面
 function success (iOrderNo) {
+	var view = plus.webview.currentWebview();
+	
 	var data = {'id':iOrderNo, 'payway':$('input[name=payway]:checked').val()}
 	app.open('checkout.success.html', data);
+	try {
+		if (view.extras.callback) { plus.webview.getWebviewById(view.extras._FROM_).evalJS(view.extras.callback); }
+	} catch (e) {}
+	
 	setTimeout(function () {
 		plus.webview.currentWebview().close();
 	}, 500);

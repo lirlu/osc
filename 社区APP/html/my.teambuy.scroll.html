@@ -39,7 +39,7 @@
 						{{item.title}}
 						<span class="mui-pull-right">x{{item.num || '0'}}</span>
 					</div>
-					<p class="line">￥{{item.integral || '0'}}</p>
+					<p class="line">￥{{item.price || '0'}}</p>
 				</div>
 			</div>
 			<div class="mui-row mui-hidden">
@@ -61,7 +61,7 @@
 			<div class="mui-row">
 				<div class="mui-col-xs-12 mui-text-right">
 					{{if '1' == item.status}}
-					<button type="button" class="mui-btn mui-btn-outlined">已支付</button>
+					<button type="button" class="mui-btn mui-btn-outlined" disabled="disabled">已支付</button>
 					{{else if '0' == item.status}}
 					<button type="button" class="mui-btn mui-btn-danger mui-btn-outlined btn-repay">去支付</button>
 					{{else}}
