@@ -34,7 +34,7 @@ header {
 
 .bigbox {
 	background: #FFFFFF;
-	border-bottom: 10px solid #cacaca;
+	border-bottom: 10px solid #EFEFEF;
 }
 .content .bigbox:last-child {
 	background: #FFFFFF;
@@ -120,7 +120,7 @@ header {
 }
 
 .message div {
-	outline: 1px solid #dcdcdc;
+	outline: 1px solid #EFEFEF;
 	padding-top: 7px;
 	padding-bottom: 7px;
 	background: #FFFFFF;
@@ -133,7 +133,7 @@ header {
 	background: #FFFFFF;
 	padding: 10px 0;
 	bottom: 0;
-	outline: 1px solid #DCDCDC;
+	outline: 1px solid #EFEFEF;
 }
 
 .icon-iconxiugai:before {
@@ -150,7 +150,7 @@ header {
 
 .bigbox-2 {
 	background: #FFFFFF;
-	border-bottom: #cacaca 10px solid;
+	border-bottom: #EFEFEF 10px solid;
 	padding: 10px;
 	position: relative;
 }
@@ -211,7 +211,7 @@ header {
 .addImg div:last-child > label:first-child {
 	display: inline-block;
 	line-height: 40px;
-	border: 1px solid #DCDCDC;
+	border: 1px solid #EFEFEF;
 	width: 40px;
 	text-align: center;
 	float: left;
