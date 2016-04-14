@@ -66,6 +66,10 @@ $('#pnl-product').delegate('.add-to-cart', 'tap', function() {
 $('body').delegate('.btn-call-seller', 'tap', function () {
 	plus.device.dial($(this).attr('data-tel'), true);
 });
+// 立即购买
+$('body').delegate('.btn-buy-now', 'tap', function () {
+	plus.device.dial($(this).attr('data-tel'), true);
+});
 
 // 查看评价
 $('.content').delegate('.view-comment', 'tap', function() {

@@ -5,10 +5,10 @@ mui.plusReady(function () {
 	var view = plus.webview.currentWebview();
 	_Data.iOrderId = _Data.order_id = view.extras.iOrderId;
 	// 从服务器请求订单详情
-	var link = 'mobile/order/pay';
+	var link = 'mobile/order/order_detail';
 	if ('teambuy' == view.extras.paygroup) { link = 'mobile/GroupPurchase/order_detail'; };
 	if ('order'   == view.extras.paygroup) { link = 'mobile/order/order_detail'; };
-	console.log(app.url(link));
+	console.log('获取订单详情：' + app.url(link));
 	plus.nativeUI.showWaiting();
 	$.ajax({
 		'dataType' : 'json',
