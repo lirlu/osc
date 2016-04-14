@@ -26,6 +26,15 @@
     		white-space: nowrap;
     		max-width: 200px;
     	}
+    	#pnl-thumb>div {
+    		text-align: center;
+    		padding-left: 5px;
+    		padding-right: 5px;
+    	}
+    	#pnl-thumb>div img {
+    		width: 100%;
+    		height: 80px;
+    	}
     </style>
 </head>
 <body>
@@ -148,12 +157,9 @@
         <!--便民服务-->
         <section>
             <div class="contain">便民服务</div>
-            <ul class="ad" id="pnl-thumb">
-                <li class="top"><img src="../img/ad-1.png"></li>
-                <li class="top"><img src="../img/ad-2.png"></li>
-                <li><img src="../img/ad-3.png"></li>
-                <li><img src="../img/ad-4.png"></li>
-            </ul>
+            <div class="mui-row ad" id="pnl-thumb">
+            	
+            </div>
         </section>
     </div>
     
@@ -186,10 +192,9 @@
     <!-- 便民服务模板 开始 -->
     <script type="text/html" id="tpl-thumb">
     	{{each thumb as item idx}}
-        <li class="{{if idx < 3}}top{{/if}} {{if '2' == item.type}}shop{{else}}product{{/if}}" data-id="{{item.sid}}" data-title="{{item.title}}">
+        <div class="mui-col-xs-6 {{if idx < 3}}top{{/if}} {{if '2' == item.type}}shop{{else}}product{{/if}}" data-id="{{item.sid}}" data-title="{{item.title}}">
         	<img src="{{item.img | image}}">
-        	
-        </li>
+        </div>
         {{/each}}
     </script>
     <!-- 便民服务模板 结束 -->
