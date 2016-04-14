@@ -66,15 +66,23 @@ function pay (channel) {
 		//if ('cash' == data.payway) { success(_Data.iOrderId); return; }
 		//if (res.redirect_link) { pay_by_web(res.redirect_link); return; }
 		
+		plus.nativeUI.showWaiting('正在发起支付...');
 		plus.payment.request(channel, res.url, function (result) {
+			plus.nativeUI.closeWaiting();
             plus.nativeUI.alert("支付成功！", function () { success(_Data.iOrderId); });
         }, function(error) {
+        	plus.nativeUI.closeWaiting();
         	console.log(JSON.stringify(error));
         	plus.nativeUI.alert("支付失败");
             //plus.nativeUI.alert("支付失败：" + error.message);
         });
 	})
 	;
+}
+
+mui.back = function () {
+	plus.nativeUI.toast('你的订单还未完成支付，可在我的订单中继续操作完成支付');
+	plus.webview.currentWebview().close();
 }
 
 // 提交订单
