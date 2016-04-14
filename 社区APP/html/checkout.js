@@ -204,13 +204,13 @@ $('.btn-submit').on('tap', function () {
 		
 		// 订单创建成功，去支付页面
 		if ('cash' == data.payway) { success(res.order_id); return; }
-		var data = {
+		var extras = {
 			'iOrderId' : res.order_id,
 			'iOrderNo' : res.order_no,
 			'payway'   : $('[name=payway]:checked').val(),
 			'paygroup' : 'order',
 		};
-		app.open('checkout.payway.html', data)
+		app.open('checkout.payway.html', extras);
 		setTimeout(function () { plus.webview.currentWebview().close(); }, 200);
 		
 		/*
