@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>社区二手</title>
+    <link rel="stylesheet" href="../css/mui.min.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <style>
+    	li:after {background: transparent;}
+    	header.bar {border-bottom: 1px solid #EEEEEE; position: fixed;}
+    	header a {height: 44px;line-height: 44px;}
+    	header {text-align: center;}
+    	header img {width: 30px; margin-left: 10px; margin-right: 10px; z-index: 99;}
+    	.content {padding-top: 0;}
+    	.classify {padding: 10px; position: fixed; z-index: 99; top: 0px;background-color: #fff; display: none;}
+    	.classify>span {width: 100%; height: 30px; display: block;clear: both;}
+    	.classify>ul {clear: both; display: inline-table;}
+    	.classify>ul>li {border: none;width: 25%;font-size: .75em; float: left; display: block; padding: 3px 3px;}
+    	.classify>ul>li.active {color: #FD4C3C;}
+    	.classify>ul>li.active>div>i {
+    		width: 12px;
+    		height: 12px;
+    		background-image: url('../img/iconfont-checked.png');
+    		position: absolute;
+    		bottom: 8px;
+    		right: 8px;
+    		background-size: 12px 12px;
+    	}
+    	.classify>ul>li>div {width: 100%;border: 1px solid #CCC; text-align: center;padding: 5px 0; border-radius: 5px;}
+    	
+    	.product {padding-top: 10px; padding-bottom: 5px; border-top: 1px solid #CCCCCC;}
+    	#pnl-product .product:first-child {border-top: none;}
+    	.product .author-thumb img {width: 90%; text-align: center; vertical-align: middle; margin-top: 10px; margin-left: 5px;border-radius: 50%;}
+    	.product .author {font-size: 1em; color: #FD4C3C;min-height: 25px;}
+    	.product .author .mui-pull-right {margin-right: 10px;}
+    	.product .locate {font-size: 0.75em; color: #CCC;min-height: 25px;}
+    	.product .locate .mui-pull-right {font-size: 0.75em; color: #CCCCCC; margin-right: 10px;}
+    	.product .caption {font-size: 0.9em; margin-bottom: 10px;}
+    	.product .thumb img {width: 90%;}
+    </style>
+</head>
+<body>
+	<div class="content" style="padding-bottom: 0;">
+		<div class="classify">
+			<span>分类</span>
+			<ul>
+				<li data-id="1" class="active"><div>全部<i></i></div></li>
+				<li data-id="2"><div>租房<i></i></div></li>
+				<li data-id="3"><div>手机<i></i></div></li>
+				<li data-id="4"><div>数码产品<i></i></div></li>
+				<li data-id="5"><div>家电<i></i></div></li>
+				<li data-id="6"><div>家具<i></i></div></li>
+				<li data-id="7"><div>母婴玩具<i></i></div></li>
+				<li data-id="8"><div>服装箱包<i></i></div></li>
+				<li data-id="9"><div>美容保健<i></i></div></li>
+				<li data-id="10"><div>艺术收藏<i></i></div></li>
+				<li data-id="11"><div>图片音像<i></i></div></li>
+				<li data-id="12"><div>文体户外<i></i></div></li>
+				<li data-id="13"><div>办公设备<i></i></div></li>
+				<li data-id="14"><div>二手摩托<i></i></div></li>
+				<li data-id="15"><div>自行车<i></i></div></li>
+				<li data-id="16"><div>其他<i></i></div></li>
+			</ul>
+		</div>
+	</div>
+	<div class="content" style="height: 100%; padding-top: 0;">
+		<div id="refreshContainer" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<!--数据列表-->
+				<ul class="mui-table-view mui-table-view-chevron" id="pnl-product">
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- 二手商品模板 开始 -->
+	<script type="text/html" id="tpl-product">
+		{{each list as item}}
+		<li class="product" data-id="{{item.id}}">
+			<div class="mui-row">
+				<div class="mui-col-xs-3 author-thumb">
+					<img src="{{item.userinfo.img | image}}" />
+				</div>
+				<div class="mui-col-xs-9">
+					<div class="author">
+						{{item.name}}<span class="mui-pull-right">￥{{item.price}}</span>
+					</div>
+					<div class="locate">
+						{{item.addr}}<span class="mui-pull-right">>{{item.juli}}m</span>
+					</div>
+					<div class="caption">{{item.content}}</div>
+					<div class="thumb mui-row">
+						{{each item.img as thunb}}
+						<div class="mui-col-xs-3">
+							<img src="{{thunb.img | image}}" />
+						</div>
+						{{/each}}
+					</div>
+				</div>
+			</div>
+		</li>
+		{{/each}}
+	</script>
+	<!-- 二手商品模板 结束 -->
+	
+	<script type="text/javascript" src="../js/mui.min.js" ></script>
+	<script type="text/javascript" src="../js/jquery.min.js" ></script>
+	<script type="text/javascript" src="../js/template.js" ></script>
+	<script type="text/javascript" src="../js/app.js" ></script>
+	<script type="text/javascript" src="second.hand.scroll.js" ></script>
+</body>
+</html>
