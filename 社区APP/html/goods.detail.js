@@ -68,7 +68,17 @@ $('body').delegate('.btn-call-seller', 'tap', function () {
 });
 // 立即购买
 $('body').delegate('.btn-buy-now', 'tap', function () {
-	plus.device.dial($(this).attr('data-tel'), true);
+	if (!app.store('key')) {
+		app.open('log.html');
+	} else {
+		var dom = $('#pnl-product .product-data');
+		var selected = [{
+			'shop_id'  : $(dom).attr('data-shop'),
+			'goods_id' : $(dom).attr('data-product'),
+			'num'      : 1,
+		}];
+		app.open('checkout.html', {'selected':selected});
+	};
 });
 
 // 查看评价
