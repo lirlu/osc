@@ -28,7 +28,7 @@ function report (iOrderNo) {
 
 mui.plusReady(function () {
 	var view = plus.webview.currentWebview();
-	if ('cash' == view.extras.payway) { $('.title').html('&nbsp;'); }
+	if ('cash' == view.extras.payway) { $('.title').html('您的订单已生成'); }
 });
 
 $('button').on('tap', function () {

@@ -240,7 +240,7 @@ $('.btn-submit').on('tap', function () {
 
 // 支付成功，跳转到提示页面
 function success (iOrderNo) {
-	app.open('checkout.success.html', {'id':iOrderNo, 'way':$('[name=payway]:checked').val()});
+	app.open('checkout.success.html', {'id':iOrderNo, 'payway':$('[name=payway]:checked').val()});
 	setTimeout(function () {
 		plus.webview.currentWebview().close();
 	}, 500);
