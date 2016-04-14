@@ -202,6 +202,13 @@ $('.btn-submit').on('tap', function () {
 		if (false == res.status) {app.error(res.msg); return;};
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
 		
+		
+		setTimeout(function () {
+			try {
+				plus.webview.getWebviewById('cart.html').evalJS('cart.refresh()');
+			} catch (e) {}
+		}, 500);
+		
 		// 订单创建成功，去支付页面
 		if ('cash' == data.payway) { success(res.order_id); return; }
 		var extras = {
@@ -211,7 +218,7 @@ $('.btn-submit').on('tap', function () {
 			'paygroup' : 'order',
 		};
 		app.open('checkout.payway.html', extras);
-		setTimeout(function () { plus.webview.currentWebview().close(); }, 200);
+		setTimeout(function () { plus.webview.currentWebview().close(); }, 500);
 		
 		/*
 		if (!res.error) { plus.nativeUI.toast('提交失败...'); return; }
@@ -237,7 +244,4 @@ function success (iOrderNo) {
 	setTimeout(function () {
 		plus.webview.currentWebview().close();
 	}, 500);
-	setTimeout(function () {
-		plus.webview.getWebviewById('cart.html').evalJS('cart.refresh()');
-	}, 800);
 };
