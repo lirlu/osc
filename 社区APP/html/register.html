@@ -9,11 +9,8 @@
 	<link rel="stylesheet" href="../css/app/purse.css" />
 
 	<style>
-		input[type=text],
-		input[type=number],
-		input[type=password] {
-			padding: 0;
-		}
+		.mui-input-row {background-color: #FFFFFF; margin-top: 5px; margin-bottom: 5px;}
+		.mui-checkbox input[type=checkbox] { top: 8px;}
 	</style>
 </head>
 
@@ -25,31 +22,29 @@
 	</header>
 
 	<div class="content">
-		<form action="" method="post" id="logoinForm">
-			<div class="input-div">
-				<span class="block">联系电话：</span>
-				<input type="text" id="tel" name="mobile" placeholder="请输入您的手机号码" />
-			</div>
+		<div class="mui-input-row">
+			<label>联系电话：</label>
+			<input type="number" id="tel" name="mobile" placeholder="请输入您的手机号码" />
 			<button type="button" class="yan" id="code">验证码</button>
-			<div class="input-div">
-				<span class="block">验证码：</span>
-				<input type="text" name="code" id="code1" placeholder="请输入您的手机验证码" />
-			</div>
-			<div class="input-div">
-				<span class="block">密码：</span>
-				<input type="password" name="password1" id="password1" placeholder="请输入您的密码" />
-			</div>
-			<div class="input-div">
-				<span class="block">确认密码：</span>
-				<input type="password" name="password2" id="password2" placeholder="请再次输入您的密码" />
-			</div>
-		</form>
-		<div class="rule-div">
-			<form class="ruel" from="logoinForm">
-				<span class="mui-checkbox mui-left"><input id="checkbox"  type="checkbox" checked="checked" name="checkbox" style="left: 0;top: 6px;" /></span>
-			</form>
-			<span style="padding-left: 30px;">同意《服务标准及违约责任约束》</span>
 		</div>
+		<div class="mui-input-row">
+			<label>验证码：</label>
+			<input type="number" name="code" id="code1" placeholder="请输入您的手机验证码" />
+		</div>
+		<div class="mui-input-row">
+			<label>密码：</label>
+			<input type="password" name="password1" id="password1" placeholder="请输入您的密码" />
+		</div>
+		<div class="mui-input-row">
+			<label>确认密码：</label>
+			<input type="password" name="password2" id="password2" placeholder="请再次输入您的密码" />
+		</div>
+		
+		<div class="mui-input-row mui-checkbox mui-left">
+			<label>同意《服务标准及违约责任约束》</label>
+			<input id="checkbox"  type="checkbox" checked="checked" name="checkbox"/>
+		</div>
+		
 		<div class="bottom" id="submit">
 			<button class="tbn" type="button">确认</button>
 		</div>
