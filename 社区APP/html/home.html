@@ -35,6 +35,27 @@
     		width: 100%;
     		height: 80px;
     	}
+    	.func-menu {
+    		margin-bottom: 20px;
+    	}
+    	.func-menu p {
+    		color: #000000;
+    	}
+    	.func-menu .mui-col-xs-3 {
+    		padding-top: 10px;
+    		padding-bottom: 10px;
+    		border-right: 1px solid #CCCCCC;
+    		border-bottom: 1px solid #CCCCCC;
+    	}
+    	.func-menu .mui-row:last-child .mui-col-xs-3 {
+    		/*border-bottom: none;*/
+    	}
+    	.func-menu img {
+    		width: 40px;
+    		height: 40px;
+    		margin-left: auto;
+    		margin-right: auto;
+    	}
     </style>
 </head>
 <body>
@@ -84,59 +105,52 @@
                 </div>
             </div>
         </section>
-        <!--菜单-->
-        <section>
-            <ul class="col-xs-1">
-                <li data-url='shopping.html' title="附近商超">
-                    <img src="../img/ikon-1.png" />
-                    <span>附近商超</span><span class="after"></span><span class="right-after"></span>
-                </li>
-                <li data-url='group.purchase.list.html'>
-                    <img src="../img/ikon-2.png" />
-                    <span>团购</span><span class="after"></span><span class="right-after"></span>
-                </li>
-                <li data-url='second.hand.html'>
-                    <img src="../img/ikon-3.png" />
-                    <span>社区二手</span><span class="after"></span><span class="right-after"></span>
-                </li>
-                <li data-url='forum.html'>
-                    <img src="../img/ikon-4.png" />
-                    <span>社区论坛</span><span class="after"></span><span class="right-after"></span>
-                </li>
-                <li data-url='car.service.html'>
-                    <img src="../img/ikon-5.png" />
-                    <span>汽车服务</span><span class="after"></span><span class="right-after"></span>
-                </li>
-                <li data-url='wash.clothes.html'>
-                    <img src="../img/ikon-6.png" />
-                    <span>干洗水洗</span><span class="after"></span><span class="right-after"></span>
-                </li>
-                <li data-url='convenient.html'>
-                    <img src="../img/ikon-7.png" />
-                    <span>便捷中心</span><span class="after"></span><span class="right-after"></span>
-                </li>
-                <li data-private='purse.html'>
-                    <img src="../img/ikon-8.png" />
-                    <span>钱包</span><span class="after"></span><span class="right-after"></span>
-                </li>
-                <li data-url='station.html'>
-                    <img src="../img/ikon-9.png" />
-                    <span>送水</span><span class="after"></span><span class="right-after"></span>
-                </li>
-                <li data-url='shoper.html'>
-                    <img src="../img/ikon-10.png" />
-                    <span>联盟商家</span><span class="after"></span><span class="right-after"></span>
-                </li>
-                <li data-url='tenement.html'>
-                    <img src="../img/ikon-11.png" />
-                    <span>物业中心</span><span class="after"></span><span class="right-after"></span>
-                </li>
-                <li data-url='homemaking.html'>
-                    <img src="../img/ikon-12.png" />
-                    <span>家政中心</span><span class="after"></span><span class="right-after"></span>
-                </li>
-            </ul>
-        </section>
+        
+	    <!--菜单-->
+        <div class="func-menu">
+	        <div class="mui-row">
+				<div class="mui-col-xs-3 mui-text-center" data-url="shopping.html">
+					<img src="../img/ikon-1.png" /><p>附近商超</p>
+				</div>
+				<div class="mui-col-xs-3 mui-text-center" data-url="group.purchase.list.html">
+					<img src="../img/ikon-2.png" /><p>团购</p>
+				</div>
+				<div class="mui-col-xs-3 mui-text-center" data-url="second.hand.html">
+					<img src="../img/ikon-3.png" /><p>社区二手</p>
+				</div>
+				<div class="mui-col-xs-3 mui-text-center" data-url="forum.html">
+					<img src="../img/ikon-4.png" /><p>社区论坛</p>
+				</div>
+			</div>
+	        <div class="mui-row">
+				<div class="mui-col-xs-3 mui-text-center" data-url="car.service.html">
+					<img src="../img/ikon-5.png" /><p>汽车服务</p>
+				</div>
+				<div class="mui-col-xs-3 mui-text-center" data-url="wash.clothes.html">
+					<img src="../img/ikon-6.png" /><p>干洗水洗</p>
+				</div>
+				<div class="mui-col-xs-3 mui-text-center" data-url="convenient.html">
+					<img src="../img/ikon-7.png" /><p>便捷中心</p>
+				</div>
+				<div class="mui-col-xs-3 mui-text-center" data-url="purse.html">
+					<img src="../img/ikon-8.png" /><p>钱包</p>
+				</div>
+			</div>
+	        <div class="mui-row">
+				<div class="mui-col-xs-3 mui-text-center" data-url="station.html">
+					<img src="../img/ikon-9.png" /><p>送水</p>
+				</div>
+				<div class="mui-col-xs-3 mui-text-center" data-url="shoper.html">
+					<img src="../img/ikon-10.png" /><p>联盟商家</p>
+				</div>
+				<div class="mui-col-xs-3 mui-text-center" data-url="tenement.html">
+					<img src="../img/ikon-11.png" /><p>物业中心</p>
+				</div>
+				<div class="mui-col-xs-3 mui-text-center" data-url="homemaking.html">
+					<img src="../img/ikon-12.png" /><p>家政中心</p>
+				</div>
+			</div>
+		</div>
         <!--便民功能-->
         <section>
             <div class="contain">便民功能</div>
