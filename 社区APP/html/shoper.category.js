@@ -24,7 +24,7 @@ mui.plusReady(function () {
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
 		
 		$('#pnl-shop').append(template('tpl-category', res));
-		$('[data-primary-category]:first').trigger('tap');
+		//$('[data-primary-category]:first').trigger('tap');
 	})
 	;
 });

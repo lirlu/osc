@@ -23,7 +23,7 @@ mui.plusReady(function () {
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
 		
 		$('#pnl-category').html(template('tpl-category', res));
-		$('[data-primary-category]:first').trigger('tap');
+		//$('[data-primary-category]:first').trigger('tap');
 	})
 	;
 });
