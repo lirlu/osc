@@ -83,7 +83,7 @@ $('.btn-sigin').on('tap', function () {
 });
 
 // 点击进入商家
-$('#pnl-slider, #pnl-gallery, #pnl-thumb').delegate('.shop', 'tap', function () {
+$('#pnl-banner, #pnl-slider, #pnl-gallery, #pnl-thumb').delegate('.shop', 'tap', function () {
 	var dom = this;
 	var data = {
 		'id'    : $(dom).attr('data-id'),
@@ -93,7 +93,7 @@ $('#pnl-slider, #pnl-gallery, #pnl-thumb').delegate('.shop', 'tap', function () 
 	app.open('shop.information.html', data);
 });
 // 点击进入商品
-$('#pnl-slider, #pnl-gallery, #pnl-thumb').delegate('.product', 'tap', function () {
+$('#pnl-banner, #pnl-slider, #pnl-gallery, #pnl-thumb').delegate('.product', 'tap', function () {
 	var dom = this;
 	var data = {
 		'shop_id'  : '', 
