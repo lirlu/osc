@@ -90,14 +90,12 @@ function getFromCamera () {
 }
 
 function getFromGallery () {
-	plus.gallery.pick(function(a) {
-		plus.io.resolveLocalFileSystemURL(a, function(entry) {
-			cutter({'path':entry.toLocalURL()});
-		}, function(e) {
-			app.log("读取本地相册错误：" + e.message);
-		});
-	}, function(a) {}, {
-		filter: "image"
+	plus.gallery.pick(function(e) {
+		for (var i in e.files) {
+			upload({'path':e.files[i]});
+		}
+	}, function(e) {}, {
+		filter: "image", multiple:true
 	});
 };
 function cutter (image) {
@@ -130,8 +128,7 @@ function upload (image) {
 function append (image) {
 	//app.log(JSON.stringify(image));
 	var tpl = template('tpl-imaged', image);
-	app.log(JSON.stringify(image));
-	$(_Data.dom).closest('.image-item').replaceWith(tpl);
+	$(_Data.dom).closest('.image-item').before(tpl);
 }
 template.helper('image', function (v) {
 	return app.link.image + v;
