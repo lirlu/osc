@@ -1,4 +1,6 @@
-mui.plusReady(function () {
+mui.plusReady(init);
+
+function init () {
 	plus.nativeUI.showWaiting();
 	$.ajax({
 		'dataType' : 'json',
@@ -22,7 +24,7 @@ mui.plusReady(function () {
 		draw(res);
 	})
 	;
-});
+}
 
 function draw (data) {
 	var now = new Date();
@@ -42,7 +44,7 @@ function draw (data) {
 		log['T'+ parseInt(data.log[idx].day, 10)] = data.log[idx];
 	}
 	app.log(JSON.stringify(log));
-	$('.calendar table>tbody td').each(function (idx, dom) {
+	$('.calendar table>tbody td').empty().each(function (idx, dom) {
 		if (idx >= from && i < days) {
 			++i;
 			var span = $('<span></span>').text(i).attr('data-num', i);
@@ -80,6 +82,8 @@ $('.btn-sigin').on('tap', function () {
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
 		if (false == res.status) {app.error(res.msg); return;};
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
+		
+		init();
 	})
 	;
 });
