@@ -25,7 +25,7 @@ $('.mui-icon-plusempty').on('tap', function () {
 	var btns = [{title:"拍照" }, {title: "从手机相册选择"}];
 	
 	plus.nativeUI.actionSheet({
-		title   : "产中照片",
+		title   : "选择照片",
 		cancel  : "取消",
 		buttons : btns
 	}, function(btn) {
@@ -61,14 +61,12 @@ function getFromCamera () {
 }
 
 function getFromGallery () {
-	plus.gallery.pick(function(a) {
-		plus.io.resolveLocalFileSystemURL(a, function(entry) {
-			upload({'path':entry.toLocalURL()});
-		}, function(e) {
-			app.log("读取本地相册错误：" + e.message);
-		});
-	}, function(a) {}, {
-		filter: "image"
+	plus.gallery.pick(function(e) {
+		for (var i in e.files) {
+			upload({'path':e.files[i]});
+		}
+	}, function(e) {}, {
+		filter: "image", multiple:true
 	});
 };
 
