@@ -22,6 +22,8 @@ function refresh (data) {
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
 		
 		$('#pnl-information').empty().append(template('tpl-information', res));
+		
+		mui.previewImage();
 	})
 	;
 }

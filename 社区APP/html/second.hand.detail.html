@@ -6,6 +6,7 @@
 	<title>转让</title>
 	<link rel="stylesheet" type="text/css" href="../css/mui.min.css"/>
 	<link rel="stylesheet" href="../css/common.css" />
+	<link rel="stylesheet" href="../css/app.previewimage.css" />
 	<link rel="stylesheet" href="../css/app/publish.css" />
 </head>
 <body>
@@ -36,7 +37,9 @@
 					<span>商品图片</span>
 					<div class="tupian">
 						{{each goods_view.img as item}}
-						<div class="tupian1"><img src="{{item.img | image}}"></div> 
+						<div class="tupian1">
+							<img src="{{item.img | image}}" data-preview-src="" data-preview-group="1">
+						</div> 
 						{{/each}}
 					</div>
 				</li>
@@ -60,6 +63,8 @@
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
 	<script type="text/javascript" src="../js/app.js" ></script>
 	<script type="text/javascript" src="../js/template.js" ></script>
+	<script type="text/javascript" src="../js/mui.zoom.js" ></script>
+	<script type="text/javascript" src="../js/mui.previewimage.js" ></script>
 	<script type="text/javascript" src="second.hand.detail.js" ></script>
 </body>
 </html>
