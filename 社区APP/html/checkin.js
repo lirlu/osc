@@ -29,7 +29,7 @@ function init () {
 function draw (data) {
 	var now = new Date();
 	$('.now-day').text((now.getMonth() + 1) + '月' + now.getDate() + '日');
-	$('.now-year').html(now.getYear() + '<p>今日</p>')
+	$('.now-year').html(now.getFullYear() + '<p>今日</p>')
 	
 	var days = new Date(now.getYear(), now.getMonth() + 1, 0).getDate();
 	var from = new Date(now.getYear(), now.getMonth(), 1).getDay();
