@@ -61,7 +61,7 @@ function cutter (image) {
 	//upload(image);
 }
 function upload (image) {
-	//console.log('上传数据' + JSON.stringify(image));
+	console.log('上传数据' + JSON.stringify(image));
 	$('.touxia>img').attr('data-name', '');
 	plus.nativeUI.showWaiting('正在处理...');
 	function _cb (result, status) {
@@ -96,15 +96,29 @@ $('.btn-no').on('tap', function (e) {
 // 确认上传新头像
 $('.btn-ok').on('tap', function (e) {
 	e.stopPropagation();
-	var data  = $('.container-cropper-holder img').cropper('getData');
+	//var data  = $('.container-cropper-holder img').cropper('getData');
+	var data = iCropperData;
 	data.path = $('.container-cropper-holder').attr('data-path');
 	
 	$('.container-cropper-holder').hide();
 	upload(data);
 });
+
+var iCropperData = {};
 $('.container-cropper-holder img').cropper({
-	aspectRatio : 1,
-	viewMode    : 3,
+  aspectRatio : 1,
+  viewMode    : 3,
+  crop: function(e) {
+    iCropperData = {
+      x      : e.x,
+      y      : e.y,
+      width  : e.width,
+      height : e.height,
+      rotate : e.rotate,
+      scaleX : e.scaleX,
+      scaleY : e.scaleY,
+    };
+  }
 });
 
 // 提交用户信息
