@@ -31,12 +31,12 @@ $('#code').on('tap', function () {
 		'data'     : { 'mobile':$('#tel').val() }
 	})
 	.fail(function (res) {
-		console.log('发送验证码失败：' + JSON.stringify(res));
+		app.log('发送验证码失败：' + JSON.stringify(res));
 		app.error('发送验证码失败');
 		times = 0;
 	})
 	.done(function (res) {
-		console.log('发送验证码结果：' + JSON.stringify(res));
+		app.log('发送验证码结果：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
@@ -81,11 +81,11 @@ $('.btn-submit').on('tap', function () {
 		'data'     : data
 	})
 	.fail(function (res) {
-		console.log('找回密码失败：' + JSON.stringify(res));
+		app.log('找回密码失败：' + JSON.stringify(res));
 		app.error('找回密码失败');
 	})
 	.done(function (res) {
-		console.log('找回密码结果：' + JSON.stringify(res));
+		app.log('找回密码结果：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }

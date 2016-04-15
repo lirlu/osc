@@ -35,13 +35,13 @@ $('.btn-submit').on('tap', function () {
 		'data'     : data
 	})
 	.fail(function (res) {
-		console.log('发布拼车失败：' + JSON.stringify(res));
+		app.log('发布拼车失败：' + JSON.stringify(res));
 		app.error('发布拼车失败');
 		plus.nativeUI.closeWaiting();
 		$(dom).prop('disabled', false);
 	})
 	.done(function (res) {
-		console.log('发布拼车：' + JSON.stringify(res));
+		app.log('发布拼车：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		$(dom).prop('disabled', false);
 		

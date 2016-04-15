@@ -2,7 +2,7 @@ var _Data = {'lat':'', 'lng':'', 'key':app.store('key'), 'page':0, 'limit':20, '
 mui.init();
 	
 mui.plusReady(function () {
-	console.log('获取家政服务分类：' + app.url('mobile/cateseller/housekeeping_seller_cate'));
+	app.log('获取家政服务分类：' + app.url('mobile/cateseller/housekeeping_seller_cate'));
 	//plus.nativeUI.showWaiting('加载中...');
 	$.ajax({
 		'dataType' : 'json',
@@ -11,12 +11,12 @@ mui.plusReady(function () {
 		'data'     : mui.extend({}, _Data, {'page':_Data.page+1})
 	})
 	.fail(function (res) {
-		console.log('获取家政服务分类失败：' + JSON.stringify(res));
+		app.log('获取家政服务分类失败：' + JSON.stringify(res));
 		app.error('获取家政服务分类失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('家政服务分类：' + JSON.stringify(res));
+		app.log('家政服务分类：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }

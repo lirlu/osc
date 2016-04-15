@@ -7,12 +7,12 @@ mui.plusReady(function () {
 		'data'     : {'key':app.store('key')}
 	})
 	.fail(function (res) {
-		console.log('取得签到数据失败：' + JSON.stringify(res));
+		app.log('取得签到数据失败：' + JSON.stringify(res));
 		app.error('取得签到数据失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('签到数据：' + JSON.stringify(res));
+		app.log('签到数据：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
@@ -41,7 +41,7 @@ function draw (data) {
 	for (var idx in data.log) {
 		log['T'+ parseInt(data.log[idx].day, 10)] = data.log[idx];
 	}
-	console.log(JSON.stringify(log));
+	app.log(JSON.stringify(log));
 	$('.calendar table>tbody td').each(function (idx, dom) {
 		if (idx >= from && i < days) {
 			++i;
@@ -69,12 +69,12 @@ $('.btn-sigin').on('tap', function () {
 		'data'     : {'key':key }
 	})
 	.fail(function (res) {
-		console.log('签到失败：' + JSON.stringify(res));
+		app.log('签到失败：' + JSON.stringify(res));
 		app.error('签到失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('签到结果：' + JSON.stringify(res));
+		app.log('签到结果：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }

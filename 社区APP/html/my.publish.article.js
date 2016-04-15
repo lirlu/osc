@@ -2,7 +2,7 @@ var _Data = {'lat':'', 'lng':'', 'key':app.store('key'), 'page':0, 'limit':20, '
 mui.init();
 
 function next (cb) {
-	console.log('查询数据：' + JSON.stringify(_Data));
+	app.log('查询数据：' + JSON.stringify(_Data));
 	//plus.nativeUI.showWaiting('加载中...');
 	$.ajax({
 		'dataType' : 'json',
@@ -11,13 +11,13 @@ function next (cb) {
 		'data'     : mui.extend({}, _Data, {'page':_Data.page+1})
 	})
 	.fail(function (res) {
-		console.log('取得我的帖子失败：' + JSON.stringify(res));
+		app.log('取得我的帖子失败：' + JSON.stringify(res));
 		app.error('取得我的帖子失败');
 		plus.nativeUI.closeWaiting();
 		mui('#refreshContainer').pullRefresh().endPullupToRefresh();
 	})
 	.done(function (res) {
-		console.log('我的帖子：' + JSON.stringify(res));
+		app.log('我的帖子：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
@@ -32,7 +32,7 @@ function next (cb) {
 
 function funcPulldownRefresh () {
 	_Data.page = 0;
-	//console.log('重新刷新页面' + JSON.stringify(_Data));
+	//app.log('重新刷新页面' + JSON.stringify(_Data));
 	$('#pnl-used').empty();
 	plus.nativeUI.showWaiting('正在刷新...');
 	

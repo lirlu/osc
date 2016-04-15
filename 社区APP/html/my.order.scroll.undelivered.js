@@ -11,12 +11,12 @@ function next (cb) {
 		'data'     : mui.extend({}, _Data, {'page':_Data.page+1})
 	})
 	.fail(function (res) {
-		console.log('取得订单数据失败：' + JSON.stringify(res));
+		app.log('取得订单数据失败：' + JSON.stringify(res));
 		app.error('取得订单数据失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('取得订单数据：' + JSON.stringify(res));
+		app.log('取得订单数据：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		
@@ -32,7 +32,7 @@ function next (cb) {
 
 function funcPulldownRefresh () {
 	_Data.page = 0;
-	//console.log('重新刷新页面' + JSON.stringify(_Data));
+	//app.log('重新刷新页面' + JSON.stringify(_Data));
 	$('#pnl-order').empty();
 	plus.nativeUI.showWaiting('正在刷新...');
 	
@@ -119,12 +119,12 @@ $('body').delegate('.product-order .btn-odr-cancel', 'tap', function () {
 		'data'     : {'order_id':$(odr).attr('data-id'), 'order_no':$(odr).attr('data-no'), 'key':_Data.key}
 	})
 	.fail(function (res) {
-		console.log('取消支付订单失败：' + JSON.stringify(res));
+		app.log('取消支付订单失败：' + JSON.stringify(res));
 		app.error('取消支付订单失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('取消支付订单：' + JSON.stringify(res));
+		app.log('取消支付订单：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		
@@ -149,12 +149,12 @@ $('body').delegate('.product-order .btn-odr-confirm', 'tap', function () {
 		'data'     : {'order_id':$(odr).attr('data-id'), 'order_no':$(odr).attr('data-no'), 'key':_Data.key}
 	})
 	.fail(function (res) {
-		console.log('取消支付订单失败：' + JSON.stringify(res));
+		app.log('取消支付订单失败：' + JSON.stringify(res));
 		app.error('取消支付订单失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('取消支付订单：' + JSON.stringify(res));
+		app.log('取消支付订单：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		

@@ -10,12 +10,12 @@ mui.plusReady(function () {
 		'data'     : mui.extend({}, _Data, {'page':_Data.page+1})
 	})
 	.fail(function (res) {
-		console.log('取得全部分类失败：' + JSON.stringify(res));
+		app.log('取得全部分类失败：' + JSON.stringify(res));
 		app.error('取得全部分类失败');
 		//plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('全部分类：' + JSON.stringify(res));
+		app.log('全部分类：' + JSON.stringify(res));
 		//plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }

@@ -16,12 +16,12 @@ function init () {
 		'data'     : _Data
 	})
 	.fail(function (res) {
-		console.log('取得公告详情失败：' + JSON.stringify(res));
+		app.log('取得公告详情失败：' + JSON.stringify(res));
 		app.error('取得公告详情失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('公告详情：' + JSON.stringify(res));
+		app.log('公告详情：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
@@ -55,13 +55,13 @@ $('.btn-submit').on('tap', function () {
 		}
 	})
 	.fail(function (res) {
-		console.log('发表评论失败：' + JSON.stringify(res));
+		app.log('发表评论失败：' + JSON.stringify(res));
 		app.error('发表评论失败');
 		plus.nativeUI.closeWaiting();
 		$(dom).prop('disabled', false);
 	})
 	.done(function (res) {
-		console.log('评论结果：' + JSON.stringify(res));
+		app.log('评论结果：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		$(dom).prop('disabled', false);
 		

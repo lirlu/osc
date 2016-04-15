@@ -2,7 +2,7 @@ var cart = {};
 cart.add = function (item) {
 	var key = app.store('key');
 	plus.nativeUI.showWaiting();
-	console.log('添加商品到购物车：' + app.url('mobile/cart/cartadd'));
+	app.log('添加商品到购物车：' + app.url('mobile/cart/cartadd'));
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
@@ -10,12 +10,12 @@ cart.add = function (item) {
 		'data'     : {'key':key, 'shop_id':item.shop_id, 'id':item.goods_id, 'nums':item.quantity||1}
 	})
 	.fail(function (res) {
-		console.log('添加商品到购物车失败：' + JSON.stringify(res));
+		app.log('添加商品到购物车失败：' + JSON.stringify(res));
 		app.error('添加商品到购物车失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('添加商品到购物车结果：' + JSON.stringify(res));
+		app.log('添加商品到购物车结果：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { plus.nativeUI.toast(res.error.msg); return; };
@@ -32,7 +32,7 @@ cart.empty = function () {
 }
 cart.refresh = function () {
 	var key = app.store('key');
-	console.log('加载购物车数据：' + app.url('mobile/cart/cart_list'));
+	app.log('加载购物车数据：' + app.url('mobile/cart/cart_list'));
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
@@ -40,11 +40,11 @@ cart.refresh = function () {
 		'data'     : {'key':key}
 	})
 	.fail(function (res) {
-		console.log('加载购物车数据失败：' + JSON.stringify(res));
+		app.log('加载购物车数据失败：' + JSON.stringify(res));
 		app.error('加载购物车数据失败');
 	})
 	.done(function (res) {
-		console.log('购物车数据：' + JSON.stringify(res));
+		app.log('购物车数据：' + JSON.stringify(res));
 		
 		$('#pnl-cart').empty().append(template('tpl-cart', res));
 	})
@@ -61,8 +61,8 @@ cart.total = function () {
 		});
 	});
 	
-	console.log('计算选中商品总价值：' + app.url('mobile/cart/cart_money'));
-	console.log('参数：' + JSON.stringify({'key':key, 'cart':cart}));
+	app.log('计算选中商品总价值：' + app.url('mobile/cart/cart_money'));
+	app.log('参数：' + JSON.stringify({'key':key, 'cart':cart}));
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
@@ -70,11 +70,11 @@ cart.total = function () {
 		'data'     : {'key':key, 'cart':cart}
 	})
 	.fail(function (res) {
-		console.log('计算选中商品总价值失败：' + JSON.stringify(res));
+		app.log('计算选中商品总价值失败：' + JSON.stringify(res));
 		app.error('计算选中商品总价值失败');
 	})
 	.done(function (res) {
-		console.log('选中商品总价值：' + JSON.stringify(res));
+		app.log('选中商品总价值：' + JSON.stringify(res));
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
 		$('span.total').text('￥' + (res.money||'0'));
 	})
@@ -124,7 +124,7 @@ $('#pnl-cart').delegate('.mui-icon-trash', 'tap', function () {
 	if (0 == ary.length) { plus.nativeUI.toast('请至少选择一个商品再删除！'); return; }
 	
 	var key = app.store('key');
-	console.log('删除购物车商品：' + app.url('mobile/cart/cart_del'));
+	app.log('删除购物车商品：' + app.url('mobile/cart/cart_del'));
 	plus.nativeUI.showWaiting();
 	$.ajax({
 		'dataType' : 'json',
@@ -133,12 +133,12 @@ $('#pnl-cart').delegate('.mui-icon-trash', 'tap', function () {
 		'data'     : {'key':key, 'cart':ary}
 	})
 	.fail(function (res) {
-		console.log('删除购物车商品失败：' + JSON.stringify(res));
+		app.log('删除购物车商品失败：' + JSON.stringify(res));
 		app.error('删除购物车商品失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		//console.log('删除购物车商品结果：' + JSON.stringify(res));
+		//app.log('删除购物车商品结果：' + JSON.stringify(res));
 		plus.nativeUI.toast('删除成功');
 		plus.nativeUI.closeWaiting();
 		//cart.refresh();
@@ -173,12 +173,12 @@ function setQuantity (quantity, dom) {
 		}
 	})
 	.fail(function (res) {
-		console.log('修改商品数量失败：' + JSON.stringify(res));
+		app.log('修改商品数量失败：' + JSON.stringify(res));
 		app.error('修改商品数量失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('修改商品数量结果：' + JSON.stringify(res));
+		app.log('修改商品数量结果：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
 		

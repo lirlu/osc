@@ -21,7 +21,7 @@ function autologin () {
 	}
 	var user = app.store('user');
 
-	//console.log('自动登录：' + app.url('mobile/user/user_login'));
+	//app.log('自动登录：' + app.url('mobile/user/user_login'));
 	//plus.nativeUI.showWaiting();
 	$.ajax({
 		'dataType' : 'json',
@@ -30,12 +30,12 @@ function autologin () {
 		'data'     : {'mobile':user.account, 'password':user.password}
 	})
 	.fail(function (res) {
-		console.log('自动登录失败：' + JSON.stringify(res));
+		app.log('自动登录失败：' + JSON.stringify(res));
 		app.error('自动登录失败');
 		//plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('自动登录：' + JSON.stringify(res));
+		app.log('自动登录：' + JSON.stringify(res));
 		//plus.nativeUI.closeWaiting();
 		// 更新session的key值
 		app.store('key', res.key);
@@ -64,7 +64,7 @@ function refresh () {
 		$('.username').empty().append('<a data-url="log.html">未登录</a>');
 		return;
 	}
-	console.log('自动登录：' + key);
+	app.log('自动登录：' + key);
 	//plus.nativeUI.showWaiting();
 	$.ajax({
 		'dataType' : 'json',
@@ -73,12 +73,12 @@ function refresh () {
 		'data'     : {'key':key}
 	})
 	.fail(function (res) {
-		console.log('取得用户信息失败：' + JSON.stringify(res));
+		app.log('取得用户信息失败：' + JSON.stringify(res));
 		app.error('取得用户信息失败');
 		//plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('取得用户信息：' + JSON.stringify(res));
+		app.log('取得用户信息：' + JSON.stringify(res));
 		app.store('user', res.user_info);
 		//plus.nativeUI.closeWaiting();
 		

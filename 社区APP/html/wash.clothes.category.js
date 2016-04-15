@@ -1,7 +1,7 @@
 var _Data = {'lat':'', 'lng':'', 'key':app.store('key'), 'page':0, 'limit':20, 'category':''};
 mui.init();
 	
-	console.log('获取水站分类：' + app.url('mobile/cateseller/gs_seller_cate'));
+	app.log('获取水站分类：' + app.url('mobile/cateseller/gs_seller_cate'));
 	//plus.nativeUI.showWaiting('加载中...');
 	$.ajax({
 		'dataType' : 'json',
@@ -10,12 +10,12 @@ mui.init();
 		'data'     : mui.extend({}, _Data, {'page':_Data.page+1})
 	})
 	.fail(function (res) {
-		console.log('取得干洗水洗商家分类失败：' + JSON.stringify(res));
+		app.log('取得干洗水洗商家分类失败：' + JSON.stringify(res));
 		app.error('取得干洗水洗商家分类失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('干洗水洗分类：' + JSON.stringify(res));
+		app.log('干洗水洗分类：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }

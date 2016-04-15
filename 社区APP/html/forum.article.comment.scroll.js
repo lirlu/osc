@@ -1,7 +1,7 @@
 var _Data = {'lat':'', 'lng':'', 'key':app.store('key'), 'page':0, 'limit':20, 'category':''};
 
 function next (cb) {
-	console.log('查询数据：' + JSON.stringify(_Data));
+	app.log('查询数据：' + JSON.stringify(_Data));
 	//plus.nativeUI.showWaiting('加载中...');
 	$.ajax({
 		'dataType' : 'json',
@@ -10,12 +10,12 @@ function next (cb) {
 		'data'     : mui.extend({}, _Data, {'page':_Data.page+1})
 	})
 	.fail(function (res) {
-		console.log('取得评论数据失败：' + JSON.stringify(res));
+		app.log('取得评论数据失败：' + JSON.stringify(res));
 		app.error('取得评论数据失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('评论数据：' + JSON.stringify(res));
+		app.log('评论数据：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
@@ -30,7 +30,7 @@ function next (cb) {
 
 function funcPulldownRefresh () {
 	_Data.page = 0;
-	//console.log('重新刷新页面' + JSON.stringify(_Data));
+	//app.log('重新刷新页面' + JSON.stringify(_Data));
 	$('#pnl-comment').empty();
 	plus.nativeUI.showWaiting('正在刷新...');
 	
@@ -86,12 +86,12 @@ function init () {
 		'data'     : _Data
 	})
 	.fail(function (res) {
-		console.log('取得帖子数据失败：' + JSON.stringify(res));
+		app.log('取得帖子数据失败：' + JSON.stringify(res));
 		app.error('取得帖子数据失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('帖子数据：' + JSON.stringify(res));
+		app.log('帖子数据：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
@@ -165,12 +165,12 @@ $('body').delegate('.btn-like', 'tap', function(e) {
 		'data'     : data
 	})
 	.fail(function (res) {
-		console.log('收藏失败：' + JSON.stringify(res));
+		app.log('收藏失败：' + JSON.stringify(res));
 		app.error('收藏失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('收藏成功：' + JSON.stringify(res));
+		app.log('收藏成功：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }

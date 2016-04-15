@@ -31,11 +31,11 @@ mui.plusReady(function () {
 		'data'     : {'key':key}
 	})
 	.fail(function (res) {
-		console.log('取得我的余额失败：' + JSON.stringify(res));
+		app.log('取得我的余额失败：' + JSON.stringify(res));
 		app.error('取得我的余额失败');
 	})
 	.done(function (res) {
-		console.log('取得我的余额：' + JSON.stringify(res));
+		app.log('取得我的余额：' + JSON.stringify(res));
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
 		if (false == res.status) {app.error(res.msg); return;};
@@ -53,11 +53,11 @@ mui.plusReady(function () {
 		'data'     : { 'key':key, 'page':1, 'limit':9999}
 	})
 	.fail(function (res) {
-		console.log('查询米币商城商品失败：' + JSON.stringify(res));
+		app.log('查询米币商城商品失败：' + JSON.stringify(res));
 		app.error('查询米币商城商品失败');
 	})
 	.done(function (res) {
-		console.log('查询米币商城商品结果：' + JSON.stringify(res));
+		app.log('查询米币商城商品结果：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }

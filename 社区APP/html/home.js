@@ -26,10 +26,10 @@ function init (city) {
 		'data'     : {}
 	})
 	.fail(function (res) {
-		console.log('取得轮播图失败：' + JSON.stringify(res));
+		app.log('取得轮播图失败：' + JSON.stringify(res));
 	})
 	.done(function (res) {
-		console.log('首页数据：' + JSON.stringify(res));
+		app.log('首页数据：' + JSON.stringify(res));
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
 		if (false == res.status) {app.error(res.msg); return;};
@@ -67,12 +67,12 @@ $('.btn-sigin').on('tap', function () {
 		'data'     : {'key':key }
 	})
 	.fail(function (res) {
-		console.log('签到失败：' + JSON.stringify(res));
+		app.log('签到失败：' + JSON.stringify(res));
 		app.error('签到失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('签到结果：' + JSON.stringify(res));
+		app.log('签到结果：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }

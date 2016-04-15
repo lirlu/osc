@@ -29,12 +29,12 @@ $('body').delegate('#stars', 'tap', function() {
 		}
 	})
 	.fail(function (res) {
-		console.log('收藏失败：' + JSON.stringify(res));
+		app.log('收藏失败：' + JSON.stringify(res));
 		app.error('收藏失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		//console.log('收藏结果：' + JSON.stringify(res));
+		//app.log('收藏结果：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
@@ -92,7 +92,7 @@ function init (data) {
 	plus.nativeUI.showWaiting('请等待...');
 	
 	// 商品详情
-	console.log('请求商品详情数据：' + app.url('mobile/goods/goods_view'));
+	app.log('请求商品详情数据：' + app.url('mobile/goods/goods_view'));
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'get',
@@ -103,12 +103,12 @@ function init (data) {
 		}
 	})
 	.fail(function (res) {
-		console.log('请求商品详情数据失败：' + JSON.stringify(res));
+		app.log('请求商品详情数据失败：' + JSON.stringify(res));
 		app.error('请求商品详情数据失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('商品详情数据：' + JSON.stringify(res));
+		app.log('商品详情数据：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		//设置title值

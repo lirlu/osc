@@ -18,12 +18,12 @@ mui.plusReady(function () {
 		'data'     : {'key':app.store('key'), 'tuan_id':view.extras.id}
 	})
 	.fail(function (res) {
-		console.log('加载商品信息失败：' + JSON.stringify(res));
+		app.log('加载商品信息失败：' + JSON.stringify(res));
 		app.error('加载商品信息失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('商品信息：' + JSON.stringify(res));
+		app.log('商品信息：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
@@ -56,12 +56,12 @@ $('.btn-submit').on('tap', function () {
 		'data'     : {'key':app.store('key'), 'tuan_id':view.extras.id, 'payway':'online'}
 	})
 	.fail(function (res) {
-		console.log('加载商品信息失败：' + JSON.stringify(res));
+		app.log('加载商品信息失败：' + JSON.stringify(res));
 		app.error('加载商品信息失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('商品信息：' + JSON.stringify(res));
+		app.log('商品信息：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }

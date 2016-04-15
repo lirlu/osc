@@ -9,13 +9,13 @@ function next (cb) {
 		'data'     : mui.extend({}, _Data, {'page':_Data.page+1})
 	})
 	.fail(function (res) {
-		console.log('取得小区公告失败：' + JSON.stringify(res));
+		app.log('取得小区公告失败：' + JSON.stringify(res));
 		app.error('取得小区公告失败');
 		plus.nativeUI.closeWaiting();
 		mui('#refreshContainer').pullRefresh().endPullupToRefresh();
 	})
 	.done(function (res) {
-		console.log('小区公告：' + JSON.stringify(res));
+		app.log('小区公告：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		mui('#refreshContainer').pullRefresh().endPullupToRefresh();
 		
@@ -31,7 +31,7 @@ function next (cb) {
 
 function funcPulldownRefresh () {
 	_Data.page = 0;
-	//console.log('重新刷新页面' + JSON.stringify(_Data));
+	//app.log('重新刷新页面' + JSON.stringify(_Data));
 	$('#pnl-notice').empty();
 	plus.nativeUI.showWaiting('正在刷新...');
 	

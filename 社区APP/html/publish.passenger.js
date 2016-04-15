@@ -10,12 +10,12 @@ mui.plusReady(function () {
 		'data'     : { 'key':app.store('key'),'id':view.extras.id }
 	})
 	.fail(function (res) {
-		console.log('读取拼车信息失败：' + JSON.stringify(res));
+		app.log('读取拼车信息失败：' + JSON.stringify(res));
 		app.error('读取拼车信息');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('拼车信息：' + JSON.stringify(res));
+		app.log('拼车信息：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }

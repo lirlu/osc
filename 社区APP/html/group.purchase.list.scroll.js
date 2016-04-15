@@ -17,13 +17,13 @@ function next (cb) {
 		'data'     : mui.extend({}, _Data, {'page':_Data.page+1})
 	})
 	.fail(function (res) {
-		console.log('加载团购商品失败：' + JSON.stringify(res));
+		app.log('加载团购商品失败：' + JSON.stringify(res));
 		app.error('加载团购商品失败');
 		//plus.nativeUI.closeWaiting();
 		mui('#refreshContainer').pullRefresh().endPullupToRefresh();
 	})
 	.done(function (res) {
-		console.log('加载团购商品：' + JSON.stringify(res));
+		app.log('加载团购商品：' + JSON.stringify(res));
 		//plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
@@ -38,7 +38,7 @@ function next (cb) {
 
 function funcPulldownRefresh () {
 	_Data.page = 0;
-	//console.log('重新刷新页面' + JSON.stringify(_Data));
+	//app.log('重新刷新页面' + JSON.stringify(_Data));
 	$('#pnl-product').empty();
 	plus.nativeUI.showWaiting('正在刷新...');
 	

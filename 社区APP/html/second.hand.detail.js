@@ -9,12 +9,12 @@ function refresh (data) {
 		'data'     : {'key':app.store('key'), 'id':data.id}
 	})
 	.fail(function (res) {
-		console.log('取得二手详情失败：' + JSON.stringify(res));
+		app.log('取得二手详情失败：' + JSON.stringify(res));
 		app.error('取得二手详情失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('二手详情：' + JSON.stringify(res));
+		app.log('二手详情：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }

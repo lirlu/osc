@@ -14,7 +14,7 @@ mui('.mui-scroll-wrapper').scroll({
 });
 
 function next (cb) {
-	console.log('查询数据：' + JSON.stringify(_Data));
+	app.log('查询数据：' + JSON.stringify(_Data));
 	//plus.nativeUI.showWaiting('加载中...');
 	$.ajax({
 		'dataType' : 'json',
@@ -23,12 +23,12 @@ function next (cb) {
 		'data'     : mui.extend({}, _Data, {'page':_Data.page})
 	})
 	.fail(function (res) {
-		console.log('取得水站商家失败：' + JSON.stringify(res));
+		app.log('取得水站商家失败：' + JSON.stringify(res));
 		app.error('取得水站商家失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('水站商家：' + JSON.stringify(res));
+		app.log('水站商家：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
@@ -43,7 +43,7 @@ function next (cb) {
 
 function funcPulldownRefresh () {
 	_Data.page = 0;
-	//console.log('重新刷新页面' + JSON.stringify(_Data));
+	//app.log('重新刷新页面' + JSON.stringify(_Data));
 	$('#pnl-shop').empty();
 	plus.nativeUI.showWaiting('正在刷新...');
 	
@@ -110,7 +110,7 @@ template.helper('image', function (v) {
 
 
 
-	console.log('获取水站分类：' + app.url('mobile/cateseller/water_seller_cate'));
+	app.log('获取水站分类：' + app.url('mobile/cateseller/water_seller_cate'));
 	//plus.nativeUI.showWaiting('加载中...');
 	$.ajax({
 		'dataType' : 'json',
@@ -119,12 +119,12 @@ template.helper('image', function (v) {
 		'data'     : mui.extend({}, _Data, {'page':_Data.page})
 	})
 	.fail(function (res) {
-		console.log('取得水站商家分类失败：' + JSON.stringify(res));
+		app.log('取得水站商家分类失败：' + JSON.stringify(res));
 		app.error('取得水站商家分类失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('水站分类：' + JSON.stringify(res));
+		app.log('水站分类：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }

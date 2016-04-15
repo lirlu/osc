@@ -51,12 +51,12 @@ mui.plusReady(function () {
 			'data'     : {'key':key, 'id':data.id}
 		})
 		.fail(function (res) {
-			console.log('取得收货地址失败：' + JSON.stringify(res));
+			app.log('取得收货地址失败：' + JSON.stringify(res));
 			app.error('取得收货地址失败');
 			plus.nativeUI.closeWaiting();
 		})
 		.done(function (res) {
-			//console.log('取得收货地址：' + JSON.stringify(res));
+			//app.log('取得收货地址：' + JSON.stringify(res));
 			plus.nativeUI.closeWaiting();
 			
 			if (res.error && res.error.msg) { app.error(res.error.msg); return; }
@@ -92,7 +92,7 @@ $('.btn-submit').on('tap', function () {
 		'addr'    : $('[name=addr]').val(),
 	};
 	plus.nativeUI.showWaiting();
-	console.log('收货地址数据：' + JSON.stringify(data));
+	app.log('收货地址数据：' + JSON.stringify(data));
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
@@ -100,12 +100,12 @@ $('.btn-submit').on('tap', function () {
 		'data'     : data
 	})
 	.fail(function (res) {
-		console.log('保存收货地址失败：' + JSON.stringify(res));
+		app.log('保存收货地址失败：' + JSON.stringify(res));
 		app.error('保存收货地址失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('修改商品数量结果：' + JSON.stringify(res));
+		app.log('修改商品数量结果：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }

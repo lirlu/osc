@@ -17,12 +17,12 @@ $('.btn-like').on('tap', function () {
 		'data'     : {'key':app.store('key'), 'shop_id':view.extras.shop_id}
 	})
 	.fail(function (res) {
-		console.log('收藏商家失败：' + JSON.stringify(res));
+		app.log('收藏商家失败：' + JSON.stringify(res));
 		app.error('收藏商家失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('收藏结果：' + JSON.stringify(res));
+		app.log('收藏结果：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		if (res.msg) { plus.nativeUI.toast(res.msg); }
 		
@@ -43,7 +43,7 @@ $('#pnl-product').delegate(".goods", 'tap', function() {
 		'goods_id' : $(this).attr('goods_id'),
 		'name'     : $(this).attr('title'),
 	};
-	//console.log('参数：' + JSON.stringify(data));
+	//app.log('参数：' + JSON.stringify(data));
 	app.open('goods.detail.html', data);
 });
 
@@ -72,7 +72,7 @@ function category (cb) {
 	var data = view.extras;
 	plus.nativeUI.showWaiting('请等待...');
 	
-	console.log('获取商品分类数据：' + app.url('mobile/goods/cate_goods'));
+	app.log('获取商品分类数据：' + app.url('mobile/goods/cate_goods'));
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
@@ -80,14 +80,14 @@ function category (cb) {
 		'data'     : {'page':page++, shop_id:data.shop_id}
 	})
 	.fail(function (res) {
-		console.log('获取商品分类数据失败：' + JSON.stringify(res));
+		app.log('获取商品分类数据失败：' + JSON.stringify(res));
 		app.error('获取商品分类数据失败');
 		plus.nativeUI.closeWaiting();
 		//mui('#refreshContainer').pullRefresh().endPullupToRefresh();
 		//mui('#refreshContainer').pullRefresh().endPullupToRefresh();
 	})
 	.done(function (res) {
-		//console.log('商品分类数据：' + JSON.stringify(res));
+		//app.log('商品分类数据：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		cb && cb(res);
@@ -100,7 +100,7 @@ function product (cb) {
 	var data = view.extras;
 	plus.nativeUI.showWaiting('请等待...');
 	
-	//console.log('查询商品列表参数：' + JSON.stringify(mui.extend({}, _Data, {'page':_Data.page+1})));
+	//app.log('查询商品列表参数：' + JSON.stringify(mui.extend({}, _Data, {'page':_Data.page+1})));
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'get',
@@ -108,14 +108,14 @@ function product (cb) {
 		'data'     : mui.extend({}, _Data, {'page':_Data.page+1})
 	})
 	.fail(function (res) {
-		console.log('获取商超的商品数据失败：' + JSON.stringify(res));
+		app.log('获取商超的商品数据失败：' + JSON.stringify(res));
 		app.error('获取商超的商品数据失败');
 		plus.nativeUI.closeWaiting();
 		//mui('#refreshContainer').pullRefresh().endPullupToRefresh();
 		//mui('#refreshContainer').pullRefresh().endPullupToRefresh();
 	})
 	.done(function (res) {
-		//console.log('商品数据：' + JSON.stringify(res));
+		//app.log('商品数据：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		_Data.page++;

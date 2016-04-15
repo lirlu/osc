@@ -49,7 +49,7 @@ function getFromGallery () {
 		plus.io.resolveLocalFileSystemURL(a, function(entry) {
 			cutter({'path':entry.toLocalURL()});
 		}, function(e) {
-			console.log("读取本地相册错误：" + e.message);
+			app.log("读取本地相册错误：" + e.message);
 		});
 	}, function(a) {}, {
 		filter: "image"
@@ -61,7 +61,7 @@ function cutter (image) {
 	//upload(image);
 }
 function upload (image) {
-	console.log('上传数据' + JSON.stringify(image));
+	app.log('上传数据' + JSON.stringify(image));
 	$('.touxia>img').attr('data-name', '');
 	plus.nativeUI.showWaiting('正在处理...');
 	function _cb (result, status) {
@@ -74,7 +74,7 @@ function upload (image) {
 			//plus.nativeUI.toast('上传文件成功');
 			append({'path':image.path, 'id':res.id, 'name':res.img});
 		} else {
-			console.log('上传头像失败：' + result.responseText);
+			app.log('上传头像失败：' + result.responseText);
 			plus.nativeUI.toast('上传图片失败');
 		}
 	}
@@ -85,7 +85,7 @@ function upload (image) {
 	task.start();
 }
 function append (image) {
-	//console.log(JSON.stringify(image));
+	//app.log(JSON.stringify(image));
 	$('.touxia>img').attr('data-name', image.name).attr('src', app.link.image + image.name);
 }
 // 取消编辑头像
@@ -134,7 +134,7 @@ $('.btn-submit').on('tap', function () {
 	if (!data.nickname) { plus.nativeUI.toast('请填写昵称'); return; }
 	if (!data.mobile) { plus.nativeUI.toast('请填写手机号'); return; }
 	
-	console.log('修改用户信息：' + JSON.stringify(data));
+	app.log('修改用户信息：' + JSON.stringify(data));
 	plus.nativeUI.showWaiting();
 	$(dom).prop('disabled', true);
 	$.ajax({
@@ -144,13 +144,13 @@ $('.btn-submit').on('tap', function () {
 		'data'     : data
 	})
 	.fail(function (res) {
-		console.log('保存用户信息失败：' + JSON.stringify(res));
+		app.log('保存用户信息失败：' + JSON.stringify(res));
 		app.error('保存用户信息失败');
 		plus.nativeUI.closeWaiting();
 		$(dom).prop('disabled', false);
 	})
 	.done(function (res) {
-		console.log('保存用户信息：' + JSON.stringify(res));
+		app.log('保存用户信息：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		$(dom).prop('disabled', false);
 		

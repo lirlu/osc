@@ -42,12 +42,12 @@ mui.plusReady(function () {
 		'data'     : {'key':app.store('key'), 'tuan_id':view.extras.id}
 	})
 	.fail(function (res) {
-		console.log('加载商品信息失败：' + JSON.stringify(res));
+		app.log('加载商品信息失败：' + JSON.stringify(res));
 		app.error('加载商品信息失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('商品信息：' + JSON.stringify(res));
+		app.log('商品信息：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
@@ -70,7 +70,7 @@ $('.btn-submit').on('tap', function () {
 	var pid = $('[name=channel]:checked').val(), channel = payment.channels[pid];;
 	if (!channel) { plus.nativeUI.toast('你的手机支付宝支付和微信支付都不支持'); return; }
 	
-	console.log(JSON.stringify({'key':app.store('key'), 'id':view.extras.id, 'payway':pid}));
+	app.log(JSON.stringify({'key':app.store('key'), 'id':view.extras.id, 'payway':pid}));
 	// 从服务器请求支付订单
 	plus.nativeUI.showWaiting('正在提交订单...');
 	$.ajax({
@@ -80,13 +80,13 @@ $('.btn-submit').on('tap', function () {
 		'data'     : {'key':app.store('key'), 'id':view.extras.id, 'payway':pid}
 	})
 	.fail(function (res) {
-		console.log('提交订单失败：' + JSON.stringify(res));
+		app.log('提交订单失败：' + JSON.stringify(res));
 		app.error('提交订单失败');
 		plus.nativeUI.closeWaiting();
 		$(dom).prop('disabled', false);
 	})
 	.done(function (res) {
-		console.log('提交订单结果：' + JSON.stringify(res));
+		app.log('提交订单结果：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		$(dom).prop('disabled', false);
 		
@@ -98,7 +98,7 @@ $('.btn-submit').on('tap', function () {
 		plus.payment.request(channel, res.url, function (result) {
             plus.nativeUI.alert("支付成功！", function () { success(res.orderNo); });
         }, function(error) {
-        	console.log(JSON.stringify(error));
+        	app.log(JSON.stringify(error));
             plus.nativeUI.alert("支付失败");
         });
 	})

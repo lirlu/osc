@@ -9,12 +9,12 @@ function refresh () {
 		'data'     : {'key':key}
 	})
 	.fail(function (res) {
-		console.log('取得我的余额失败：' + JSON.stringify(res));
+		app.log('取得我的余额失败：' + JSON.stringify(res));
 		app.error('取得我的余额失败');
 		//plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('取得我的余额：' + JSON.stringify(res));
+		app.log('取得我的余额：' + JSON.stringify(res));
 		//plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }

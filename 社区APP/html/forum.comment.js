@@ -18,13 +18,13 @@ $('.btn-submit').on('tap', function () {
 		'data'     : data
 	})
 	.fail(function (res) {
-		console.log('评论帖子失败：' + JSON.stringify(res));
+		app.log('评论帖子失败：' + JSON.stringify(res));
 		app.error('评论帖子失败');
 		plus.nativeUI.closeWaiting();
 		$(dom).prop('disabled', false);
 	})
 	.done(function (res) {
-		console.log('评论帖子：' + JSON.stringify(res));
+		app.log('评论帖子：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		$(dom).prop('disabled', false);
 		

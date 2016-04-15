@@ -7,10 +7,10 @@ mui.plusReady(function () {
 		'data'     : {'shop_id':(view.extras.id || view.extras.shop_id)}
 	})
 	.fail(function (res) {
-		console.log('取得商家详情失败：' + JSON.stringify(res));
+		app.log('取得商家详情失败：' + JSON.stringify(res));
 	})
 	.done(function (res) {
-		console.log('商家详情：' + JSON.stringify(res));
+		app.log('商家详情：' + JSON.stringify(res));
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
 		if (false == res.status) {app.error(res.msg); return;};

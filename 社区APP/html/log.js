@@ -21,7 +21,7 @@ $('body').delegate('#logoin button', 'tap', function() {
 		return false;
 	}
 	
-	console.log('请求登录：' + app.url('mobile/user/login'));
+	app.log('请求登录：' + app.url('mobile/user/login'));
 	$(dom).addClass('mui-disabled');
 	plus.nativeUI.showWaiting();
 	$.ajax({
@@ -31,13 +31,13 @@ $('body').delegate('#logoin button', 'tap', function() {
 		'data'     : data
 	})
 	.fail(function (res) {
-		console.log('请求登录失败：' + JSON.stringify(res));
+		app.log('请求登录失败：' + JSON.stringify(res));
 		app.error('请求登录失败');
 		plus.nativeUI.closeWaiting();
 		$(dom).removeClass('mui-disabled');
 	})
 	.done(function (res) {
-		console.log('请求登录结果：' + JSON.stringify(res));
+		app.log('请求登录结果：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		$(dom).removeClass('mui-disabled');
 		

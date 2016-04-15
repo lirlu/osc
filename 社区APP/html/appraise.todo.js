@@ -10,12 +10,12 @@ function next (cb) {
 		'data'     : _Data
 	})
 	.fail(function (res) {
-		console.log('取得未评论数据失败：' + JSON.stringify(res));
+		app.log('取得未评论数据失败：' + JSON.stringify(res));
 		app.error('取得未评论数据失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('未评论数据：' + JSON.stringify(res));
+		app.log('未评论数据：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
@@ -30,7 +30,7 @@ function next (cb) {
 
 function funcPulldownRefresh () {
 	_Data.page = 0;
-	//console.log('重新刷新页面' + JSON.stringify(_Data));
+	//app.log('重新刷新页面' + JSON.stringify(_Data));
 	$('#pnl-order').empty();
 	plus.nativeUI.showWaiting('正在刷新...');
 	

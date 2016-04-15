@@ -79,9 +79,12 @@ app.home = function () {
 	var pages = plus.webview.all();
 	for (var i in pages) {
 		try {
-			if (preload.indexOf(pages[i].id) < 0) { pages[i].close(); console.log(pages[i].id); }
-		} catch (e) { console.log(e) }
+			if (preload.indexOf(pages[i].id) < 0) { pages[i].close(); app.log(pages[i].id); }
+		} catch (e) { app.log(e) }
 	}
+}
+app.log = function (k, v) {
+	console.log(k,v);
 }
 /**
  * 预加载页面

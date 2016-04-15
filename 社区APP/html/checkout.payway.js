@@ -8,7 +8,7 @@ mui.plusReady(function () {
 	var link = 'mobile/order/order_detail';
 	if ('teambuy' == view.extras.paygroup) { link = 'mobile/GroupPurchase/order_detail'; };
 	if ('order'   == view.extras.paygroup) { link = 'mobile/order/order_detail'; };
-	console.log('获取订单详情：' + app.url(link));
+	app.log('获取订单详情：' + app.url(link));
 	plus.nativeUI.showWaiting();
 	$.ajax({
 		'dataType' : 'json',
@@ -17,12 +17,12 @@ mui.plusReady(function () {
 		'data'     : _Data
 	})
 	.fail(function (res) {
-		console.log('读取订单数据失败：' + JSON.stringify(res));
+		app.log('读取订单数据失败：' + JSON.stringify(res));
 		app.error('读取订单数据失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('订单数据：' + JSON.stringify(res));
+		app.log('订单数据：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
@@ -36,7 +36,7 @@ mui.plusReady(function () {
 function pay (channel) {
 	var view = plus.webview.currentWebview();
 	
-	//console.log('参数：'+JSON.stringify(_Data));
+	//app.log('参数：'+JSON.stringify(_Data));
 	var link = 'mobile/order/pay';
 	if ('teambuy' == view.extras.paygroup) { link = 'mobile/GroupPurchase/pay'; };
 	if ('order'   == view.extras.paygroup) { link = 'mobile/order/pay'; };
@@ -50,12 +50,12 @@ function pay (channel) {
 		'data'     : mui.extend({}, _Data, {'pay_type':channel.id})
 	})
 	.fail(function (res) {
-		console.log('订单提交支付失败：' + JSON.stringify(res));
+		app.log('订单提交支付失败：' + JSON.stringify(res));
 		app.error('订单提交支付失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('提交支付：' + JSON.stringify(res));
+		app.log('提交支付：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (!res || !res.url) { plus.nativeUI.toast('服务器返回数据出错'); return; }
@@ -72,7 +72,7 @@ function pay (channel) {
             plus.nativeUI.alert("支付成功！", function () { success(_Data.iOrderId); });
         }, function(error) {
         	plus.nativeUI.closeWaiting();
-        	console.log(JSON.stringify(error));
+        	app.log(JSON.stringify(error));
         	plus.nativeUI.alert("支付失败");
             //plus.nativeUI.alert("支付失败：" + error.message);
         });

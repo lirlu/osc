@@ -24,7 +24,7 @@ $('#code').on('tap', function () {
 	
 	countdown();
 	
-	console.log('发送验证码：' + app.url('mobile/user/verification'));
+	app.log('发送验证码：' + app.url('mobile/user/verification'));
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
@@ -32,12 +32,12 @@ $('#code').on('tap', function () {
 		'data'     : { 'mobile':$('#tel').val() }
 	})
 	.fail(function (res) {
-		console.log('发送验证码失败：' + JSON.stringify(res));
+		app.log('发送验证码失败：' + JSON.stringify(res));
 		app.error('发送验证码失败');
 		times = 0;
 	})
 	.done(function (res) {
-		console.log('发送验证码结果：' + JSON.stringify(res));
+		app.log('发送验证码结果：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
@@ -92,12 +92,12 @@ $('#submit').on('tap', function () {
 		'data'     : data
 	})
 	.fail(function (res) {
-		console.log('注册失败：' + JSON.stringify(res));
+		app.log('注册失败：' + JSON.stringify(res));
 		app.error('注册失败');
 		clearInterval(_iid);
 	})
 	.done(function (res) {
-		console.log('注册结果：' + JSON.stringify(res));
+		app.log('注册结果：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }

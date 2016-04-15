@@ -55,7 +55,7 @@ function refresh () {
 	}
 	
 	var key = app.store('key');
-	//console.log('结算请求：' + JSON.stringify({'key':key, 'cart':data.selected}));
+	//app.log('结算请求：' + JSON.stringify({'key':key, 'cart':data.selected}));
 	plus.nativeUI.showWaiting();
 	$.ajax({
 		'dataType' : 'json',
@@ -64,12 +64,12 @@ function refresh () {
 		'data'     : {'key':key, 'cart':data.selected}
 	})
 	.fail(function (res) {
-		console.log('结算初始化失败：' + JSON.stringify(res));
+		app.log('结算初始化失败：' + JSON.stringify(res));
 		app.error('结算初始化失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('结算数据：' + JSON.stringify(res));
+		app.log('结算数据：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		$('#pnl-product').append(template('tpl-product', res));
@@ -83,7 +83,7 @@ $('section.address li').on('tap', function () {
 	app.open('select.address.html', {'select':$('[name=delivery-addr]').val()});
 });
 function doSetAddress (item) {
-	console.log('选择收货地址：' + JSON.stringify(item));
+	app.log('选择收货地址：' + JSON.stringify(item));
 	
 	if (!item) { return; }
 	$('section.address li input').val(item.id);
@@ -155,7 +155,7 @@ $('.btn-leave-note').on('tap', function () {
 	app.open('remark.html', {'note':$('[name=note-text]').val()});
 });
 function doLeaveNote (text) {
-	//console.log('留言信息：' + text);
+	//app.log('留言信息：' + text);
 	$('.note-hint').text(text);
 }
 // 提交订单
@@ -180,7 +180,7 @@ $('.btn-submit').on('tap', function () {
 	//if (!channel) { plus.nativeUI.toast('你的手机没有此支付通道，请选择其他支付方式'); return; }
 	
 	
-	console.log('参数：'+JSON.stringify(data));
+	app.log('参数：'+JSON.stringify(data));
 	// 从服务器请求支付订单
 	plus.nativeUI.showWaiting('正在提交订单...');
 	$.ajax({
@@ -190,12 +190,12 @@ $('.btn-submit').on('tap', function () {
 		'data'     : data
 	})
 	.fail(function (res) {
-		console.log('提交订单失败：' + JSON.stringify(res));
+		app.log('提交订单失败：' + JSON.stringify(res));
 		app.error('提交订单失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('提交订单结果：' + JSON.stringify(res));
+		app.log('提交订单结果：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
@@ -229,7 +229,7 @@ $('.btn-submit').on('tap', function () {
 		plus.payment.request(channel, res.url, function (result) {
             plus.nativeUI.alert("支付成功！", function () { success(res.orderNo); });
         }, function(error) {
-        	console.log(JSON.stringify(error));
+        	app.log(JSON.stringify(error));
         	plus.nativeUI.alert("支付失败");
             //plus.nativeUI.alert("支付失败：" + error.message);
         });

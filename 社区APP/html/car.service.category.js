@@ -8,12 +8,12 @@ mui.init();
 		'data'     : mui.extend({}, _Data, {'page':_Data.page})
 	})
 	.fail(function (res) {
-		console.log('取得全部洗车服务分类失败：' + JSON.stringify(res));
+		app.log('取得全部洗车服务分类失败：' + JSON.stringify(res));
 		app.error('取得全部洗车服务分类失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('全部洗车服务分类：' + JSON.stringify(res));
+		app.log('全部洗车服务分类：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }

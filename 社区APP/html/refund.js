@@ -12,12 +12,12 @@ mui.plusReady(function () {
 		'data'     : {'key':key, 'order_id':data.order_id, 'order_no':data.order_no}
 	})
 	.fail(function (res) {
-		console.log('查询退款订单信息失败：' + JSON.stringify(res));
+		app.log('查询退款订单信息失败：' + JSON.stringify(res));
 		app.error('查询退款订单信息失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('退款订单信息：' + JSON.stringify(res));
+		app.log('退款订单信息：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
@@ -80,7 +80,7 @@ function getFromGallery () {
 		plus.io.resolveLocalFileSystemURL(a, function(entry) {
 			upload({'path':entry.toLocalURL()});
 		}, function(e) {
-			console.log("读取本地相册错误：" + e.message);
+			app.log("读取本地相册错误：" + e.message);
 		});
 	}, function(a) {}, {
 		filter: "image"
@@ -115,7 +115,7 @@ function upload (image) {
 }
 
 function append (image) {
-	//console.log(JSON.stringify(image));
+	//app.log(JSON.stringify(image));
 	var dom = $('<div class="mui-col-xs-4"><span class="mui-icon mui-icon-closeempty"></span></div>').appendTo($('.image-evidence'));
 	$('<img />').attr('src', image.path).attr('data-id', image.id).attr('data-name', image.name).appendTo(dom);
 }
@@ -150,12 +150,12 @@ $('.btn-submit').on('tap', function () {
 		'data'     : data
 	})
 	.fail(function (res) {
-		console.log('提交退款失败：' + JSON.stringify(res));
+		app.log('提交退款失败：' + JSON.stringify(res));
 		app.error('提交退款失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('提交退款结果：' + JSON.stringify(res));
+		app.log('提交退款结果：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
@@ -178,12 +178,12 @@ $('.image-evidence').delegate('.mui-icon', 'tap', function () {
 		'data'     : {'key':app.store('key'), 'id':$(dom).siblings('img').attr('data-id')}
 	})
 	.fail(function (res) {
-		console.log('删除图片失败：' + JSON.stringify(res));
+		app.log('删除图片失败：' + JSON.stringify(res));
 		app.error('删除图片失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('删除图片：' + JSON.stringify(res));
+		app.log('删除图片：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }

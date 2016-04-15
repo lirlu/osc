@@ -22,5 +22,5 @@ function locate (addr, lng, lat) {
 			alert("您选择地址没有解析到结果!");
 		}
 	}, "北京市");
-	console.log('lng：'+lng + '    lat：' + lat);
+	app.log('lng：'+lng + '    lat：' + lat);
 }

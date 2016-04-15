@@ -1,7 +1,7 @@
 var _Data = {'type':'', 'page':0, 'limit':20, 'key':app.store('key'), 'cate_id':'', 'lat':'', 'lng':''}
 function search (cb) {
 	plus.nativeUI.showWaiting("等待中...");
-	console.log('请求附近商超数据：' + app.url('mobile/supermarketseller/superseller'));
+	app.log('请求附近商超数据：' + app.url('mobile/supermarketseller/superseller'));
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'get',
@@ -9,7 +9,7 @@ function search (cb) {
 		'data'     : mui.extend({}, _Data, {'page':_Data.page+1})
 	})
 	.fail(function (res) {
-		console.log('加载附近商超失败：' + JSON.stringify(res));
+		app.log('加载附近商超失败：' + JSON.stringify(res));
 		app.error('加载附近商超失败');
 		plus.nativeUI.closeWaiting();
 		page--;
@@ -17,7 +17,7 @@ function search (cb) {
 		mui('#refreshContainer').pullRefresh().endPullupToRefresh();
 	})
 	.done(function (res) {
-		console.log('附近商超：' + JSON.stringify(res));
+		app.log('附近商超：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		_Data.page++;

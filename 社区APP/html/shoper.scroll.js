@@ -1,7 +1,7 @@
 var _Data = {'type':'', 'page':0, 'limit':15, 'key':app.store('key'), 'cate_id':'', 'lat':'', 'lng':''}
 // 本社区
 function next (cb) {
-	console.log('请求数据：' + JSON.stringify(_Data));
+	app.log('请求数据：' + JSON.stringify(_Data));
 	
 	plus.nativeUI.showWaiting();
 	$.ajax({
@@ -11,12 +11,12 @@ function next (cb) {
 		'data'     : mui.extend({}, _Data, {'page':_Data.page+1})
 	})
 	.fail(function (res) {
-		console.log('获取联盟商家列表失败：' + JSON.stringify(res));
+		app.log('获取联盟商家列表失败：' + JSON.stringify(res));
 		app.error('获取联盟商家列表失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('获取联盟商家列表：' + JSON.stringify(res));
+		app.log('获取联盟商家列表：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
@@ -31,7 +31,7 @@ function next (cb) {
 
 function funcPulldownRefresh () {
 	_Data.page = 0;
-	console.log('重新刷新页面' + JSON.stringify(_Data));
+	app.log('重新刷新页面' + JSON.stringify(_Data));
 	$('#pnl-shop').empty();
 	plus.nativeUI.showWaiting('正在刷新...');
 	
@@ -109,12 +109,12 @@ $('.btn-all-category').on('tap', function () {
 		'data'     : {'key':_Data.key}
 	})
 	.fail(function (res) {
-		console.log('获取全部分类失败：' + JSON.stringify(res));
+		app.log('获取全部分类失败：' + JSON.stringify(res));
 		app.error('获取全部分类失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('获取全部分类：' + JSON.stringify(res));
+		app.log('获取全部分类：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }

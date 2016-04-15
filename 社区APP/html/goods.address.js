@@ -44,12 +44,12 @@ function refresh () {
 		'data'     : {'key':key}
 	})
 	.fail(function (res) {
-		console.log('获取收货地址列表失败：' + JSON.stringify(res));
+		app.log('获取收货地址列表失败：' + JSON.stringify(res));
 		app.error('获取收货地址列表失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('获取收货地址列表：' + JSON.stringify(res));
+		app.log('获取收货地址列表：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
@@ -82,12 +82,12 @@ $('.pnl-address').delegate('.btn-del', 'tap', function () {
 		'data'     : {'key':key, 'id':$(dom).attr('data-id')}
 	})
 	.fail(function (res) {
-		console.log('删除收货地址失败：' + JSON.stringify(res));
+		app.log('删除收货地址失败：' + JSON.stringify(res));
 		app.error('删除收货地址失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('删除收货地址结果：' + JSON.stringify(res));
+		app.log('删除收货地址结果：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
@@ -111,12 +111,12 @@ $('.pnl-address').delegate('input[type=radio]', 'change', function () {
 		'data'     : {'key':key, 'id':$(dom).attr('data-id')}
 	})
 	.fail(function (res) {
-		console.log('设置默认收货地址失败：' + JSON.stringify(res));
+		app.log('设置默认收货地址失败：' + JSON.stringify(res));
 		app.error('设置默认收货地址失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('设置默认收货地址结果：' + JSON.stringify(res));
+		app.log('设置默认收货地址结果：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }

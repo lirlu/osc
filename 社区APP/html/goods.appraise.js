@@ -37,13 +37,13 @@ $('.btn-submit').on('tap', function () {
 		'data'     : data
 	})
 	.fail(function (res) {
-		console.log('提交商品评论失败：' + JSON.stringify(res));
+		app.log('提交商品评论失败：' + JSON.stringify(res));
 		app.error('提交商品评论失败');
 		plus.nativeUI.closeWaiting();
 		$(dom).prop('disabled', false);
 	})
 	.done(function (res) {
-		console.log('商品评论结果：' + JSON.stringify(res));
+		app.log('商品评论结果：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		$(dom).prop('disabled', false);
 		

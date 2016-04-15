@@ -9,13 +9,13 @@ function next (cb) {
 		'data'     : mui.extend({}, _Data, {'page':_Data.page+1})
 	})
 	.fail(function (res) {
-		console.log('按条件搜索商家失败：' + JSON.stringify(res));
+		app.log('按条件搜索商家失败：' + JSON.stringify(res));
 		app.error('按条件搜索商家失败');
 		//plus.nativeUI.closeWaiting();
 		mui('#refreshContainer').pullRefresh().endPullupToRefresh();
 	})
 	.done(function (res) {
-		console.log('搜索结果：' + JSON.stringify(res));
+		app.log('搜索结果：' + JSON.stringify(res));
 		//plus.nativeUI.closeWaiting();
 		mui('#refreshContainer').pullRefresh().endPullupToRefresh();
 		
@@ -31,7 +31,7 @@ function next (cb) {
 
 function funcPulldownRefresh () {
 	_Data.page = 0;
-	//console.log('重新刷新页面' + JSON.stringify(_Data));
+	//app.log('重新刷新页面' + JSON.stringify(_Data));
 	$('#pnl-shop').empty();
 	plus.nativeUI.showWaiting('正在刷新...');
 	

@@ -65,7 +65,7 @@ function getFromGallery () {
 		plus.io.resolveLocalFileSystemURL(a, function(entry) {
 			upload({'path':entry.toLocalURL()});
 		}, function(e) {
-			console.log("读取本地相册错误：" + e.message);
+			app.log("读取本地相册错误：" + e.message);
 		});
 	}, function(a) {}, {
 		filter: "image"
@@ -100,7 +100,7 @@ function upload (image) {
 }
 
 function append (image) {
-	//console.log(JSON.stringify(image));
+	//app.log(JSON.stringify(image));
 	var dom = $('<div class="mui-col-xs-4"><span class="mui-icon mui-icon-closeempty"></span></div>').appendTo($('.image-evidence'));
 	$('<img />').attr('src', image.path).attr('data-id', image.id).attr('data-name', image.name).appendTo(dom);
 }
@@ -138,7 +138,7 @@ $('.btn-submit').on('tap', function () {
 	if (!data.addr)     { alert('请输入交易的详细地地址'); return; }
 	if (data.images.length == 0)     { alert('请至少上传一张产品图片'); return; }
 	
-	console.log('发布数据：' + JSON.stringify(data));
+	app.log('发布数据：' + JSON.stringify(data));
 	plus.nativeUI.showWaiting('正在提交...');
 	$(dom).prop('disabled', true);
 	$.ajax({
@@ -148,13 +148,13 @@ $('.btn-submit').on('tap', function () {
 		'data'     : data
 	})
 	.fail(function (res) {
-		console.log('发布失败：' + JSON.stringify(res));
+		app.log('发布失败：' + JSON.stringify(res));
 		app.error('发布失败');
 		plus.nativeUI.closeWaiting();
 		$(dom).prop('disabled', false);
 	})
 	.done(function (res) {
-		console.log('发布结果：' + JSON.stringify(res));
+		app.log('发布结果：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		$(dom).prop('disabled', false);
 		
@@ -178,12 +178,12 @@ $('.image-evidence').delegate('.mui-icon', 'tap', function () {
 		'data'     : {'key':app.store('key'), 'id':$(dom).siblings('img').attr('data-id')}
 	})
 	.fail(function (res) {
-		console.log('删除图片失败：' + JSON.stringify(res));
+		app.log('删除图片失败：' + JSON.stringify(res));
 		app.error('删除图片失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('删除图片：' + JSON.stringify(res));
+		app.log('删除图片：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }

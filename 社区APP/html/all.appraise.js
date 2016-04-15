@@ -2,7 +2,7 @@ var _Data = {'key':app.store('key'), 'page':0, 'limit':9999, 'shop_id':'', 'good
 mui.init();
 
 function next (cb) {
-	console.log('查看评论：' + JSON.stringify(_Data));
+	app.log('查看评论：' + JSON.stringify(_Data));
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
@@ -10,12 +10,12 @@ function next (cb) {
 		'data'     : mui.extend({}, _Data, {'page':_Data.page+1}),
 	})
 	.fail(function (res) {
-		console.log('取得评论失败：' + JSON.stringify(res));
+		app.log('取得评论失败：' + JSON.stringify(res));
 		app.error('取得评论失败');
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		console.log('商品评论：' + JSON.stringify(res));
+		app.log('商品评论：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
