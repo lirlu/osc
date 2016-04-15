@@ -88,7 +88,7 @@ function refresh () {
 		
 		var src = res.user_info.img ? (app.link.image + res.user_info.img) : '../img/iconfont-morentouxiang.png';
 		
-		$('.touxiang').empty().append($('<img />').attr('src', src));
+		$('.touxiang').empty().append($('<img data-url="user.profile.html"/>').attr('src', src));
 		$('.username').empty().append(res.user_info.nickname || res.user_info.account || '');
 	})
 	;
