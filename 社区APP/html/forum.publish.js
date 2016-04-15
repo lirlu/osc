@@ -126,7 +126,7 @@ function upload (image) {
 	task.start();
 }
 function append (image) {
-	//app.log(JSON.stringify(image));
+	app.log(JSON.stringify(image));
 	var tpl = template('tpl-imaged', image);
 	$(_Data.dom).closest('.image-item').before(tpl);
 }
