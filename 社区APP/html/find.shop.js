@@ -14,3 +14,6 @@ $('[name="keyword"]').on('search', function (e) {
 	document.activeElement.blur();
 	plus.webview.getWebviewById('find.shop.scroll.html').evalJS('init({keyword:"'+keyword+'"})');
 });
+$('.btn-search').on('tap', function (e) {
+	$('[name="keyword"]').trigger('search');
+});
