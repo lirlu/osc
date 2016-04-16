@@ -106,6 +106,10 @@ mui.plusReady(function() {
 	);
 });
 
+template.helper('distance', function (v) {
+	return Math.ceil(v/1000);
+});
+
 template.helper('image', function (v) {
 	return v ? (app.link.image + v) : '../img/iconfont-morentouxiang.png';
 });
