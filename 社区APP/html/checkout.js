@@ -164,14 +164,15 @@ $('.btn-submit').on('tap', function () {
 	var key  = app.store('key');
 
 	var data = {
-		'key'    : key,
-		'payway' : $('[name=payway]:checked').val(),// 支付方式
-		'cart'   : view.extras.selected,// 选中结算的商品
-		'address': $('[name=delivery-addr]').val(),//收货地址ID
-		'time'   : $('[name=delivery-time]').val(),//送货时间
-		'note'   : $('[name=note-text]').val(),//买家留言
-		'invoice': $('[name=invoice]').is(':checked') ? 1 : 0,//是否需要发票
-		'title'  : $('[name=invoice-name]').val(),//发票抬头
+		'key'       : key,
+		'payway'    : $('[name=payway]:checked').val(),// 支付方式
+		'cart'      : view.extras.selected,// 选中结算的商品
+		'address'   : $('[name=delivery-addr]').val(),//收货地址ID
+		'time'      : $('[name=delivery-time]').val(),//送货时间
+		'note'      : $('[name=note-text]').val(),//买家留言
+		'invoice'   : $('[name=invoice]').is(':checked') ? 1 : 0,//是否需要发票
+		'title'     : $('[name=invoice-name]').val(),//发票抬头
+		'addr_text' : $('section.address li span.addr').text(),
 	};
 	if (!data.address) { alert('请选择收货地址'); return; }
 	if (data.invoice && !data.title) { alert('请填写发票抬头'); return; }
