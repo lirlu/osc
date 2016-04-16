@@ -81,7 +81,7 @@ function upload (image) {
 	var task = plus.uploader.createUpload(app.url('mobile/userinfo/upload'), { method:"POST",blocksize:204800,priority:100 }, _cb);
 	task.addFile(image.path, {key:"testdoc"});
 	task.addData('key', app.store('key'));
-	task.addData('thumb', image);
+	task.addData('thumb', JSON.stringify(image));
 	task.start();
 }
 function append (image) {
