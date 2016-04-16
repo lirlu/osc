@@ -42,3 +42,5 @@ $('[data-page]').on('tap', function () {
 	});
 	plus.webview.getWebviewById(page).show();
 });
+
+setTimeout(function () { $('[data-page]').first().trigger('tap');  }, 1000);

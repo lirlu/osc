@@ -9,6 +9,8 @@ $('[data-page]').on('tap', function () {
 	plus.webview.getWebviewById(page).show();
 });
 
+setTimeout(function () { $('[data-page]').first().trigger('tap');  }, 1000);
+
 mui('.mui-scroll-wrapper').scroll({
 	indicators: true //是否显示滚动条
 });

@@ -31,6 +31,8 @@ $('[data-page]').on('tap', function () {
 	plus.webview.getWebviewById(page).show();
 });
 
+setTimeout(function () { $('[data-page]').first().trigger('tap');  }, 1000);
+
 $('.btn-show-type').on('tap', function () {
 	// 显示拼车类型选择
 	var view = plus.webview.getWebviewById('convenient.carpool.scroll.html');
