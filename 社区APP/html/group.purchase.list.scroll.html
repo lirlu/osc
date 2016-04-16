@@ -9,18 +9,15 @@
     <style>
     	.divimg{width: 100%;margin: 0;padding: 0;}
     	.divimg img{width: 100%;}
-    	ul{list-style: none;margin: 0;padding: 0 !important;font-size: 13px;color: #999;}
-    	ul li{width: 50%;margin-bottom: 5px; border: 1px solid #CCCCCC; display: block; float: left; margin-left: 0;margin-right: 0; padding: 0; padding-top: 10px; text-align: center;background-color: #fff;}
-    	ul li {
-    		border-left: none;
-    	}
-    	ul li span{display: block;width: 100%;text-align: left; padding-left: 10px; padding-right: 10px;}
-    	ul li label{width: 100%;text-align: right; padding-left: 10px; padding-right: 10px;}
-    	ul li img{height:80px; margin-left: auto;margin-right: auto; display: block;}
+    	#pnl-product {width: 100%; height: auto; display: table; list-style: none;margin: 0; padding: 0 !important;font-size: 13px;color: #999;background-color: #FFFFFF;}
+    	.product{width: 50%;margin-bottom: 5px; border: 1px solid #CCCCCC;border-left: none; display: inline-block; margin-left: 0;margin-right: 0; padding: 0; padding-top: 10px; text-align: center;background-color: #fff;}
+    	.product span{display: block;width: 100%;text-align: left; padding-left: 10px; padding-right: 10px;}
+    	.product label{width: 100%;text-align: right; padding-left: 10px; padding-right: 10px;}
+    	.product img{height:80px; margin-left: auto;margin-right: auto; display: block;}
     	.progressBar{width: 96%;height:10px;background: #DDD;margin-left: 2%;border-radius: 5px;display: flex;}
     	.progressBar div{width: 50%;background: #FD4C3C;border-bottom-left-radius: 5px;border-top-left-radius: 5px;}
     	#pnl-product { padding-top: 10; padding-bottom: 10px; margin-top: 0;}
-    	#refreshContainer {background-color: #fff;}
+    	
     	li:after {background: transparent;}
     </style>
 </head>
@@ -38,7 +35,7 @@
 	
 	<!-- 评价内容模板 开始 -->
 	<script type="text/html" id="tpl-product">
-		{{each list as item}}
+		{{each list as item idx}}
 		<li class="product" data-id="{{item.tuan_id}}">
 			<img src="{{item.photo | image}}" />
 			<span>价值：￥{{item.tuan_price | price}}</span>
