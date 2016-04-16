@@ -67,10 +67,11 @@ $('.btn-submit').on('tap', function () {
 		'type'     : 'post',
 		'url'      : app.url('mobile/GroupPurchase/add_order'),
 		'data'     : {
-			'key'     : app.store('key'),
-			'tuan_id' : view.extras.id,
-			'payway'  : 'online',
-			'addr_id' : $('.address input').val(),
+			'key'       : app.store('key'),
+			'tuan_id'   : view.extras.id,
+			'payway'    : 'online',
+			'addr_id'   : $('.address input').val(),
+			'addr_text' : $('.address addr').text(),
 		}
 	})
 	.fail(function (res) {
