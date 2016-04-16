@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link rel="stylesheet" href="../css/mui.min.css" />
+    <link rel="stylesheet" href="../css/iconfont.css" />
     <link rel="stylesheet" href="../css/common.css" />
     <title>团购商品详情</title>
     <style>
@@ -21,6 +22,18 @@
     	div.caption {width: 100%;display: block; font-size: 0.9em; margin-top: 20px; margin-bottom: 5px;}
     	div.pad-t {padding-top: 10px;}
     	div.pad-b {padding-bottom: 10px;}
+    	.address {
+    		color: #555555;
+    		margin-bottom: 20px;
+    		padding: 7px 10px;
+    		min-height: 50px;
+    		background-color: #FFFFFF;
+    	}
+    	.addr-row {display: none;}
+    	.address {margin-top: 5px; font-size: 0.9em;}
+    	.address .name { width: 100%;}
+    	.address .addr { width: 90%; margin-top: 5px;}
+    	.address i {position: absolute; right: 10px; top: 20px;}
     </style>
 </head>
 <body>
@@ -66,6 +79,17 @@
 			</div>
 		</div>
 		<div class="empty-line"></div>
+		<div class="mui-row addr-row">
+			<div class="mui-col-xs-12 pad-h">
+				请选择收货地址
+			</div>
+			<div class="mui-col-xs-12 address" data-url="select.address.html">
+				<input type="hidden" name="addr_id" />
+				<div class="name"></div>
+				<div class="addr"></div>
+				<i class="icon iconfont icon-right"></i>
+			</div>
+		</div>
 	</script>
 	<!-- 评价内容模板 结束 -->
 	<button type="button" class="btn-submit" disabled="disabled">立即参加</button>
@@ -74,6 +98,7 @@
 	<script type="text/javascript" src="../js/jquery.min.js" ></script>
 	<script type="text/javascript" src="../js/template.js" ></script>
 	<script type="text/javascript" src="../js/app.js" ></script>
+	<script type="text/javascript" src="../js/city.data-3.js" ></script>
 	<script type="text/javascript" src="group.purchase.detail.js" ></script>
 </body>
 </html>

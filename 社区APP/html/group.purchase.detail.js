@@ -1,5 +1,10 @@
 mui.init();
 
+// 查看普通无需登录页面
+$('body').delegate('[data-url]', 'tap', function () {
+	app.open($(this).attr('data-url'));
+});
+
 template.helper('image', function (v) {
 	return app.link.image + v;
 });
@@ -42,6 +47,14 @@ $('.btn-submit').on('tap', function () {
 	var dom  = this;
 	var view = plus.webview.currentWebview();
 	
+	if (!$('.addr-row').is(':visible')) {
+		$('.addr-row').show();
+		return;
+	} else if (!$('.addr_id').val()) {
+		plus.nativeUI.toast('请选择收货地址');
+		return;
+	}
+	
 	if (!app.store('key')) {
 		plus.nativeUI.toast('请先登录！');
 		app.open('log.html');
@@ -53,7 +66,12 @@ $('.btn-submit').on('tap', function () {
 		'dataType' : 'json',
 		'type'     : 'post',
 		'url'      : app.url('mobile/GroupPurchase/add_order'),
-		'data'     : {'key':app.store('key'), 'tuan_id':view.extras.id, 'payway':'online'}
+		'data'     : {
+			'key'     : app.store('key'),
+			'tuan_id' : view.extras.id,
+			'payway'  : 'online',
+			'addr_id' : $('.address input').val(),
+		}
 	})
 	.fail(function (res) {
 		app.log('加载商品信息失败：' + JSON.stringify(res));
@@ -79,3 +97,43 @@ $('.btn-submit').on('tap', function () {
 	;
 });
 
+function doSetAddress (item) {
+	app.log('选择收货地址：' + JSON.stringify(item));
+	
+	if (!item) { return; }
+	$('.address input').val(item.id);
+	$('.address .name').text(item.name + '  ' + item.tel);
+	$('.address .addr').text(area(item.provice, item.city, item.state) +' '+ item.addr);
+}
+function area (pro, city, ctr) {
+	var a, b, c;
+	
+	for (var i in cityData3) {
+		var item = cityData3[i];
+		if (item.value == pro) {
+			a = item;
+			break;
+		}
+	}
+	a = a ? a : {'text':'', 'children':[]};
+	
+	for (var i in a.children) {
+		var item = a.children[i];
+		if (item.value == city) {
+			b = item;
+			break;
+		}
+	}
+	b = b ? b : {'text':'', 'children':[]};
+	
+	for (var i in b.children) {
+		var item = b.children[i];
+		if (item.value == ctr) {
+			c = item;
+			break;
+		}
+	}
+	c = c ? c : {'text':'', 'children':[]};
+	
+	return (a.text +' '+ b.text +' '+ c.text);
+};
