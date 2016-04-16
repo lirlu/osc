@@ -50,10 +50,21 @@ function trigger (name) {
 $('nav.bar-tab .tab-item').on('tap', function() {
 	$('nav.bar-tab .tab-item').removeClass("active");
 	$(this).addClass("active");
-	var view = this.getAttribute('data-url');
-	if ('user.html' == view && !app.store('key')) {
+	var url = this.getAttribute('data-url');
+	
+	if ('user.html' == url && !app.store('key')) {
 		app.open('html/log.html');
 	} else {
-		plus.webview.show(view, 'pop-in', 200);
+		var pages = plus.webview.all();
+		for (var i in pages) {
+			view = pages[i];
+			if (view.id.indexOf('.html') == -1) {
+				
+			} else if (url == view.id) {
+				view.show('pop-in');
+			} else {
+				view.hide();
+			}
+		}
 	}
 });
