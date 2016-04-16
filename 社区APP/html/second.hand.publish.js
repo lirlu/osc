@@ -1,4 +1,6 @@
 var _Data = {'lat':'', 'lng':''};
+var queue = [];
+
 mui.init();
 
 
@@ -49,6 +51,7 @@ function getFromCamera () {
 	var camera = plus.camera.getCamera();
 	camera.captureImage(function(e) {
 		plus.io.resolveLocalFileSystemURL(e, function(entry) {
+			queue = [];
 			upload({'path':entry.toLocalURL()});
 		}, function(e) {
 			plus.nativeUI.toast("读取拍照文件错误：" + e.message);
@@ -62,9 +65,11 @@ function getFromCamera () {
 
 function getFromGallery () {
 	plus.gallery.pick(function(e) {
+		queue = [];
 		for (var i in e.files) {
-			upload({'path':e.files[i]});
+			queue.push({'path':e.files[i]});
 		}
+		upload(queue.pop());
 	}, function(e) {}, {
 		filter: "image", multiple:true
 	});
@@ -100,6 +105,7 @@ function upload (image) {
 
 function append (image) {
 	//app.log(JSON.stringify(image));
+	if (queue.length > 0) { upload(queue.pop()); }
 	var dom = $('<div class="mui-col-xs-4"><span class="mui-icon mui-icon-closeempty"></span></div>').appendTo($('.image-evidence'));
 	$('<img />').attr('src', image.path).attr('data-id', image.id).attr('data-name', image.name).appendTo(dom);
 }

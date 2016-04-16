@@ -1,4 +1,6 @@
 
+var queue = [];
+
 // 上传图片
 $('.mui-icon-plusempty').on('tap', function () {
 	var btns = [{title:"拍照" }, {title: "从手机相册选择"}];
@@ -28,6 +30,7 @@ function getFromCamera () {
 	var camera = plus.camera.getCamera();
 	camera.captureImage(function(e) {
 		plus.io.resolveLocalFileSystemURL(e, function(entry) {
+			queue = [];
 			upload({'path':entry.toLocalURL()});
 		}, function(e) {
 			plus.nativeUI.toast("读取拍照文件错误：" + e.message);
@@ -40,14 +43,14 @@ function getFromCamera () {
 }
 
 function getFromGallery () {
-	plus.gallery.pick(function(a) {
-		plus.io.resolveLocalFileSystemURL(a, function(entry) {
-			upload({'path':entry.toLocalURL()});
-		}, function(e) {
-			app.log("读取本地相册错误：" + e.message);
-		});
-	}, function(a) {}, {
-		filter: "image"
+	plus.gallery.pick(function(e) {
+		queue = [];
+		for (var i in e.files) {
+			queue.push({'path':e.files[i]});
+		}
+		upload(queue.pop());
+	}, function(e) {}, {
+		filter: "image", multiple:true
 	});
 };
 
@@ -81,6 +84,7 @@ function upload (image) {
 // 追加图片显示到页面
 function append (image) {
 	//app.log(JSON.stringify(image));
+	if (queue.length > 0) { upload(queue.pop()); }
 	var dom = $('<div class="mui-col-xs-4"><span class="mui-icon mui-icon-closeempty"></span></div>').appendTo($('.image-evidence'));
 	$('<img />').attr('src', image.path).attr('data-id', image.id).attr('data-name', image.name).appendTo(dom);
 }

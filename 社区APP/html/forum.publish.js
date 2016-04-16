@@ -1,4 +1,5 @@
 var _Data = {'dom':null};
+var queue = [];
 // 添加图片
 $('body').delegate('.btn-add-image', 'tap', function () {
 	var btns = [{title:"拍照" }, {title: "从手机相册选择"}];
@@ -78,7 +79,8 @@ function getFromCamera () {
 	var camera = plus.camera.getCamera();
 	camera.captureImage(function(e) {
 		plus.io.resolveLocalFileSystemURL(e, function(entry) {
-			cutter({'path':entry.toLocalURL()});
+			queue = [];
+			upload({'path':entry.toLocalURL()});
 		}, function(e) {
 			plus.nativeUI.toast("读取拍照文件错误：" + e.message);
 		});
@@ -91,9 +93,11 @@ function getFromCamera () {
 
 function getFromGallery () {
 	plus.gallery.pick(function(e) {
+		queue = [];
 		for (var i in e.files) {
-			upload({'path':e.files[i]});
+			queue.push({'path':e.files[i]});
 		}
+		upload(queue.pop());
 	}, function(e) {}, {
 		filter: "image", multiple:true
 	});
@@ -128,6 +132,7 @@ function upload (image) {
 }
 function append (image) {
 	app.log(JSON.stringify(image));
+	if (queue.length > 0) { upload(queue.pop()); }
 	var tpl = template('tpl-imaged', image);
 	$(_Data.dom).closest('.image-item').before(tpl);
 }
