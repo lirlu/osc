@@ -17,7 +17,7 @@ function next (cb) {
 	.done(function (res) {
 		app.log('小区活动：' + JSON.stringify(res));
 		//plus.nativeUI.closeWaiting();
-		mui('#refreshContainer').pullRefresh().endPullupToRefresh();
+		//mui('#refreshContainer').pullRefresh().endPullupToRefresh();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
 		if (false == res.status) {app.error(res.msg); return;};

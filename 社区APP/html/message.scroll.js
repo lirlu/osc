@@ -13,11 +13,13 @@ function next (cb) {
 		app.error('取得消息列表失败');
 		//plus.nativeUI.closeWaiting();
 		mui('#refreshContainer').pullRefresh().endPullupToRefresh();
+		mui('#refreshContainer').pullRefresh().endPulldownToRefresh();
 	})
 	.done(function (res) {
 		app.log('消息列表：' + JSON.stringify(res));
 		//plus.nativeUI.closeWaiting();
-		mui('#refreshContainer').pullRefresh().endPullupToRefresh();
+		//mui('#refreshContainer').pullRefresh().endPullupToRefresh();
+		//mui('#refreshContainer').pullRefresh().endPulldownToRefresh();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
 		if (false == res.status) {app.error(res.msg); return;};
