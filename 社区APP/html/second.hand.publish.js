@@ -84,6 +84,7 @@ function upload (image) {
 		
 		if (status == 200) { 
 			//plus.nativeUI.toast('上传文件成功');
+			if (res.error && res.error.msg) { plus.nativeUI.toast(res.error.msg); return; }
 			append({'path':image.path, 'id':res.id, 'name':res.img});
 		} else {
 			plus.nativeUI.toast('上传图片失败');
