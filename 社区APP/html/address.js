@@ -105,7 +105,7 @@ $('.btn-submit').on('tap', function () {
 		plus.nativeUI.closeWaiting();
 	})
 	.done(function (res) {
-		app.log('修改商品数量结果：' + JSON.stringify(res));
+		app.log('保存收货地址：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
@@ -113,7 +113,10 @@ $('.btn-submit').on('tap', function () {
 		
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
 		
-		plus.webview.getWebviewById('goods.address.html').evalJS('refresh()');
+		var extras = plus.webview.currentWebview().extras;
+		try {
+			plus.webview.getWebviewById(extras._FROM_).evalJS('refresh()');
+		} catch (e) {}
 		plus.webview.currentWebview().close();
 	})
 	;

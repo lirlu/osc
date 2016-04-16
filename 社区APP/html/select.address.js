@@ -8,7 +8,9 @@ mui.plusReady(function () {
 	
 	refresh();
 });
-
+$('body').delegate('[data-url]', 'tap', function () {
+	app.open($(this).attr('data-url'));
+});
 function refresh () {
 	var key  = app.store('key');
 	
@@ -48,7 +50,6 @@ $('#pnl-address').delegate('input[name="radio"]', 'change', function (e) {
 		if (id == cache[i].id) {
 			var txt = JSON.stringify(cache[i]);
 			
-	
 			plus.webview.getWebviewById(extras._FROM_).evalJS('doSetAddress('+txt+')');
 			plus.webview.currentWebview().close();
 			break;
