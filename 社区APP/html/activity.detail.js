@@ -22,6 +22,7 @@ mui.plusReady(function () {
 		if (res.msg) { plus.nativeUI.toast(res.msg); };
 		
 		$('.content').html(template('tpl-activity', res));
+		mui.previewImage();
 	})
 	;
 });

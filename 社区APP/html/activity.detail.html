@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="../css/mui.min.css" />
 	<link rel="stylesheet" href="../css/common.css" />
 	<link rel="stylesheet" href="../css/app/activity.css" />
+	<link rel="stylesheet" href="../css/app.previewimage.css" />
 	<style>
 		input[type=text] {
 			padding-left: 0;
@@ -63,7 +64,7 @@
 			<div class="pad-sm"></div>
 			<div class="mui-row image-evidence">
 				{{each info.img as thumb index}}
-				<div class="mui-col-xs-4"><img src="{{thumb | image}}" /></div>
+				<div class="mui-col-xs-4"><img src="{{thumb | image}}" data-preview-src="" data-preview-group="1" /></div>
 				{{/each}}
 			</div>
 			
@@ -86,6 +87,8 @@
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
 	<script type="text/javascript" src="../js/template.js"></script>
 	<script type="text/javascript" src="../js/app.js"></script>
+	<script type="text/javascript" src="../js/mui.zoom.js" ></script>
+	<script type="text/javascript" src="../js/mui.previewimage.js" ></script>
 	<script type="text/javascript" src="activity.detail.js"></script>
 </body>
 </html>
