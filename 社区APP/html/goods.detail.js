@@ -115,6 +115,7 @@ function init (data) {
 		$('#title').text(res.goods_info.title);
 		// 商品信息
 		$('#pnl-product').empty().append(template('tpl-product', res));
+		mui.previewImage();
 		// 也许你还喜欢
 		$('#pnl-related').empty().append(template('tpl-related', res));
 		
