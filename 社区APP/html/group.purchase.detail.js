@@ -50,7 +50,7 @@ $('.btn-submit').on('tap', function () {
 	if (!$('.addr-row').is(':visible')) {
 		$('.addr-row').show();
 		return;
-	} else if (!$('.addr_id').val()) {
+	} else if (!$('.address input').val()) {
 		plus.nativeUI.toast('请选择收货地址');
 		return;
 	}
