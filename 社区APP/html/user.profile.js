@@ -178,6 +178,8 @@ mui.plusReady(function () {
 	$('.sex[data-sex='+(user.sex || 'female')+']').addClass('active');
 	$('#name').val(user.nickname);
 	$('#mobile').val(user.mobile);
+	
+	mui.previewImage();
 });
 
 
