@@ -54,7 +54,6 @@ function autologin () {
 	;
 }
 
-autologin();
 setInterval(autologin, 1000 * 60 * 2);
 
 function refresh () {
