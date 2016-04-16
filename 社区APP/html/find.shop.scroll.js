@@ -1,7 +1,7 @@
 var _Data = {'lat':'', 'lng':'', 'page':0, 'limit':15, 'type':'', 'key':app.store('key'), 'keyword':''};
 
 function next (cb) {
-	//plus.nativeUI.showWaiting();
+	plus.nativeUI.showWaiting();
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'post',
@@ -16,7 +16,7 @@ function next (cb) {
 	})
 	.done(function (res) {
 		app.log('搜索结果：' + JSON.stringify(res));
-		//plus.nativeUI.closeWaiting();
+		plus.nativeUI.closeWaiting();
 		mui('#refreshContainer').pullRefresh().endPullupToRefresh();
 		
 		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
@@ -33,10 +33,8 @@ function funcPulldownRefresh () {
 	_Data.page = 0;
 	//app.log('重新刷新页面' + JSON.stringify(_Data));
 	$('#pnl-shop').empty();
-	plus.nativeUI.showWaiting('正在刷新...');
 	
 	next(function (res) {
-		plus.nativeUI.closeWaiting();
 		$('#pnl-shop').html(template('tpl-shop', res));
 		mui('#refreshContainer').pullRefresh().endPulldownToRefresh();//参数为true代表没有更多数据了。
 	});
