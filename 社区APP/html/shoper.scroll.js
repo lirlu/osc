@@ -135,11 +135,16 @@ $('.btn-all-category').on('tap', function () {
 $('#pnl-shop').delegate('.shop', 'tap', function() {
 	var data = {
 		'shop_id'   : $(this).attr('shop_id'),
-		'shop_name' : $(this).attr('shop_name'),
+		'shop_name' : $(this).attr('data-name'),
 		'addr'      : $(this).attr('addr'),
 		'tel'       : $(this).attr('tel'),
+		'type'      : $(this).attr('data-type'),
 	};
-	app.open('shop.information.html', data);
+	if ('0' == data.type) {
+		app.open('shop.detail1.html', data);
+	} else {
+		app.open('shop.information.html', data);
+	}
 });
 
 $('.contol .appraise1').on('tap', function () {
