@@ -82,6 +82,9 @@ function upload (image) {
 	task.addFile(image.path, {key:"testdoc"});
 	task.addData('key', app.store('key'));
 	task.addData('thumb', JSON.stringify(image));
+	for (var i in image) {
+		task.addData(i, image[i]);
+	}
 	task.start();
 }
 function append (image) {
