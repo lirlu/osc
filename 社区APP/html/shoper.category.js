@@ -62,6 +62,7 @@ function category (id) {
 	var view = plus.webview.getWebviewById('shoper.scroll.html');
 	view.evalJS('init({category:"'+(id||'')+'"})');
 	view.show();
+	try { plus.webview.currentWebview().hide(); } catch (e) {};
 };
 
 

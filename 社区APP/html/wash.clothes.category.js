@@ -60,6 +60,7 @@ function category (id) {
 	var view = plus.webview.getWebviewById('wash.clothes.shop.scroll.html');
 	view.evalJS('reinit({category:"'+(id||'')+'"})');
 	view.show();
+	try { plus.webview.currentWebview().hide(); } catch (e) {};
 };
 
 
