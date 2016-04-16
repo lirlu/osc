@@ -5,19 +5,40 @@
         <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <link rel="stylesheet" href="./css/iconfont.css" />
         <link rel="stylesheet" href="./css/common.css" />
+        <style>
+        	.tab-item b {
+        		width: 20px;
+        		height: 20px;
+        		display: block;
+        		background-size: contain;
+        		margin-right: auto;
+        		margin-left: auto;
+        	}
+        	.tab-item .home { background-image: url(img/13-01.jpg); }
+        	.tab-item.active .home { background-image: url(img/14-01.jpg); }
+        	.tab-item .cart { background-image: url(img/15-01.jpg); }
+        	.tab-item.active .cart { background-image: url(img/16-01.jpg); }
+        	.tab-item .my { background-image: url(img/17-01.jpg); }
+        	.tab-item.active .my { background-image: url(img/18-01.jpg); }
+        	
+        	
+        </style>
     </head> 
     <body>
         <nav class="bar-tab">
             <a id="defaultTab" title="首页" class="tab-item active" data-url="home.html">
-                <i class="icon iconfont icon-home"></i>
+                <!--<i class="icon iconfont icon-home"></i>-->
+                <b class="home"></b>
                 <span class="tab-label">首页</span>
             </a>
             <a title="购物车" class="tab-item" data-url="cart.html">
-                <i class="icon iconfont icon-gouwuche"></i>
+                <!--<i class="icon iconfont icon-gouwuche"></i>-->
+                <b class="cart"></b>
                 <span class="tab-label">购物车</span>
             </a>
             <a title="我" class="tab-item" data-url="user.html">
-                <i class="icon iconfont icon-yonghuming"></i>
+                <!--<i class="icon iconfont icon-yonghuming"></i>-->
+                <b class="my"></b>
                 <span class="tab-label">我</span>
             </a> 
         </nav>

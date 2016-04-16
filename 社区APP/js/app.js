@@ -84,7 +84,7 @@ app.home = function () {
 	}
 }
 app.log = function (k, v) {
-	console.log(k,v);
+	//console.log(k,v);
 }
 /**
  * 预加载页面
