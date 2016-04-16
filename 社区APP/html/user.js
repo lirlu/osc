@@ -54,7 +54,7 @@ function autologin () {
 	;
 }
 
-setInterval(autologin, 20000);
+setInterval(autologin, 1000 * 60 * 2);
 
 function refresh () {
 	var key = app.store('key');
