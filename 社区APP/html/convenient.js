@@ -3,17 +3,20 @@ mui.init({
 		{
 			url    : 'convenient.category.scroll.html',
 			id     : 'convenient.category.scroll.html',
-			styles : {top: '90px'}
+			styles : {top: '90px'},
+			show   : {autoShow:false},
 		},
 		{
 			url    : 'convenient.carpool.scroll.html',
 			id     : 'convenient.carpool.scroll.html',
-			styles : {top: '90px'}
+			styles : {top: '90px'},
+			show   : {autoShow:false},
 		},
 		{
 			url    : 'convenient.local.scroll.html',
 			id     : 'convenient.local.scroll.html',
-			styles : {top: '90px'}
+			styles : {top: '90px'},
+			show   : {autoShow:true},
 		},
 	]
 });
@@ -22,6 +25,9 @@ mui.init({
 $('[data-page]').on('tap', function () {
 	$(this).removeClass('activet').addClass('activet').siblings().removeClass('activet');
 	var page = $(this).attr('data-page');
+	$(this).siblings('[data-page]').each(function (idx, item) {
+		try {plus.webview.getWebviewById($(item).attr('data-page')).hide();} catch (e) {}
+	});
 	plus.webview.getWebviewById(page).show();
 });
 

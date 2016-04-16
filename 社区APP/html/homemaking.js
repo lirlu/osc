@@ -3,12 +3,14 @@ mui.init({
 		{
 			url    : 'homemaking.category.html',
 			id     : 'homemaking.category.html',
-			styles : {top: '90px'}
+			styles : {top: '90px'},
+			show   : {autoShow:false},
 		},
 		{
 			url    : 'homemaking.shop.scroll.html',
 			id     : 'homemaking.shop.scroll.html',
-			styles : {top: '90px'}
+			styles : {top: '90px'},
+			show   : {autoShow:true},
 		},
 	]
 });
@@ -17,5 +19,8 @@ mui.init({
 $('[data-page]').on('tap', function () {
 	$(this).removeClass('activet').addClass('activet').siblings().removeClass('activet');
 	var page = $(this).attr('data-page');
+	$(this).siblings('[data-page]').each(function (idx, item) {
+		try {plus.webview.getWebviewById($(item).attr('data-page')).hide();} catch (e) {}
+	});
 	plus.webview.getWebviewById(page).show();
 });

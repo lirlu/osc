@@ -4,12 +4,14 @@ mui.init({
 		{
 			url    : 'shoper.category.html',
 			id     : 'shoper.category.html',
-			styles : {top: '86px'}
+			styles : {top: '86px'},
+			show   : {autoShow:false},
 		},
 		{
 			url    : 'shoper.scroll.html',
 			id     : 'shoper.scroll.html',
-			styles : {top: '86px', }
+			styles : {top: '86px', },
+			show   : {autoShow:true},
 		},
 	]
 });
@@ -18,5 +20,8 @@ mui.init({
 $('[data-page]').on('tap', function () {
 	$(this).removeClass('activet').addClass('activet').siblings().removeClass('activet');
 	var page = $(this).attr('data-page');
+	$(this).siblings('[data-page]').each(function (idx, item) {
+		try {plus.webview.getWebviewById($(item).attr('data-page')).hide();} catch (e) {}
+	});
 	plus.webview.getWebviewById(page).show();
 });

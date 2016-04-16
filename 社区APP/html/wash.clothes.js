@@ -3,7 +3,8 @@ mui.init({
 		{
 			url    : 'wash.clothes.category.html',
 			id     : 'wash.clothes.category.html',
-			styles : {top: '90px'}
+			styles : {top: '90px'},
+			show   : {autoShow:false},
 		},
 		{
 			url    : 'wash.clothes.shop.scroll.html',
@@ -17,5 +18,8 @@ mui.init({
 $('[data-page]').on('tap', function () {
 	$(this).removeClass('activet').addClass('activet').siblings().removeClass('activet');
 	var page = $(this).attr('data-page');
+	$(this).siblings('[data-page]').each(function (idx, item) {
+		try {plus.webview.getWebviewById($(item).attr('data-page')).hide();} catch (e) {}
+	});
 	plus.webview.getWebviewById(page).show();
 });
