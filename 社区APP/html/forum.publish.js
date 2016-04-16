@@ -112,6 +112,7 @@ function upload (image) {
 		try { res = JSON.parse(res); } catch (e) { status = 404 }
 		
 		if (status == 200) {
+			if (res.error && res.error.msg) { plus.nativeUI.toast(res.error.msg); return; }
 			//plus.nativeUI.toast('上传文件成功');
 			append({'path':image.path, 'id':res.id, 'name':res.img});
 		} else {
