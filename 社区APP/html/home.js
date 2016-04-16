@@ -39,7 +39,7 @@ function init (city) {
 		$('#pnl-gallery').html(template('tpl-gallery', res));
 		$('#pnl-thumb').html(template('tpl-thumb', res));
 		
-		mui('.mui-slider').slider({interval:5000});
+		mui('#banner-container .mui-slider').slider({interval:5000});
 	})
 	;
 	
