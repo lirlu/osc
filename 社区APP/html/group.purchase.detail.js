@@ -60,7 +60,6 @@ $('.btn-submit').on('tap', function () {
 		app.open('log.html');
 		return;
 	}
-	
 	plus.nativeUI.showWaiting();
 	$.ajax({
 		'dataType' : 'json',
@@ -71,7 +70,7 @@ $('.btn-submit').on('tap', function () {
 			'tuan_id'   : view.extras.id,
 			'payway'    : 'online',
 			'addr_id'   : $('.address input').val(),
-			'addr_text' : $('.address addr').text(),
+			'addr_text' : $('.address .addr').text(),
 		}
 	})
 	.fail(function (res) {
