@@ -9,7 +9,17 @@
     <style>
     	.divimg{width: 100%;margin: 0;padding: 0;}
     	.divimg img{width: 100%;}
-    	#pnl-product {width: 100%; height: auto; display: table; list-style: none;margin: 0; padding: 0 !important;font-size: 13px;color: #999;background-color: #FFFFFF;}
+    	#pnl-product {
+    		width: 100%; 
+    		height: auto; 
+    		display: table; 
+    		list-style: none;
+    		margin: 0; 
+    		padding: 0 !important;
+    		font-size: 13px;
+    		color: #999;
+    		background-color: #FFFFFF;
+    	}
     	.product {
     		width: 50%;
     		display: inline-block; 
@@ -59,11 +69,11 @@
     </style>
 </head>
 <body>
-	<div class="divimg">
-		<img src="../img/group.purchase.banner.png" />
-	</div>
 	<div id="refreshContainer" class="mui-content mui-scroll-wrapper">
 		<div class="mui-scroll">
+			<div class="divimg">
+				<img src="../img/group.purchase.banner.png" />
+			</div>
 			<!--数据列表-->
 			<ul class="mui-table-view mui-table-view-chevron" id="pnl-product">
 			</ul>
