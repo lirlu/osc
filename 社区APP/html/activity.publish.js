@@ -1,3 +1,14 @@
+var picker = new mui.PopPicker({layer: 2});
+var times = [];
+var hours = [];
+for (var i = 0; i < 60; i++) {
+	
+	hours.push({'value':''+i, 'text':''+(i<10?('0'+i):i), 'children':[]});
+}
+for (var i = 0; i < 24; i++) {
+	times.push({'value':''+i, 'text':''+(i<10?('0'+i):i), 'children':hours});
+}
+picker.setData(times);
 
 var queue = [];
 
@@ -112,7 +123,13 @@ $('.image-evidence').delegate('.mui-icon', 'tap', function () {
 	})
 	;
 });
-
+$('#act_time').on('tap', function () {
+	picker.show(function(items) {
+		$('#act_time').val((items[0] || {}).text + ':' + (items[1]    || {}).text);
+		//返回 false 可以阻止选择框的关闭
+		//return false;
+	});
+});
 // 发布活动
 $('.btn-submit').on('tap', function () {
 	var dom  = this;
