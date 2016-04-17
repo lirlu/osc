@@ -4,13 +4,13 @@ mui.init({
 		{
 			url    : 'shoper.category.html',
 			id     : 'shoper.category.html',
-			styles : {top: '45px'},
+			styles : {top: '45px', 'bottom':'0px'},
 			show   : {autoShow:false},
 		},
 		{
 			url    : 'shoper.scroll.html',
 			id     : 'shoper.scroll.html',
-			styles : {top: '45px', },
+			styles : {top: '45px', 'bottom':'0px'},
 			show   : {autoShow:true},
 		},
 	]
