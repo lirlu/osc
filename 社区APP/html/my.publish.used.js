@@ -116,8 +116,8 @@ $('body').delegate('.btn-sold', 'tap', function (e) {
 		'data'     : {'key':app.store('key'), 'id':$(dom).closest('.product').attr('data-id')}
 	})
 	.fail(function (res) {
-		app.log('更转让信息失败：' + JSON.stringify(res));
-		app.error('更转让信息失败');
+		app.log('更新转让信息失败：' + JSON.stringify(res));
+		app.error('更新转让信息失败');
 		plus.nativeUI.closeWaiting();
 		$(dom).prop('disabled', false);
 	})
