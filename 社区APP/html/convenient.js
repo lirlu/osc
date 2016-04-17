@@ -3,19 +3,19 @@ mui.init({
 		{
 			url    : 'convenient.category.scroll.html',
 			id     : 'convenient.category.scroll.html',
-			styles : {top: '90px'},
+			styles : {top: '90px', 'bottom':'0px'},
 			show   : {autoShow:false},
 		},
 		{
 			url    : 'convenient.carpool.scroll.html',
 			id     : 'convenient.carpool.scroll.html',
-			styles : {top: '90px'},
+			styles : {top: '90px', 'bottom':'0px'},
 			show   : {autoShow:false},
 		},
 		{
 			url    : 'convenient.local.scroll.html',
 			id     : 'convenient.local.scroll.html',
-			styles : {top: '90px'},
+			styles : {top: '90px', 'bottom':'0px'},
 			show   : {autoShow:true},
 		},
 	]
