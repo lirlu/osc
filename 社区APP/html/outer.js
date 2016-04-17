@@ -8,5 +8,7 @@ mui.plusReady(function () {
 			'id'     : data.url,
 			'styles' : {'top':'45px', 'bottom':'0px'}
 		}]
-	})
+	});
+	
+	$('#title').text(data.name || ' ');
 });

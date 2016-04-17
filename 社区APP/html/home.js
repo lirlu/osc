@@ -13,7 +13,7 @@ $('body').delegate('[data-private]', 'tap', function () {
 });
 // 跳转到外部页面
 $('body').delegate('[data-outer]', 'tap', function () {
-	app.open('outer.html', {'url':$(this).attr('data-outer')});
+	app.open('outer.html', {'url':$(this).attr('data-outer'), 'name':$(this).attr('data-name')});
 });
 
 // 刷新城市
