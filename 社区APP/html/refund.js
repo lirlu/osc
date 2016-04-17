@@ -125,15 +125,16 @@ $('.btn-submit').on('tap', function () {
 	var view = plus.webview.currentWebview();
 	
 	var data = {
-		'key'       : app.store('key'),// 用户KEY
-		'order_id'  : view.extras.order_id,// 订单ID
-		'order_no'  : view.extras.order_no,// 订单编号
-		'type'      : $('[name=refund-type]').val(),// 申请服务
-		'delivered' : $('[name=refund-delivered]').val(),// 货物状态
-		'reason'    : $('[name=refund-reason]').val(),// 退款原因
-		'number'    : $('[name=number]').val(),// 退款金额
-		'message'   : $('[name=message]').val(),// 退款说明
-		'images'    : [],// 图片数据
+		'key'          : app.store('key'),// 用户KEY
+		'order_id'     : view.extras.order_id,// 订单ID
+		'order_no'     : view.extras.order_no,// 订单编号
+		'type'         : $('[name=refund-type]').val(),// 申请服务
+		'delivered'    : $('[name=refund-delivered]').val(),// 货物状态
+		'reason'       : $('[name=refund-reason]').val(),// 退款原因
+		'account_text' : $('[name=bank_no]').val(),// 银行账号信息
+		'number'       : $('[name=number]').val(),// 退款金额
+		'message'      : $('[name=message]').val(),// 退款说明
+		'images'       : [],// 图片数据
 	};
 	$('.image-evidence img').each(function (idx, item) {
 		data.images.push({
