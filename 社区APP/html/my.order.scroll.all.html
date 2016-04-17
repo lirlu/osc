@@ -46,6 +46,10 @@
 					<span class="col r_f">已退款</span>
 					{{else if '7' == item.status}}
 					<span class="col r_f">退款申请中</span>
+					{{else if '8' == item.status}}
+					<span class="col r_f">已退款</span>
+					{{else if '9' == item.status}}
+					<span class="col r_f">退款失败</span>
 					{{else}}
 					<!-- 无操作 |重新购买 -->
 					{{/if}}
