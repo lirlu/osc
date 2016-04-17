@@ -77,11 +77,28 @@ app.url = function (link) {
 app.home = function () {
 	var preload = ['HBuilder', 'cart.html', 'user.html', 'home.html'];
 	var pages = plus.webview.all();
+	var views = [], uid = -1;
+	function close_later () {
+		setTimeout(function () {
+			if (views.length > 0) {
+				var v = views.pop();
+				app.log('关闭页面：'+v.id);
+				try {v.close();} catch (e) {}
+				close_later();
+			} else {
+				app.log('关闭结束');
+			}
+		}, 200);
+	}
 	for (var i in pages) {
 		try {
-			if (preload.indexOf(pages[i].id) < 0) { pages[i].close(); app.log(pages[i].id); }
-		} catch (e) { app.log(e) }
+			var view = pages[i];
+			if (-1 == preload.indexOf(view.id) && -1 < view.id.indexOf('.html')) {
+				view.hide(); views.push(view);
+			}
+		} catch (e) {}
 	}
+	close_later();
 }
 app.log = function (k, v) {
 	//console.log(k,v);

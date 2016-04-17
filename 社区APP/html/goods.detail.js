@@ -126,7 +126,7 @@ function init (data) {
 // 快速回到首页
 $('.btn-home').on('tap', function () {
 	$(this).prop('disabled', true);
-	app.home();
+	plus.webview.getWebviewById('home.html').evalJS('app.home()');
 });
 mui.plusReady(function () {
 	var view = plus.webview.currentWebview();
