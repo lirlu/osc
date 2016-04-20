@@ -102,6 +102,7 @@ $('.btn-submit').on('tap', function () {
 	var data = {
 		'key'      : key,
 		'addr_id'  : $('[name=addr]').val(),
+		'addr_text': $('span.addr').text().replace('地址：', ''),
 		'products' : [],
 	};
 	$('#pnl-product .product').each(function (idx, item) {
