@@ -105,11 +105,12 @@ template.helper('image', function (v) {
 $('#pnl-shop').delegate('.shop', 'tap', function() {
 	var data = {
 		'shop_id'   : $(this).attr('data-shop'),
-		'shop_name' : $(this).attr('shop_name'),
+		'shop_name' : $(this).attr('data-name'),
 		'addr'      : $(this).attr('addr'),
 		'tel'       : $(this).attr('tel'),
 	};
-	app.open('shop.information.html', data);
+	//app.open('shop.information.html', data);
+	app.open('shop.detail1.html', data);
 });
 
 

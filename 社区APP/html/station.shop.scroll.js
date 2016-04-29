@@ -108,7 +108,8 @@ $('body').delegate('.shop', 'tap', function() {
 		'shop_id'   : $(this).attr('data-shop'),
 		'shop_name' : $(this).attr('data-name'),
 	};
-	app.open('shop.information.html', data);
+	//app.open('shop.information.html', data);
+	app.open('shop.detail1.html', data);
 });
 
 
