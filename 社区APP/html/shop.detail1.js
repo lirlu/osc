@@ -155,7 +155,9 @@ mui.plusReady(function () {
 		
 		//左侧分类数据
 		$('#pnl-category').html(template('tpl-category', res));
-		if (0 != _Data.type) { $('.all-category').text('分类'); }
+		if (0 != _Data.type) {
+			$('.all-category').text('分类');
+		}
 		
 		// 右侧商品数据
 		$('#pnl-product').html(template('tpl-product', res));
