@@ -1,4 +1,5 @@
-var _Data = {'shop_id':'', 'page':0, 'cate_id':'', 'limit':9999};
+//1表示送水  2表示家政中心 3干洗水洗 4汽车服务 5便捷中心 5商超
+var _Data = {'shop_id':'', 'page':0, 'cate_id':'', 'limit':9999, 'type':''};
 template.helper('image', function (v) {
 	return app.link.image + v;
 });
@@ -128,6 +129,20 @@ mui.plusReady(function () {
 	var view = plus.webview.currentWebview();
 	var data = view.extras;
 	_Data.shop_id = data.shop_id;
+	//1表示送水  2表示家政中心 3干洗水洗 4汽车服务 5便捷中心 5商超
+	if (view.extras._FROM_.indexOf('station') > -1) {
+		_Data.type = 1;
+	} else if (view.extras._FROM_.indexOf('homemaking') > -1) {
+		_Data.type = 2;
+	} else if (view.extras._FROM_.indexOf('wash.clothes') > -1) {
+		_Data.type = 3;
+	} else if (view.extras._FROM_.indexOf('car.service') > -1) {
+		_Data.type = 4;
+	} else if (view.extras._FROM_.indexOf('convenient') > -1) {
+		_Data.type = 5;
+	} else {
+		_Data.type = 0;
+	}
 	
 	// 商家信息
 	$('#shop_name').text(data.shop_name);
