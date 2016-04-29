@@ -106,8 +106,11 @@ $('body').delegate('.shop', 'tap', function() {
 	var data = {
 		'shop_id'   : $(this).attr('data-id'),
 		'shop_name' : $(this).attr('data-name'),
+		'addr'      : $(this).attr('data-addr'),
+		'tel'       : $(this).attr('data-tel'),
 	};
-	app.open('shop.information.html', data);
+	//app.open('shop.information.html', data);
+	app.open('shop.detail1.html', data);
 });
 
 

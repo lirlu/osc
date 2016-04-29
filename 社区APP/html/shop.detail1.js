@@ -100,7 +100,7 @@ function product (cb) {
 	var data = view.extras;
 	plus.nativeUI.showWaiting('请等待...');
 	
-	//app.log('查询商品列表参数：' + JSON.stringify(mui.extend({}, _Data, {'page':_Data.page+1})));
+	app.log('查询商品列表参数：' + JSON.stringify(mui.extend({}, _Data, {'page':_Data.page+1})));
 	$.ajax({
 		'dataType' : 'json',
 		'type'     : 'get',
