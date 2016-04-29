@@ -13,11 +13,28 @@
 		.white {
 			background-color: #FFFFFF !important;
 		}
+		.gap-header {
+			margin-bottom: 30px;
+		}
 		.share-title {
-			padding: 40px 0;
+			padding: 40px 0 60px 0;
 		}
 		img {
 			max-width: 70%;
+		}
+		.share-channel {
+			padding-bottom: 10px;
+		}
+		.cal-row {
+			padding: 10px 0;
+			border-top: 1px solid #DDDDDD;
+		}
+		.cal-row>div {
+			height: 40px;
+			line-height: 40px;
+		}
+		.total {
+			color: #FF5053;
 		}
 	</style>
 </head>
@@ -29,12 +46,12 @@
 	</header>
 	
 	<div class="gap-header"></div>
-	<div class="mui-row">
+	<div class="mui-row white">
 		<div class="mui-col-xs-12 mui-text-center share-title">
 			请分享、邀请好友、送米币！
 		</div>
 	</div>
-	<div class="mui-row">
+	<div class="mui-row white">
 		<div class="mui-col-xs-4 mui-text-center share-channel">
 			<img src="../img/i-share-wx.png" class="btn-share" data-idx="0" />
 			<p>微信</p>
@@ -50,6 +67,12 @@
 		<div class="mui-col-xs-4 mui-text-center share-channel">
 			<img src="../img/i-share-qq.png" class="btn-share" data-idx="3" />
 			<p>QQ好友</p>
+		</div>
+	</div>
+	<div class="mui-row cal-row white">
+		<div class="mui-col-xs-12 mui-text-center">
+			你已获得 <span class="total">0</span> 米币
+			<span class="mui-icon mui-icon-arrowdown"></span>
 		</div>
 	</div>
 	

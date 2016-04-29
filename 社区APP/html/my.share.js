@@ -5,6 +5,7 @@ mui.plusReady(function () {
 		if (services && services.length > 0) {
 			for (var i = 0; i < services.length; i++) {
 				var item = services[i]; shares[item.id] = item;
+				app.log(item.id);
 			}
 		}
 	}, function() {
