@@ -133,7 +133,7 @@ mui.plusReady(function () {
 	if (view.extras._FROM_.indexOf('station') > -1) {
 		_Data.type = 1;// 送水
 	} else if (view.extras._FROM_.indexOf('homemaking') > -1) {
-		_Data.type = 2;// 家政
+		_Data.type = 2;// 家政中心
 	} else if (view.extras._FROM_.indexOf('wash.clothes') > -1) {
 		_Data.type = 3;// 水洗干活
 	} else if (view.extras._FROM_.indexOf('car.service') > -1) {
@@ -141,7 +141,7 @@ mui.plusReady(function () {
 	} else if (view.extras._FROM_.indexOf('convenient') > -1) {
 		_Data.type = 5;// 便捷中心
 	} else if (view.extras._FROM_.indexOf('shoper') > -1) {
-		_Data.type = 6;// 聪明商家
+		_Data.type = 6;// 联盟商家
 	} else {
 		_Data.type = 0;// 附近商超
 	}
