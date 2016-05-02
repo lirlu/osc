@@ -104,9 +104,11 @@ template.helper('image', function (v) {
 // 查看商家详情
 $('body').delegate('.shop', 'tap', function () {
 	var data = {
-		'shop_id'   : $(this).attr('data-shop')
+		'shop_id'   : $(this).attr('data-shop'),
+		'shop_name' : $(this).attr('data-name'),
 	};
-	app.open('shop.information.html', data);
+	//app.open('shop.information.html', data);
+	app.open('shop.detail1.html', data);
 });
 
 

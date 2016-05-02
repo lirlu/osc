@@ -20,7 +20,7 @@
 	
 	<script type="text/html" id="tpl-shop">
 		{{each seller_list as value}}
-		<div class="shop" data-shop="{{value.shop_id}}">
+		<div class="shop" data-shop="{{value.shop_id}}" data-name="{{value.shop_name}}">
 			<div class="shop-l">
 				<img src="{{value.logo | image}}" />
 			</div>
