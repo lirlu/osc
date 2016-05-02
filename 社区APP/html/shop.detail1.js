@@ -146,6 +146,12 @@ mui.plusReady(function () {
 		_Data.type = 0;// 附近商超
 	}
 	
+	// 客户说联盟商家时如果不是商超就没有分类
+	if (6 == _Data.type && '0' != view.extras.type) {
+		$('#pnl-category').parent().hide();
+		$('.mui-scroll-wrapper').parent().width('100%');
+	}
+	
 	// 商家信息
 	$('#shop_name').text(data.shop_name);
 	
