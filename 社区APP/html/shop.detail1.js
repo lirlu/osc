@@ -181,7 +181,8 @@ $('body').delegate('.btn-shop-location', 'tap', function () {
 	app.open('shop.location.html', data);
 });
 // 给商家打电话
-$('body').delegate('.btn-call-seller', 'tap', function () {
+$('body').delegate('.btn-call-seller, .btn-call-image', 'tap', function (e) {
+	e.stopPropagation();
 	plus.device.dial($(this).text(), true);
 });
 // 快速回到首页
