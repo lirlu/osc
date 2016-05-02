@@ -140,11 +140,14 @@ $('#pnl-shop').delegate('.shop', 'tap', function() {
 		'tel'       : $(this).attr('tel'),
 		'type'      : $(this).attr('data-type'),
 	};
+	/*
 	if ('0' == data.type) {
 		app.open('shop.detail1.html', data);
 	} else {
 		app.open('shop.information.html', data);
 	}
+	*/
+	app.open('shop.detail1.html', data);
 });
 
 $('.contol .appraise1').on('tap', function () {
