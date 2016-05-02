@@ -183,7 +183,8 @@ $('body').delegate('.btn-shop-location', 'tap', function () {
 // 给商家打电话
 $('body').delegate('.btn-call-seller, .btn-call-image', 'tap', function (e) {
 	e.stopPropagation();
-	plus.device.dial($(this).text(), true);
+	var num = $(this).closest('.shoper').find('.btn-call-seller').text();
+	plus.device.dial(num, true);
 });
 // 快速回到首页
 $('.btn-home').on('tap', function () {
