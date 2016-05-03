@@ -37,7 +37,9 @@
 				{{value.shop_name}}
 				<p>{{value.addr}}</p>
 				<p><img src="../img/i-clock.png" />&nbsp;{{value.business_time}}</p>
-				<p lng="{{value.lng}}" lat="{{value.lat}}" class="">≥{{value.juli}}m</p>
+				<p lng="{{value.lng}}" lat="{{value.lat}}" class="">
+					≥{{value.juli < 1000 ? (value.juli + 'm') : (value.juli/1000 + 'km')}}
+				</p>
 			</div>
 		</div>
 		{{/each}}
