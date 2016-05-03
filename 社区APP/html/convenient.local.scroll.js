@@ -87,6 +87,7 @@ mui.plusReady(function () {
 			_Data.lng = res.coords.longitude;
 			_Data.lat = res.coords.latitude;
 			
+			app.log('这是为什么');
 			init ();
 		}, 
 		function () {
