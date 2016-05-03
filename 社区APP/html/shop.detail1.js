@@ -43,6 +43,7 @@ $('#pnl-product').delegate(".goods", 'tap', function() {
 		'shop_id'  : view.extras.shop_id, 
 		'goods_id' : $(this).attr('goods_id'),
 		'name'     : $(this).attr('title'),
+		'type'     : _Data.type,
 	};
 	//app.log('参数：' + JSON.stringify(data));
 	app.open('goods.detail.html', data);
@@ -151,20 +152,28 @@ mui.plusReady(function () {
 		$('#pnl-category').parent().hide();
 		$('.mui-scroll-wrapper').parent().width('100%');
 	}
-	
-	// 商家信息
-	$('#shop_name').text(data.shop_name);
+	// 修改头部式样
+	if (0 != _Data.type) {
+		$('.mui-pull-right').hide();
+		$('.mui-action-back').append(data.shop_name);
+		// 商家信息
+		$('#shop_name').text(data.shop_name).hide();
+	} else {
+		// 商家信息
+		$('#shop_name').text(data.shop_name);
+	}
 	
 	product(function (res) {
 		$('#shop_name').attr('data-lng', res.seller_view.lng).attr('data-lat', res.seller_view.lat);
 		
 		// 商家信息
 		$('#pnl-duty-info').html(template('tpl-duty-info', res));
+		$('.startime>img').attr('src', '../img/i-clock.png').addClass('small-WTF');
 		
 		//左侧分类数据
 		$('#pnl-category').html(template('tpl-category', res));
 		if (0 != _Data.type) {
-			$('.all-category').text('分类');
+			$('.all-category').text('分类').addClass('WTF');
 		}
 		
 		// 右侧商品数据

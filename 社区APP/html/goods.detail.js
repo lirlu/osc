@@ -90,6 +90,9 @@ $('.content').delegate('.view-comment', 'tap', function() {
 function init (data) {
 	_Data = data;
 	plus.nativeUI.showWaiting('请等待...');
+	if (0 != data.type) {
+		$('.mui-pull-right').hide();
+	}
 	
 	// 商品详情
 	app.log('请求商品详情数据：' + app.url('mobile/goods/goods_view'));
@@ -110,9 +113,13 @@ function init (data) {
 	.done(function (res) {
 		app.log('商品详情数据：' + JSON.stringify(res));
 		plus.nativeUI.closeWaiting();
-		
 		//设置title值
-		$('#title').text(res.goods_info.title);
+		if (0 != data.type) {
+			$('.mui-action-back').append(res.goods_info.title)
+		} else {
+			$('#title').text(res.goods_info.title);
+		}
+		
 		// 商品信息
 		$('#pnl-product').empty().append(template('tpl-product', res));
 		mui.previewImage();
