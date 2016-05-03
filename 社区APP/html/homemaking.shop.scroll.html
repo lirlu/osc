@@ -9,8 +9,15 @@
 	<link rel="stylesheet" href="../css/app/collect.css" />
 	<style>
 		.content {padding: 0;}
-		.shop {height: 105px;}
+		.shop {height: 115px;}
 		.content {padding-bottom: 50px;}
+		.shop-l .box {
+			width: 90px;
+			height: 90px;
+			border: 1px solid #CDCDCD;
+		}
+		.shop-r p {font-size: 12px;line-height: 18px;vertical-align: middle;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+		.shop-r p>img {width: 15px;height: 15px;margin-bottom: -3px;}
 	</style>
 </head>
 
@@ -19,7 +26,8 @@
 	<div id="refreshContainer" class="mui-content mui-scroll-wrapper">
 		<div class="mui-scroll">
 			<!--数据列表-->
-			<section class="mui-table-view mui-table-view-chevron" id="pnl-shop"></section>
+			<section class="mui-table-view mui-table-view-chevron" id="pnl-shop">
+			</section>
 		</div>
 	</div>
 	
@@ -28,12 +36,15 @@
 		{{each seller_list as value}}
 		<div class="shop" data-shop="{{value.shop_id}}" data-name="{{value.shop_name}}">
 			<div class="shop-l">
-				<img src="{{value.logo | image}}" />
+				<div class="box">
+					<img src="{{value.logo | image}}" />
+				</div>
 			</div>
 			<div class="shop-r">
 				{{value.shop_name}}
-				<p>{{value.business_time}}</p>
-				<p lng="{{value.lng}}" lat="{{value.lat}}" class="loction">{{value.juli/1000}}</p>
+				<p>{{value.addr}}</p>
+				<p><img src="../img/i-clock.png" />&nbsp;{{value.business_time}}</p>
+				<p lng="{{value.lng}}" lat="{{value.lat}}" class="">≥{{value.juli}}m</p>
 			</div>
 		</div>
 		{{/each}}
