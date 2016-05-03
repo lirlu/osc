@@ -24,6 +24,9 @@
 		ul.type li { padding: 0; color: #000 !important; }
 		ul.type li .mui-input-row { width: 130px; margin-left: auto; margin-right: auto;}
 		ul.type li input { top: 8px !important; }
+		.shop {height: 105px;}
+		.shop-r p {font-size: 12px;line-height: 17px;vertical-align: middle;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+		.shop-r p>img {width: 15px;height: 15px;margin-bottom: -3px;}
 	</style>
 </head>
 
@@ -45,7 +48,8 @@
 			</div>
 			<div class="shop-r">
 				{{value.shop_name}}
-				<p>{{value.business_time}}</p>
+				<p>{{value.addr}}</p>
+				<p><img src="../img/i-clock.png" />&nbsp;{{value.business_time}}</p>
 				<p lng="{{value.lng}}" lat="{{value.lat}}" class="loction">{{value.juli/1000}}</p>
 			</div>
 		</div>
