@@ -11,6 +11,28 @@ mui.plusReady(function () {
 	}, function() {
 		app.log("获取分享服务列表失败");
 	});
+	
+	//plus.nativeUI.showWaiting('加载中...');
+	$.ajax({
+		'dataType' : 'json',
+		'type'     : 'post',
+		'url'      : app.url('mobile/share/income'),
+		'data'     : {'key':app.store('key')}
+	})
+	.fail(function (res) {
+		app.log('取得我获得的米币失败：' + JSON.stringify(res));
+		app.error('取得我获得的米币失败');
+	})
+	.done(function (res) {
+		app.log('我获得的米币：' + JSON.stringify(res));
+		
+		if (res.error && res.error.msg) { app.error(res.error.msg); return; }
+		if (false == res.status) {app.error(res.msg); return;};
+		if (res.msg) { plus.nativeUI.toast(res.msg); };
+		
+		$('.total').text(res.total || '0');
+	})
+	;
 });
 // 分享
 function _doShareMessage (share, ex) {
