@@ -9,8 +9,10 @@
 	<link rel="stylesheet" href="../css/app/collect.css" />
 	<style>
 		.content {padding: 0;}
-		.shop {height: 105px;}
+		.shop {height: 105px;border-bottom: 1px solid #DDDDDD;}
 		.content {padding-bottom: 50px;}
+		.shop-r p {font-size: 12px;line-height: 17px;vertical-align: middle;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+		.shop-r p>img {width: 15px;height: 15px;margin-bottom: -3px;}
 	</style>
 </head>
 
@@ -32,8 +34,9 @@
 			</div>
 			<div class="shop-r">
 				{{value.shop_name}}
-				<p>{{value.business_time}}</p>
-				<p lng="{{value.lng}}" lat="{{value.lat}}" class="loction">{{value.juli/1000}}</p>
+				<p>{{value.addr}}</p>
+				<p><img src="../img/i-clock.png" />&nbsp;{{value.business_time}}</p>
+				<p lng="{{value.lng}}" lat="{{value.lat}}" class="">≥{{value.juli/1000}}m</p>
 			</div>
 		</div>
 		{{/each}}
