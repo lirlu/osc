@@ -154,7 +154,7 @@ mui.plusReady(function () {
 	}
 	// 修改头部式样
 	if (0 != _Data.type) {
-		$('.mui-pull-right').hide();
+		//$('.mui-pull-right').hide();
 		$('.mui-action-back').append(data.shop_name);
 		// 商家信息
 		$('#shop_name').text(data.shop_name).hide();

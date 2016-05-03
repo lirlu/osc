@@ -91,7 +91,7 @@ function init (data) {
 	_Data = data;
 	plus.nativeUI.showWaiting('请等待...');
 	if (0 != data.type) {
-		$('.mui-pull-right').hide();
+		//$('.mui-pull-right').hide();
 	}
 	
 	// 商品详情
