@@ -41,7 +41,7 @@ function _doShareMessage (share, ex) {
 	var message = {
 		'extra'   : {'scene': ex},
 		'href'    : app.link.share + 'uid=' + user.user_id,
-		'title'   : '我请在使用米土e生活',
+		'title'   : '我正在使用米土e生活',
 		'content' : '你们也快来试试吧',
 	};
 	if (~share.id.indexOf('weibo')) {
