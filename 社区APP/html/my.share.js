@@ -41,13 +41,13 @@ function _doShareMessage (share, ex) {
 	var message = {
 		'extra'   : {'scene': ex},
 		'href'    : app.link.share + '&uid=' + user.user_id,
-		'title'   : '我正在使用米土e生活',
-		'content' : '你们也快来试试吧',
+		'title'   : '居家旅行最便捷的APP',
+		'content' : '米土e生活，让生活更简单！',
 	};
 	if (~share.id.indexOf('weibo')) {
 		message.content += "；体验地址：" + message.href;
 	}
-	message.thumbs = ["../img/10-01.png"];
+	message.thumbs = ["../img/share-logo.png"];
 	share.send(message, function() {
 		app.log('分享到"' + share.description + '"成功！ ');
 		app.toast('分享成功');
