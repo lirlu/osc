@@ -6,7 +6,7 @@ section{margin-top: 44px;overflow: hidden;}
 .shop{width: 100%;height: 100px;background: #FFFFFF;border-bottom: 8px solid #E5E5E5;}
 .shop-l{width: 100px;height: 90px;float: left;padding-top: 8px;padding-left: 15px;}
 .shop-l img{width: 100%;height: 100%;}
-.shop-r{padding-left: 10px;width: 59%;float: left;line-height: 25px;padding-top: 13px;}
+.shop-r{padding-left: 10px;width: 59%;float: left;line-height: 25px;padding-top: 13px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 .shop-r p{font-size: 15px;}
 .xian{padding: 0 5px;}
 .block .top:first-child{margin-top: 0;}
