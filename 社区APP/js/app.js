@@ -6,7 +6,7 @@ app.link = {
 	'image'  : 'http://mtesh.cdlinglu.com/attachs/',
 	//'server' : 'http://192.168.2.68/index.php?s=/',
 	//'image'  : 'http://192.168.2.68/attachs/',
-	'share'  : 'http://www.mtesh.com/wx/index.html'
+	'share'  : 'http://mtesh.cdlinglu.com/index.php?s=mobile/share/index'
 }
 // 检测网络连接是否正常
 app.isNetwordReady = function () {
@@ -35,6 +35,9 @@ app.store = function (key, value) {
 app.error = function (text) {
 	plus.nativeUI.toast(text, {'duration':'long'});
 };
+app.toast = function (text) {
+	plus.nativeUI.toast(text);
+}
 /**
  * 获取当前地址
  * @param {Function} 回调方法，如果获取失败会返回一个默认的地址
@@ -101,7 +104,7 @@ app.home = function () {
 	close_later();
 }
 app.log = function (k, v) {
-	//console.log(k,v);
+	console.log(k,v);
 }
 /**
  * 预加载页面

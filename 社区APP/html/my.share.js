@@ -40,7 +40,7 @@ function _doShareMessage (share, ex) {
 	var user = app.store('user');
 	var message = {
 		'extra'   : {'scene': ex},
-		'href'    : app.link.share + 'uid=' + user.user_id,
+		'href'    : app.link.share + '&uid=' + user.user_id,
 		'title'   : '我正在使用米土e生活',
 		'content' : '你们也快来试试吧',
 	};
