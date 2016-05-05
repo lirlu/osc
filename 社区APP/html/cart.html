@@ -27,6 +27,7 @@
 	<!-- 购物车模板 开始 -->
 	<script type="text/html" id="tpl-cart">
 		{{each cart_list as item}}
+		{{if item.shop_view && item.shop_view.shop_id && item.goods_list}}
 		<ul class="order deli">
 			<li class="order_li shop" data-shop="{{item.shop_view.shop_id}}">
 				<span class="lei mui-checkbox mui-left pare">
@@ -63,6 +64,7 @@
 			</li>
 			{{/each}}
 		</ul>
+		{{/if}}
 		{{/each}}
 	</script>
 	<!-- 购物车模板 结束 -->
