@@ -99,7 +99,7 @@
         },
         "NativeObj":{
         	"description": "原生对象"
-        },"Payment":{}
+        },"Payment":{},"Share":{}
 	},
 	"plus": {
 		"splashscreen": {
@@ -108,7 +108,7 @@
 		},
 		"runmode": "liberate",/*应用的首次启动运行模式，可取liberate或normal，liberate模式在第一次启动时将解压应用资源（Android平台File API才可正常访问_www目录）*/
 		"signature": "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==",/*可选，保留给应用签名，暂不使用*/
-		"distribute": {"plugins":{"maps":{"baidu":{"appkey_ios":"wRDG9XykgkrBDk7KY10pUvgebivnIA1g","appkey_android":"hoUEhHG5ftg1r7cAmovk0pXd6aWy0BpB","appkey":"","description":""}},"payment":{"weixin":{"description":"微信支付","appid":"wxbfbb6408f53e094c"},"alipay":{"description":"阿里支付","scheme":"uprqaxjvxu2txpupf9ybbal0ut87orrt"}}},
+		"distribute": {"plugins":{"share":{"qq":{"appid":"1105132853","description":"QQ分享"},"weixin":{"appid":"wxbfbb6408f53e094c","appsecret":"2109f3cdf7b1a39eca6599f09889f8d5","description":"可选，微信分享"}},"maps":{"baidu":{"appkey_ios":"wRDG9XykgkrBDk7KY10pUvgebivnIA1g","appkey_android":"hoUEhHG5ftg1r7cAmovk0pXd6aWy0BpB","appkey":"","description":""}},"payment":{"weixin":{"description":"微信支付","appid":"wxbfbb6408f53e094c"},"alipay":{"description":"阿里支付","scheme":"uprqaxjvxu2txpupf9ybbal0ut87orrt"}}},
 			"apple": {
 				"appid": "",/*iOS应用标识，苹果开发网站申请的appid，如io.dcloud.HelloH5*/
 				"mobileprovision": "",/*iOS应用打包配置文件*/
